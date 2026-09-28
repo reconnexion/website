@@ -1,0 +1,44 @@
+/*
+ * Design tokens — PLACEHOLDER.
+ * Remplacez ces valeurs par celles de votre design system.
+ * Règle : aucun composant n'utilise de couleur, taille ou police en dur ;
+ * tout passe par ces variables.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,500;7..72,700&display=swap');
+
+:root {
+  /* Couleurs */
+  --c-papier: #f6f1e7;
+  --c-papier-2: #ede5d5;
+  --c-encre: #1d2f2b;
+  --c-encre-douce: #4a5a55;
+  --c-fil: #c65a3a;          /* accent : le « fil » qui relie */
+  --c-fil-fonce: #9c3f24;
+  --c-mousse: #5c7a5a;
+  --c-trait: #d9cfbc;
+
+  /* Typographie */
+  --f-titre: 'Literata', Georgia, serif;
+  --f-texte: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --t-xs: 0.8125rem;
+  --t-s: 0.9375rem;
+  --t-m: 1.0625rem;
+  --t-l: 1.375rem;
+  --t-xl: clamp(1.75rem, 3vw, 2.25rem);
+  --t-xxl: clamp(2.25rem, 6vw, 4rem);
+
+  /* Espacements */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 1rem;
+  --e-4: 1.5rem;
+  --e-5: 2.5rem;
+  --e-6: 4rem;
+  --e-7: 6rem;
+
+  /* Formes */
+  --r-carte: 14px;
+  --r-bouton: 999px;
+  --largeur: 68rem;
+  --largeur-texte: 40rem;
+}

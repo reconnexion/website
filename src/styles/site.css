@@ -1,0 +1,9 @@
+/* Chrome du site (en-tête, pied) — pas utilisé dans l'aperçu du CMS. */
+.entete { border-bottom: 1px solid var(--c-trait); }
+.entete__ligne { display: flex; align-items: center; justify-content: space-between; gap: var(--e-3); padding-block: var(--e-3); flex-wrap: wrap; }
+.logo { font-family: var(--f-titre); font-weight: 700; font-size: var(--t-l); color: var(--c-encre); text-decoration: none; }
+.logo::before { content: ''; display: inline-block; width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--c-fil); margin-right: 0.4em; }
+.entete nav { display: flex; gap: var(--e-4); flex-wrap: wrap; }
+.entete nav a { color: var(--c-encre); text-decoration: none; font-weight: 700; font-size: var(--t-s); }
+.entete nav a[aria-current='page'], .entete nav a:hover { color: var(--c-fil-fonce); text-decoration: underline; text-underline-offset: 0.3em; }
+.pied { margin-top: var(--e-6); padding-block: var(--e-5); background: var(--c-papier-2); color: var(--c-encre-douce); font-size: var(--t-s); }

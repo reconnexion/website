@@ -1,0 +1,19 @@
+---
+// Toutes les pages éditées dans Sveltia : pré-rendues au build.
+import Base from '../layouts/Base.astro';
+import RenduBlocs from '../components/RenduBlocs.astro';
+import { toutesLesPages, reglagesSite } from '../lib/contenu';
+
+export function getStaticPaths() {
+  return toutesLesPages().map((page) => ({
+    params: { slug: page.slug === 'index' ? undefined : page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const site = reglagesSite();
+---
+<Base titre={page.slug === 'index' ? site.nom : page.titre} description={page.description}>
+  <RenduBlocs sections={page.sections} texteChargement={site.texte_chargement} />
+</Base>

@@ -1,0 +1,9 @@
+---
+// Server island : les personnes sont lues dans Grist à chaque requête (avec un cache d'une minute).
+import { Equipe } from '../blocs/Equipe';
+import { lirePersonnes } from '../lib/grist';
+
+const props = Astro.props;
+const personnes = await lirePersonnes(props.table ?? 'Equipe');
+---
+<Equipe {...props} personnes={personnes} />

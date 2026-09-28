@@ -1,0 +1,13 @@
+---
+// Server island : rendu sur le serveur à chaque requête (`server:defer`),
+// la page qui l'inclut reste statique.
+import { Agenda } from '../blocs/Agenda';
+import AgendaLive from './AgendaLive';
+import { prochainsEvenements } from '../lib/caldav';
+
+const props = Astro.props;
+const evenements = await prochainsEvenements(props.nombre ?? 4);
+---
+{props.live
+  ? <AgendaLive client:load {...props} evenements={evenements} />
+  : <Agenda {...props} evenements={evenements} />}

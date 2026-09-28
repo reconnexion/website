@@ -1,0 +1,39 @@
+---
+import '../styles/tokens.css';
+import '../styles/blocs.css';
+import '../styles/site.css';
+import { reglagesSite } from '../lib/contenu';
+
+interface Props {
+  titre: string;
+  description?: string;
+}
+const { titre, description } = Astro.props;
+const site = reglagesSite();
+const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titre === site.nom ? titre : `${titre} · ${site.nom}`}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body>
+    <header class="entete">
+      <div class="conteneur entete__ligne">
+        <a class="logo" href="/">{site.nom}</a>
+        <nav>
+          {site.menu.map((l) => (
+            <a href={l.lien} aria-current={l.lien === chemin ? 'page' : undefined}>{l.texte}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main><slot /></main>
+    <footer class="pied">
+      <div class="conteneur">{site.pied_de_page}</div>
+    </footer>
+  </body>
+</html>

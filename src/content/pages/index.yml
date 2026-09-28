@@ -1,0 +1,44 @@
+titre: Accueil
+slug: index
+description: Faciliter l'émergence d'un réseau social universel favorisant la rencontre, l'entraide et la coopération.
+sections:
+  - type: bandeau
+    surtitre: Coopérative Reconnexion
+    titre: Un réseau social universel
+    texte: Qui favorise la rencontre, l'entraide et la coopération.
+    bouton_texte: Hackathon des 26-27 novembre à Lyon
+    bouton_lien: /hackathon
+  - type: texte_image
+    surtitre: Notre raison d'être
+    titre: Faciliter l'émergence d'un Réseau Social Universel
+    texte: |-
+      Les applications que nous proposons sont toutes open source et fonctionnent de manière décentralisée.
+
+      Des rencontres sont organisées tous les 3 mois à différents endroits en France : c'est un excellent moyen de découvrir le projet et de rencontrer les gens qui le portent.
+    image: /images/rencontre.svg
+    image_alt: Illustration de personnes reliées par des fils
+    inverse: false
+  - type: applications
+    titre: Applications disponibles
+    texte_lien: Découvrir →
+    applications:
+      - nom: Bienvenue chez moi
+        description: Rencontres privées à domicile qui favorisent un vivre ensemble basé sur l'accueil, la confiance et l'entraide.
+        lien: /bienvenue-chez-moi
+      - nom: L'Entraide
+        description: Petites annonces orientées autour de l'entraide et partageables au sein d'un réseau de confiance.
+        lien: /entraide
+  - type: agenda
+    titre: Prochaines visios
+    nombre: 4
+    live: true
+    texte_vide: Pas de visio prévue pour l'instant.
+    texte_live: Mis à jour en direct
+  - type: equipe
+    titre: Notre équipe opérationnelle
+    table: Equipe
+  - type: appel
+    titre: Je souhaite contribuer
+    texte: Il y a différentes manières de contribuer au projet, en fonction de ses envies, besoins, compétences et disponibilités. N'hésitez pas !
+    bouton_texte: Contribuer
+    bouton_lien: /contribuer

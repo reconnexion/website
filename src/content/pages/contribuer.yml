@@ -1,0 +1,18 @@
+titre: Contribuer
+slug: contribuer
+description: Les différentes manières de contribuer au projet Reconnexion.
+sections:
+  - type: bandeau
+    surtitre: Contribuer
+    titre: Chacun·e à sa mesure
+    texte: Développement, animation, communication, test des applications… il y a une place pour toutes les envies.
+  - type: agenda
+    titre: Rejoindre une visio
+    nombre: 3
+    live: false
+    texte_vide: Pas de visio prévue pour l'instant.
+  - type: appel
+    titre: Une question ?
+    texte: Le forum est le meilleur endroit pour échanger avec l'équipe.
+    bouton_texte: Aller sur le forum
+    bouton_lien: https://forum.reconnexion.coop

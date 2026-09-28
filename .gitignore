@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+.env
+# Généré par scripts/build-cms.mjs
+public/admin/config.yml
+public/admin/apercu.js
+public/admin/apercu.css

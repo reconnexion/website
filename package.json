@@ -1,0 +1,30 @@
+{
+  "name": "reconnexion-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cms": "node scripts/build-cms.mjs",
+    "dev": "npm run cms && node --env-file-if-exists=.env node_modules/astro/bin/astro.mjs dev",
+    "build": "npm run cms && astro build",
+    "start": "node --env-file-if-exists=.env dist/server/entry.mjs"
+  },
+  "dependencies": {
+    "@astrojs/node": "^11.1.6",
+    "@astrojs/react": "^7.0.0",
+    "astro": "^7.3.5",
+    "ical.js": "^2.2.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

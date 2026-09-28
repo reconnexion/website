@@ -1,0 +1,10 @@
+nom: Reconnexion
+menu:
+  - texte: Accueil
+    lien: /
+  - texte: Contribuer
+    lien: /contribuer
+  - texte: Forum
+    lien: https://forum.reconnexion.coop
+pied_de_page: En attendant que le Réseau Social Universel soit une réalité, suivez-nous sur Mastodon, Bluesky ou LinkedIn.
+texte_chargement: Chargement…

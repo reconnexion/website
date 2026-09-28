@@ -1,0 +1,37 @@
+---
+import { blocsParNom, type DonneesBloc } from '../blocs/registre';
+import AgendaIle from './AgendaIle.astro';
+import EquipeIle from './EquipeIle.astro';
+
+interface Props {
+  sections: DonneesBloc[];
+  texteChargement?: string;
+}
+const { sections, texteChargement } = Astro.props;
+---
+{sections.map(({ type, ...donnees }) => {
+  // Blocs alimentés par des données live : server islands.
+  if (type === 'agenda') {
+    return (
+      <AgendaIle server:defer {...donnees}>
+        <p slot="fallback" class="conteneur chargement">{texteChargement}</p>
+      </AgendaIle>
+    );
+  }
+  if (type === 'equipe') {
+    return (
+      <EquipeIle server:defer {...donnees}>
+        <p slot="fallback" class="conteneur chargement">{texteChargement}</p>
+      </EquipeIle>
+    );
+  }
+  // Blocs purement éditoriaux : rendus en HTML statique au build, zéro JS.
+  const def = blocsParNom[type];
+  if (!def) {
+    return import.meta.env.DEV
+      ? <div class="conteneur bloc-inconnu">Bloc inconnu : {type}</div>
+      : null;
+  }
+  const Composant = def.Component;
+  return <Composant {...donnees} />;
+})}
