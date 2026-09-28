@@ -4,7 +4,7 @@ import type { ComponentType } from 'react';
 export type Champ = {
   name: string;
   label: string;
-  widget: 'string' | 'text' | 'image' | 'boolean' | 'number' | 'list' | 'select';
+  widget: 'string' | 'text' | 'image' | 'boolean' | 'number' | 'list' | 'select' | 'relation';
   required?: boolean;
   default?: unknown;
   hint?: string;
@@ -14,6 +14,13 @@ export type Champ = {
   value_type?: 'int' | 'float';
   min?: number;
   max?: number;
+  pattern?: [string, string];
+  /** Widget « relation » : entrées d'une autre collection. */
+  collection?: string;
+  value_field?: string;
+  search_fields?: string[];
+  display_fields?: string[];
+  multiple?: boolean;
 };
 
 /**
@@ -27,4 +34,6 @@ export type DefinitionBloc<P = any> = {
   Component: ComponentType<P>;
   fields: Champ[];
   source?: 'grist' | 'caldav';
+  /** Données injectées dans l'aperçu du CMS (exemples Grist / CalDAV, fiches d'applications…). */
+  donneesExemple?: (donnees: Record<string, unknown>) => Partial<P>;
 };

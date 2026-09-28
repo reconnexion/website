@@ -1,0 +1,33 @@
+nom: PorteJunes
+slug: portejunes
+ordre: 3
+logo: /images/portejunes/logo.png
+accroche: Un porte-monnaie en monnaie libre pour le Réseau Social Universel
+resume: Un porte-monnaie en monnaie libre qui s'active en un clic et permet d'échanger des Junes entre membres du Réseau Social Universel.
+vignette: /images/accueil/portejunes.webp
+boutons:
+- texte: Ouvrir
+  lien: https://dev.portejunes.com
+  style: principal
+- texte: Code source
+  lien: https://github.com/reconnexion/portejunes
+  style: secondaire
+captures:
+- image: /images/portejunes/payer.png
+  description: 'Écran « Envoyer des Ğ1 » : scanner un QR code ou choisir un contact'
+- image: /images/portejunes/recevoir.png
+  description: 'Écran « Recevoir des Ğ1 » : QR code du porte-monnaie'
+- image: /images/portejunes/operations.png
+  description: Historique des opérations envoyées et reçues
+- image: /images/portejunes/contacts.png
+  description: Liste des contacts
+infos:
+- libelle: Statut
+  valeur: En développement (sur Ğ1-Test, la monnaie de test)
+- libelle: Description
+  valeur: |-
+    PorteJunes permet d'envoyer et de recevoir des Ğ1, la monnaie libre, entre membres du Réseau Social Universel.
+
+    Le porte-monnaie s'active en un clic : il est créé à la demande et relié à votre profil, si bien que vos contacts peuvent vous payer directement, sans avoir à connaître l'adresse de votre portefeuille.
+
+    On peut payer un contact ou scanner un QR code, recevoir des Ğ1 en affichant son propre QR code, suivre l'historique de ses opérations et retrouver ses contacts.

@@ -1,0 +1,12 @@
+titre: Agenda des visios
+slug: agenda
+description: Les prochaines visios de la coopérative Reconnexion.
+sections:
+  - type: bandeau
+    surtitre: Nous rencontrer
+    titre: Agenda des visios
+  - type: agenda
+    nombre: 10
+    live: false
+    texte_vide: Pas de visio prévue pour l'instant.
+    texte_lien_visio: Rejoindre la visio

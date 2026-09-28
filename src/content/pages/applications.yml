@@ -1,0 +1,17 @@
+titre: Applications
+slug: applications
+description: Les applications compatibles avec le Réseau Social Universel proposées par Reconnexion.
+sections:
+  - type: bandeau
+    surtitre: Le Réseau Social Universel
+    titre: Applications
+    texte: Les applications déjà disponibles sur le Réseau Social Universel... en attendant les autres !
+    image: ''
+    bouton_texte: ''
+    bouton_lien: ''
+  - type: applications
+    titre: ''
+    fond: blanc
+    texte_lien: ''
+    une_par_ligne: false
+    selection: []

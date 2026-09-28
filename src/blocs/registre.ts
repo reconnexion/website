@@ -11,9 +11,34 @@ import { applications } from './Applications';
 import { equipe } from './Equipe';
 import { agenda } from './Agenda';
 import { appel } from './Appel';
+import { roles } from './Roles';
+import { societaires } from './Societaires';
+import { partenaires } from './Partenaires';
+import { reseaux } from './Reseaux';
+import { sectionCouleur } from './SectionCouleur';
+import { annonce } from './Annonce';
+import { video } from './Video';
+import { colonnes } from './Colonnes';
+import { texte } from './Texte';
 import type { DefinitionBloc } from './types';
 
-export const blocs: DefinitionBloc[] = [bandeau, texteImage, applications, equipe, agenda, appel];
+export const blocs: DefinitionBloc[] = [
+  bandeau,
+  annonce,
+  sectionCouleur,
+  texte,
+  texteImage,
+  video,
+  applications,
+  colonnes,
+  equipe,
+  roles,
+  societaires,
+  partenaires,
+  reseaux,
+  agenda,
+  appel,
+];
 
 export const blocsParNom: Record<string, DefinitionBloc> = Object.fromEntries(
   blocs.map((b) => [b.name, b]),

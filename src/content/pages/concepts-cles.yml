@@ -1,0 +1,86 @@
+titre: Concepts-clés
+slug: concepts-cles
+description: Pourquoi les réseaux sociaux sont devenus anti-sociaux, et comment le Réseau Social Universel et le porte-données permettent aux applications de coopérer.
+sections:
+  - type: bandeau
+    surtitre: Le Réseau Social Universel
+    titre: Concepts-clés
+    texte: Comprendre le Réseau Social Universel en quelques phrases
+    image: ''
+    bouton_texte: ''
+    bouton_lien: ''
+  - type: section_couleur
+    titre: 'Acte 1: La tragédie'
+    texte: ''
+    bouton_texte: ''
+    bouton_lien: ''
+    fond: gris
+    alignement: gauche
+  - type: texte_image
+    surtitre: ''
+    titre: Les réseaux sociaux sont devenus anti-sociaux
+    texte: Ces applications qui ont été au début une occasion de retrouver nos amis et de garder un lien sont, au fil du temps, devenues de véritables drogues qui isolent des millions de personnes. Les vidéos courtes se sont imposées partout car elles sont hautement addictives. La solitude est bien plus rentable que la rencontre et l'entraide.
+    image: /images/RX_2026T1_VISUELS_01232.png
+    fond: blanc
+    image_alt: ''
+    inverse: true
+    image_large: false
+  - type: texte_image
+    surtitre: ''
+    titre: L'architecture actuelle du web favorise la compétition
+    texte: Le premier acteur rafle la mise. C'est pourquoi les startups du numérique ont attiré tant d'investisseurs. Mais cette architecture hyper-compétitive est une tragédie pour celles et ceux qui veulent créer des communs au service de la société.
+    image: /images/forteresse-facebook.png
+    fond: blanc
+    image_alt: ''
+    inverse: false
+    image_large: false
+  - type: texte_image
+    surtitre: ''
+    titre: Les alternatives vertueuses n'arrivent pas à émerger
+    texte: Une application sociale a, par nature, besoin de beaucoup d'utilisateurs pour fonctionner. Or sans moyens de communication important, il est difficile d'amener d'un seul coup un grand nombre d'utilisateurs. C'est pourquoi la plupart des applications sociales vivotent, même si elles répondent à un vrai besoin.
+    image: /images/chateau-casse.png
+    fond: blanc
+    image_alt: ''
+    inverse: true
+    image_large: false
+  - type: section_couleur
+    titre: 'Acte 2: La solution'
+    texte: ''
+    bouton_texte: ''
+    bouton_lien: ''
+    fond: gris
+    alignement: gauche
+  - type: texte_image
+    surtitre: ''
+    titre: Nous souhaitons faire émerger le Réseau Social Universel
+    texte: Il s'agit d'un réseau social ouvert, qui n'est pas lié à une application en particulier, mais sur lequel peut se brancher n'importe quelle application. Il est "universel" comme l'est la déclaration des droits de l'Homme.
+    image: /images/RX_2026T1_VISUELS_01242.png
+    fond: blanc
+    image_alt: ''
+    inverse: true
+    image_large: false
+  - type: texte_image
+    surtitre: ''
+    titre: Cela est rendu possible grâce au porte-données
+    texte: Les applications enregistre les données des utilisateurs dans leur "sac à dos", qu'ils peuvent emmener avec eux lorsqu'ils se connectent sur d'autres applications. Les données sont enregistrées dans un format ouvert pour faciliter le partage des données entre applications.
+    image: /images/RX_2026T1_VISUELS_01244(1).png
+    fond: blanc
+    image_alt: ''
+    inverse: false
+    image_large: false
+  - type: texte_image
+    surtitre: ''
+    titre: Les applications mutualisent utilisateurs et données
+    texte: Cela permet aux applications de mutualiser les utilisateurs et les données, dans une boucle vertueuse. Plus il y a d'utilisateurs, plus il y a de données, plus les nouvelles applications ont des chances de réussir. Comme il n'y a plus de murs, cela facilite la coopération.
+    image: /images/RX_2026T1_VISUELS_01235(2).png
+    fond: blanc
+    image_alt: ''
+    inverse: true
+    image_large: false
+  - type: section_couleur
+    titre: Rejoignez Reconnexion
+    texte: Participez à la construction de ce nouvel espace de rencontre, d'entraide et de coopération.
+    bouton_texte: Contribuer au projet
+    bouton_lien: /contribuer
+    fond: vert
+    alignement: centre

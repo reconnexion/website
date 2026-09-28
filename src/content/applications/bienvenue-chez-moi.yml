@@ -1,0 +1,38 @@
+nom: Bienvenue chez moi
+slug: bienvenue-chez-moi
+ordre: 1
+logo: /images/bienvenue-chez-moi/logo.png
+accroche: Rencontres privées à domicile qui favorisent un vivre ensemble basé sur l’accueil, la confiance et l’entraide
+resume: Rencontres privées à domicile qui favorisent un vivre ensemble basé sur l’accueil, la confiance et l’entraide.
+vignette: /images/accueil/bcm.webp
+boutons:
+  - texte: Ouvrir
+    lien: https://bienvenuechezmoi.org
+    style: principal
+  - texte: Code source
+    lien: https://github.com/reconnexion/welcometomyplace
+    style: secondaire
+captures:
+  - image: /images/bienvenue-chez-moi/capture.webp
+    description: "Page d'accueil de Bienvenue chez moi : « Ouvrez votre maison pour des rencontres simples et enrichissantes »"
+infos:
+  - libelle: Utilisateurs
+    valeur: '580'
+  - libelle: Statut
+    valeur: Déployée
+  - libelle: Description
+    valeur: |-
+      L'application Bienvenue chez moi est en fonctionnement depuis fin 2021 et, jusqu’à maintenant, elle a surtout été utilisée dans la région de Compiègne avec une communauté de 500 utilisateurs.
+
+      Elle a pour but d’inciter les personnes à organiser des rencontres chez elles. Sa particularité par rapport à d’autres plateformes est que les événements sont tous privés: il faut être invités personnellement pour voir la description de l’événement et s’y inscrire.
+
+      On pourrait penser que ce fonctionnement restrictif a pour résultat de réduire le nombre de participants, mais au contraire, le fait de recevoir une invitation personnelle crée un intérêt plus fort pour la proposition. De plus, les personnes osent proposer des sujets de rencontre originaux, car ils savent qui verra l’invitation.
+
+      On est vraiment sur un réseau de confiance. Les invités peuvent voir qui participe à la rencontre (et parfois ils s’inscrivent uniquement parce que ce sera l’occasion de revoir telle ou telle personne). Comme les profils sont privés par défaut eux aussi, on ne voit cependant que les personnes qui font partie de notre réseau, les autres étant affichés comme “inconnus”. A la fin de la rencontre, on aura en revanche la possibilité d’ajouter ces “inconnus” (qui sont, entre temps, devenus connus!) à notre réseau.
+
+      Ainsi le réseau qui se tisse est basé sur des rencontres réelles. Et lorsqu’on veut proposer une rencontre soi-même, on pourra inviter des personnes de confiance, que l’on a déjà côtoyé à d’autres occasions.
+  - libelle: Un réseau basé sur…
+    valeur: |-
+      - **La rencontre** : c’est après avoir participé au même événement, que l’on ajoute des personnes à notre réseau. Une rencontre « pour de vrai » précède donc les échanges sur les applications.
+      - **La confiance** : notre profil, nos événements, nos petites annonces, ne sont visibles que des personnes avec qui nous les avons partagé. Cette intimité incite à s'ouvrir plus.
+      - **L'entraide** : se rencontrer oui, mais pourquoi ? Nous croyons que dans le monde qui vient, la capacité à s'entraider sera un facteur-clé de notre résilience.

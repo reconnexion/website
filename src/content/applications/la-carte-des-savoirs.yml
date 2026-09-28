@@ -1,0 +1,25 @@
+nom: La Carte des Savoirs
+slug: la-carte-des-savoirs
+ordre: 4
+logo: /images/la-carte-des-savoirs/logo.svg
+accroche: Un annuaire de compétences au sein de votre réseau de confiance
+resume: 'Un annuaire de compétences : chacun déclare ses savoirs, que les personnes de son réseau peuvent recommander.'
+vignette: /images/la-carte-des-savoirs/vignette.webp
+boutons:
+- texte: Ouvrir
+  lien: https://dev.la-carte-des-savoirs.com
+  style: principal
+- texte: Code source
+  lien: https://github.com/reconnexion/la-carte-des-savoirs
+  style: secondaire
+captures:
+- image: /images/la-carte-des-savoirs/capture.webp
+  description: 'La carte des savoirs : les compétences des contacts sur une carte, classées par catégorie, avec leurs recommandations'
+infos:
+- libelle: Statut
+  valeur: En cours de test sur [dev.la-carte-des-savoirs.com](https://dev.la-carte-des-savoirs.com). Elle sera finalisée et mise en ligne d'ici à début octobre.
+- libelle: Description
+  valeur: |-
+    Cette application est un annuaire de compétences. Chacun peut déclarer ses savoirs, et aussi son niveau de connaissance (débutant, intermédiaire, avancé, expert). Ensuite d’autres personnes du réseau peuvent recommander cette compétence, p.ex. si elle ont pu en bénéficier.
+
+    Comme pour [Bienvenue chez moi](/applications/bienvenue-chez-moi), on ne voit les compétences que des personnes qui sont dans notre réseau, ou qui nous ont été recommandées par des personnes de notre réseau.

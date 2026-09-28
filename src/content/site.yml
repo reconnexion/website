@@ -1,10 +1,48 @@
 nom: Reconnexion
+logo: /images/logo-reconnexion.png
+texte_menu: Menu
 menu:
-  - texte: Accueil
-    lien: /
+  - texte: Le Réseau Social Universel
+    icone: personnes
+    sous_menu:
+      - texte: Concepts-clés
+        lien: /concepts-cles
+      - texte: Applications
+        lien: /applications
+      - texte: Ambassadeurs
+        lien: /ambassadeurs
+      - texte: Le Coin Technique
+        lien: /coin-technique
+  - texte: La coopérative
+    icone: maison
+    sous_menu:
+      - texte: Organisation
+        lien: /organisation
+      - texte: Équipe opérationnelle
+        lien: /equipe
+      - texte: Sociétaires
+        lien: /societaires
+      - texte: Partenaires & Réseaux
+        lien: /partenaires
+  - texte: Nous rencontrer
+    icone: poignee_de_main
+    sous_menu:
+      - texte: Hackathon novembre 2026
+        lien: /hackathon
+      - texte: Agenda des visios
+        lien: /agenda
+      - texte: Rencontres passées
+        lien: /rencontres-passees
   - texte: Contribuer
     lien: /contribuer
+    icone: main
   - texte: Forum
     lien: https://forum.reconnexion.coop
-pied_de_page: En attendant que le Réseau Social Universel soit une réalité, suivez-nous sur Mastodon, Bluesky ou LinkedIn.
+    icone: bulle
+pied_de_page: |-
+  En attendant que le Réseau Social Universel soit une réalité,
+  n'hésitez pas à nous suivre sur les réseaux sociaux existants ;-)
+  **[Mastodon](https://mamot.fr/@reconnexion) | [Bluesky](https://bsky.app/profile/reconnexion.bsky.social) | [LinkedIn](https://www.linkedin.com/company/reconnexion-coop/)**
+
+  [Mentions légales](/mentions-legales)
 texte_chargement: Chargement…

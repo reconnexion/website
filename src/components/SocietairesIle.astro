@@ -1,0 +1,9 @@
+---
+// Server island : les sociétaires sont lus dans Grist à chaque requête (avec un cache d'une minute).
+import { Societaires } from '../blocs/Societaires';
+import { lireSocietaires } from '../lib/grist';
+
+const props = Astro.props;
+const { societaires, colleges } = await lireSocietaires(props.document, props.table ?? 'Contacts', props.table_organisations ?? 'Organisations');
+---
+<Societaires {...props} societaires={societaires} colleges={colleges} />

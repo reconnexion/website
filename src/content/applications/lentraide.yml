@@ -1,0 +1,25 @@
+nom: L'Entraide
+slug: lentraide
+ordre: 2
+logo: /images/lentraide/logo.png
+accroche: Petites annonces orientées autour de l'entraide et partageables au sein d'un réseau de confiance
+resume: Petites annonces orientées autour de l'entraide et partageables au sein d'un réseau de confiance.
+vignette: /images/accueil/entraide.webp
+boutons:
+  - texte: Ouvrir
+    lien: https://lentraide.app
+    style: principal
+  - texte: Code source
+    lien: https://github.com/reconnexion/mutual-aid.app
+    style: secondaire
+captures:
+  - image: /images/lentraide/capture.webp
+    description: "Une petite annonce dans L'Entraide : description, photo, commentaires et profil de l'annonceur"
+infos:
+  - libelle: Statut
+    valeur: En ligne sur [lentraide.app](https://lentraide.app)
+  - libelle: Description
+    valeur: |-
+      L’Entraide est une application de petites annonces qui ne sont visibles que des personnes qui font partie de votre réseau de confiance. Contrairement à la plupart des sites de ce genre très orientés "commerce", l’intention principale de ce site est l’entraide.
+
+      Cela n’empêche pas de vendre ou d’acheter en euros, car pour le moment nous avons tous besoins d’euros pour vivre. Cependant nous proposons aussi la possibilité de donner, de faire du troc ou de vendre en [monnaie libre](https://monnaie-libre.fr).

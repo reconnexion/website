@@ -1,0 +1,10 @@
+/* Feuille de l'aperçu du CMS (compilée dans public/admin/apercu.css par scripts/build-cms.mjs). */
+@import './tokens.css';
+@import './theme.css';
+
+/* Blocs alimentés par Grist / CalDAV : affichés avec des données d'exemple. */
+.apercu-donnees-exemple {
+  position: relative;
+  outline: 2px dashed var(--c-bleu);
+  outline-offset: -8px;
+}

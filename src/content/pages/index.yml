@@ -3,42 +3,67 @@ slug: index
 description: Faciliter l'émergence d'un réseau social universel favorisant la rencontre, l'entraide et la coopération.
 sections:
   - type: bandeau
-    surtitre: Coopérative Reconnexion
     titre: Un réseau social universel
-    texte: Qui favorise la rencontre, l'entraide et la coopération.
-    bouton_texte: Hackathon des 26-27 novembre à Lyon
+    texte: qui favorise la rencontre, l'entraide et la coopération
+    image: /images/foret.webp
+  - type: annonce
+    etiquette: 26-27 novembre · Lyon
+    titre: Hackathon des Applications Citoyennes
+    texte: Découvrez le projet et rencontrez les personnes qui le portent en participant au hackathon.
+    bouton_texte: Plus d'informations
     bouton_lien: /hackathon
-  - type: texte_image
-    surtitre: Notre raison d'être
-    titre: Faciliter l'émergence d'un Réseau Social Universel
+  - type: video
+    fond: gris
+    titre: Comprendre le Réseau Social Universel
+    url: https://videos-libr.es/w/4LSPGAteyYj9P5uv4Cy33i?start=4
+    legende: Enregistrement du webinaire du 12 juin 2025. ([Voir les slides](https://www.canva.com/design/DAGpw47T3vo/BCw0UPDh2rF7GTFVLlBcDA/edit))
+  - type: section_couleur
+    fond: vert
+    titre: Notre Raison d'Être
     texte: |-
-      Les applications que nous proposons sont toutes open source et fonctionnent de manière décentralisée.
-
-      Des rencontres sont organisées tous les 3 mois à différents endroits en France : c'est un excellent moyen de découvrir le projet et de rencontrer les gens qui le portent.
-    image: /images/rencontre.svg
-    image_alt: Illustration de personnes reliées par des fils
-    inverse: false
-  - type: applications
-    titre: Applications disponibles
-    texte_lien: Découvrir →
-    applications:
-      - nom: Bienvenue chez moi
-        description: Rencontres privées à domicile qui favorisent un vivre ensemble basé sur l'accueil, la confiance et l'entraide.
-        lien: /bienvenue-chez-moi
-      - nom: L'Entraide
-        description: Petites annonces orientées autour de l'entraide et partageables au sein d'un réseau de confiance.
-        lien: /entraide
-  - type: agenda
-    titre: Prochaines visios
-    nombre: 4
-    live: true
-    texte_vide: Pas de visio prévue pour l'instant.
-    texte_live: Mis à jour en direct
+      Faciliter l'émergence d'un Réseau Social Universel
+      favorisant la rencontre, l'entraide et la coopération
   - type: equipe
     titre: Notre équipe opérationnelle
-    table: Equipe
-  - type: appel
-    titre: Je souhaite contribuer
-    texte: Il y a différentes manières de contribuer au projet, en fonction de ses envies, besoins, compétences et disponibilités. N'hésitez pas !
-    bouton_texte: Contribuer
-    bouton_lien: /contribuer
+    table: People
+    bouton_texte: Tous les sociétaires
+    bouton_lien: /societaires
+  - type: annonce
+    titre: Newsletter
+    texte: Suivez l'actualités et recevez les invitations aux temps forts.
+    bouton_texte: M'abonner à la Newsletter
+    bouton_lien: https://b144bca4.sibforms.com/serve/MUIFAMvMggADvfUsaaPvIeGfL_OR2_ub7mDxgo197al-8br9KKpRQ6fsnnyxEXSFJS-CTI0iB6G3Skf1tAsOCzHbQ_0ei08gm_a0nWTOAfq5lXCV1UWNXytGDdli7g09YW8kcnXqZeL5uROxSnsO1XSLzKTeplhqZJECpxmKaJ_Nslpf6GColxZWrAiwwJO1wbUnfGCoQFkTvi93
+  - type: applications
+    fond: blanc
+    titre: Applications disponibles
+    selection:
+      - bienvenue-chez-moi
+      - lentraide
+      - portejunes
+      - la-carte-des-savoirs
+  - type: texte_image
+    fond: bleu
+    titre: Forum de discussion
+    texte: |-
+      Si vous avez des questions, des suggestions ou si vous souhaitez contribuer à Reconnexion, nous vous invitons à vous rendre sur notre [forum de discussion](https://forum.reconnexion.coop) qui commence tout juste à s’animer.
+
+      Se créer un compte sur le forum est un moyen simple de rester au courant des nouveautés, puisque cela vous permet de recevoir (au maximum une fois par semaine) un petit récapitulatif des messages les plus populaires.
+    image: /images/accueil/forum.webp
+    image_alt: Page d'accueil du forum de discussion de Reconnexion
+    inverse: false
+    image_large: true
+  - type: colonnes
+    fond: blanc
+    colonnes:
+      - titre: Je veux rencontrer des gens
+        texte: Des rencontres sont organisées tous les 3 mois à différents endroits en France, c'est un excellent moyen de découvrir le projet et de rencontrer les gens qui le portent.
+        bouton_texte: Rencontres
+        bouton_lien: /hackathon
+      - titre: Je veux comprendre le côté technique
+        texte: Les applications que nous proposons sont toutes open source et fonctionnent de manière décentralisée. Les personnes plus techniques sont invitées à le découvrir.
+        bouton_texte: Le coin technique
+        bouton_lien: /coin-technique
+      - titre: Je souhaite contribuer
+        texte: Il y a différentes moyens de contribuer au projet Reconnexion, en fonction de ses envies, besoins, compétences et bien sûr de ses disponibilités. N'hésitez pas !
+        bouton_texte: Contribuer
+        bouton_lien: /contribuer

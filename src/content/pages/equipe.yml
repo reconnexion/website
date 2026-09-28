@@ -1,0 +1,15 @@
+titre: Équipe opérationnelle
+slug: equipe
+description: Les membres de l'équipe opérationnelle de la coopérative Reconnexion et les rôles qu'ils et elles portent.
+sections:
+  - type: bandeau
+    surtitre: La coopérative
+    titre: Équipe opérationnelle
+    texte: Les personnes qui font vivre la coopérative au quotidien, et les rôles qu'elles portent.
+  - type: equipe
+    titre: Les membres
+    table: People
+  - type: roles
+    titre: Les rôles
+    texte_referent: Référent·e
+    texte_vide: Les rôles seront bientôt affichés ici.

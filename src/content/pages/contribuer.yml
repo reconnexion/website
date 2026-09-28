@@ -3,16 +3,80 @@ slug: contribuer
 description: Les différentes manières de contribuer au projet Reconnexion.
 sections:
   - type: bandeau
-    surtitre: Contribuer
-    titre: Chacun·e à sa mesure
-    texte: Développement, animation, communication, test des applications… il y a une place pour toutes les envies.
-  - type: agenda
-    titre: Rejoindre une visio
-    nombre: 3
-    live: false
-    texte_vide: Pas de visio prévue pour l'instant.
-  - type: appel
-    titre: Une question ?
-    texte: Le forum est le meilleur endroit pour échanger avec l'équipe.
-    bouton_texte: Aller sur le forum
-    bouton_lien: https://forum.reconnexion.coop
+    surtitre: ''
+    titre: Contribuer au projet
+    texte: Notre projet est ouvert à toutes les bonnes volontés. N'hésitez pas à nous contacter en cas de questions !
+    image: ''
+    bouton_texte: ''
+    bouton_lien: ''
+  - type: texte
+    titre: Devenir sociétaire
+    texte: Devenir sociétaire de la [SCIC Reconnexion](/organisation), c'est prendre une part active dans le projet de Réseau Social Universel. Il est possible de devenir sociétaire à partir de 50€ pour les personnes physiques, et de 100€ pour les personnes morales (associations, entreprises, collectivités).
+    image: ''
+    fond: ''
+    image_alt: ''
+    image_avant: false
+    boutons:
+      - texte: Devenir sociétaire
+        lien: https://grist.reconnexion.coop/o/equipe-operationnelle/forms/cCf8RUS9WnR1zmFTFeRA4W/4
+  - type: texte
+    titre: Faire un don
+    texte: |-
+      Participer aux frais d'une résidence et/ou prendre soin d'une ou plusieurs applications sociales.
+      Ces dons ne donnent pas droit à une réduction d'impôts.
+      **ATTENTION** : HelloAsso ajoute une contribution volontaire très élevée au don, n'hésitez pas à la réduire au moment de valider.
+
+      Vous pouvez également nous faire un **don ponctuel ou mensuel par virement** à l'IBAN suivant :
+      FR76 4255 9100 0008 0283 6545 219
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    boutons:
+      - texte: Faire un don via HelloAsso
+        lien: https://www.helloasso.com/associations/reconnexion/formulaires/1
+  - type: texte
+    titre: Contribuer au code
+    texte: Vous avez des compétences en développement logiciel ? Vous voulez contribuer au code opensource du socle technique ou des applications ?
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    boutons:
+      - texte: Voir le repo GitHub
+        lien: https://github.com/reconnexion
+  - type: texte
+    titre: Participer à la co-création d'applications
+    texte: Vous avez une idée d'application qui serait très adaptée au Réseau Social Universel ? Un projet que vous souhaiteriez incuber ? Des compétences à mettre au service des autres ? Plusieurs chantiers sont en train de s'ouvrir et nous serions ravis de vous y intégrer.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    boutons:
+      - texte: Lancer un sujet sur le forum
+        lien: https://forum.reconnexion.coop/c/co-creation-dapplications/8
+  - type: texte
+    titre: Participer à un groupe de travail
+    texte: Si vous souhaitez contribuer concrétement à Reconnexion, les groupes d'action sont le meilleur moyen de commencer ! Chaque groupe d'action (voir ci-dessous) a une mission et se réunit de temps à autres. Aucun engagement n'est demandé. N'hésitez pas à initier un sujet dans la catégorie correspondante du forum !
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    boutons:
+      - texte: Remplir le formulaire de contribution
+        lien: https://framaforms.org/contact-et-contribution-a-reconnexion-1788530511
+  - type: texte
+    titre: Devenir partenaire avec mon organisation
+    texte: Vous pensez que la mission de votre organisation est en synergie avec celle de Reconnexion ? Nous serions ravi d'en discuter avec vous pour voir comment ça pourrait se manifester. Et éventuellement que votre organisation rejoigne la SCIC en tant que sociétaire.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    boutons:
+      - texte: Devenir partenaire
+        lien: https://framaforms.org/contact-et-contribution-a-reconnexion-1788530511
+  - type: annonce
+    titre: Newsletter
+    texte: Suivez l'actualités et recevez les invitations aux temps forts.
+    bouton_texte: M'abonner à la Newsletter
+    bouton_lien: https://b144bca4.sibforms.com/serve/MUIFAMvMggADvfUsaaPvIeGfL_OR2_ub7mDxgo197al-8br9KKpRQ6fsnnyxEXSFJS-CTI0iB6G3Skf1tAsOCzHbQ_0ei08gm_a0nWTOAfq5lXCV1UWNXytGDdli7g09YW8kcnXqZeL5uROxSnsO1XSLzKTeplhqZJECpxmKaJ_Nslpf6GColxZWrAiwwJO1wbUnfGCoQFkTvi93

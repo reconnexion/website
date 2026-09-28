@@ -1,0 +1,18 @@
+titre: Sociétaires
+slug: societaires
+description: Les sociétaires de la SCIC Reconnexion, par collège.
+sections:
+  - type: bandeau
+    surtitre: La coopérative
+    titre: Sociétaires
+    texte: Le projet de Reconnexion est possible grâce à nos sociétaires qui nous soutiennent et nous inspirent
+    image: ''
+    bouton_texte: ''
+    bouton_lien: ''
+  - type: societaires
+    titre: ''
+    table: Contacts
+    texte_vide: La liste des sociétaires sera bientôt affichée ici.
+    document: chrjVErXqQDJVwebraiKB1
+    table_organisations: Organisations
+    texte_tous: Tous

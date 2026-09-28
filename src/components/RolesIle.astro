@@ -1,0 +1,9 @@
+---
+// Server island : les rôles sont lus dans Grist à chaque requête (avec un cache d'une minute).
+import { Roles } from '../blocs/Roles';
+import { lireRoles } from '../lib/grist';
+
+const props = Astro.props;
+const roles = await lireRoles();
+---
+<Roles {...props} roles={roles} />

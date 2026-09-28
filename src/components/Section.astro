@@ -1,0 +1,56 @@
+---
+// Rendu d'une section de page.
+import { blocsParNom, type DonneesBloc } from '../blocs/registre';
+import AgendaIle from './AgendaIle.astro';
+import EquipeIle from './EquipeIle.astro';
+import RolesIle from './RolesIle.astro';
+import SocietairesIle from './SocietairesIle.astro';
+import PartenairesIle from './PartenairesIle.astro';
+import Chargement from './Chargement.astro';
+import { toutesLesApplications, tousLesReseaux } from '../lib/contenu';
+import { logoReseau, selectionnerReseaux } from '../lib/reseaux';
+import { carteApplication, selectionnerApplications } from '../lib/applications';
+
+interface Props {
+  section: DonneesBloc;
+  texteChargement?: string;
+}
+const { section, texteChargement } = Astro.props;
+const { type, ...donnees } = section;
+const Composant = blocsParNom[type]?.Component;
+
+// Données partagées injectées au rendu (elles ne sont pas recopiées dans chaque page).
+const injecte =
+  type === 'applications'
+    ? { applications: selectionnerApplications(toutesLesApplications(), donnees.selection).map(carteApplication) }
+    : type === 'reseaux'
+      ? { reseaux: selectionnerReseaux(tousLesReseaux(), donnees.selection).map(logoReseau) }
+      : {};
+---
+{/* Blocs alimentés par des données live : server islands. */}
+{type === 'agenda' ? (
+  <AgendaIle server:defer {...donnees}>
+    <Chargement slot="fallback" texte={texteChargement} />
+  </AgendaIle>
+) : type === 'roles' ? (
+  <RolesIle server:defer {...donnees}>
+    <Chargement slot="fallback" texte={texteChargement} />
+  </RolesIle>
+) : type === 'societaires' ? (
+  <SocietairesIle server:defer {...donnees}>
+    <Chargement slot="fallback" texte={texteChargement} />
+  </SocietairesIle>
+) : type === 'partenaires' ? (
+  <PartenairesIle server:defer {...donnees}>
+    <Chargement slot="fallback" texte={texteChargement} />
+  </PartenairesIle>
+) : type === 'equipe' ? (
+  <EquipeIle server:defer {...donnees}>
+    <Chargement slot="fallback" texte={texteChargement} />
+  </EquipeIle>
+) : Composant ? (
+  /* Blocs purement éditoriaux : rendus en HTML statique au build, zéro JS. */
+  <Composant {...donnees} {...injecte} />
+) : import.meta.env.DEV ? (
+  <div role="alert" class="conteneur alert alert-warning alert-dash my-e3">Bloc inconnu : {type}</div>
+) : null}

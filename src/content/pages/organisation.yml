@@ -1,0 +1,57 @@
+titre: Organisation
+slug: organisation
+description: Reconnexion est une Société Coopérative d'Intérêt Collectif (SCIC) qui réunit ses sociétaires en 5 collèges.
+sections:
+  - type: bandeau
+    surtitre: La coopérative
+    titre: Organisation
+  - type: texte
+    fond: blanc
+    texte: |-
+      Le projet Reconnexion est porté par une [Société Coopérative d'Intérêt Collectif](https://les-scic.coop) (SCIC). Créée en août 2025, elle réunit à ce jour 33 sociétaires (dont 4 organisations) répartis sur 5 collèges.
+
+      Le choix de la SCIC a été naturel pour un projet "écosystémique" tel que Reconnexion. Cela permet de s'assurer que toutes les parties prenantes puissent avoir leur mot à dire dans la gouvernance, et ainsi que le projet oeuvre véritablement en faveur du bien commun.
+
+      Par ailleurs, le format de coopérative garanti une gouvernance équitable, chaque sociétaire ayant une voix, quelle que soit le nombre de parts qu'elle possède dans la coopérative. Comme il n'est pas possible de faire de plus-value sur les parts, et que les dividendes sont réduits (voire nulle), cela évite que les bénéfices partent vers des actionnaires.
+    boutons:
+      - texte: Les statuts de la SCIC
+        lien: https://drive.reconnexion.coop/explorer/items/files/122e516f-6f13-43d1-b9bd-6780f280e095
+      - texte: En savoir plus sur les SCIC
+        lien: https://www.les-scic.coop/
+  - type: video
+    fond: gris
+    titre: Présentation du projet de coopérative
+    url: https://videos-libr.es/w/4LSPGAteyYj9P5uv4Cy33i?start=2740
+    legende: Enregistrement du webinaire du 12 juin 2025. ([Voir les slides](https://www.canva.com/design/DAGpw47T3vo/BCw0UPDh2rF7GTFVLlBcDA/edit))
+  - type: section_couleur
+    fond: vert
+    titre: Notre projet
+    texte: |-
+      Rassembler une communauté d’acteurs afin de
+      co-concevoir, co-financer et co-déployer
+      des applications vraiment sociales
+      compatibles avec le Réseau Social Universel
+  - type: texte
+    fond: blanc
+    titre: Les collèges
+    texte: |-
+      La coopérative comprend 5 collèges. Dans les SCIC, les collèges permettent de manifester un "groupement d'intérêt". Chaque vote est pondéré en fonction du collège.
+
+      - **Soutiens financiers** : toute personne qui souhaite simplement soutenir le projet (à partir de 50€)
+      - **Équipe opérationnelle** : les salariés, prestataires et bénévoles qui s'activent au jour le jour pour faire vivre le projet
+      - **Co-créateurs d'applications** : les personnes qui apportent des besoins, des idées et/ou des compétences pour réaliser des applications sur le Réseau Social Universel
+      - **Bénéficiaires** : les personnes qui déploient les applications sur leur territoire, ou les simples utilisateurs
+      - **Partenaires** : les organisations partenaires de Reconnexion
+    image: /images/organisation/colleges.webp
+    image_alt: "Répartition des votes entre les collèges : bénéficiaires 20 %, co-créateurs d'applications 20 %, équipe opérationnelle 40 %, soutiens financiers 10 %, partenaires 10 %"
+  - type: texte
+    fond: blanc
+    titre: Le cercle d'ancrage
+    texte: Lorsque la coopérative aura plus de 100 sociétaires, il sera possible (lors d'une AG) de décider de mettre en place un cercle d'ancrage, qui aura pour but de conseiller le 1er lien (directeur) sur la stratégie à mener. Chaque collège y sera représenté par 1 à 3 personnes.
+    image: /images/organisation/cercle.webp
+    image_alt: "Le cercle d'ancrage réunit des représentants des bénéficiaires, des co-créateurs d'applications, de l'équipe opérationnelle, des soutiens financiers et des organisations partenaires"
+  - type: annonce
+    titre: Newsletter
+    texte: Suivez l'actualités et recevez les invitations aux temps forts.
+    bouton_texte: M'abonner à la Newsletter
+    bouton_lien: https://b144bca4.sibforms.com/serve/MUIFAMvMggADvfUsaaPvIeGfL_OR2_ub7mDxgo197al-8br9KKpRQ6fsnnyxEXSFJS-CTI0iB6G3Skf1tAsOCzHbQ_0ei08gm_a0nWTOAfq5lXCV1UWNXytGDdli7g09YW8kcnXqZeL5uROxSnsO1XSLzKTeplhqZJECpxmKaJ_Nslpf6GColxZWrAiwwJO1wbUnfGCoQFkTvi93

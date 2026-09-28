@@ -1,0 +1,9 @@
+---
+// Server island : les organisations sont lues dans Grist à chaque requête (avec un cache d'une minute).
+import { Partenaires } from '../blocs/Partenaires';
+import { lireOrganisations } from '../lib/grist';
+
+const props = Astro.props;
+const organisations = await lireOrganisations(props.document, props.table ?? 'Organisations');
+---
+<Partenaires {...props} organisations={organisations} />

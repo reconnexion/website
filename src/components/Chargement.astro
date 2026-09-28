@@ -1,0 +1,13 @@
+---
+// Affiché à la place d'un server island tant que ses données ne sont pas arrivées.
+interface Props {
+  texte?: string;
+}
+const { texte } = Astro.props;
+---
+<div class="bloc">
+  <p class="conteneur flex items-center gap-e2 text-gris italic">
+    <span class="loading loading-dots loading-sm" aria-hidden="true"></span>
+    {texte}
+  </p>
+</div>

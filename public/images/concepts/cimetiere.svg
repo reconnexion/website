@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#f2f2f2"/>
+  <rect x="1" y="1" width="798" height="498" fill="none" stroke="#d9d9d9" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="400" y="240" text-anchor="middle" font-family="Poppins, sans-serif" font-size="30" fill="#5f6166">Image à venir</text>
+  <text x="400" y="285" text-anchor="middle" font-family="Poppins, sans-serif" font-size="22" fill="#87898e">cimetiere</text>
+</svg>

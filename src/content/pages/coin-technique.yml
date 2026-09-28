@@ -1,0 +1,61 @@
+titre: Le coin technique
+slug: coin-technique
+description: L'architecture technique du Réseau Social Universel (NextGraph, ActivityPods) et le code source des applications de Reconnexion.
+sections:
+  - type: bandeau
+    surtitre: Le Réseau Social Universel
+    titre: Le coin technique
+  - type: texte
+    fond: blanc
+    texte: Depuis début 2026, nous avons choisi de pivoter vers [NextGraph](https://nextgraph.org), une solution novatrice qui résout d'importants problèmes de stabilité et de sécurité de notre précédente solution, [ActivityPods](https://activitypods.org). Si vous souhaitez en savoir plus sur les avantages de NextGraph, nous vous invitons à regarder le replay du webinaire que nous avons donné en mai 2026.
+  - type: video
+    fond: blanc
+    url: https://videos-libr.es/w/wFpSW26d4y8Mvzcie3gHDm
+    pleine_largeur: true
+  - type: texte
+    fond: blanc
+    texte: Ce pivot implique un certain délai pour que le Réseau Social Universel puisse pleinement être opérationnel. En attendant, il est possible de continuer à développer sur [ActivityPods](https://activitypods.org).
+  - type: texte_image
+    fond: blanc
+    titre: Une architecture ouverte
+    texte: |-
+      Les applications que nous proposons sont toutes **open source** et fonctionnent de manière **décentralisée**. Cela permet de garantir les 3 libertés fondamentales décrites ci-dessous.
+
+      Si vous avez un penchant technique et que vous souhaitez en apprendre plus sur l'architecture particulière que nous avons développée (depuis 2021), nous vous invitons à consulter le site [ActivityPods.org](https://activitypods.org) (en anglais).
+
+      Si vous ne parlez pas anglais, vous trouverez dans cette page des informations traduites en français.
+    image: /images/coin-technique/activitypods.webp
+    image_alt: "Page d'accueil du site ActivityPods : « Creating decentralized social apps has never been easier »"
+    inverse: false
+    image_large: true
+  - type: colonnes
+    fond: vert
+    colonnes:
+      - titre: Libre de choisir où mes données sont enregistrées
+        texte: |-
+          Lorsque vous utilisez des applications habituelles, vous ne savez pas où ni comment vos données sont stockées.
+
+          Avec le **Réseau Social Universel**, toutes vos données sont stockées dans votre Pod. Vous pouvez choisir un fournisseur de Pods en qui vous avez confiance ou l'héberger vous-même.
+      - titre: Libre de partager mes données avec qui je veux
+        texte: |-
+          Lorsque vous utilisez des applications habituelles, vous ne pouvez partager vos données qu'avec les utilisateurs de la même application.
+
+          Avec le **Réseau Social Universel**, vous pouvez partager vos données avec n'importe qui sur Internet, grâce à des protocoles ouverts.
+      - titre: Libre de choisir quelles applications j'utilise
+        texte: |-
+          Lorsque vous utilisez des applications habituelles, les données ne sont comprises que par les applications qui les ont créées.
+
+          Avec le **Réseau Social Universel**, les données sont stockées en utilisant des vocabulaires partagés. Elles peuvent être ainsi utilisées par de nombreuses applications.
+  - type: texte
+    fond: blanc
+    titre: Code source
+    texte: |-
+      Tout notre code est publié en open-source avec une license libre Apache 2.0.
+
+      - **Bienvenue chez moi** : [github.com/reconnexion/welcometomyplace](https://github.com/reconnexion/welcometomyplace)
+      - **L'Entraide** : [github.com/reconnexion/mutual-aid.app](https://github.com/reconnexion/mutual-aid.app)
+      - **ActivityPods** (hébergeur de Pods) : [github.com/activitypods/activitypods](https://github.com/activitypods/activitypods)
+      - **La Carte des Savoirs** : [github.com/reconnexion/la-carte-des-savoirs](https://github.com/reconnexion/la-carte-des-savoirs)
+      - **PorteJunes** : [github.com/reconnexion/portejunes](https://github.com/reconnexion/portejunes)
+
+      Si vous souhaitez y contribuer, n'hésitez pas à le faire savoir sur le forum, catégorie [Le coin technique](https://forum.reconnexion.coop/c/le-coin-technique/21) !

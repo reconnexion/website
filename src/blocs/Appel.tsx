@@ -1,4 +1,4 @@
-import { Paragraphes } from './_commun';
+import { Bloc, Paragraphes } from './_commun';
 import type { DefinitionBloc } from './types';
 
 export type AppelProps = {
@@ -10,17 +10,21 @@ export type AppelProps = {
 
 export function Appel({ titre, texte, bouton_texte, bouton_lien }: AppelProps) {
   return (
-    <section className="bloc">
-      <div className="conteneur">
-        <div className="appel">
-          <h2>{titre}</h2>
-          <Paragraphes texte={texte} />
+    <Bloc>
+      <div className="card bg-primary text-primary-content">
+        <div className="card-body gap-e3 p-e5">
+          <h2 className="card-title text-xl">{titre}</h2>
+          <Paragraphes texte={texte} className="max-w-texte opacity-85" />
           {bouton_texte && bouton_lien && (
-            <a className="bouton" href={bouton_lien}>{bouton_texte}</a>
+            <div className="card-actions">
+              <a className="btn border-fond bg-fond text-vert-fonce hover:border-fond-2 hover:bg-fond-2" href={bouton_lien}>
+                {bouton_texte}
+              </a>
+            </div>
           )}
         </div>
       </div>
-    </section>
+    </Bloc>
   );
 }
 

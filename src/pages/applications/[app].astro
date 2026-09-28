@@ -1,0 +1,29 @@
+---
+// Page de chaque application, générée depuis la collection « Applications » (une fiche = une page).
+import Base from '../../layouts/Base.astro';
+import { FicheApplication } from '../../blocs/FicheApplication';
+import { toutesLesApplications, toutesLesPages } from '../../lib/contenu';
+import { aUnePage } from '../../lib/applications';
+
+export function getStaticPaths() {
+  // Surtitre : la page qui liste les applications, si elle existe (son titre sert de libellé).
+  const liste = toutesLesPages().find((p) => p.slug === 'applications');
+  const surtitre = liste ? { texte: liste.titre, lien: '/applications' } : undefined;
+  return toutesLesApplications()
+    .filter(aUnePage)
+    .map((application) => ({ params: { app: application.slug }, props: { application, surtitre } }));
+}
+
+const { application: a, surtitre } = Astro.props;
+---
+<Base titre={a.nom} description={a.resume ?? a.accroche}>
+  <FicheApplication
+    surtitre={surtitre}
+    titre={a.nom}
+    logo={a.logo}
+    sous_titre={a.accroche}
+    boutons={a.boutons}
+    captures={a.captures}
+    infos={a.infos}
+  />
+</Base>

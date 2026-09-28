@@ -4,6 +4,8 @@
  */
 import { parse } from 'yaml';
 import type { DonneesBloc } from '../blocs/registre';
+import { trierApplications, type Application } from './applications';
+import { trierReseaux, type Reseau } from './reseaux';
 
 export type Page = {
   titre: string;
@@ -12,9 +14,18 @@ export type Page = {
   sections: DonneesBloc[];
 };
 
+export type LienMenu = {
+  texte: string;
+  lien?: string;
+  icone?: string;
+  sous_menu?: { texte: string; lien: string }[];
+};
+
 export type Site = {
   nom: string;
-  menu: { texte: string; lien: string }[];
+  logo?: string;
+  texte_menu?: string;
+  menu: LienMenu[];
   pied_de_page?: string;
   texte_chargement?: string;
 };
@@ -31,13 +42,57 @@ const fichierSite = import.meta.glob('../content/site.yml', {
   eager: true,
 }) as Record<string, string>;
 
+/**
+ * Sveltia enregistre les champs laissés vides sous forme de chaîne vide (`fond: ''`).
+ * On les supprime pour que les valeurs par défaut des blocs s'appliquent.
+ */
+function sansChampsVides<T>(valeur: T): T {
+  if (Array.isArray(valeur)) return valeur.map(sansChampsVides) as T;
+  if (valeur && typeof valeur === 'object')
+    return Object.fromEntries(
+      Object.entries(valeur)
+        .filter(([, v]) => v !== '' && v !== null)
+        .map(([k, v]) => [k, sansChampsVides(v)]),
+    ) as T;
+  return valeur;
+}
+
 export function toutesLesPages(): Page[] {
   return Object.values(fichiersPages).map((brut) => {
-    const page = parse(brut) as Page;
+    const page = sansChampsVides(parse(brut) as Page);
     return { ...page, sections: page.sections ?? [] };
   });
 }
 
+const fichiersApplications = import.meta.glob('../content/applications/*.yml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+/** Fiches de la collection « Applications », dans l'ordre choisi (champ `ordre`). */
+export function toutesLesApplications(): Application[] {
+  return trierApplications(Object.values(fichiersApplications).map((brut) => sansChampsVides(parse(brut) as Application)));
+}
+
+const fichiersReseaux = import.meta.glob('../content/reseaux/*.yml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+/** Fiches de la collection « Réseaux », dans l'ordre choisi (champ `ordre`). */
+export function tousLesReseaux(): Reseau[] {
+  return trierReseaux(Object.values(fichiersReseaux).map((brut) => sansChampsVides(parse(brut) as Reseau)));
+}
+
+/** Documents Grist cités dans les blocs des pages (champ `document`) : ceux dont le site peut servir les images. */
+export function documentsGrist(): string[] {
+  return toutesLesPages().flatMap((p) =>
+    p.sections.map((s) => s.document).filter((d): d is string => typeof d === 'string' && !!d),
+  );
+}
+
 export function reglagesSite(): Site {
-  return parse(Object.values(fichierSite)[0]) as Site;
+  return sansChampsVides(parse(Object.values(fichierSite)[0]) as Site);
 }

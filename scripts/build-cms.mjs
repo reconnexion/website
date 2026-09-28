@@ -2,15 +2,22 @@
  * Génère l'interface d'administration Sveltia à partir du code :
  *   public/admin/config.yml  ← src/cms/config.ts (qui lit le registre de blocs)
  *   public/admin/apercu.js   ← src/cms/apercu.tsx (aperçu avec les vrais composants)
- *   public/admin/apercu.css  ← styles du design system
+ *   public/admin/apercu.css  ← src/styles/apercu.css (Tailwind + daisyUI + tokens)
  * Lancé automatiquement par `npm run dev` et `npm run build`.
  */
 import { build } from 'esbuild';
-import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { readdir, readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
 import { pathToFileURL } from 'node:url';
-import { stringify } from 'yaml';
+import { stringify, parse } from 'yaml';
 
 const admin = 'public/admin';
+
+async function lireCollection(nom) {
+  const dossier = `src/content/${nom}`;
+  const fichiers = (await readdir(dossier)).filter((f) => f.endsWith('.yml'));
+  return Promise.all(fichiers.map(async (f) => parse(await readFile(`${dossier}/${f}`, 'utf8'))));
+}
 const tmp = 'node_modules/.cache/cms-config.mjs';
 await mkdir(admin, { recursive: true });
 
@@ -40,22 +47,18 @@ await build({
   outfile: `${admin}/apercu.js`,
   jsx: 'automatic',
   minify: true,
-  define: { 'process.env.NODE_ENV': '"production"' },
+  // Fiches d'applications et de réseaux, pour que leurs blocs montrent les vraies données dans l'aperçu.
+  define: { 'process.env.NODE_ENV': '"production"', __APPLICATIONS__: JSON.stringify(await lireCollection('applications')),
+    __RESEAUX__: JSON.stringify(await lireCollection('reseaux')),
+  },
   logLevel: 'error',
 });
 
-// 3. apercu.css
-const css = await Promise.all(['src/styles/tokens.css', 'src/styles/blocs.css'].map((f) => readFile(f, 'utf8')));
-css.push(`
-/* Propre à l'aperçu du CMS */
-.apercu-donnees-exemple { position: relative; outline: 2px dashed var(--c-mousse); outline-offset: -8px; }
-.apercu-donnees-exemple::before {
-  content: 'Aperçu avec des données d’exemple — les vraies données viennent de Grist / CalDAV';
-  position: absolute; top: 12px; right: 12px; z-index: 1;
-  font: 700 12px var(--f-texte); background: var(--c-mousse); color: var(--c-papier);
-  padding: 4px 8px; border-radius: 6px;
-}
-`);
-await writeFile(`${admin}/apercu.css`, css.join('\n'));
+// 3. apercu.css — même Tailwind/daisyUI que le site, compilé avec la CLI
+execFileSync(
+  'node_modules/.bin/tailwindcss',
+  ['-i', 'src/styles/apercu.css', '-o', `${admin}/apercu.css`, '--minify'],
+  { stdio: 'pipe' },
+);
 
 console.log('✓ Admin Sveltia générée dans public/admin/');

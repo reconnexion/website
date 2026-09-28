@@ -6,8 +6,9 @@
  *   CALDAV_USER      identifiant (compte en lecture seule conseillé)
  *   CALDAV_PASSWORD  mot de passe ou mot de passe d'application
  *
- * On envoie une requête REPORT « calendar-query » avec <expand> :
- * le serveur déplie lui-même les événements récurrents sur la période demandée.
+ * On envoie une requête REPORT « calendar-query » avec <expand> pour que le serveur déplie
+ * les événements récurrents. Certains serveurs (SOGo…) l'ignorent et renvoient l'événement
+ * maître avec sa RRULE : on déplie alors nous-mêmes les occurrences avec ical.js.
  */
 import ICAL from 'ical.js';
 import type { Evenement } from './types';
@@ -41,24 +42,52 @@ const decoderXml = (s: string) =>
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
     .replace(/&quot;/g, '"')
-    .replace(/&#13;/g, '\r')
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
     .replace(/&amp;/g, '&');
 
-function extraireEvenements(xml: string): Evenement[] {
+/** Garde-fou contre les RRULE sans fin très fréquentes. */
+const MAX_OCCURRENCES = 500;
+
+function versEvenement(ev: ICAL.Event, debut: ICAL.Time, fin?: ICAL.Time): Evenement {
+  return {
+    titre: ev.summary ?? '',
+    debut: debut.toJSDate().toISOString(),
+    fin: fin?.toJSDate().toISOString(),
+    lieu: ev.location || undefined,
+    description: ev.description || undefined,
+  };
+}
+
+function extraireEvenements(xml: string, debut: Date, fin: Date): Evenement[] {
   const blocs = [...xml.matchAll(/<[^>]*calendar-data[^>]*>([\s\S]*?)<\/[^>]*calendar-data>/g)];
+  const limite = ICAL.Time.fromJSDate(fin, true);
   const evenements: Evenement[] = [];
   for (const [, brut] of blocs) {
     try {
       const vcal = new ICAL.Component(ICAL.parse(decoderXml(brut)));
-      for (const vevent of vcal.getAllSubcomponents('vevent')) {
-        const ev = new ICAL.Event(vevent);
-        evenements.push({
-          titre: ev.summary ?? '',
-          debut: ev.startDate.toJSDate().toISOString(),
-          fin: ev.endDate?.toJSDate().toISOString(),
-          lieu: ev.location || undefined,
-          description: ev.description || undefined,
-        });
+      for (const vtimezone of vcal.getAllSubcomponents('vtimezone')) ICAL.TimezoneService.register(vtimezone);
+
+      const vevents = vcal.getAllSubcomponents('vevent');
+      const maitre = vevents.find((v) => !v.hasProperty('recurrence-id'));
+      if (!maitre || !maitre.hasProperty('rrule')) {
+        // Événement simple, ou occurrences déjà dépliées par le serveur.
+        for (const vevent of vevents) {
+          const ev = new ICAL.Event(vevent);
+          evenements.push(versEvenement(ev, ev.startDate, ev.endDate));
+        }
+        continue;
+      }
+
+      // Événement récurrent non déplié : on parcourt les occurrences jusqu'à la fin de la période
+      // (les EXDATE sont exclues par l'itérateur, les occurrences modifiées viennent des RECURRENCE-ID).
+      const ev = new ICAL.Event(maitre, { exceptions: vevents.filter((v) => v !== maitre) });
+      const it = ev.iterator();
+      for (let i = 0, date = it.next(); date && i < MAX_OCCURRENCES; i++, date = it.next()) {
+        if (date.compare(limite) > 0) break;
+        const occ = ev.getOccurrenceDetails(date);
+        if (occ.endDate.toJSDate() < debut) continue;
+        evenements.push(versEvenement(occ.item, occ.startDate, occ.endDate));
       }
     } catch (err) {
       console.error('[caldav] événement illisible', err);
@@ -89,8 +118,8 @@ export async function prochainsEvenements(nombre = 5): Promise<Evenement[]> {
         signal: AbortSignal.timeout(5000),
       });
       if (!rep.ok) throw new Error(`CalDAV ${rep.status}`);
-      const data = extraireEvenements(await rep.text())
-        .filter((e) => new Date(e.fin ?? e.debut) >= maintenant)
+      const data = extraireEvenements(await rep.text(), maintenant, fin)
+        .filter((e) => new Date(e.fin ?? e.debut) >= maintenant && new Date(e.debut) < fin)
         .sort((a, b) => a.debut.localeCompare(b.debut));
       cache = { t: Date.now(), data };
     } catch (err) {

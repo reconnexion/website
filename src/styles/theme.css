@@ -1,0 +1,191 @@
+/*
+ * Tailwind + daisyUI branchés sur le design system (tokens.css).
+ * Partagé entre le site (site.css) et l'aperçu du CMS (apercu.css).
+ *
+ * Les échelles par défaut de Tailwind (couleurs, tailles de texte, polices, ombres)
+ * sont désactivées : seules les classes issues des tokens existent,
+ * ex. `bg-fond-2`, `text-gris`, `text-l`, `gap-e3`, `rounded-carte`, `max-w-texte`.
+ */
+@import 'tailwindcss';
+
+@plugin 'daisyui' {
+  themes: false;
+  logs: false;
+}
+
+@plugin 'daisyui/theme' {
+  name: 'reconnexion';
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: var(--c-fond);
+  --color-base-200: var(--c-fond-2);
+  --color-base-300: var(--c-trait);
+  --color-base-content: var(--c-noir);
+  /* Le vert de la charte (#21b082) n'est pas assez contrasté sous du texte blanc :
+     le primaire est sa version foncée, le vert vif sert d'accent. */
+  --color-primary: var(--c-vert-fonce);
+  --color-primary-content: var(--c-fond);
+  --color-secondary: var(--c-bleu);
+  --color-secondary-content: var(--c-fond);
+  --color-accent: var(--c-vert);
+  --color-accent-content: var(--c-noir);
+  --color-neutral: var(--c-noir);
+  --color-neutral-content: var(--c-fond);
+  --color-info: var(--c-gris);
+  --color-info-content: var(--c-fond);
+  --color-success: var(--c-vert-fonce);
+  --color-success-content: var(--c-fond);
+  --color-warning: var(--c-ardoise);
+  --color-warning-content: var(--c-fond);
+  --color-error: var(--c-ardoise);
+  --color-error-content: var(--c-fond);
+
+  --radius-selector: var(--r-bouton); /* badges, cases à cocher… : angles droits comme les boutons */
+  --radius-field: var(--r-bouton); /* boutons, champs */
+  --radius-box: var(--r-carte);
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme inline {
+  --color-*: initial;
+  --color-fond: var(--c-fond);
+  --color-fond-2: var(--c-fond-2);
+  --color-noir: var(--c-noir);
+  --color-gris: var(--c-gris);
+  --color-vert: var(--c-vert);
+  --color-vert-fonce: var(--c-vert-fonce);
+  --color-bleu: var(--c-bleu);
+  --color-bleu-fonce: var(--c-bleu-fonce);
+  --color-ardoise: var(--c-ardoise);
+  --color-barre: var(--c-barre);
+  --color-trait: var(--c-trait);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-*: initial;
+  --font-titre: var(--f-titre);
+  --font-texte: var(--f-texte);
+
+  --text-*: initial;
+  --text-xs: var(--t-xs);
+  --text-s: var(--t-s);
+  --text-m: var(--t-m);
+  --text-l: var(--t-l);
+  --text-xl: var(--t-xl);
+  --text-xxl: var(--t-xxl);
+
+  --spacing-e1: var(--e-1);
+  --spacing-e2: var(--e-2);
+  --spacing-e3: var(--e-3);
+  --spacing-e4: var(--e-4);
+  --spacing-e5: var(--e-5);
+  --spacing-e6: var(--e-6);
+  --spacing-e7: var(--e-7);
+
+  --radius-*: initial;
+  --radius-carte: var(--r-carte);
+  --radius-bouton: var(--r-bouton);
+  --radius-full: 9999px;
+
+  --container-site: var(--largeur);
+  --container-texte: var(--largeur-texte);
+
+  --shadow-*: initial;
+  --drop-shadow-*: initial;
+}
+
+@layer base {
+  body {
+    background: var(--color-base-100);
+    color: var(--color-base-content);
+    font-family: var(--f-texte);
+    font-size: var(--t-m);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--f-titre);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 {
+    text-transform: uppercase;
+  }
+}
+
+/* daisyUI réduit le texte des boutons et des cartes : on garde la taille courante du design system. */
+@layer base {
+  :root {
+    --card-fs: var(--t-m);
+  }
+  .btn {
+    --fontsize: var(--t-m);
+  }
+}
+
+/* Hauteur du premier écran sous l'en-tête. --hauteur-entete est mesurée par Menu.astro. */
+@utility hero-plein-ecran {
+  min-height: max(24rem, calc(100svh - var(--hauteur-entete, 5rem)));
+}
+
+/* Bandeau à image + annonce en tête de page : ensemble, ils remplissent exactement le premier écran. */
+@utility premier-ecran {
+  display: flex;
+  flex-direction: column;
+  min-height: max(24rem, calc(100svh - var(--hauteur-entete, 5rem)));
+
+  & > .hero-plein-ecran {
+    flex: 1;
+    min-height: 0;
+  }
+}
+
+@utility conteneur {
+  width: min(100% - 2rem, var(--largeur));
+  margin-inline: auto;
+}
+
+/* Section de premier niveau : chaque bloc de page en est une.
+   Comme sur reconnexion.coop, pas de séparateur : les sections se distinguent par leur fond. */
+@utility bloc {
+  padding-block: var(--e-6);
+}
+
+/* Deux sections consécutives de même fond : la seconde n'ajoute pas sa marge du haut,
+   pour garder l'espacement standard entre elles (sinon les marges se cumulent). */
+.bloc[data-fond='blanc'] + .bloc[data-fond='blanc'],
+.bloc[data-fond='gris'] + .bloc[data-fond='gris'],
+.bloc[data-fond='vert'] + .bloc[data-fond='vert'],
+.bloc[data-fond='bleu'] + .bloc[data-fond='bleu'] {
+  padding-top: 0;
+}
+
+/* Texte courant (paragraphes, listes) : même espacement vertical dans tous les blocs. */
+@utility texte {
+  & > * + * {
+    margin-top: var(--e-3);
+  }
+}
+
+/* Filtre par collège (bloc Sociétaires) sans JavaScript : le bouton radio coché
+   masque les sociétaires des autres collèges. Jusqu'à 10 collèges. */
+.filtre-colleges:has(input[name='college'][value='0']:checked) [data-colleges]:not([data-colleges~='0']),
+.filtre-colleges:has(input[name='college'][value='1']:checked) [data-colleges]:not([data-colleges~='1']),
+.filtre-colleges:has(input[name='college'][value='2']:checked) [data-colleges]:not([data-colleges~='2']),
+.filtre-colleges:has(input[name='college'][value='3']:checked) [data-colleges]:not([data-colleges~='3']),
+.filtre-colleges:has(input[name='college'][value='4']:checked) [data-colleges]:not([data-colleges~='4']),
+.filtre-colleges:has(input[name='college'][value='5']:checked) [data-colleges]:not([data-colleges~='5']),
+.filtre-colleges:has(input[name='college'][value='6']:checked) [data-colleges]:not([data-colleges~='6']),
+.filtre-colleges:has(input[name='college'][value='7']:checked) [data-colleges]:not([data-colleges~='7']),
+.filtre-colleges:has(input[name='college'][value='8']:checked) [data-colleges]:not([data-colleges~='8']),
+.filtre-colleges:has(input[name='college'][value='9']:checked) [data-colleges]:not([data-colleges~='9']) {
+  display: none;
+}

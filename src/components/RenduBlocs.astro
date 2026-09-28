@@ -1,37 +1,31 @@
 ---
-import { blocsParNom, type DonneesBloc } from '../blocs/registre';
-import AgendaIle from './AgendaIle.astro';
-import EquipeIle from './EquipeIle.astro';
+import type { DonneesBloc } from '../blocs/registre';
+import Section from './Section.astro';
 
 interface Props {
   sections: DonneesBloc[];
   texteChargement?: string;
 }
 const { sections, texteChargement } = Astro.props;
+
+// Bandeau à image suivi d'une annonce en tête de page : les deux remplissent exactement
+// le premier écran (le hero prend la place que l'annonce laisse).
+const premierEcran =
+  sections[0]?.type === 'bandeau' && !!sections[0].image && sections[1]?.type === 'annonce' ? 2 : 0;
+
+// Fond d'une section (valeur par défaut propre à chaque type de bloc).
+const fond = (s?: DonneesBloc) =>
+  !s ? undefined : s.type === 'annonce' ? 'vert' : ((s.fond as string) ?? (s.type === 'section_couleur' ? 'vert' : 'blanc'));
+
+// Bandeau d'en-tête (sans image) suivi d'une section blanche : on supprime sa marge du bas,
+// sinon elle s'ajoute à celle de la section suivante (trop d'espace entre titre et texte).
+const avecEnchainement = sections.map((s, i) =>
+  s.type === 'bandeau' && !s.image && fond(sections[i + 1]) === 'blanc' ? { ...s, enchaine: true } : s,
+);
 ---
-{sections.map(({ type, ...donnees }) => {
-  // Blocs alimentés par des données live : server islands.
-  if (type === 'agenda') {
-    return (
-      <AgendaIle server:defer {...donnees}>
-        <p slot="fallback" class="conteneur chargement">{texteChargement}</p>
-      </AgendaIle>
-    );
-  }
-  if (type === 'equipe') {
-    return (
-      <EquipeIle server:defer {...donnees}>
-        <p slot="fallback" class="conteneur chargement">{texteChargement}</p>
-      </EquipeIle>
-    );
-  }
-  // Blocs purement éditoriaux : rendus en HTML statique au build, zéro JS.
-  const def = blocsParNom[type];
-  if (!def) {
-    return import.meta.env.DEV
-      ? <div class="conteneur bloc-inconnu">Bloc inconnu : {type}</div>
-      : null;
-  }
-  const Composant = def.Component;
-  return <Composant {...donnees} />;
-})}
+{premierEcran > 0 && (
+  <div class="premier-ecran">
+    {avecEnchainement.slice(0, premierEcran).map((section) => <Section section={section} texteChargement={texteChargement} />)}
+  </div>
+)}
+{avecEnchainement.slice(premierEcran).map((section) => <Section section={section} texteChargement={texteChargement} />)}

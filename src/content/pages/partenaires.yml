@@ -1,0 +1,15 @@
+titre: Partenaires & Réseaux
+slug: partenaires
+description: Les organisations partenaires de la coopérative Reconnexion et les réseaux dont elle fait partie.
+sections:
+  - type: bandeau
+    surtitre: La coopérative
+    titre: Partenaires & Réseaux
+  - type: partenaires
+    titre: Nos partenaires
+    document: chrjVErXqQDJVwebraiKB1
+    table: Organisations
+    texte_vide: La liste de nos partenaires sera bientôt affichée ici.
+  - type: reseaux
+    fond: blanc
+    titre: Nos réseaux

@@ -6,9 +6,10 @@
  * (et pouvoir utiliser des hooks dans nos blocs), on lui donne une coquille minimale
  * qui monte NOTRE React dans une div.
  */
+import type { ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { blocsParNom, type DonneesBloc } from '../blocs/registre';
-import { personnesDemo, evenementsDemo } from '../lib/demo';
+import { FicheApplication } from '../blocs/FicheApplication';
 
 declare global {
   interface Window {
@@ -26,14 +27,14 @@ function Apercu({ sections }: { sections: DonneesBloc[] }) {
         if (!def) return null;
         const Composant = def.Component;
         // Les blocs alimentés par Grist / CalDAV affichent des données d'exemple.
-        const extra =
-          def.source === 'grist'
-            ? { personnes: personnesDemo }
-            : def.source === 'caldav'
-              ? { evenements: evenementsDemo().slice(0, Number(donnees.nombre) || 4) }
-              : {};
+        const extra = def.donneesExemple?.(donnees) ?? {};
         return (
           <div key={i} className={def.source ? 'apercu-donnees-exemple' : undefined}>
+            {def.source && (
+              <span className="badge badge-secondary absolute top-e3 right-e3 z-1 font-bold">
+                Aperçu avec des données d’exemple — les vraies données viennent de Grist / CalDAV
+              </span>
+            )}
             <Composant {...donnees} {...extra} />
           </div>
         );
@@ -42,30 +43,46 @@ function Apercu({ sections }: { sections: DonneesBloc[] }) {
   );
 }
 
-const ApercuPage = window.createClass({
-  racine: null as Root | null,
-  noeud: null as HTMLElement | null,
-  rendre: function (this: any) {
-    if (!this.noeud) return;
-    if (!this.racine) this.racine = createRoot(this.noeud);
-    const donnees = this.props.entry.getIn(['data'])?.toJS?.() ?? {};
-    this.racine.render(<Apercu sections={donnees.sections ?? []} />);
-  },
-  componentDidMount: function (this: any) {
-    this.rendre();
-  },
-  componentDidUpdate: function (this: any) {
-    this.rendre();
-  },
-  componentWillUnmount: function (this: any) {
-    const racine = this.racine;
-    this.racine = null;
-    setTimeout(() => racine?.unmount());
-  },
-  render: function (this: any) {
-    return window.h('div', { ref: (n: HTMLElement | null) => (this.noeud = n) });
-  },
-});
+/** Coquille Sveltia qui monte NOTRE React et y rend `vue(données de l'entrée)`. */
+const coquille = (vue: (donnees: Record<string, any>) => ReactNode) =>
+  window.createClass({
+    racine: null as Root | null,
+    noeud: null as HTMLElement | null,
+    rendre: function (this: any) {
+      if (!this.noeud) return;
+      if (!this.racine) this.racine = createRoot(this.noeud);
+      this.racine.render(vue(this.props.entry.getIn(['data'])?.toJS?.() ?? {}));
+    },
+    componentDidMount: function (this: any) {
+      this.rendre();
+    },
+    componentDidUpdate: function (this: any) {
+      this.rendre();
+    },
+    componentWillUnmount: function (this: any) {
+      const racine = this.racine;
+      this.racine = null;
+      setTimeout(() => racine?.unmount());
+    },
+    render: function (this: any) {
+      return window.h('div', { ref: (n: HTMLElement | null) => (this.noeud = n) });
+    },
+  });
+
+const ApercuPage = coquille((d) => <Apercu sections={d.sections ?? []} />);
+
+// Fiche d'application : même rendu que sa page /applications/<slug>.
+const ApercuApplication = coquille((d) => (
+  <FicheApplication
+    titre={d.nom ?? ''}
+    logo={d.logo || undefined}
+    sous_titre={d.accroche || undefined}
+    boutons={d.boutons}
+    captures={d.captures}
+    infos={d.infos}
+  />
+));
 
 window.CMS.registerPreviewStyle('/admin/apercu.css');
 window.CMS.registerPreviewTemplate('pages', ApercuPage);
+window.CMS.registerPreviewTemplate('applications', ApercuApplication);
