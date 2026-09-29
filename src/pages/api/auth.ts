@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { originePublique } from '../../lib/origine';
 
 /**
  * Connexion au CMS (Sveltia) avec un compte GitHub — étape 1 : redirection vers GitHub.
@@ -10,7 +11,7 @@ import type { APIRoute } from 'astro';
  */
 export const prerender = false;
 
-export const GET: APIRoute = ({ url, cookies, redirect }) => {
+export const GET: APIRoute = ({ request, url, cookies, redirect }) => {
   const clientId = process.env.GITHUB_CLIENT_ID;
   if (!clientId) return new Response('GITHUB_CLIENT_ID manquant', { status: 500 });
 
@@ -20,7 +21,7 @@ export const GET: APIRoute = ({ url, cookies, redirect }) => {
 
   const github = new URL('https://github.com/login/oauth/authorize');
   github.searchParams.set('client_id', clientId);
-  github.searchParams.set('redirect_uri', new URL('/api/callback', url.origin).href);
+  github.searchParams.set('redirect_uri', new URL('/api/callback', originePublique(request, url)).href);
   github.searchParams.set('scope', url.searchParams.get('scope') || 'repo,user');
   github.searchParams.set('state', state);
   return redirect(github.href);

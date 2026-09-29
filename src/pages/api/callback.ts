@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { originePublique } from '../../lib/origine';
 
 /**
  * Connexion au CMS avec un compte GitHub — étape 2 : GitHub renvoie ici avec un code,
@@ -23,9 +24,10 @@ function reponse(message: string, origine: string) {
   return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
 }
 
-export const GET: APIRoute = async ({ url, cookies }) => {
+export const GET: APIRoute = async ({ request, url, cookies }) => {
+  const origine = originePublique(request, url);
   const erreur = (texte: string) =>
-    reponse(`authorization:github:error:${JSON.stringify({ message: texte })}`, url.origin);
+    reponse(`authorization:github:error:${JSON.stringify({ message: texte })}`, origine);
 
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state');
@@ -40,7 +42,7 @@ export const GET: APIRoute = async ({ url, cookies }) => {
       client_id: process.env.GITHUB_CLIENT_ID,
       client_secret: process.env.GITHUB_CLIENT_SECRET,
       code,
-      redirect_uri: new URL('/api/callback', url.origin).href,
+      redirect_uri: new URL('/api/callback', origine).href,
     }),
   });
   const donnees = (await rep.json().catch(() => ({}))) as { access_token?: string; error_description?: string };
@@ -48,6 +50,6 @@ export const GET: APIRoute = async ({ url, cookies }) => {
 
   return reponse(
     `authorization:github:success:${JSON.stringify({ token: donnees.access_token, provider: 'github' })}`,
-    url.origin,
+    origine,
   );
 };
