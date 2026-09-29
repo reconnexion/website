@@ -35,9 +35,9 @@ sections:
     image: /images/services/cycle.svg
     fond: blanc
     image_alt: "Le cycle de réalisation d'une application : idées et besoins, conception, réalisation, déploiement"
-    inverse: false
+    inverse: true
     image_large: false
-    image_logo: false
+    image_logo: true
   - type: texte_image
     titre: La place de l'IA dans Reconnexion
     texte: |-
