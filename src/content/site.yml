@@ -26,6 +26,10 @@ menu:
         lien: /societaires
       - texte: Partenaires & Réseaux
         lien: /partenaires
+  - texte: Nos services
+    lien: /services
+    icone: telephone
+    sous_menu: []
   - texte: Nous rencontrer
     lien: ''
     icone: poignee_de_main
@@ -43,10 +47,6 @@ menu:
   - texte: Forum
     lien: https://forum.reconnexion.coop
     icone: bulle
-    sous_menu: []
-  - texte: Nos services
-    lien: /services
-    icone: telephone
     sous_menu: []
 pied_de_page: |-
   En attendant que le Réseau Social Universel soit une réalité,
