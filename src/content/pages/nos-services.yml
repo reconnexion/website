@@ -12,4 +12,4 @@ sections:
     image_pleine_largeur: false
     boutons:
       - texte: Demander un devis
-        lien: mailto:contact@reconnexion.coop?subject="Demande de devis"
+        lien: mailto:contact@reconnexion.coop?subject=Demande de devis
