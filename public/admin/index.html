@@ -4,12 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
+    <!-- Chemins absolus : l'admin est accessible par /admin comme par /admin/. -->
+    <link href="/admin/config.yml" type="application/yaml" rel="cms-config-url" />
     <title>Administration · Reconnexion</title>
   </head>
   <body>
-    <!-- Sveltia CMS (version épinglée). La config est lue dans ./config.yml (générée). -->
+    <!-- Sveltia CMS (version épinglée). La config (générée) est désignée par le lien cms-config-url ci-dessus. -->
     <script src="https://unpkg.com/@sveltia/cms@0.221.8/dist/sveltia-cms.js"></script>
     <!-- Aperçu des pages avec les composants du site (généré). -->
-    <script src="./apercu.js"></script>
+    <script src="/admin/apercu.js"></script>
   </body>
 </html>
