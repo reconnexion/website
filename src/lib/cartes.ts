@@ -1,6 +1,6 @@
 /**
  * Cartes QR (reprise des « QrCards » Bazar de reconnexion.coop) : une fiche par carte dans src/content/cartes/,
- * des types de cartes (Fléaux, Solutions…) dans src/content/types-de-cartes/, des sets dans src/content/sets-de-cartes/.
+ * et des types de cartes (Fléaux, Solutions…) dans src/content/types-de-cartes/.
  * Ce module ne lit pas les fichiers (voir contenu.ts) : il sert aussi à l'aperçu du CMS.
  */
 
@@ -40,8 +40,6 @@ export type Carte = {
 };
 
 export type TypeCarte = { slug: string; nom: string; ordre?: number; couleur?: string };
-
-export type SetCartes = { slug: string; nom: string; description?: string; cartes?: string[] };
 
 export const COMPLEXITES = { aucune: 'Aucune', facile: 'Facile', moyen: 'Moyen', complexe: 'Complexe' } as const;
 export const MATURITES = { esquisse: 'Brouillon', encours: 'En cours', aboutie: 'Aboutie' } as const;

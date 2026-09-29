@@ -7,8 +7,6 @@ import { lienCarte, type Carte, type ReglagesCartes, type TypeCarte } from '../l
 export type CartesProps = {
   fond?: Fond;
   titre?: string;
-  /** Réglage éditable : n'afficher que les cartes d'un set (toutes si vide). */
-  set?: string;
   /** Injectés au rendu (collections Cartes, Types de cartes, réglages) — pas édités dans le bloc. */
   cartes?: Carte[];
   types?: TypeCarte[];
@@ -80,16 +78,5 @@ export const cartes: DefinitionBloc<CartesProps> = {
   fields: [
     champFond,
     { name: 'titre', label: 'Titre', widget: 'string', required: false },
-    {
-      name: 'set',
-      label: 'Set de cartes',
-      widget: 'relation',
-      collection: 'sets-de-cartes',
-      value_field: '{{slug}}',
-      search_fields: ['nom'],
-      display_fields: ['{{nom}}'],
-      required: false,
-      hint: 'Laissez vide pour afficher toutes les cartes (collection « Cartes »). Les libellés se règlent dans Réglages du site → Cartes QR.',
-    },
   ],
 };

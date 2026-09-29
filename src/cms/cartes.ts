@@ -1,5 +1,5 @@
 /**
- * Collections Sveltia des cartes QR : reprise complète du formulaire Bazar « QrCards » (et « Sets de cartes »)
+ * Collections Sveltia des cartes QR : reprise complète du formulaire Bazar « QrCards »
  * de reconnexion.coop. Voir src/lib/cartes.ts pour le modèle de données.
  */
 import type { Champ } from '../blocs/types';
@@ -131,28 +131,6 @@ export const collectionsCartes = [
       { name: 'couleur', label: 'Couleur par défaut des cartes', widget: 'color', required: false },
     ],
     { identifier_field: 'nom', summary: '{{nom}}', sortable_fields: ['ordre', 'nom'] },
-  ),
-  collection(
-    'sets-de-cartes',
-    'Sets de cartes',
-    'Set de cartes',
-    [
-      { name: 'nom', label: 'Nom du set', widget: 'string' },
-      slug,
-      { name: 'description', label: 'Description', widget: 'text', required: false },
-      {
-        name: 'cartes',
-        label: 'Cartes du set',
-        widget: 'relation',
-        collection: 'cartes',
-        value_field: '{{slug}}',
-        search_fields: ['titre'],
-        display_fields: ['{{titre}}'],
-        multiple: true,
-        required: false,
-      },
-    ],
-    { identifier_field: 'nom', summary: '{{nom}}' },
   ),
 ];
 

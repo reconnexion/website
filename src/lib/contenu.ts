@@ -6,7 +6,7 @@ import { parse } from 'yaml';
 import type { DonneesBloc } from '../blocs/registre';
 import { trierApplications, type Application } from './applications';
 import { trierReseaux, type Reseau } from './reseaux';
-import { trierCartes, trierTypes, type Carte, type ReglagesCartes, type SetCartes, type TypeCarte } from './cartes';
+import { trierCartes, trierTypes, type Carte, type ReglagesCartes, type TypeCarte } from './cartes';
 
 export type Page = {
   titre: string;
@@ -96,11 +96,6 @@ const fichiersTypesCartes = import.meta.glob('../content/types-de-cartes/*.yml',
   import: 'default',
   eager: true,
 }) as Record<string, string>;
-const fichiersSetsCartes = import.meta.glob('../content/sets-de-cartes/*.yml', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-}) as Record<string, string>;
 
 const lire = <T>(fichiers: Record<string, string>) => Object.values(fichiers).map((brut) => sansChampsVides(parse(brut) as T));
 
@@ -110,7 +105,6 @@ export const tousLesTypesDeCartes = (): TypeCarte[] => trierTypes(lire<TypeCarte
 /** Cartes QR, triées par type puis par titre. */
 export const toutesLesCartes = (): Carte[] => trierCartes(lire<Carte>(fichiersCartes), tousLesTypesDeCartes());
 
-export const tousLesSetsDeCartes = (): SetCartes[] => lire<SetCartes>(fichiersSetsCartes);
 
 const fichierReglagesCartes = import.meta.glob('../content/reglages-cartes.yml', {
   query: '?raw',
