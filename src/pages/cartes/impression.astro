@@ -1,6 +1,6 @@
 ---
 // Vue impression des cartes QR : recto et verso côte à côte, pages A4.
-// Paramètres d'URL (appliqués dans le navigateur) : ?carte=<slug> (une carte), ?type=<slug>, ?favoris.
+// Paramètres d'URL (appliqués dans le navigateur) : ?carte=<slug> (une carte), ?type=<slug>.
 import Base from '../../layouts/Base.astro';
 import { Printer } from 'lucide-react';
 import { Recto, Verso } from '../../blocs/_carte';
@@ -35,17 +35,14 @@ const site = Astro.site!.href;
     </div>
   </section>
   <script>
-    import { lireFavoris } from '../../lib/favoris';
     // Sélection des cartes à imprimer selon l'URL.
     const p = new URLSearchParams(location.search);
     const carte = p.get('carte');
     const type = p.get('type');
-    const favoris = p.has('favoris') ? lireFavoris() : undefined;
     document.querySelectorAll<HTMLElement>('.paire-carte').forEach((el) => {
       const garder =
         (!carte || el.dataset.carte === carte) &&
-        (!type || el.dataset.typeCarte === type) &&
-        (!favoris || favoris.includes(el.dataset.carte!));
+        (!type || el.dataset.typeCarte === type);
       el.hidden = !garder;
     });
   </script>

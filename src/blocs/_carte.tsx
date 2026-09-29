@@ -7,7 +7,7 @@ const LOGO = '/images/cartes/logo-qr-cartes.svg';
 const LOGO_CC_BY_SA = '/images/cartes/cc-by-sa.svg';
 
 /** Taille du titre selon sa longueur (la zone de titre a une hauteur fixe). */
-const classeTitre = (titre: string) => (titre.length > 34 ? 'titre-xxl' : titre.length > 20 ? 'titre-xl' : '');
+const classeTitre = (titre: string) => (titre.length > 40 ? 'titre-xxl' : titre.length > 26 ? 'titre-xl' : '');
 
 type Props = { carte: Carte; types: TypeCarte[]; site: string };
 
@@ -46,7 +46,7 @@ export function Recto({ carte, types }: Omit<Props, 'site'>) {
   );
 }
 
-export function Verso({ carte, types, site }: Props) {
+export function Verso({ carte, types, site, sansLien }: Props & { sansLien?: boolean }) {
   const qr = urlQr(carte, site);
   const lien = new URL(lienCarte(carte), site);
   return (
@@ -59,7 +59,8 @@ export function Verso({ carte, types, site }: Props) {
       <div className="carte-qr-pied">
         <img className="carte-qr-logo" src={LOGO} alt="" />
         <div className="carte-qr-lien">
-          <a href={lien.href}>{`${lien.host}${lien.pathname}`}</a>
+          {/* Pas de lien imbriqué quand toute la carte est déjà un lien (liste des cartes). */}
+          {sansLien ? <span>{`${lien.host}${lien.pathname}`}</span> : <a href={lien.href}>{`${lien.host}${lien.pathname}`}</a>}
           {(!carte.licence || carte.licence === 'CC-BY-SA') && <img src={LOGO_CC_BY_SA} alt={carte.licence ?? 'CC-BY-SA'} />}
           {carte.licence && carte.licence !== 'CC-BY-SA' && <span>{carte.licence}</span>}
         </div>
@@ -69,14 +70,21 @@ export function Verso({ carte, types, site }: Props) {
   );
 }
 
-/** Carte retournable : le verso apparaît au survol (ou au toucher sur mobile). */
-export function CarteRetournable(props: Props) {
-  return (
+/** Carte retournable : le verso apparaît au survol (ou au focus). Avec `lien`, toute la carte est un lien. */
+export function CarteRetournable({ lien, ...props }: Props & { lien?: string }) {
+  const faces = (
+    <div className="carte-qr-faces">
+      <Recto carte={props.carte} types={props.types} />
+      <Verso {...props} sansLien={!!lien} />
+    </div>
+  );
+  return lien ? (
+    <a className="carte-qr-retournable block" href={lien}>
+      {faces}
+    </a>
+  ) : (
     <div className="carte-qr-retournable" tabIndex={0}>
-      <div className="carte-qr-faces">
-        <Recto carte={props.carte} types={props.types} />
-        <Verso {...props} />
-      </div>
+      {faces}
     </div>
   );
 }

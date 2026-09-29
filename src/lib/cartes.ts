@@ -76,13 +76,8 @@ export type ReglagesCartes = {
   titre_liste?: string;
   lien_liste?: string;
   texte_tous?: string;
-  texte_favoris?: string;
-  texte_voir?: string;
   texte_imprimer?: string;
-  texte_favori_ajouter?: string;
-  texte_favori_retirer?: string;
   texte_vue_impression?: string;
-  texte_ajouter?: string;
   texte_noir_et_blanc?: string;
   texte_lancer_impression?: string;
   texte_vide?: string;

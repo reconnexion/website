@@ -233,14 +233,15 @@
   padding-inline: 1mm;
   text-align: center;
   font-family: var(--f-titre);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
+  line-height: 1.1;
   text-transform: uppercase;
   &.titre-xl {
-    font-size: 15px;
+    font-size: 18px;
   }
   &.titre-xxl {
-    font-size: 12px;
+    font-size: 15px;
   }
 }
 .carte-qr-visuel {
@@ -346,9 +347,9 @@
   }
 }
 
-/* Filtre par type / favoris de la liste des cartes (sans JS pour les types ; data-favori posé par script). */
-.filtre-cartes:has(input[name='type-carte'][value='favoris']:checked) [data-carte]:not([data-favori]) {
-  display: none;
+/* Liste des cartes : légèrement réduites à l'écran pour tenir à 4 par ligne (l'impression garde le format réel). */
+.liste-cartes .carte-qr-retournable {
+  zoom: 0.95;
 }
 
 /* Vue impression : recto et verso côte à côte, pages A4 */

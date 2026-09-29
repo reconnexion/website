@@ -32,9 +32,7 @@ const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
     <script>
       // Rétablit les adresses e-mail masquées aux robots (cf. src/lib/courriel.ts).
       import { devoilerCourriels } from '../lib/courriel';
-      import { initialiserFavoris } from '../lib/favoris';
       devoilerCourriels();
-      initialiserFavoris();
     </script>
   </body>
 </html>
