@@ -19,6 +19,7 @@ type LigneGrist = { id: number; fields: Record<string, unknown> };
 
 const texte = (v: unknown) => (typeof v === 'string' && v.trim() ? v.trim() : undefined);
 
+/** Grist non configuré : données d'exemple en développement, rien en production. */
 const gristConfigure = () => {
   const { GRIST_URL, GRIST_DOC_ID, GRIST_API_KEY } = process.env;
   return !!(GRIST_URL && GRIST_DOC_ID && GRIST_API_KEY);
@@ -95,7 +96,7 @@ export async function lireSocietaires(
   table = 'Contacts',
   tableOrganisations = 'Organisations',
 ): Promise<{ societaires: Societaire[]; colleges: string[] }> {
-  if (!gristConfigure()) return societairesDemo;
+  if (!gristConfigure()) return import.meta.env.DEV ? societairesDemo : { societaires: [], colleges: [] };
   const [lignes, organisations, ordre] = await Promise.all([
     lireTable(table, doc),
     tableOrganisations ? lireTable(tableOrganisations, doc) : Promise.resolve([]),
@@ -150,7 +151,7 @@ const urlImage = (doc: string | undefined, table: string, colonne: string, id: n
  *   Public (case à cocher, facultative).
  */
 export async function lirePersonnes(table = 'Equipe'): Promise<Personne[]> {
-  if (!gristConfigure()) return personnesDemo;
+  if (!gristConfigure()) return import.meta.env.DEV ? personnesDemo : [];
   return (await lignesPubliees(table))
     .map((r) => {
       const [photoJointe] = piecesJointes(r.fields.Photo);
@@ -202,7 +203,7 @@ export async function lireImage(
  * Toutes les lignes sont publiées, sauf celles dont la colonne facultative Public est décochée.
  */
 export async function lireOrganisations(doc?: string, table = 'Organisations'): Promise<Logo[]> {
-  if (!gristConfigure()) return organisationsDemo;
+  if (!gristConfigure()) return import.meta.env.DEV ? organisationsDemo : [];
   return (await lignesPubliees(table, doc))
     .map((r) => {
       const [logo] = piecesJointes(r.fields.Logo);
@@ -222,7 +223,7 @@ export async function lireOrganisations(doc?: string, table = 'Organisations'): 
  *                    (la photo seulement si la personne est publiée, cf. colonne Public)
  */
 export async function lireRoles(): Promise<Role[]> {
-  if (!gristConfigure()) return rolesDemo;
+  if (!gristConfigure()) return import.meta.env.DEV ? rolesDemo : [];
   const [roles, personnes, publiees] = await Promise.all([
     lireTable('Projects'),
     lireTable('People'),
