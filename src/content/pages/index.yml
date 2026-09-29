@@ -3,56 +3,70 @@ slug: index
 description: Faciliter l'émergence d'un réseau social universel favorisant la rencontre, l'entraide et la coopération.
 sections:
   - type: bandeau
+    surtitre: ''
     titre: Un réseau social universel
     texte: qui favorise la rencontre, l'entraide et la coopération
     image: /images/foret.webp
+    bouton_texte: ''
+    bouton_lien: ''
   - type: annonce
-    etiquette: 26-27 novembre · Lyon
     titre: Hackathon des Applications Citoyennes
     texte: Découvrez le projet et rencontrez les personnes qui le portent en participant au hackathon.
     bouton_texte: Plus d'informations
     bouton_lien: /hackathon
+    icone: ''
+    etiquette: 26-27 novembre · Lyon
   - type: video
-    fond: gris
     titre: Comprendre le Réseau Social Universel
+    fond: gris
     url: https://videos-libr.es/w/4LSPGAteyYj9P5uv4Cy33i?start=4
+    pleine_largeur: true
     legende: Enregistrement du webinaire du 12 juin 2025. ([Voir les slides](https://www.canva.com/design/DAGpw47T3vo/BCw0UPDh2rF7GTFVLlBcDA/edit))
   - type: section_couleur
-    fond: vert
     titre: Notre Raison d'Être
     texte: |-
       Faciliter l'émergence d'un Réseau Social Universel
       favorisant la rencontre, l'entraide et la coopération
+    bouton_texte: ''
+    bouton_lien: ''
+    fond: vert
+    alignement: centre
   - type: equipe
     titre: Notre équipe opérationnelle
-    table: People
     bouton_texte: Tous les sociétaires
     bouton_lien: /societaires
+    table: People
   - type: annonce
     titre: Newsletter
     texte: Suivez l'actualités et recevez les invitations aux temps forts.
     bouton_texte: M'abonner à la Newsletter
     bouton_lien: https://b144bca4.sibforms.com/serve/MUIFAMvMggADvfUsaaPvIeGfL_OR2_ub7mDxgo197al-8br9KKpRQ6fsnnyxEXSFJS-CTI0iB6G3Skf1tAsOCzHbQ_0ei08gm_a0nWTOAfq5lXCV1UWNXytGDdli7g09YW8kcnXqZeL5uROxSnsO1XSLzKTeplhqZJECpxmKaJ_Nslpf6GColxZWrAiwwJO1wbUnfGCoQFkTvi93
+    icone: ''
+    etiquette: ''
   - type: applications
-    fond: blanc
     titre: Applications disponibles
+    fond: blanc
+    texte_lien: ''
+    une_par_ligne: false
     selection:
       - bienvenue-chez-moi
       - lentraide
       - portejunes
       - la-carte-des-savoirs
   - type: texte_image
-    fond: bleu
+    surtitre: ''
     titre: Forum de discussion
     texte: |-
       Si vous avez des questions, des suggestions ou si vous souhaitez contribuer à Reconnexion, nous vous invitons à vous rendre sur notre [forum de discussion](https://forum.reconnexion.coop) qui commence tout juste à s’animer.
 
       Se créer un compte sur le forum est un moyen simple de rester au courant des nouveautés, puisque cela vous permet de recevoir (au maximum une fois par semaine) un petit récapitulatif des messages les plus populaires.
     image: /images/accueil/forum.webp
+    fond: bleu
     image_alt: Page d'accueil du forum de discussion de Reconnexion
     inverse: false
     image_large: true
   - type: colonnes
+    titre: ''
     fond: blanc
     colonnes:
       - titre: Je veux rencontrer des gens
