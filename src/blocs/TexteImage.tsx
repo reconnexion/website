@@ -27,8 +27,8 @@ export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, imag
   return (
     <Bloc fond={fond}>
       <div className={`grid items-center gap-e5 ${colonnes(inverse, image_large, image_logo)}`}>
-        {/* Texte à droite (image à gauche) : calé contre le bord droit du contenu. */}
-        <div className={`max-w-texte${inverse ? ' md:order-2 md:justify-self-end' : ''}`}>
+        {/* Texte à droite (image à gauche) : calé contre le bord droit du contenu et aligné à droite. */}
+        <div className={`max-w-texte${inverse ? ' md:order-2 md:justify-self-end md:text-right' : ''}`}>
           <Surtitre texte={surtitre} />
           <TitreBloc titre={titre} />
           <Paragraphes texte={texte} />
