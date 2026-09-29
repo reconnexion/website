@@ -18,12 +18,12 @@ sections:
     sous_titre: Votre application conçue, réalisée et déployée sur les territoires
     titre_liste: Ce que comprend le forfait
     elements:
-      - texte: Une réunion d'évaluation de faisabilité (gratuite / sans engagement)
+      - texte: Une réunion d'évaluation (gratuite / sans engagement)
       - texte: Jusqu'à trois itérations de conception de maquettes
       - texte: Réalisation de l'application par un développeur (avec IA)
       - texte: Mise en ligne de l'application sur votre nom de domaine
       - texte: Promotion de l'application sur Reconnexion
-      - texte: Déploiement de l'application sur 3 territoires-test via des ambassadeurs
+      - texte: Déploiement de l'application sur 3 territoires via des ambassadeurs
     mention: ''
   - type: texte_image
     surtitre: ''

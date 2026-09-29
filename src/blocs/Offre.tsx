@@ -29,7 +29,7 @@ export function Offre({
   return (
     <Bloc fond={fond}>
       <SurFondClair>
-        <div className="mx-auto max-w-[52rem] bg-fond p-e5 text-center text-noir sm:py-e6">
+        <div className="mx-auto w-fit max-w-[52rem] bg-fond p-e5 text-center text-noir sm:px-e6">
           {nom && <p className="text-s font-bold tracking-widest text-vert-fonce uppercase">{nom}</p>}
           <p className="mt-e2 font-titre text-xxl leading-none font-semibold">{prix}</p>
           {sous_titre && <p className="mx-auto mt-e3 text-l text-gris">{sous_titre}</p>}
@@ -37,11 +37,11 @@ export function Offre({
             <>
               <div className="divider my-e5" />
               {titre_liste && <h2 className="mb-e4 text-l">{titre_liste}</h2>}
-              <ul className="mx-auto flex max-w-[40rem] flex-col gap-e3 text-left">
+              <ul className="mx-auto flex flex-col gap-e3 text-left">
                 {elements.map((e, i) => (
-                  <li key={i} className="flex items-start gap-e3">
-                    <span className="mt-0.5 grid size-6 shrink-0 place-items-center bg-primary text-primary-content">
-                      <Check size={16} strokeWidth={3} aria-hidden="true" />
+                  <li key={i} className="flex items-start gap-e3 text-ml">
+                    <span className="mt-0.5 grid size-7 shrink-0 place-items-center bg-primary text-primary-content">
+                      <Check size={18} strokeWidth={3} aria-hidden="true" />
                     </span>
                     <span>{e.texte}</span>
                   </li>
