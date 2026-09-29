@@ -37,6 +37,10 @@ plutôt qu'une chaîne en dur. Seules exceptions : formats de date (Intl) et att
   Leur page `/applications/<slug>` est générée par `src/pages/applications/[app].astro` (dès qu'une fiche a
   des captures ou des informations), et le bloc Applications ne stocke que la sélection (`selection`) :
   nom, résumé et vignette sont injectés au rendu par `Section.astro`.
+- Cartes QR (reprise des QrCards Bazar) : collections `cartes`, `types-de-cartes`, `sets-de-cartes`
+  (`src/cms/cartes.ts`, modèle dans `src/lib/cartes.ts`), libellés dans `src/content/reglages-cartes.yml`.
+  Liste = bloc « Cartes QR » ; fiches `/cartes/<slug>` (cible du QR code) et `/cartes/impression`
+  générées par `src/pages/cartes/`. Nouveau type de carte = une fiche dans « Types de cartes », rien à coder.
 - Idem pour les réseaux (`src/content/reseaux/*.yml`, « Réseaux » dans le CMS, bloc Réseaux).
 - Même principe pour toute donnée affichée à plusieurs endroits : une collection, et des blocs qui la référencent.
 - Images Grist (photos, logos) : jamais d'URL Grist dans le HTML (la clé d'API est requise) ; elles passent par

@@ -1,0 +1,27 @@
+# Libellés des pages de cartes QR (liste, fiche d'une carte, vue impression).
+titre_liste: Cartes
+lien_liste: /cartes
+texte_tous: Toutes
+texte_favoris: Favoris
+texte_voir: Voir la fiche
+texte_imprimer: Imprimer
+texte_favori_ajouter: Ajouter aux favoris
+texte_favori_retirer: Retirer des favoris
+texte_vue_impression: Vue impression
+texte_ajouter: Ajouter une carte
+texte_noir_et_blanc: Noir et blanc
+texte_lancer_impression: Lancer l'impression
+texte_vide: Aucune carte pour le moment.
+libelles:
+  accroche: Accroche
+  essentiel: L'essentiel
+  description: Contenus complémentaires
+  mots_cles: Mots clés
+  cartes_liees: Cartes liées
+  adresse: Adresse
+  dates: Dates
+  contributeurices: Contributeurices
+  ressources: Sources, références
+  licence: Licence
+  complexite: Complexité
+  maturite: État d'avancement

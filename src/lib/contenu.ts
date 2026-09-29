@@ -6,6 +6,7 @@ import { parse } from 'yaml';
 import type { DonneesBloc } from '../blocs/registre';
 import { trierApplications, type Application } from './applications';
 import { trierReseaux, type Reseau } from './reseaux';
+import { trierCartes, trierTypes, type Carte, type ReglagesCartes, type SetCartes, type TypeCarte } from './cartes';
 
 export type Page = {
   titre: string;
@@ -85,6 +86,39 @@ const fichiersReseaux = import.meta.glob('../content/reseaux/*.yml', {
 export function tousLesReseaux(): Reseau[] {
   return trierReseaux(Object.values(fichiersReseaux).map((brut) => sansChampsVides(parse(brut) as Reseau)));
 }
+
+const fichiersCartes = import.meta.glob('../content/cartes/*.yml', { query: '?raw', import: 'default', eager: true }) as Record<
+  string,
+  string
+>;
+const fichiersTypesCartes = import.meta.glob('../content/types-de-cartes/*.yml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+const fichiersSetsCartes = import.meta.glob('../content/sets-de-cartes/*.yml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+const lire = <T>(fichiers: Record<string, string>) => Object.values(fichiers).map((brut) => sansChampsVides(parse(brut) as T));
+
+/** Types de cartes (Fléaux, Solutions…), dans l'ordre choisi. */
+export const tousLesTypesDeCartes = (): TypeCarte[] => trierTypes(lire<TypeCarte>(fichiersTypesCartes));
+
+/** Cartes QR, triées par type puis par titre. */
+export const toutesLesCartes = (): Carte[] => trierCartes(lire<Carte>(fichiersCartes), tousLesTypesDeCartes());
+
+export const tousLesSetsDeCartes = (): SetCartes[] => lire<SetCartes>(fichiersSetsCartes);
+
+const fichierReglagesCartes = import.meta.glob('../content/reglages-cartes.yml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+export const reglagesCartes = (): ReglagesCartes => lire<ReglagesCartes>(fichierReglagesCartes)[0] ?? {};
 
 /** Documents Grist cités dans les blocs des pages (champ `document`) : ceux dont le site peut servir les images. */
 export function documentsGrist(): string[] {

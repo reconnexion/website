@@ -1,0 +1,21 @@
+---
+// Fiche de chaque carte QR, générée depuis la collection « Cartes » (une carte = une page, cible du QR code).
+import Base from '../../layouts/Base.astro';
+import { FicheCarte } from '../../blocs/_fiche-carte';
+import { toutesLesCartes, tousLesTypesDeCartes, reglagesCartes } from '../../lib/contenu';
+
+export function getStaticPaths() {
+  return toutesLesCartes().map((carte) => ({ params: { carte: carte.slug }, props: { carte } }));
+}
+
+const { carte } = Astro.props;
+---
+<Base titre={carte.titre} description={carte.accroche}>
+  <FicheCarte
+    carte={carte}
+    types={tousLesTypesDeCartes()}
+    cartes={toutesLesCartes()}
+    reglages={reglagesCartes()}
+    site={Astro.site!.href}
+  />
+</Base>

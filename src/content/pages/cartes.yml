@@ -1,0 +1,10 @@
+titre: Cartes
+slug: cartes
+description: Les cartes du Réseau Social Universel — fléaux des réseaux sociaux actuels et solutions — à consulter, retourner et imprimer.
+sections:
+  - type: bandeau
+    surtitre: Le Réseau Social Universel
+    titre: Cartes
+    texte: Passez la souris sur une carte pour la retourner. Chaque carte a un QR code qui renvoie vers sa fiche.
+  - type: cartes
+    fond: blanc

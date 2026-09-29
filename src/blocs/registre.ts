@@ -15,6 +15,7 @@ import { roles } from './Roles';
 import { societaires } from './Societaires';
 import { partenaires } from './Partenaires';
 import { reseaux } from './Reseaux';
+import { cartes } from './Cartes';
 import { sectionCouleur } from './SectionCouleur';
 import { annonce } from './Annonce';
 import { video } from './Video';
@@ -36,6 +37,7 @@ export const blocs: DefinitionBloc[] = [
   societaires,
   partenaires,
   reseaux,
+  cartes,
   agenda,
   appel,
 ];

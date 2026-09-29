@@ -16,7 +16,7 @@ const correspond = (lien?: string) => !!lien && (lien === chemin || (lien !== '/
 const estActif = (l: LienMenu) => correspond(l.lien) || !!l.sous_menu?.some((s) => correspond(s.lien));
 const externe = (lien?: string) => !!lien && /^https?:\/\//.test(lien);
 ---
-<header class="sticky top-0 z-20 bg-barre">
+<header class="sticky top-0 z-20 bg-barre print:hidden">
   <div class="navbar min-h-20 gap-e3 px-e3 py-e3 sm:px-e5">
     <div class="navbar-start w-auto shrink-0">
       <a href="/" class="block">

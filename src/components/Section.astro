@@ -7,7 +7,7 @@ import RolesIle from './RolesIle.astro';
 import SocietairesIle from './SocietairesIle.astro';
 import PartenairesIle from './PartenairesIle.astro';
 import Chargement from './Chargement.astro';
-import { toutesLesApplications, tousLesReseaux } from '../lib/contenu';
+import { toutesLesApplications, tousLesReseaux, toutesLesCartes, tousLesTypesDeCartes, tousLesSetsDeCartes, reglagesCartes } from '../lib/contenu';
 import { logoReseau, selectionnerReseaux } from '../lib/reseaux';
 import { carteApplication, selectionnerApplications } from '../lib/applications';
 
@@ -19,13 +19,26 @@ const { section, texteChargement } = Astro.props;
 const { type, ...donnees } = section;
 const Composant = blocsParNom[type]?.Component;
 
+// Cartes d'un set (dans l'ordre du set), ou toutes.
+const filtrerParSet = <T extends { slug: string }>(cartes: T[], set: unknown) => {
+  const s = typeof set === 'string' && set ? tousLesSetsDeCartes().find((x) => x.slug === set) : undefined;
+  return s ? (s.cartes ?? []).map((slug) => cartes.find((c) => c.slug === slug)).filter((c): c is T => !!c) : cartes;
+};
+
 // Données partagées injectées au rendu (elles ne sont pas recopiées dans chaque page).
 const injecte =
   type === 'applications'
     ? { applications: selectionnerApplications(toutesLesApplications(), donnees.selection).map(carteApplication) }
     : type === 'reseaux'
       ? { reseaux: selectionnerReseaux(tousLesReseaux(), donnees.selection).map(logoReseau) }
-      : {};
+      : type === 'cartes'
+        ? {
+            cartes: filtrerParSet(toutesLesCartes(), donnees.set),
+            types: tousLesTypesDeCartes(),
+            reglages: reglagesCartes(),
+            site: Astro.site?.href,
+          }
+        : {};
 ---
 {/* Blocs alimentés par des données live : server islands. */}
 {type === 'agenda' ? (

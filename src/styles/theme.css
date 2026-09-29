@@ -189,3 +189,217 @@
 .filtre-colleges:has(input[name='college'][value='9']:checked) [data-colleges]:not([data-colleges~='9']) {
   display: none;
 }
+
+/* ---------- Cartes QR (reprise des QrCards de YesWiki) ----------
+   Format d'impression fixe en mm ; la couleur de fond vient de la carte (champ couleur ou type). */
+.carte-qr {
+  --carte-l: 75mm;
+  --carte-h: 125mm;
+  --carte-marge: 5mm;
+  width: var(--carte-l);
+  height: var(--carte-h);
+  padding: var(--carte-marge);
+  display: grid;
+  grid-template-columns: 1fr;
+  color: var(--c-noir);
+  border: 1px solid rgb(0 0 0 / 0.3);
+  line-height: 1.15;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+
+  &.recto {
+    grid-template-rows: 5mm 20mm 50mm 20mm 20mm;
+  }
+  &.verso {
+    grid-template-rows: 5mm 20mm 70mm 20mm;
+  }
+  & > * {
+    background: var(--c-fond);
+    overflow: hidden;
+  }
+}
+.carte-qr-entete {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 1mm;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.carte-qr-titre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1mm;
+  text-align: center;
+  font-family: var(--f-titre);
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  &.titre-xl {
+    font-size: 15px;
+  }
+  &.titre-xxl {
+    font-size: 12px;
+  }
+}
+.carte-qr-visuel {
+  display: grid;
+  place-items: center;
+  padding: 2mm;
+  & img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+.carte-qr-accroche {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1mm 2mm;
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+}
+.carte-qr-essentiel {
+  padding: 2mm;
+  font-size: 12px;
+  & .texte > * + * {
+    margin-top: 1.5mm;
+  }
+}
+.carte-qr-pied {
+  margin-top: var(--carte-marge);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1mm;
+  padding: 1mm;
+}
+.carte-qr-logo {
+  width: 10mm;
+  max-height: 13mm;
+}
+.carte-qr-picto {
+  width: 12mm;
+  text-align: center;
+  font-size: 7px;
+  text-transform: uppercase;
+  word-break: break-word;
+  & img {
+    max-width: 9mm;
+    margin: 0 auto 2px;
+  }
+}
+.carte-qr-lien {
+  width: 36mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1mm;
+  text-align: center;
+  font-size: 8px;
+  word-break: break-all;
+  & img {
+    width: 12mm;
+  }
+}
+.carte-qr-code {
+  width: 14mm;
+  & svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Retournement au survol / au focus (clavier, toucher) */
+.carte-qr-retournable {
+  width: 75mm;
+  height: 125mm;
+  perspective: 1200px;
+  outline-offset: 4px;
+}
+.carte-qr-faces {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  & > .carte-qr {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+  }
+  & > .verso {
+    transform: rotateY(180deg);
+  }
+}
+.carte-qr-retournable:hover .carte-qr-faces,
+.carte-qr-retournable:focus-within .carte-qr-faces {
+  transform: rotateY(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .carte-qr-faces {
+    transition: none;
+  }
+}
+
+/* Filtre par type / favoris de la liste des cartes (sans JS pour les types ; data-favori posé par script). */
+.filtre-cartes:has(input[name='type-carte'][value='favoris']:checked) [data-carte]:not([data-favori]) {
+  display: none;
+}
+
+/* Vue impression : recto et verso côte à côte, pages A4 */
+.impression-cartes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6mm;
+  & .paire-carte {
+    display: flex;
+    break-inside: avoid;
+  }
+  & .verso {
+    border-left: none;
+  }
+}
+body:has(input[name='noir-et-blanc']:checked) .impression-cartes {
+  filter: grayscale(1);
+  & .carte-qr {
+    background-color: transparent !important;
+  }
+}
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+  .impression-cartes {
+    gap: 4mm;
+  }
+}
+
+/* Filtre par type de carte (jusqu'à 20 types). */
+.filtre-cartes:has(input[name='type-carte'][value='0']:checked) [data-carte]:not([data-type='0']),
+.filtre-cartes:has(input[name='type-carte'][value='1']:checked) [data-carte]:not([data-type='1']),
+.filtre-cartes:has(input[name='type-carte'][value='2']:checked) [data-carte]:not([data-type='2']),
+.filtre-cartes:has(input[name='type-carte'][value='3']:checked) [data-carte]:not([data-type='3']),
+.filtre-cartes:has(input[name='type-carte'][value='4']:checked) [data-carte]:not([data-type='4']),
+.filtre-cartes:has(input[name='type-carte'][value='5']:checked) [data-carte]:not([data-type='5']),
+.filtre-cartes:has(input[name='type-carte'][value='6']:checked) [data-carte]:not([data-type='6']),
+.filtre-cartes:has(input[name='type-carte'][value='7']:checked) [data-carte]:not([data-type='7']),
+.filtre-cartes:has(input[name='type-carte'][value='8']:checked) [data-carte]:not([data-type='8']),
+.filtre-cartes:has(input[name='type-carte'][value='9']:checked) [data-carte]:not([data-type='9']),
+.filtre-cartes:has(input[name='type-carte'][value='10']:checked) [data-carte]:not([data-type='10']),
+.filtre-cartes:has(input[name='type-carte'][value='11']:checked) [data-carte]:not([data-type='11']),
+.filtre-cartes:has(input[name='type-carte'][value='12']:checked) [data-carte]:not([data-type='12']),
+.filtre-cartes:has(input[name='type-carte'][value='13']:checked) [data-carte]:not([data-type='13']),
+.filtre-cartes:has(input[name='type-carte'][value='14']:checked) [data-carte]:not([data-type='14']),
+.filtre-cartes:has(input[name='type-carte'][value='15']:checked) [data-carte]:not([data-type='15']),
+.filtre-cartes:has(input[name='type-carte'][value='16']:checked) [data-carte]:not([data-type='16']),
+.filtre-cartes:has(input[name='type-carte'][value='17']:checked) [data-carte]:not([data-type='17']),
+.filtre-cartes:has(input[name='type-carte'][value='18']:checked) [data-carte]:not([data-type='18']),
+.filtre-cartes:has(input[name='type-carte'][value='19']:checked) [data-carte]:not([data-type='19']) {
+  display: none;
+}
