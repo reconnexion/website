@@ -195,7 +195,7 @@
 .carte-qr {
   --carte-l: 75mm;
   --carte-h: 125mm;
-  --carte-marge: 5mm;
+  --carte-marge: 4mm; /* bordure colorée et espace avant le pied de carte */
   width: var(--carte-l);
   height: var(--carte-h);
   padding: var(--carte-marge);
@@ -207,11 +207,12 @@
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 
+  /* Hauteurs des zones : 125mm - 2 × 4mm de bordure = 117mm */
   &.recto {
-    grid-template-rows: 5mm 20mm 50mm 20mm 20mm;
+    grid-template-rows: 5mm 20mm 52mm 20mm 20mm;
   }
   &.verso {
-    grid-template-rows: 5mm 20mm 70mm 20mm;
+    grid-template-rows: 5mm 20mm 72mm 20mm;
   }
   & > * {
     background: var(--c-fond);
@@ -220,8 +221,9 @@
 }
 .carte-qr-entete {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding-inline: 1mm;
+  padding: 0.5mm 2mm 0;
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
