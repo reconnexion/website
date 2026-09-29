@@ -6,6 +6,7 @@
 import { blocs } from '../blocs/registre';
 import { nomsIcones } from '../lib/icones';
 import { champsApplication } from '../blocs/FicheApplication';
+import { collectionsCartes, fichierReglagesCartes } from './cartes';
 
 // Adresse publique du site : c'est lui qui sert la connexion GitHub (src/pages/api/auth.ts et callback.ts).
 const SITE = process.env.SITE_URL || 'https://new.reconnexion.coop';
@@ -93,6 +94,7 @@ export const config = {
         { name: 'site', label: 'Site web', widget: 'string', required: false },
       ],
     },
+    ...collectionsCartes,
     {
       name: 'reglages',
       label: 'Réglages du site',
@@ -143,6 +145,7 @@ export const config = {
             { name: 'texte_chargement', label: 'Texte pendant le chargement des données', widget: 'string', required: false },
           ],
         },
+        fichierReglagesCartes,
       ],
     },
   ],

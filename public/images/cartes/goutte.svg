@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="470 200 1060 1600" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Goutte (visuel de la carte « Fuites de données ») -->
+  <path d="M1000 252C1045 470 1190 690 1290 845C1410 1030 1479 1190 1479 1330C1479 1580 1260 1748 1000 1748C740 1748 521 1580 521 1330C521 1190 590 1030 710 845C810 690 955 470 1000 252Z"/>
+  <path d="M790 1012C735 1110 688 1240 693 1368"/>
+</svg>

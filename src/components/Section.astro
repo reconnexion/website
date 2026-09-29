@@ -7,7 +7,7 @@ import RolesIle from './RolesIle.astro';
 import SocietairesIle from './SocietairesIle.astro';
 import PartenairesIle from './PartenairesIle.astro';
 import Chargement from './Chargement.astro';
-import { toutesLesApplications, tousLesReseaux } from '../lib/contenu';
+import { toutesLesApplications, tousLesReseaux, toutesLesCartes, tousLesTypesDeCartes, reglagesCartes } from '../lib/contenu';
 import { logoReseau, selectionnerReseaux } from '../lib/reseaux';
 import { carteApplication, selectionnerApplications } from '../lib/applications';
 
@@ -25,7 +25,14 @@ const injecte =
     ? { applications: selectionnerApplications(toutesLesApplications(), donnees.selection).map(carteApplication) }
     : type === 'reseaux'
       ? { reseaux: selectionnerReseaux(tousLesReseaux(), donnees.selection).map(logoReseau) }
-      : {};
+      : type === 'cartes'
+        ? {
+            cartes: toutesLesCartes(),
+            types: tousLesTypesDeCartes(),
+            reglages: reglagesCartes(),
+            site: Astro.site?.href,
+          }
+        : {};
 ---
 {/* Blocs alimentés par des données live : server islands. */}
 {type === 'agenda' ? (

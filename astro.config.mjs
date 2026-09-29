@@ -8,6 +8,8 @@ import tailwindcss from '@tailwindcss/vite';
 // L'adaptateur Node sert uniquement aux server islands (`server:defer`)
 // et aux endpoints marqués `prerender = false` (données Grist / CalDAV).
 export default defineConfig({
+  // Adresse publique (QR codes des cartes, liens absolus).
+  site: process.env.SITE_URL || 'https://new.reconnexion.coop',
   adapter: node({ mode: 'standalone' }),
   integrations: [react()],
   vite: { plugins: [tailwindcss()] },

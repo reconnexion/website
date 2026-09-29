@@ -1,0 +1,49 @@
+---
+// Vue impression des cartes QR : recto et verso côte à côte, pages A4.
+// Paramètres d'URL (appliqués dans le navigateur) : ?carte=<slug> (une carte), ?type=<slug>.
+import Base from '../../layouts/Base.astro';
+import { Printer } from 'lucide-react';
+import { Recto, Verso } from '../../blocs/_carte';
+import { toutesLesCartes, tousLesTypesDeCartes, reglagesCartes } from '../../lib/contenu';
+
+const cartes = toutesLesCartes();
+const types = tousLesTypesDeCartes();
+const r = reglagesCartes();
+const site = Astro.site!.href;
+---
+<Base titre={r.texte_vue_impression ?? r.titre_liste ?? ''}>
+  <section class="bloc print:p-0">
+    <div class="conteneur print:w-full print:max-w-none">
+      <div class="mb-e5 flex flex-wrap items-center gap-e4 print:hidden">
+        <button type="button" class="btn btn-primary" onclick="window.print()">
+          <Printer size={18} aria-hidden="true" />
+          {r.texte_lancer_impression}
+        </button>
+        <label class="flex cursor-pointer items-center gap-e2">
+          <input type="checkbox" name="noir-et-blanc" class="checkbox checkbox-sm" />
+          {r.texte_noir_et_blanc}
+        </label>
+      </div>
+      <div class="impression-cartes">
+        {cartes.map((c) => (
+          <div class="paire-carte" data-carte={c.slug} data-type-carte={c.type}>
+            <Recto carte={c} types={types} />
+            <Verso carte={c} types={types} site={site} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <script>
+    // Sélection des cartes à imprimer selon l'URL.
+    const p = new URLSearchParams(location.search);
+    const carte = p.get('carte');
+    const type = p.get('type');
+    document.querySelectorAll<HTMLElement>('.paire-carte').forEach((el) => {
+      const garder =
+        (!carte || el.dataset.carte === carte) &&
+        (!type || el.dataset.typeCarte === type);
+      el.hidden = !garder;
+    });
+  </script>
+</Base>

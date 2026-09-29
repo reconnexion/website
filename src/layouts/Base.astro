@@ -24,7 +24,7 @@ const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
   <body>
     <Menu site={site} chemin={chemin} />
     <main><slot /></main>
-    <footer class="bg-barre py-e5 text-s text-gris">
+    <footer class="bg-barre py-e5 text-s text-gris print:hidden">
       <div class="conteneur flex flex-col items-center gap-e3 text-center">
         <Paragraphes texte={site.pied_de_page} />
       </div>

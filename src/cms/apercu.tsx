@@ -10,6 +10,10 @@ import type { ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { blocsParNom, type DonneesBloc } from '../blocs/registre';
 import { FicheApplication } from '../blocs/FicheApplication';
+import { FicheCarte } from '../blocs/_fiche-carte';
+import type { Carte, ReglagesCartes, TypeCarte } from '../lib/cartes';
+
+declare const __CARTES__: { cartes: Carte[]; types: TypeCarte[]; reglages: ReglagesCartes };
 
 declare global {
   interface Window {
@@ -86,3 +90,15 @@ const ApercuApplication = coquille((d) => (
 window.CMS.registerPreviewStyle('/admin/apercu.css');
 window.CMS.registerPreviewTemplate('pages', ApercuPage);
 window.CMS.registerPreviewTemplate('applications', ApercuApplication);
+
+// Carte QR : même rendu que sa fiche /cartes/<slug> (carte retournable au survol, QR code).
+const ApercuCarte = coquille((d) => (
+  <FicheCarte
+    carte={{ ...d, titre: d.titre ?? '', slug: d.slug || 'nouvelle-carte' } as Carte}
+    types={__CARTES__.types}
+    cartes={__CARTES__.cartes}
+    reglages={__CARTES__.reglages}
+    site={location.origin}
+  />
+));
+window.CMS.registerPreviewTemplate('cartes', ApercuCarte);
