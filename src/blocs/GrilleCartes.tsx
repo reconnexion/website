@@ -1,4 +1,4 @@
-import { Bloc, Paragraphes, TitreBloc, champFond, type Fond } from './_commun';
+import { Bloc, Boutons, Paragraphes, TitreBloc, champBoutons, champFond, type Fond } from './_commun';
 import type { DefinitionBloc } from './types';
 import { icones, nomsIcones } from '../lib/icones';
 
@@ -10,16 +10,28 @@ export type GrilleCartesProps = {
   texte?: string;
   colonnes?: '2' | '3' | '4';
   cartes?: Carte[];
+  boutons?: { texte: string; lien: string }[];
 };
 
 /** Classes écrites en entier pour Tailwind. */
 const classesColonnes = { '2': 'md:grid-cols-2', '3': 'md:grid-cols-2 lg:grid-cols-3', '4': 'md:grid-cols-2 lg:grid-cols-4' };
 
-/** Grille de cartes (avantages, services…) : icône facultative, titre, texte facultatif. */
-export function GrilleCartes({ fond = 'blanc', titre, texte, colonnes = '2', cartes = [] }: GrilleCartesProps) {
+/**
+ * Grille de cartes (avantages, services…) : icône facultative, titre, texte facultatif.
+ * Les boutons (ex. « En savoir plus ») sont en haut à droite, au niveau du titre ; en bas s'il n'y a pas de titre.
+ */
+export function GrilleCartes({ fond = 'blanc', titre, texte, colonnes = '2', cartes = [], boutons = [] }: GrilleCartesProps) {
+  const boutonsEnHaut = !!titre && boutons.length > 0;
   return (
     <Bloc fond={fond}>
-      <TitreBloc titre={titre} />
+      {boutonsEnHaut ? (
+        <div className="mb-e4 flex flex-wrap items-center justify-between gap-x-e4 gap-y-e3">
+          <TitreBloc titre={titre} className="mb-0!" />
+          <Boutons boutons={boutons} className="mt-0!" />
+        </div>
+      ) : (
+        <TitreBloc titre={titre} />
+      )}
       <Paragraphes texte={texte} className="mb-e4 max-w-texte" />
       <ul className={`grid gap-e4 ${classesColonnes[colonnes] ?? classesColonnes['2']}`}>
         {cartes.map((c, i) => {
@@ -39,6 +51,7 @@ export function GrilleCartes({ fond = 'blanc', titre, texte, colonnes = '2', car
           );
         })}
       </ul>
+      {!boutonsEnHaut && <Boutons boutons={boutons} />}
     </Bloc>
   );
 }
@@ -63,5 +76,6 @@ export const grilleCartes: DefinitionBloc<GrilleCartesProps> = {
         { name: 'texte', label: 'Texte', widget: 'text', required: false },
       ],
     },
+    champBoutons,
   ],
 };

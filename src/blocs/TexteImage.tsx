@@ -13,10 +13,20 @@ export type TexteImageProps = {
   image_logo?: boolean;
 };
 
+/**
+ * Colonnes (classes écrites en entier pour Tailwind) : l'image occupe 1/2 par défaut, 2/3 si « large »,
+ * 1/3 pour un logo. Avec `inverse`, l'image passe en première colonne.
+ */
+function colonnes(inverse?: boolean, image_large?: boolean, image_logo?: boolean) {
+  if (image_logo) return inverse ? 'md:grid-cols-[1fr_2fr]' : 'md:grid-cols-[2fr_1fr]';
+  if (image_large) return inverse ? 'md:grid-cols-[2fr_1fr]' : 'md:grid-cols-[1fr_2fr]';
+  return 'md:grid-cols-2';
+}
+
 export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, image_alt, inverse, image_large, image_logo }: TexteImageProps) {
   return (
     <Bloc fond={fond}>
-      <div className={`grid items-center gap-e5 ${image_large ? (inverse ? 'md:grid-cols-[2fr_1fr]' : 'md:grid-cols-[1fr_2fr]') : 'md:grid-cols-2'}`}>
+      <div className={`grid items-center gap-e5 ${colonnes(inverse, image_large, image_logo)}`}>
         <div className={`max-w-texte${inverse ? ' md:order-2' : ''}`}>
           <Surtitre texte={surtitre} />
           <TitreBloc titre={titre} />
@@ -24,7 +34,7 @@ export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, imag
         </div>
         {image && (
           <img
-            className={image_logo ? 'mx-auto block w-full max-w-[18rem]' : 'block w-full'}
+            className={image_logo ? 'mx-auto block max-h-52 w-full max-w-[23rem] object-contain' : 'block w-full'}
             src={image}
             alt={image_alt ?? ''}
             loading="lazy"
@@ -50,7 +60,7 @@ export const texteImage: DefinitionBloc<TexteImageProps> = {
     { name: 'image_large', label: 'Image plus large que le texte (2/3)', widget: 'boolean', required: false, default: false },
     {
       name: 'image_logo',
-      label: 'Image de type logo (taille réduite, centrée)',
+      label: 'Image de type logo (1/3 de la largeur, taille réduite, centrée)',
       widget: 'boolean',
       required: false,
       default: false,

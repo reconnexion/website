@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Microprocesseur « IA » (page Nos services, section « La place de l'IA ») -->
+  <!-- Broches : 4 par côté -->
+  <g stroke="#1d2f2b" stroke-width="7" fill="none">
+    <path d="M70 48V18M90 48V18M110 48V18M130 48V18"/>
+    <path d="M70 152V182M90 152V182M110 152V182M130 152V182"/>
+    <path d="M48 70H18M48 90H18M48 110H18M48 130H18"/>
+    <path d="M152 70H182M152 90H182M152 110H182M152 130H182"/>
+  </g>
+  <!-- Boîtier et liseré intérieur -->
+  <rect x="45" y="45" width="110" height="110" rx="14" fill="#23739b" stroke="#1d2f2b" stroke-width="7"/>
+  <rect x="62" y="62" width="76" height="76" rx="8" fill="none" stroke="#bfe3f2" stroke-width="5"/>
+  <text x="100" y="101" fill="#fff" font-family="Poppins, system-ui, sans-serif" font-size="40" font-weight="700" text-anchor="middle" dominant-baseline="central">IA</text>
+</svg>
