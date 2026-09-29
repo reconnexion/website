@@ -28,7 +28,7 @@ export function Annonce({ icone, etiquette, titre, texte, bouton_texte, bouton_l
             <h2 className="text-l">{titre}</h2>
             {etiquette && <span className="badge badge-outline font-semibold">{etiquette}</span>}
           </div>
-          {texte && <p className="opacity-90">{texte}</p>}
+          {texte && <p className="text-ml opacity-90">{texte}</p>}
         </div>
         {bouton_texte && bouton_lien && (
           <a href={bouton_lien} className="btn shrink-0 border-fond bg-fond text-vert-fonce hover:border-fond-2 hover:bg-fond-2">

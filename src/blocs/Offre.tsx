@@ -1,6 +1,7 @@
 import { Check } from 'lucide-react';
 import { Bloc, BoutonAction, Paragraphes, SurFondClair, champFond, type Fond } from './_commun';
 import type { DefinitionBloc } from './types';
+import { nomsIcones } from '../lib/icones';
 
 export type OffreProps = {
   fond?: Fond;
@@ -11,6 +12,7 @@ export type OffreProps = {
   elements?: { texte: string }[];
   bouton_texte?: string;
   bouton_lien?: string;
+  bouton_icone?: string;
   mention?: string;
 };
 
@@ -24,6 +26,7 @@ export function Offre({
   elements = [],
   bouton_texte,
   bouton_lien,
+  bouton_icone,
   mention,
 }: OffreProps) {
   return (
@@ -51,7 +54,7 @@ export function Offre({
           )}
           {bouton_texte && bouton_lien && (
             <div className="mt-e5">
-              <BoutonAction texte={bouton_texte} lien={bouton_lien} />
+              <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} />
             </div>
           )}
           <Paragraphes texte={mention} className="mt-e3 text-s text-gris" />
@@ -108,6 +111,7 @@ export const offre: DefinitionBloc<OffreProps> = {
       widget: 'string',
       required: false,
     },
+    { name: 'bouton_icone', label: 'Icône du bouton', widget: 'select', options: nomsIcones, required: false },
     {
       name: 'mention',
       label: 'Mention sous le bouton',

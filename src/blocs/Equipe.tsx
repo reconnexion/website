@@ -1,5 +1,6 @@
 import { Bloc, BoutonAction, TitreBloc } from './_commun';
 import type { DefinitionBloc } from './types';
+import { nomsIcones } from '../lib/icones';
 import type { Personne } from '../lib/types';
 import { personnesDemo } from '../lib/demo';
 
@@ -9,6 +10,7 @@ export type EquipeProps = {
   table?: string;
   bouton_texte?: string;
   bouton_lien?: string;
+  bouton_icone?: string;
   /** Injecté au rendu depuis Grist — pas édité dans le CMS. */
   personnes?: Personne[];
 };
@@ -22,7 +24,7 @@ function initiales(nom: string) {
     .toUpperCase();
 }
 
-export function Equipe({ titre, bouton_texte, bouton_lien, personnes = [] }: EquipeProps) {
+export function Equipe({ titre, bouton_texte, bouton_lien, bouton_icone, personnes = [] }: EquipeProps) {
   return (
     <Bloc>
       <TitreBloc titre={titre} />
@@ -60,7 +62,7 @@ export function Equipe({ titre, bouton_texte, bouton_lien, personnes = [] }: Equ
       </div>
       {bouton_texte && bouton_lien && (
         <div className="mt-e5 text-center">
-          <BoutonAction texte={bouton_texte} lien={bouton_lien} />
+          <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} />
         </div>
       )}
     </Bloc>
@@ -84,5 +86,6 @@ export const equipe: DefinitionBloc<EquipeProps> = {
     },
     { name: 'bouton_texte', label: 'Texte du bouton', widget: 'string', required: false },
     { name: 'bouton_lien', label: 'Lien du bouton', widget: 'string', required: false },
+    { name: 'bouton_icone', label: 'Icône du bouton', widget: 'select', options: nomsIcones, required: false },
   ],
 };

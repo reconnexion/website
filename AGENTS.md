@@ -28,7 +28,7 @@ plutôt qu'une chaîne en dur. Seules exceptions : formats de date (Intl) et att
 - Titre de section : `<TitreBloc>` (h2, `text-xl`, marge e4). Titre de carte : h3 `text-l`. h1 : uniquement dans
   le bandeau d'en-tête de page ou la fiche d'application.
 - Texte courant : `<Paragraphes>` (taille `m`, paragraphes espacés de e3 via l'utilitaire `texte`, listes « - »).
-  Seuls les chapeaux (bandeau) sont en `text-l` / `text-xl`.
+  Seuls les chapeaux (bandeau) et le texte des sections colorées sont en `text-l` / `text-xl` ; le texte des annonces est en `text-ml`.
 - Boutons : `<BoutonAction>` / `<Boutons>` (vert sur fond clair, blanc sur fond vert ou bleu).
 - Une page commence par un bandeau (surtitre = rubrique du menu, titre = nom de la page), sauf les fiches d'application.
 

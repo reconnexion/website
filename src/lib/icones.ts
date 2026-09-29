@@ -9,6 +9,7 @@ import {
   Database,
   Globe,
   Hand,
+  Heart,
   Handshake,
   House,
   Lightbulb,
@@ -19,6 +20,7 @@ import {
   PenTool,
   ShieldCheck,
   Smartphone,
+  Star,
   Users,
   Wrench,
   type LucideIcon,
@@ -43,6 +45,8 @@ export const icones: Record<string, LucideIcon> = {
   outils: Wrench,
   lieu: MapPin,
   idee: Lightbulb,
+  etoile: Star,
+  coeur: Heart,
 };
 
 export const nomsIcones = Object.keys(icones);

@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
 import { courrielLisible, devoilerCourriels, encoderCourriel } from '../lib/courriel';
 import type { Champ } from './types';
+import { icones } from '../lib/icones';
 
 /** Couleur de fond d'une section, choisie dans le CMS. */
 export type Fond = 'blanc' | 'gris' | 'vert' | 'bleu' | 'degrade';
@@ -175,15 +176,27 @@ export const champBoutons: Champ = {
   ],
 };
 
-/** Bouton d'action : vert sur fond clair, blanc sur fond foncé. */
-export function BoutonAction({ texte, lien }: { texte?: string; lien?: string }) {
+/**
+ * Bouton d'action : vert sur fond clair, blanc sur fond foncé. Icône facultative devant le texte.
+ * Lien mailto: masqué aux robots comme dans les textes (cf. src/lib/courriel.ts).
+ */
+export function BoutonAction({ texte, lien, icone }: { texte?: string; lien?: string; icone?: string }) {
   const fonce = useFondFonce();
+  const ref = useRef<HTMLAnchorElement>(null);
+  const courriel = lien?.startsWith('mailto:') ? lien.slice('mailto:'.length) : undefined;
+  useEffect(() => {
+    if (courriel && ref.current?.parentElement) devoilerCourriels(ref.current.parentElement);
+  });
   if (!texte || !lien) return null;
+  const Icone = icone ? icones[icone] : undefined;
   return (
     <a
-      href={lien}
+      ref={ref}
+      href={courriel ? '#' : lien}
+      data-courriel={courriel ? encoderCourriel(courriel) : undefined}
       className={fonce ? 'btn border-fond bg-fond text-noir hover:border-fond-2 hover:bg-fond-2' : 'btn btn-primary'}
     >
+      {Icone && <Icone size={18} aria-hidden="true" />}
       {texte}
     </a>
   );

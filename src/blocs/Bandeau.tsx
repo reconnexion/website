@@ -47,7 +47,7 @@ export function Bandeau({ surtitre, titre, texte, image, bouton_texte, bouton_li
       <div className="hero-content conteneur block p-0">
         <Surtitre texte={surtitre} />
         <h1 className="mb-e3 text-xxl last:mb-0">{titre}</h1>
-        <Paragraphes texte={texte} className="mb-e3 max-w-texte text-l text-gris last:mb-0" />
+        <Paragraphes texte={texte} className="mb-e3 text-l text-gris last:mb-0" />
         {bouton}
       </div>
     </section>

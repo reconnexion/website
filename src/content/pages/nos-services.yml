@@ -12,6 +12,7 @@ sections:
   - type: offre
     bouton_texte: Demander un devis
     bouton_lien: mailto:contact@reconnexion.coop?subject=Demande de devis
+    bouton_icone: bulle
     fond: degrade
     nom: Forfait de base
     prix: 9 000 €
@@ -119,6 +120,7 @@ sections:
     texte: Parlons-en lors d'une réunion d'évaluation, gratuite et sans engagement.
     bouton_texte: Demander un devis
     bouton_lien: mailto:contact@reconnexion.coop?subject=Demande de devis
+    bouton_icone: bulle
     icone: ''
     fond: degrade
     alignement: centre

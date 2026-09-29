@@ -31,10 +31,12 @@ sections:
     bouton_lien: ''
     fond: degrade
     alignement: centre
+    icone: etoile
   - type: equipe
     titre: Notre équipe opérationnelle
     bouton_texte: Tous les sociétaires
     bouton_lien: /societaires
+    bouton_icone: coeur
     table: People
   - type: annonce
     titre: Newsletter

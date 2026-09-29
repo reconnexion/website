@@ -124,13 +124,13 @@
   }
 }
 
-/* daisyUI réduit le texte des boutons et des cartes : on garde la taille courante du design system. */
+/* daisyUI réduit le texte des boutons et des cartes : texte courant pour les cartes, un peu plus grand (18px) pour les boutons. */
 @layer base {
   :root {
     --card-fs: var(--t-m);
   }
   .btn {
-    --fontsize: var(--t-m);
+    --fontsize: var(--t-bouton);
   }
 }
 
@@ -408,4 +408,9 @@ body:has(input[name='noir-et-blanc']:checked) .impression-cartes {
 .filtre-cartes:has(input[name='type-carte'][value='18']:checked) [data-carte]:not([data-type='18']),
 .filtre-cartes:has(input[name='type-carte'][value='19']:checked) [data-carte]:not([data-type='19']) {
   display: none;
+}
+
+/* Boutons en graisse normale (daisyUI les met en semi-gras dans sa couche ; règle hors couche pour primer). */
+.btn {
+  font-weight: 400;
 }
