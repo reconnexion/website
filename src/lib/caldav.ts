@@ -98,7 +98,8 @@ function extraireEvenements(xml: string, debut: Date, fin: Date): Evenement[] {
 
 export async function prochainsEvenements(nombre = 5): Promise<Evenement[]> {
   const { CALDAV_URL, CALDAV_USER, CALDAV_PASSWORD } = process.env;
-  if (!CALDAV_URL) return evenementsDemo().slice(0, nombre);
+  // Non configuré : données d'exemple en développement, rien en production (pas de faux événements publiés).
+  if (!CALDAV_URL) return import.meta.env.DEV ? evenementsDemo().slice(0, nombre) : [];
 
   if (!cache || Date.now() - cache.t > CACHE_MS) {
     const maintenant = new Date();

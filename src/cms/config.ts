@@ -7,18 +7,18 @@ import { blocs } from '../blocs/registre';
 import { nomsIcones } from '../lib/icones';
 import { champsApplication } from '../blocs/FicheApplication';
 
-// À adapter à votre forge.
-const FORGE = 'https://forge.exemple.org';
+// Adresse publique du site : c'est lui qui sert la connexion GitHub (src/pages/api/auth.ts et callback.ts).
+const SITE = process.env.SITE_URL || 'https://new.reconnexion.coop';
 
 const typesDeBlocs = blocs.map(({ name, label, fields }) => ({ name, label, fields }));
 
 export const config = {
   backend: {
-    name: 'gitea', // vaut aussi pour Forgejo (≥ 12.0)
-    repo: 'reconnexion/site',
-    base_url: FORGE,
-    api_root: `${FORGE}/api/v1`,
-    // app_id: '…', // Client ID de l'application OAuth créée dans Forgejo
+    name: 'github',
+    repo: 'reconnexion/website',
+    branch: 'master',
+    base_url: SITE,
+    auth_endpoint: 'api/auth',
   },
   media_folder: 'public/images',
   public_folder: '/images',
