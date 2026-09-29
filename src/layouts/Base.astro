@@ -29,5 +29,10 @@ const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
         <Paragraphes texte={site.pied_de_page} />
       </div>
     </footer>
+    <script>
+      // Rétablit les adresses e-mail masquées aux robots (cf. src/lib/courriel.ts).
+      import { devoilerCourriels } from '../lib/courriel';
+      devoilerCourriels();
+    </script>
   </body>
 </html>

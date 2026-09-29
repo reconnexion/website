@@ -1,4 +1,5 @@
-import { createContext, useContext, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
+import { courrielLisible, devoilerCourriels, encoderCourriel } from '../lib/courriel';
 import type { Champ } from './types';
 
 /** Couleur de fond d'une section, choisie dans le CMS. */
@@ -24,23 +25,57 @@ export const champFond: Champ = {
   required: false,
 };
 
+const RE_COURRIEL = /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/;
+
+/**
+ * Lien e-mail masqué : l'adresse est encodée dans data-courriel et rétablie par un script
+ * (Base.astro sur le site ; l'effet ci-dessous dans l'aperçu du CMS, qui est rendu en React).
+ */
+function Courriel({ adresse, texte, className }: { adresse: string; texte?: string; className: string }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  useEffect(() => {
+    if (ref.current?.parentElement) devoilerCourriels(ref.current.parentElement);
+  });
+  const texteEstAdresse = !texte || texte === adresse;
+  return (
+    <a
+      ref={ref}
+      href="#"
+      data-courriel={encoderCourriel(adresse)}
+      data-courriel-texte={texteEstAdresse ? '' : undefined}
+      className={className}
+    >
+      {texteEstAdresse ? courrielLisible(adresse) : texte}
+    </a>
+  );
+}
+
 /**
  * Texte léger : `**gras**`, `[texte du lien](https://…)`, retour à la ligne simple.
+ * Les adresses e-mail (liens mailto: ou tapées telles quelles) sont masquées aux robots.
  * Suffisant pour les champs « texte » du CMS sans passer par un éditeur riche.
  */
 function enrichir(texte: string, fonce: boolean): ReactNode[] {
-  return texte.split(/(\*\*.+?\*\*|\[[^\]]+\]\([^)\s]+\))/g).map((morceau, i) => {
-    const gras = morceau.match(/^\*\*(.+)\*\*$/);
-    if (gras) return <strong key={i}>{enrichir(gras[1], fonce)}</strong>;
-    const lien = morceau.match(/^\[([^\]]+)\]\(([^)\s]+)\)$/);
-    if (lien)
-      return (
-        <a key={i} href={lien[2]} className={`link font-semibold${fonce ? '' : ' text-vert-fonce'}`}>
-          {lien[1]}
-        </a>
-      );
-    return morceau;
-  });
+  const classeLien = `link font-semibold${fonce ? '' : ' text-vert-fonce'}`;
+  return texte
+    .split(new RegExp(`(\\*\\*.+?\\*\\*|\\[[^\\]]+\\]\\([^)\\s]+\\)|${RE_COURRIEL.source})`, 'g'))
+    .map((morceau, i) => {
+      const gras = morceau.match(/^\*\*(.+)\*\*$/);
+      if (gras) return <strong key={i}>{enrichir(gras[1], fonce)}</strong>;
+      const lien = morceau.match(/^\[([^\]]+)\]\(([^)\s]+)\)$/);
+      if (lien) {
+        const mailto = lien[2].match(/^mailto:(.+)$/);
+        if (mailto) return <Courriel key={i} adresse={mailto[1]} texte={lien[1]} className={classeLien} />;
+        return (
+          <a key={i} href={lien[2]} className={classeLien}>
+            {lien[1]}
+          </a>
+        );
+      }
+      if (new RegExp(`^${RE_COURRIEL.source}$`).test(morceau))
+        return <Courriel key={i} adresse={morceau} className={classeLien} />;
+      return morceau;
+    });
 }
 
 function TexteEnrichi({ texte }: { texte: string }) {
