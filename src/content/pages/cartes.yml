@@ -1,10 +1,15 @@
-titre: Cartes
+titre: Le jeu de cartes
 slug: cartes
 description: Les cartes du Réseau Social Universel — fléaux des réseaux sociaux actuels et solutions — à consulter, retourner et imprimer.
 sections:
   - type: bandeau
     surtitre: Le Réseau Social Universel
-    titre: Cartes
-    texte: Passez la souris sur une carte pour la retourner. Chaque carte a un QR code qui renvoie vers sa fiche.
+    titre: Le jeu de cartes
+    texte: Des cartes pour comprendre le Réseau Social Universel et les problèmes qu'il cherche à résoudre
+    image: ''
+    bouton_texte: ''
+    bouton_lien: ''
   - type: cartes
+    titre: ''
     fond: blanc
+    set: ''
