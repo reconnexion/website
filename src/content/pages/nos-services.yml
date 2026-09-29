@@ -120,5 +120,5 @@ sections:
     bouton_texte: Demander un devis
     bouton_lien: mailto:contact@reconnexion.coop?subject=Demande de devis
     icone: ''
-    fond: vert
+    fond: degrade
     alignement: centre

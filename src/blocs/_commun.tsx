@@ -10,8 +10,8 @@ const classesFond: Record<Fond, string> = {
   gris: 'bg-barre',
   vert: 'bg-primary text-primary-content',
   bleu: 'bg-bleu-fonce text-fond',
-  // Dégradé du X du logo ; fond clair (texte noir), fait surtout pour porter une carte blanche (ex. Offre).
-  degrade: 'bg-linear-to-br from-degrade-debut to-degrade-fin text-noir',
+  // Dégradé du X du logo, traité comme un fond foncé (texte et boutons blancs).
+  degrade: 'bg-linear-to-br from-degrade-debut to-degrade-fin text-fond',
 };
 
 /** Vrai quand la section a un fond foncé (texte blanc) : les accents verts deviennent blancs. */
@@ -192,7 +192,7 @@ export function BoutonAction({ texte, lien }: { texte?: string; lien?: string })
 export function Bloc({ children, className = '', fond = 'blanc' }: { children: ReactNode; className?: string; fond?: Fond }) {
   const classes = classesFond[fond] ?? '';
   return (
-    <FondFonce.Provider value={fond === 'vert' || fond === 'bleu'}>
+    <FondFonce.Provider value={fond === 'vert' || fond === 'bleu' || fond === 'degrade'}>
       <section data-fond={fond} className={`bloc ${classes} ${className}`.trim()}>
         <div className="conteneur">{children}</div>
       </section>
