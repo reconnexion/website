@@ -21,6 +21,9 @@ import { annonce } from './Annonce';
 import { video } from './Video';
 import { colonnes } from './Colonnes';
 import { texte } from './Texte';
+import { offre } from './Offre';
+import { grilleCartes } from './GrilleCartes';
+import { encadre } from './Encadre';
 import type { DefinitionBloc } from './types';
 
 export const blocs: DefinitionBloc[] = [
@@ -29,6 +32,9 @@ export const blocs: DefinitionBloc[] = [
   sectionCouleur,
   texte,
   texteImage,
+  offre,
+  grilleCartes,
+  encadre,
   video,
   applications,
   colonnes,

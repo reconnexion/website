@@ -2,14 +2,99 @@ titre: Nos services
 slug: services
 description: Les services commerciaux proposés par la SCIC Reconnexion autour des applications sociales citoyennes reposant sur le Réseau Social Universel.
 sections:
+  - type: bandeau
+    titre: Nos services
+    texte: Vous avez un projet d'application ou une application existante que vous souhaiteriez porter sur le Réseau Social Universel ? Reconnexion peut vous accompagner sur tous les aspects, de la conception au développement jusqu'au déploiement sur les territoires.
   - type: texte
-    titre: Forfaits Application
-    texte: Construire une application de l'idée jusqu'à sa mise en ligne et la prise en main par les utilisateurs d'un territoire ou d'une communauté
-    image: ''
     fond: blanc
-    image_alt: ''
-    image_avant: false
-    image_pleine_largeur: false
-    boutons:
-      - texte: Demander un devis
-        lien: mailto:contact@reconnexion.coop?subject=Demande de devis
+    texte: Grâce, d'une part, à l'architecture du Réseau Social Universel et, d'autre part, aux outils IA, nous pouvons proposer un forfait à un prix modeste qui comprend, en plus du développement de l'application, son déploiement sur plusieurs territoires afin de la tester auprès d'un public réel et varié.
+  - type: offre
+    fond: gris
+    nom: Forfait de base
+    prix: 9 000 €
+    sous_titre: Votre application conçue, réalisée et déployée sur les territoires
+    titre_liste: Ce que comprend le forfait
+    elements:
+      - texte: Une réunion d'évaluation de faisabilité (gratuite / sans engagement)
+      - texte: Jusqu'à trois itérations de conception de maquettes
+      - texte: Réalisation de l'application par un développeur (avec IA)
+      - texte: Mise en ligne de l'application sur votre nom de domaine
+      - texte: Promotion de l'application sur Reconnexion
+      - texte: Déploiement de l'application sur 3 territoires-test via des ambassadeurs
+    bouton_texte: Demander un devis
+    bouton_lien: mailto:contact@reconnexion.coop?subject=Demande de devis
+  - type: texte_image
+    fond: blanc
+    titre: La réunion d'évaluation
+    texte: |-
+      L'entretien préliminaire permet…
+
+      Après cet entretien, nous évaluons les possibilités de synergie avec d'autres acteurs de notre réseau, et nous vous faisons des propositions de partenariats qui peuvent à la fois réduire le coût pour vous, mais aussi vous assurer que votre application touchera sa cible, en prenant en compte un plus large éventail de besoins. S'associer avec d'autres acteurs, c'est aussi démultiplier ses canaux de communication.
+    image: /images/services/cycle.svg
+    image_alt: "Le cycle de réalisation d'une application : idées et besoins, conception, réalisation, déploiement"
+    inverse: false
+  - type: encadre
+    fond: blanc
+    icone: robot
+    titre: La place de l'IA dans Reconnexion
+    texte: |-
+      La vraie valeur que vous apportez est votre idée originale, nourrie de votre expérience. Notre valeur est notre expertise métier, notre connaissance du terrain, notre capacité à vous mettre en relation avec d'autres acteurs. Pour tout cela, l'usage de l'IA ne ferait qu'apporter de la confusion et empêcherait à votre projet d'émerger organiquement, à sa propre vitesse.
+
+      En revanche, pour le développement de l'application elle-même, les outils IA aujourd'hui permettent de réaliser en quelques jours ce qui aurait normalement pris plusieurs mois. Pour des conceptions d'interfaces, l'IA ne fait pas d'erreur, car elle peut s'appuyer sur le code de milliers d'applications existantes.
+
+      Grâce au temps gagné, nous pouvons mettre plus d'énergie sur la conception et pour faire des aller-retours entre la production et vous. Et cela permet de réduire les couts pour vous, d'au moins 10x.
+
+      Nous vous invitons à consulter notre politique IA pour connaitre, en toute transparence, là où nous utilisons l'IA et là où nous refusons de l'utiliser.
+  - type: texte
+    fond: blanc
+    titre: La mise à jour vers NextGraph
+    texte: Au printemps 2027, nous prévoyons de passer tout le Réseau Social Universel (utilisateurs, données et applications) sur le logiciel NextGraph. **Cette mise à jour sera faite gratuitement pour nos clients.** Avec NextGraph, toutes les données sont chiffrées, ce qui renforce considérablement la sécurité. Nous vous invitons à regarder le [webinaire que nous avons donné à ce sujet en mai 2026](/coin-technique).
+  - type: grille_cartes
+    fond: gris
+    titre: Les avantages du RSU (pour les créateurs d'application)
+    colonnes: '2'
+    cartes:
+      - icone: personnes
+        titre: Utilisateurs présents
+        texte: Si les utilisateurs sont déjà présents sur le Réseau Social Universel, ils n'ont pas à se recréer un compte. La masse critique d'utilisateurs, qui est le plus gros enjeu pour les applications sociales, est plus facilement atteinte.
+      - icone: donnees
+        titre: Réutilisation de données existantes
+        texte: Votre application a accès au profil et au carnet de contacts de l'utilisateur, mais aussi potentiellement à toutes les autres données des applications sur le Réseau Social Universel.
+      - icone: bouclier
+        titre: Maintenance facilitée
+        texte: Toutes les données de l'utilisateur sont enregistrées sur son porte-donnée. Vous n'avez donc pas à vous occuper de sauvegarde, de sécurité.
+      - icone: poignee_de_main
+        titre: Coopération facilitée
+        texte: Les données et utilisateurs pouvant circuler librement d'une application à une autre, il est plus facile d'envisager des coopérations avec d'autres acteurs car il n'y a pas de question de propriété (les données sont uniquement la propriété de l'utilisateur).
+  - type: texte
+    fond: blanc
+    titre: Le porte-données (personnel ou collectif)
+    texte: |-
+      Le porte-données est la pièce central qui rend possible le Réseau Social Universel. Au lieu de se connecter sur votre application les mains vides, l'utilisateur emporte avec lui toutes ses données personnelles, y compris celles d'autres applications. Elles sont enregistrées sous un format ouvert pour faciliter l'interopérabilité.
+
+      Outre les porte-données personnels, il existe également des porte-données collectifs, qui permettent à un groupe de personne (par exemple une organisation) de partager des données. Les porte-données collectifs sont en cours d'implémentation et seront disponible cet automne.
+  - type: grille_cartes
+    fond: blanc
+    titre: Services proposés
+    colonnes: '3'
+    cartes:
+      - icone: reseau
+        titre: Mise en synergie avec d'autres acteurs
+      - icone: crayon
+        titre: Conception d'application
+      - icone: code
+        titre: Réalisation d'application
+      - icone: globe
+        titre: Mise en ligne
+      - icone: outils
+        titre: Maintenance
+      - icone: lieu
+        titre: Déploiement sur les territoires
+      - icone: megaphone
+        titre: Communication / Crowdfunding
+  - type: section_couleur
+    fond: vert
+    titre: Un projet d'application ?
+    texte: Parlons-en lors d'une réunion d'évaluation, gratuite et sans engagement.
+    bouton_texte: Demander un devis
+    bouton_lien: mailto:contact@reconnexion.coop?subject=Demande de devis

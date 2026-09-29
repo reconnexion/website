@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Poppins, system-ui, sans-serif" font-size="28" font-weight="600" fill="#000">
+  <!-- Cycle de réalisation d'une application (page Nos services) -->
+  <rect width="800" height="500" fill="#f2f2f2"/>
+  <path d="M467.5 169.6A105 105 0 0 0 354.0 155.6" stroke="#50d4b0" stroke-width="26" fill="none"/>
+  <path d="M332.5 169.6L345.9 128.5L368.7 179.7Z" fill="#50d4b0"/>
+  <path d="M319.6 182.5A105 105 0 0 0 305.6 296.0" stroke="#c6f36e" stroke-width="26" fill="none"/>
+  <path d="M319.6 317.5L278.5 304.1L329.7 281.3Z" fill="#c6f36e"/>
+  <path d="M332.5 330.4A105 105 0 0 0 446.0 344.4" stroke="#7ed957" stroke-width="26" fill="none"/>
+  <path d="M467.5 330.4L454.1 371.5L431.3 320.3Z" fill="#7ed957"/>
+  <path d="M480.4 317.5A105 105 0 0 0 494.4 204.0" stroke="#21b082" stroke-width="26" fill="none"/>
+  <path d="M480.4 182.5L521.5 195.9L470.3 218.7Z" fill="#21b082"/>
+  <text x="400" y="103" text-anchor="middle">Idées &amp; Besoins</text>
+  <text x="255" y="258" text-anchor="end">Conception</text>
+  <text x="400" y="417" text-anchor="middle">Réalisation</text>
+  <text x="545" y="258" text-anchor="start">Déploiement</text>
+</svg>
