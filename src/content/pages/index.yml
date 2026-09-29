@@ -29,7 +29,7 @@ sections:
       favorisant la rencontre, l'entraide et la coopération
     bouton_texte: ''
     bouton_lien: ''
-    fond: vert
+    fond: degrade
     alignement: centre
   - type: equipe
     titre: Notre équipe opérationnelle
