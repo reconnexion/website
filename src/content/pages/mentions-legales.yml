@@ -1,0 +1,37 @@
+titre: Mentions légales
+slug: mentions-legales
+description: Mentions légales du site de la SCIC Reconnexion.
+sections:
+  - type: bandeau
+    titre: Mentions légales
+  - type: texte
+    fond: blanc
+    titre: Éditeur du site
+    texte: |-
+      Ce site Internet est édité par la société coopérative d’intérêt collectif (SCIC) Reconnexion.
+
+      Reconnexion est une SCIC-SAS à capital variable au capital social de 14 050€ (août 2025), entreprise de l’économie sociale et solidaire (ESS).
+
+      La mission de la coopérative est de faciliter l’émergence d’un réseau social universel favorisant la rencontre, l’entraide et la coopération.
+
+      **Siège social** : Reconnexion / 10 rue Auguste Martel - 60200 Compiègne
+      **Immatriculée au RCS de Compiègne** sous le numéro 990 452 625
+      **Code APE** : 62.01Z
+      **Numéro de TVA intracommunautaire** : FR52990452625
+      **Directeur de la publication** : Sébastien Rosset
+
+      Pour contacter Reconnexion : [contact@reconnexion.coop](mailto:contact@reconnexion.coop)
+  - type: texte
+    fond: blanc
+    titre: Hébergement
+    texte: |-
+      **Hetzner**
+      Industriestr. 25
+      91710 Gunzenhausen
+      Germany
+
+      Ansbach Registration Office, HRB 6089
+      VAT Reg. No. DE 812871812
+      CEO : Martin Hetzner, Stephan Konvickova, Günther Müller
+
+      Pour contacter l’hébergeur : [info@hetzner.com](mailto:info@hetzner.com)
