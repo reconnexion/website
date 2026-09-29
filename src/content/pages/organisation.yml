@@ -24,7 +24,7 @@ sections:
     url: https://videos-libr.es/w/4LSPGAteyYj9P5uv4Cy33i?start=2740
     legende: Enregistrement du webinaire du 12 juin 2025. ([Voir les slides](https://www.canva.com/design/DAGpw47T3vo/BCw0UPDh2rF7GTFVLlBcDA/edit))
   - type: section_couleur
-    fond: vert
+    fond: degrade
     titre: Notre projet
     texte: |-
       Rassembler une communauté d’acteurs afin de

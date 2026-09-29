@@ -82,5 +82,5 @@ sections:
     texte: Participez à la construction de ce nouvel espace de rencontre, d'entraide et de coopération.
     bouton_texte: Contribuer au projet
     bouton_lien: /contribuer
-    fond: vert
+    fond: degrade
     alignement: centre
