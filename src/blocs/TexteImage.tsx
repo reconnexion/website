@@ -10,9 +10,10 @@ export type TexteImageProps = {
   image_alt?: string;
   inverse?: boolean;
   image_large?: boolean;
+  image_logo?: boolean;
 };
 
-export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, image_alt, inverse, image_large }: TexteImageProps) {
+export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, image_alt, inverse, image_large, image_logo }: TexteImageProps) {
   return (
     <Bloc fond={fond}>
       <div className={`grid items-center gap-e5 ${image_large ? (inverse ? 'md:grid-cols-[2fr_1fr]' : 'md:grid-cols-[1fr_2fr]') : 'md:grid-cols-2'}`}>
@@ -21,7 +22,14 @@ export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, imag
           <TitreBloc titre={titre} />
           <Paragraphes texte={texte} />
         </div>
-        {image && <img className="block w-full" src={image} alt={image_alt ?? ''} loading="lazy" />}
+        {image && (
+          <img
+            className={image_logo ? 'mx-auto block w-full max-w-[18rem]' : 'block w-full'}
+            src={image}
+            alt={image_alt ?? ''}
+            loading="lazy"
+          />
+        )}
       </div>
     </Bloc>
   );
@@ -40,5 +48,12 @@ export const texteImage: DefinitionBloc<TexteImageProps> = {
     { name: 'image_alt', label: "Description de l'image", widget: 'string', required: false },
     { name: 'inverse', label: 'Image à gauche', widget: 'boolean', required: false, default: false },
     { name: 'image_large', label: 'Image plus large que le texte (2/3)', widget: 'boolean', required: false, default: false },
+    {
+      name: 'image_logo',
+      label: 'Image de type logo (taille réduite, centrée)',
+      widget: 'boolean',
+      required: false,
+      default: false,
+    },
   ],
 };

@@ -45,10 +45,14 @@ sections:
       Grâce au temps gagné, nous pouvons mettre plus d'énergie sur la conception et pour faire des aller-retours entre la production et vous. Et cela permet de réduire les couts pour vous, d'au moins 10x.
 
       Nous vous invitons à consulter notre politique IA pour connaitre, en toute transparence, là où nous utilisons l'IA et là où nous refusons de l'utiliser.
-  - type: texte
+  - type: texte_image
     fond: blanc
     titre: La mise à jour vers NextGraph
     texte: Au printemps 2027, nous prévoyons de passer tout le Réseau Social Universel (utilisateurs, données et applications) sur le logiciel NextGraph. **Cette mise à jour sera faite gratuitement pour nos clients.** Avec NextGraph, toutes les données sont chiffrées, ce qui renforce considérablement la sécurité. Nous vous invitons à regarder le [webinaire que nous avons donné à ce sujet en mai 2026](/coin-technique).
+    image: /images/services/nextgraph.png
+    image_alt: NextGraph
+    inverse: false
+    image_logo: true
   - type: grille_cartes
     fond: gris
     titre: Les avantages du RSU (pour les créateurs d'application)
