@@ -62,6 +62,8 @@
   --color-bleu: var(--c-bleu);
   --color-bleu-fonce: var(--c-bleu-fonce);
   --color-ardoise: var(--c-ardoise);
+  --color-degrade-debut: var(--c-degrade-debut);
+  --color-degrade-fin: var(--c-degrade-fin);
   --color-barre: var(--c-barre);
   --color-trait: var(--c-trait);
   --color-transparent: transparent;
@@ -75,6 +77,7 @@
   --text-xs: var(--t-xs);
   --text-s: var(--t-s);
   --text-m: var(--t-m);
+  --text-ml: var(--t-ml);
   --text-l: var(--t-l);
   --text-xl: var(--t-xl);
   --text-xxl: var(--t-xxl);

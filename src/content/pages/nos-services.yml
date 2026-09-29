@@ -12,7 +12,7 @@ sections:
   - type: offre
     bouton_texte: Demander un devis
     bouton_lien: mailto:contact@reconnexion.coop?subject=Demande de devis
-    fond: gris
+    fond: degrade
     nom: Forfait de base
     prix: 9 000 €
     sous_titre: Votre application conçue, réalisée et déployée sur les territoires
@@ -38,6 +38,7 @@ sections:
     inverse: true
     image_large: false
     image_logo: true
+    texte_grand: true
   - type: texte_image
     titre: La place de l'IA dans Reconnexion
     texte: |-
@@ -51,6 +52,7 @@ sections:
     fond: blanc
     inverse: false
     image_logo: true
+    texte_grand: true
   - type: texte_image
     surtitre: ''
     titre: La mise à jour vers NextGraph
@@ -61,6 +63,7 @@ sections:
     inverse: true
     image_large: false
     image_logo: true
+    texte_grand: true
   - type: grille_cartes
     titre: Les avantages du Réseau Social Universel
     texte: ''
@@ -82,6 +85,7 @@ sections:
       - icone: poignee_de_main
         titre: Coopération facilitée
         texte: Les données et utilisateurs pouvant circuler librement d'une application à une autre, il est plus facile d'envisager des coopérations avec d'autres acteurs car il n'y a pas de question de propriété (les données sont uniquement la propriété de l'utilisateur).
+    texte_grand: true
   - type: grille_cartes
     titre: Services proposés
     texte: ''

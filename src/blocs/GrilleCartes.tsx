@@ -11,6 +11,7 @@ export type GrilleCartesProps = {
   colonnes?: '2' | '3' | '4';
   cartes?: Carte[];
   boutons?: { texte: string; lien: string }[];
+  texte_grand?: boolean;
 };
 
 /** Classes écrites en entier pour Tailwind. */
@@ -20,7 +21,7 @@ const classesColonnes = { '2': 'md:grid-cols-2', '3': 'md:grid-cols-2 lg:grid-co
  * Grille de cartes (avantages, services…) : icône facultative, titre, texte facultatif.
  * Les boutons (ex. « En savoir plus ») sont en haut à droite, au niveau du titre ; en bas s'il n'y a pas de titre.
  */
-export function GrilleCartes({ fond = 'blanc', titre, texte, colonnes = '2', cartes = [], boutons = [] }: GrilleCartesProps) {
+export function GrilleCartes({ fond = 'blanc', titre, texte, colonnes = '2', cartes = [], boutons = [], texte_grand }: GrilleCartesProps) {
   const boutonsEnHaut = !!titre && boutons.length > 0;
   return (
     <Bloc fond={fond}>
@@ -45,7 +46,7 @@ export function GrilleCartes({ fond = 'blanc', titre, texte, colonnes = '2', car
               )}
               <div>
                 <h3 className="text-l">{c.titre}</h3>
-                <Paragraphes texte={c.texte} className="mt-e2 text-gris" />
+                <Paragraphes texte={c.texte} className={`mt-e2 text-gris${texte_grand ? ' text-ml' : ''}`} />
               </div>
             </li>
           );
@@ -76,6 +77,7 @@ export const grilleCartes: DefinitionBloc<GrilleCartesProps> = {
         { name: 'texte', label: 'Texte', widget: 'text', required: false },
       ],
     },
+    { name: 'texte_grand', label: 'Texte des cartes plus grand', widget: 'boolean', required: false, default: false },
     champBoutons,
   ],
 };

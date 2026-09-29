@@ -3,24 +3,31 @@ import { courrielLisible, devoilerCourriels, encoderCourriel } from '../lib/cour
 import type { Champ } from './types';
 
 /** Couleur de fond d'une section, choisie dans le CMS. */
-export type Fond = 'blanc' | 'gris' | 'vert' | 'bleu';
+export type Fond = 'blanc' | 'gris' | 'vert' | 'bleu' | 'degrade';
 
 const classesFond: Record<Fond, string> = {
   blanc: '',
   gris: 'bg-barre',
   vert: 'bg-primary text-primary-content',
   bleu: 'bg-bleu-fonce text-fond',
+  // Dégradé du X du logo ; fond clair (texte noir), fait surtout pour porter une carte blanche (ex. Offre).
+  degrade: 'bg-linear-to-br from-degrade-debut to-degrade-fin text-noir',
 };
 
 /** Vrai quand la section a un fond foncé (texte blanc) : les accents verts deviennent blancs. */
 const FondFonce = createContext(false);
 export const useFondFonce = () => useContext(FondFonce);
 
+/** Zone claire (ex. carte blanche) dans une section colorée : liens et boutons retrouvent leurs couleurs normales. */
+export const SurFondClair = ({ children }: { children: ReactNode }) => (
+  <FondFonce.Provider value={false}>{children}</FondFonce.Provider>
+);
+
 export const champFond: Champ = {
   name: 'fond',
   label: 'Couleur de fond',
   widget: 'select',
-  options: ['blanc', 'gris', 'vert', 'bleu'],
+  options: ['blanc', 'gris', 'vert', 'bleu', 'degrade'],
   default: 'blanc',
   required: false,
 };

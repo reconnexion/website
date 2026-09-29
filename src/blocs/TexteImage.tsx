@@ -11,6 +11,7 @@ export type TexteImageProps = {
   inverse?: boolean;
   image_large?: boolean;
   image_logo?: boolean;
+  texte_grand?: boolean;
 };
 
 /**
@@ -23,7 +24,7 @@ function colonnes(inverse?: boolean, image_large?: boolean, image_logo?: boolean
   return 'md:grid-cols-2';
 }
 
-export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, image_alt, inverse, image_large, image_logo }: TexteImageProps) {
+export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, image_alt, inverse, image_large, image_logo, texte_grand }: TexteImageProps) {
   return (
     <Bloc fond={fond}>
       <div className={`grid items-center gap-e5 ${colonnes(inverse, image_large, image_logo)}`}>
@@ -31,7 +32,7 @@ export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, imag
         <div className={`max-w-texte${inverse ? ' md:order-2 md:justify-self-end md:text-right' : ''}`}>
           <Surtitre texte={surtitre} />
           <TitreBloc titre={titre} />
-          <Paragraphes texte={texte} />
+          <Paragraphes texte={texte} className={texte_grand ? 'text-ml' : ''} />
         </div>
         {image && (
           <img
@@ -66,5 +67,6 @@ export const texteImage: DefinitionBloc<TexteImageProps> = {
       required: false,
       default: false,
     },
+    { name: 'texte_grand', label: 'Texte plus grand', widget: 'boolean', required: false, default: false },
   ],
 };

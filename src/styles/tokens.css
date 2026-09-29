@@ -18,6 +18,8 @@
   --c-bleu: #2d8bba;         /* secondary-color-1 */
   --c-bleu-fonce: #23739b;   /* secondary-color-1 assombri : fonds sous texte blanc */
   --c-ardoise: #506e9a;      /* secondary-color-2 */
+  --c-degrade-debut: #06b098; /* dégradé du X du logo : vert-bleu… */
+  --c-degrade-fin: #80c54b;   /* …vers vert clair */
 
   /* Typographie */
   --f-titre: 'Poppins', system-ui, sans-serif;
@@ -25,6 +27,7 @@
   --t-xs: 0.8125rem;
   --t-s: 0.9375rem;
   --t-m: 1.0625rem;          /* 17px, comme le site actuel */
+  --t-ml: 1.1875rem;         /* 19px : texte sous un titre l (annonce) */
   --t-l: 1.375rem;
   --t-xl: clamp(1.75rem, 3vw, 2.25rem);
   --t-xxl: clamp(2.25rem, 5vw, 3.5rem);
