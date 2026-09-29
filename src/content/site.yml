@@ -44,6 +44,10 @@ menu:
     lien: https://forum.reconnexion.coop
     icone: bulle
     sous_menu: []
+  - texte: Nos services
+    lien: /services
+    icone: ''
+    sous_menu: []
 pied_de_page: |-
   En attendant que le Réseau Social Universel soit une réalité,
   n'hésitez pas à nous suivre sur les réseaux sociaux existants ;-)
