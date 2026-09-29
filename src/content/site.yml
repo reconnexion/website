@@ -46,7 +46,7 @@ menu:
     sous_menu: []
   - texte: Nos services
     lien: /services
-    icone: ''
+    icone: telephone
     sous_menu: []
 pied_de_page: |-
   En attendant que le Réseau Social Universel soit une réalité,
