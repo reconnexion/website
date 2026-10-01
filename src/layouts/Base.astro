@@ -20,6 +20,14 @@ const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
     <title>{titre === site.nom ? titre : `${titre} · ${site.nom}`}</title>
     {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/png" href="/favicon.png" />
+    {/* Statistiques de visite (Umami, sans cookies), comptées seulement sur les domaines de production. */}
+    <script
+      is:inline
+      defer
+      src="https://stats.reconnexion.coop/script.js"
+      data-website-id="6fdebaba-4bc6-466a-bb0c-217428edac61"
+      data-domains="reconnexion.coop,new.reconnexion.coop"
+    ></script>
   </head>
   <body class="flex min-h-svh flex-col">
     <Menu site={site} chemin={chemin} />
