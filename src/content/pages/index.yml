@@ -29,9 +29,10 @@ sections:
       favorisant la rencontre, l'entraide et la coopération
     bouton_texte: ''
     bouton_lien: ''
+    icone: etoile
     fond: degrade
     alignement: centre
-    icone: etoile
+    bouton_icone: ''
   - type: equipe
     titre: Notre équipe opérationnelle
     bouton_texte: Tous les sociétaires
@@ -40,7 +41,7 @@ sections:
     table: People
   - type: annonce
     titre: Newsletter
-    texte: Suivez l'actualités et recevez les invitations aux temps forts.
+    texte: Suivez l'actualité et recevez les invitations aux temps forts.
     bouton_texte: M'abonner à la Newsletter
     bouton_lien: https://b144bca4.sibforms.com/serve/MUIFAMvMggADvfUsaaPvIeGfL_OR2_ub7mDxgo197al-8br9KKpRQ6fsnnyxEXSFJS-CTI0iB6G3Skf1tAsOCzHbQ_0ei08gm_a0nWTOAfq5lXCV1UWNXytGDdli7g09YW8kcnXqZeL5uROxSnsO1XSLzKTeplhqZJECpxmKaJ_Nslpf6GColxZWrAiwwJO1wbUnfGCoQFkTvi93
     icone: ''
@@ -67,6 +68,8 @@ sections:
     image_alt: Page d'accueil du forum de discussion de Reconnexion
     inverse: false
     image_large: true
+    image_logo: false
+    texte_grand: false
   - type: colonnes
     titre: ''
     fond: blanc
@@ -86,9 +89,9 @@ sections:
   - type: actualites
     titre: Actualités
     fond: blanc
-    nombre: 3
-    texte_lien: Lire l'article
-    texte_vide: ''
     boutons:
       - texte: Toutes les actualités
         lien: /actualites
+    texte_lien: Lire l'article
+    texte_vide: ''
+    nombre: 3
