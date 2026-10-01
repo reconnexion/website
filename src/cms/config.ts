@@ -8,6 +8,34 @@ import { nomsIcones } from '../lib/icones';
 import { champsApplication } from '../blocs/FicheApplication';
 import { collectionsCartes, fichierReglagesCartes } from './cartes';
 
+/** Réglages → « Actualités » : forum lu par le bloc Actualités et libellés des pages d'articles. */
+const fichierReglagesActualites = {
+  name: 'actualites',
+  label: 'Actualités (forum)',
+  file: 'src/content/reglages-actualites.yml',
+  fields: [
+    { name: 'forum', label: 'Adresse du forum Discourse', widget: 'string' },
+    {
+      name: 'etiquette',
+      label: 'Étiquette des sujets publiés',
+      widget: 'string',
+      hint: 'Les sujets du forum portant cette étiquette deviennent des articles du site (texte et photos du premier message).',
+    },
+    { name: 'titre_liste', label: 'Nom de la liste des articles (surtitre des articles)', widget: 'string', required: false },
+    { name: 'lien_liste', label: 'Adresse de la page qui liste les articles', widget: 'string', required: false },
+    ...[
+      ['texte_lien_forum', 'Bouton vers le sujet du forum'],
+      ['titre_auteur', 'Titre de l’encart « auteur·ice »'],
+      ['texte_profil_forum', 'Lien vers le profil de l’auteur·ice sur le forum'],
+      ['titre_reagir', 'Titre de l’encart « réagir »'],
+      ['texte_reponses', 'Libellé du nombre de réponses'],
+      ['texte_likes', 'Libellé du nombre de « j’aime »'],
+      ['titre_autres', 'Titre de l’encart « autres articles »'],
+      ['texte_tous', 'Lien vers la liste des articles'],
+    ].map(([name, label]) => ({ name, label, widget: 'string', required: false })),
+  ],
+};
+
 // Adresse publique du site : c'est lui qui sert la connexion GitHub (src/pages/api/auth.ts et callback.ts).
 const SITE = process.env.SITE_URL || 'https://new.reconnexion.coop';
 
@@ -146,6 +174,7 @@ export const config = {
           ],
         },
         fichierReglagesCartes,
+        fichierReglagesActualites,
       ],
     },
   ],

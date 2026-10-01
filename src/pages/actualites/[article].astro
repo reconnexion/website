@@ -1,0 +1,26 @@
+---
+// Page de chaque article : sujet du forum portant l'étiquette des actualités, rendu à la demande
+// (un nouveau sujet apparaît sans reconstruire le site).
+import Base from '../../layouts/Base.astro';
+import { FicheArticle } from '../../blocs/_fiche-article';
+import { articleParSlug, derniersArticles, lienProfil } from '../../lib/discourse';
+import { auteurParPseudo } from '../../lib/grist';
+import { reglagesActualites } from '../../lib/contenu';
+
+export const prerender = false;
+
+const article = await articleParSlug(Astro.params.article ?? '');
+if (!article) return new Response(null, { status: 404 });
+
+const [fiche, recents] = await Promise.all([
+  article.pseudo ? auteurParPseudo(article.pseudo) : undefined,
+  derniersArticles(4),
+]);
+// Auteur·ice : fiche de l'équipe (Grist) si son pseudo y est renseigné, sinon nom et avatar du forum.
+const auteur = article.pseudo ? { nom: article.auteur ?? article.pseudo, ...fiche, lien_forum: lienProfil(article.pseudo) } : undefined;
+const autres = recents.filter((a) => a.slug !== article.slug).slice(0, 3);
+Astro.response.headers.set('Cache-Control', 'public, max-age=300');
+---
+<Base titre={article.titre} description={article.resume}>
+  <FicheArticle article={article} auteur={auteur} autres={autres} reglages={reglagesActualites()} />
+</Base>

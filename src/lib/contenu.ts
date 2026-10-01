@@ -124,3 +124,26 @@ export function documentsGrist(): string[] {
 export function reglagesSite(): Site {
   return sansChampsVides(parse(Object.values(fichierSite)[0]) as Site);
 }
+
+export type ReglagesActualites = {
+  forum?: string;
+  etiquette?: string;
+  titre_liste?: string;
+  lien_liste?: string;
+  texte_lien_forum?: string;
+  titre_auteur?: string;
+  texte_profil_forum?: string;
+  titre_reagir?: string;
+  texte_reponses?: string;
+  texte_likes?: string;
+  titre_autres?: string;
+  texte_tous?: string;
+};
+
+const fichierReglagesActualites = import.meta.glob('../content/reglages-actualites.yml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+export const reglagesActualites = (): ReglagesActualites => lire<ReglagesActualites>(fichierReglagesActualites)[0] ?? {};

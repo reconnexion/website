@@ -83,3 +83,12 @@ sections:
         texte: Il y a différentes moyens de contribuer au projet Reconnexion, en fonction de ses envies, besoins, compétences et bien sûr de ses disponibilités. N'hésitez pas !
         bouton_texte: Contribuer
         bouton_lien: /contribuer
+  - type: actualites
+    titre: Actualités
+    fond: blanc
+    nombre: 3
+    texte_lien: Lire l'article
+    texte_vide: ''
+    boutons:
+      - texte: Toutes les actualités
+        lien: /actualites

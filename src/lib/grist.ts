@@ -10,7 +10,7 @@
  * Chaque fonction ne renvoie que des champs publics : les autres colonnes
  * (e-mails, téléphones…) ne sortent jamais du serveur.
  */
-import type { Logo, Personne, Role, Societaire } from './types';
+import type { Auteur, Logo, Personne, Role, Societaire } from './types';
 import { organisationsDemo, personnesDemo, rolesDemo, societairesDemo } from './demo';
 
 const CACHE_MS = 60_000;
@@ -250,4 +250,26 @@ export async function lireRoles(): Promise<Role[]> {
       };
     })
     .filter((r) => r.titre);
+}
+
+/**
+ * Auteur·ice d'un article du forum : ligne de People dont la colonne Pseudo_Discourse est le pseudo du forum.
+ * Publiés : nom, photo (si la personne est publiée) et rôles dont elle est référente (Projects).
+ */
+export async function auteurParPseudo(pseudo: string): Promise<Auteur | undefined> {
+  if (!gristConfigure()) return undefined;
+  const [personnes, publiees, roles] = await Promise.all([lireTable('People'), lignesPubliees('People'), lireTable('Projects')]);
+  const cle = pseudo.toLowerCase();
+  const p = personnes.find((r) => texte(r.fields.Pseudo_Discourse)?.replace(/^@/, '').toLowerCase() === cle);
+  const nom = p && texte(p.fields.Contributeur);
+  if (!p || !nom) return undefined;
+  const [photo] = publiees.some((r) => r.id === p.id) ? piecesJointes(p.fields.Photo) : [];
+  return {
+    nom,
+    photo: photo ? urlImage(undefined, 'People', 'Photo', photo) : undefined,
+    roles: roles
+      .filter((r) => r.fields.Referent_e === p.id)
+      .map((r) => texte(r.fields.Role))
+      .filter((r): r is string => !!r),
+  };
 }

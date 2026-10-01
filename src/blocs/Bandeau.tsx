@@ -3,6 +3,8 @@ import type { DefinitionBloc } from './types';
 
 export type BandeauProps = {
   surtitre?: string;
+  /** Injecté au rendu (pages générées, ex. articles) : le surtitre mène à la page parente. */
+  lien_surtitre?: string;
   titre: string;
   texte?: string;
   image?: string;
@@ -12,7 +14,7 @@ export type BandeauProps = {
   enchaine?: boolean;
 };
 
-export function Bandeau({ surtitre, titre, texte, image, bouton_texte, bouton_lien, enchaine }: BandeauProps) {
+export function Bandeau({ surtitre, lien_surtitre, titre, texte, image, bouton_texte, bouton_lien, enchaine }: BandeauProps) {
   const bouton = bouton_texte && bouton_lien && (
     <div className={`mt-e4 flex flex-wrap gap-e3${image ? ' justify-center' : ''}`}>
       <a className="btn btn-primary btn-lg" href={bouton_lien}>
@@ -45,7 +47,7 @@ export function Bandeau({ surtitre, titre, texte, image, bouton_texte, bouton_li
     // (e4 sous un titre seul, e5 sous un sous-titre, qui a besoin de plus d'air).
     <section className={`hero pt-e6 ${enchaine ? (texte ? '-mb-e4 pb-0' : '-mb-e5 pb-0') : 'pb-e6'}`}>
       <div className="hero-content conteneur block p-0">
-        <Surtitre texte={surtitre} />
+        <Surtitre texte={surtitre} lien={lien_surtitre} />
         <h1 className="mb-e3 text-xxl last:mb-0">{titre}</h1>
         <Paragraphes texte={texte} className="mb-e3 text-l text-gris last:mb-0" />
         {bouton}

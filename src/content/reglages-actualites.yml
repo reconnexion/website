@@ -1,0 +1,13 @@
+# Actualités tirées du forum Discourse (bloc Actualités et pages /actualites/<article>).
+forum: https://forum.reconnexion.coop
+etiquette: blog
+titre_liste: Actualités
+lien_liste: /actualites
+texte_lien_forum: Réagir sur le forum
+titre_auteur: Écrit par
+texte_profil_forum: Profil sur le forum
+titre_reagir: Réagir
+texte_reponses: Réponses
+texte_likes: J'aime
+titre_autres: Autres actualités
+texte_tous: Toutes les actualités

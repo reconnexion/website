@@ -1,0 +1,12 @@
+titre: Actualités
+slug: actualites
+description: Les actualités de la coopérative Reconnexion et du Réseau Social Universel.
+sections:
+  - type: bandeau
+    surtitre: La coopérative
+    titre: Actualités
+  - type: actualites
+    fond: blanc
+    nombre: 0
+    texte_lien: Lire l'article
+    texte_vide: Pas encore d'article publié.

@@ -1,0 +1,9 @@
+---
+// Server island : les articles sont lus sur le forum à chaque requête (avec un cache de quelques minutes).
+import { Actualites } from '../blocs/Actualites';
+import { derniersArticles } from '../lib/discourse';
+
+const props = Astro.props;
+const articles = await derniersArticles(props.nombre || undefined);
+---
+<Actualites {...props} articles={articles} />

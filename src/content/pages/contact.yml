@@ -1,0 +1,21 @@
+titre: Contact
+slug: contact
+description: Écrire à la coopérative Reconnexion.
+sections:
+  - type: bandeau
+    surtitre: La coopérative
+    titre: Nous contacter
+    texte: Une question, un projet, une envie de contribuer ? Écrivez-nous, nous vous répondrons au plus vite.
+  - type: formulaire_contact
+    fond: blanc
+    libelle_nom: Votre nom
+    libelle_courriel: Votre adresse e-mail
+    libelle_sujet: Sujet
+    libelle_message: Votre message
+    texte_bouton: Envoyer
+    texte_envoi: Envoi en cours…
+    texte_succes: |-
+      **Merci, votre message a bien été envoyé !**
+      Nous vous répondrons dès que possible.
+    texte_erreur: |-
+      Votre message n'a pas pu être envoyé. Merci de réessayer dans quelques instants.

@@ -26,6 +26,8 @@ menu:
         lien: /societaires
       - texte: Partenaires & Réseaux
         lien: /partenaires
+      - texte: Contact
+        lien: /contact
   - texte: Nos services
     lien: /services
     icone: telephone

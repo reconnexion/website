@@ -10,7 +10,9 @@ import { texteImage } from './TexteImage';
 import { applications } from './Applications';
 import { equipe } from './Equipe';
 import { agenda } from './Agenda';
+import { actualites } from './Actualites';
 import { appel } from './Appel';
+import { formulaireContact } from './FormulaireContact';
 import { roles } from './Roles';
 import { societaires } from './Societaires';
 import { partenaires } from './Partenaires';
@@ -45,7 +47,9 @@ export const blocs: DefinitionBloc[] = [
   reseaux,
   cartes,
   agenda,
+  actualites,
   appel,
+  formulaireContact,
 ];
 
 export const blocsParNom: Record<string, DefinitionBloc> = Object.fromEntries(

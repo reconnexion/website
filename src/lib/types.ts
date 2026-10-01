@@ -37,3 +37,34 @@ export type Evenement = {
   lieu?: string;
   description?: string;
 };
+
+/** Article d'actualité (sujet du forum Discourse). */
+export type Article = {
+  slug: string;
+  titre: string;
+  date: string; // ISO 8601
+  auteur?: string;
+  /** Pseudo de l'auteur·ice sur le forum (relié à la colonne Pseudo_Discourse de Grist). */
+  pseudo?: string;
+  /** Avatar sur le forum (si la personne n'a pas de photo dans Grist). */
+  avatar?: string;
+  /** Réponses et « j'aime » du sujet sur le forum. */
+  nb_reponses?: number;
+  nb_likes?: number;
+  /** Première image du message. */
+  image?: string;
+  /** Chapô ou début du texte, en texte brut. */
+  resume?: string;
+  lien_forum: string;
+  /** HTML du message, nettoyé (absent dans les listes). */
+  contenu?: string;
+};
+
+/** Auteur·ice d'un article : fiche de l'équipe (Grist), sinon profil du forum. */
+export type Auteur = {
+  nom: string;
+  photo?: string;
+  /** Rôles dont la personne est référente (table Projects). */
+  roles?: string[];
+  lien_forum?: string;
+};

@@ -2,7 +2,7 @@
  * Données de démonstration, utilisées quand Grist / CalDAV ne sont pas configurés
  * (variables d'environnement absentes) et dans l'aperçu du CMS.
  */
-import type { Evenement, Logo, Personne, Role, Societaire } from './types';
+import type { Article, Evenement, Logo, Personne, Role, Societaire } from './types';
 
 export const organisationsDemo: Logo[] = [
   { nom: 'Organisation partenaire', lien: 'https://exemple.org' },
@@ -46,3 +46,30 @@ export function evenementsDemo(): Evenement[] {
     { titre: 'Hackathon des Applications Citoyennes', debut: new Date(t + 30 * jour).toISOString(), lieu: 'Lyon' },
   ];
 }
+
+export const articlesDemo: Article[] = [
+  {
+    slug: 'recit-de-la-residence',
+    titre: 'Le récit de la résidence',
+    date: '2026-07-10T13:00:00Z',
+    auteur: 'Camille Martin',
+    resume: 'Une semaine pour travailler sur la coopérative, puis pour accueillir l’écosystème du Réseau Social Universel.',
+    lien_forum: 'https://forum.reconnexion.coop',
+  },
+  {
+    slug: 'retours-sur-une-rencontre',
+    titre: 'Retours sur une rencontre',
+    date: '2026-06-20T09:00:00Z',
+    auteur: 'Yanis Benali',
+    resume: 'Trois jours d’échanges autour de la convergence du numérique éthique.',
+    lien_forum: 'https://forum.reconnexion.coop',
+  },
+  {
+    slug: 'nouvelle-application',
+    titre: 'Une nouvelle application',
+    date: '2026-05-02T09:00:00Z',
+    auteur: 'Louise Garnier',
+    resume: 'Présentation de la dernière application rejoignant le Réseau Social Universel.',
+    lien_forum: 'https://forum.reconnexion.coop',
+  },
+];

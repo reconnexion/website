@@ -33,7 +33,7 @@ export type DefinitionBloc<P = any> = {
   label: string;
   Component: ComponentType<P>;
   fields: Champ[];
-  source?: 'grist' | 'caldav';
+  source?: 'grist' | 'caldav' | 'discourse';
   /** Données injectées dans l'aperçu du CMS (exemples Grist / CalDAV, fiches d'applications…). */
   donneesExemple?: (donnees: Record<string, unknown>) => Partial<P>;
 };

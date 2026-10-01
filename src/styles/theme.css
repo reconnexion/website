@@ -414,3 +414,108 @@ body:has(input[name='noir-et-blanc']:checked) .impression-cartes {
 .btn {
   font-weight: 400;
 }
+
+/* ---------- Article d'actualité (HTML du forum Discourse, cf. src/lib/discourse.ts) ----------
+   Mise en forme du message conservée : intertitres, citations, listes, images, code. */
+@utility article {
+  & > * + * {
+    margin-top: var(--e-3);
+  }
+  & :is(h1, h2, h3, h4) {
+    margin-top: var(--e-5);
+    text-transform: none;
+  }
+  & h1,
+  & h2 {
+    font-size: var(--t-l);
+  }
+  & :is(h3, h4) {
+    font-size: var(--t-ml);
+  }
+  & a {
+    color: var(--c-vert-fonce);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  & img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  /* Émojis : dans le texte, à la taille des lettres. */
+  & img.emoji {
+    display: inline;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.2em;
+  }
+  & blockquote {
+    border-left: 4px solid var(--c-vert);
+    padding-left: var(--e-3);
+    color: var(--c-gris);
+    & > * + * {
+      margin-top: var(--e-2);
+    }
+  }
+  /* Chapô : la citation d'ouverture des articles du forum. */
+  & > blockquote:first-child {
+    font-size: var(--t-ml);
+  }
+  & ul {
+    list-style: disc;
+    padding-left: var(--e-4);
+  }
+  & ol {
+    list-style: decimal;
+    padding-left: var(--e-4);
+  }
+  & li + li {
+    margin-top: var(--e-1);
+  }
+  & :is(code, pre) {
+    background: var(--c-fond-2);
+    font-size: var(--t-s);
+  }
+  & code {
+    padding-inline: var(--e-1);
+  }
+  & pre {
+    overflow-x: auto;
+    padding: var(--e-3);
+    & code {
+      padding: 0;
+    }
+  }
+  & hr {
+    border: 0;
+    border-top: 1px solid var(--c-trait);
+  }
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--t-s);
+  }
+  & :is(th, td) {
+    border: 1px solid var(--c-trait);
+    padding: var(--e-1) var(--e-2);
+    text-align: left;
+  }
+  /* Grille d'images ([grid] dans l'éditeur du forum) et aperçus de liens. */
+  & .d-image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: var(--e-2);
+    & p {
+      display: contents;
+    }
+  }
+  & aside.onebox {
+    border: 1px solid var(--c-trait);
+    padding: var(--e-3);
+    font-size: var(--t-s);
+    & img {
+      max-height: 8rem;
+      width: auto;
+    }
+  }
+}

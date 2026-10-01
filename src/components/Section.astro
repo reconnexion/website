@@ -2,11 +2,13 @@
 // Rendu d'une section de page.
 import { blocsParNom, type DonneesBloc } from '../blocs/registre';
 import AgendaIle from './AgendaIle.astro';
+import ActualitesIle from './ActualitesIle.astro';
 import EquipeIle from './EquipeIle.astro';
 import RolesIle from './RolesIle.astro';
 import SocietairesIle from './SocietairesIle.astro';
 import PartenairesIle from './PartenairesIle.astro';
 import Chargement from './Chargement.astro';
+import { FormulaireContact } from '../blocs/FormulaireContact';
 import { toutesLesApplications, tousLesReseaux, toutesLesCartes, tousLesTypesDeCartes, reglagesCartes } from '../lib/contenu';
 import { logoReseau, selectionnerReseaux } from '../lib/reseaux';
 import { carteApplication, selectionnerApplications } from '../lib/applications';
@@ -39,6 +41,10 @@ const injecte =
   <AgendaIle server:defer {...donnees}>
     <Chargement slot="fallback" texte={texteChargement} />
   </AgendaIle>
+) : type === 'actualites' ? (
+  <ActualitesIle server:defer {...donnees}>
+    <Chargement slot="fallback" texte={texteChargement} />
+  </ActualitesIle>
 ) : type === 'roles' ? (
   <RolesIle server:defer {...donnees}>
     <Chargement slot="fallback" texte={texteChargement} />
@@ -55,6 +61,9 @@ const injecte =
   <EquipeIle server:defer {...donnees}>
     <Chargement slot="fallback" texte={texteChargement} />
   </EquipeIle>
+) : type === 'formulaire_contact' ? (
+  /* Seul bloc interactif : hydraté dans le navigateur. */
+  <FormulaireContact client:load {...(donnees as any)} />
 ) : Composant ? (
   /* Blocs purement éditoriaux : rendus en HTML statique au build, zéro JS. */
   <Composant {...donnees} {...injecte} />
