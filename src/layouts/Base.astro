@@ -21,9 +21,10 @@ const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
     {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
-  <body>
+  <body class="flex min-h-svh flex-col">
     <Menu site={site} chemin={chemin} />
-    <main><slot /></main>
+    {/* flex-1 : le pied de page reste en bas de l'écran sur les pages courtes. */}
+    <main class="flex-1"><slot /></main>
     <footer class="bg-barre py-e5 text-s text-gris print:hidden">
       <div class="conteneur flex flex-col items-center gap-e3 text-center">
         <Paragraphes texte={site.pied_de_page} />
@@ -33,6 +34,13 @@ const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
       // Rétablit les adresses e-mail masquées aux robots (cf. src/lib/courriel.ts).
       import { devoilerCourriels } from '../lib/courriel';
       devoilerCourriels();
+
+      // Boutons qui ouvrent une modale <dialog> (ex. détail d'un rôle) : data-dialogue="id de la modale".
+      document.addEventListener('click', (e) => {
+        const bouton = (e.target as Element).closest<HTMLElement>('[data-dialogue]');
+        const dialogue = bouton && document.getElementById(bouton.dataset.dialogue!);
+        if (dialogue instanceof HTMLDialogElement) dialogue.showModal();
+      });
     </script>
   </body>
 </html>

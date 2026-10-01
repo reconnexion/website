@@ -27,7 +27,13 @@ export const personnesDemo: Personne[] = [
 ];
 
 export const rolesDemo: Role[] = [
-  { titre: 'Coordination', raison_d_etre: 'Une équipe qui avance dans la même direction', referent: 'Camille Martin' },
+  {
+    titre: 'Coordination',
+    raison_d_etre: 'Une équipe qui avance dans la même direction',
+    referent: 'Camille Martin',
+    redevabilites: '- Animer les réunions du cercle\n- Suivre les décisions prises',
+    membres: [{ nom: 'Yanis Benali' }, { nom: 'Louise Garnier' }],
+  },
   { titre: 'Outils numériques', referent: 'Yanis Benali' },
   { titre: 'Vie coopérative', referent: 'Louise Garnier' },
   { titre: 'Rayonnement', referent: 'Théo Rousseau' },

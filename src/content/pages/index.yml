@@ -65,6 +65,7 @@ sections:
     image: /images/accueil/forum.webp
     fond: bleu
     image_alt: Page d'accueil du forum de discussion de Reconnexion
+    image_lien: https://forum.reconnexion.coop
     inverse: false
     image_large: true
   - type: colonnes

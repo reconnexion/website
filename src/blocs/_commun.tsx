@@ -74,8 +74,10 @@ function enrichir(texte: string, fonce: boolean): ReactNode[] {
       if (lien) {
         const mailto = lien[2].match(/^mailto:(.+)$/);
         if (mailto) return <Courriel key={i} adresse={mailto[1]} texte={lien[1]} className={classeLien} />;
+        // Liens externes dans un nouvel onglet, comme dans le menu.
+        const externe = /^https?:\/\//.test(lien[2]);
         return (
-          <a key={i} href={lien[2]} className={classeLien}>
+          <a key={i} href={lien[2]} className={classeLien} target={externe ? '_blank' : undefined} rel={externe ? 'noopener' : undefined}>
             {lien[1]}
           </a>
         );

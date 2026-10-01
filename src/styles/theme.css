@@ -410,6 +410,11 @@ body:has(input[name='noir-et-blanc']:checked) .impression-cartes {
   display: none;
 }
 
+/* Menu mobile plein écran ouvert : la page derrière ne défile plus. */
+html:has(#menu-mobile[open]) {
+  overflow: hidden;
+}
+
 /* Boutons en graisse normale (daisyUI les met en semi-gras dans sa couche ; règle hors couche pour primer). */
 .btn {
   font-weight: 400;

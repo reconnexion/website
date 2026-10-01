@@ -28,6 +28,9 @@ export type Role = {
   raison_d_etre?: string;
   referent?: string;
   referent_photo?: string;
+  /** Liste à puces (lignes « - … »), cf. Paragraphes. */
+  redevabilites?: string;
+  membres?: { nom: string; photo?: string }[];
 };
 
 export type Evenement = {

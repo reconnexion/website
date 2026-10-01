@@ -1,7 +1,7 @@
 ---
 // Barre de menu inspirée du YesWiki (thème Margot) : logo, liens avec icônes, sous-menus déroulants.
-// Sous-menus en CSS (survol + focus clavier) : aucun JS côté client.
-import { ChevronDown, Menu as IconeMenu } from 'lucide-react';
+// Sous-menus en CSS (survol + focus clavier) ; sur mobile, menu plein écran dans une <dialog>.
+import { ChevronDown, Menu as IconeMenu, X } from 'lucide-react';
 import { icones } from '../lib/icones';
 import type { Site, LienMenu } from '../lib/contenu';
 
@@ -15,12 +15,18 @@ const { site, chemin } = Astro.props;
 const correspond = (lien?: string) => !!lien && (lien === chemin || (lien !== '/' && chemin.startsWith(`${lien}/`)));
 const estActif = (l: LienMenu) => correspond(l.lien) || !!l.sous_menu?.some((s) => correspond(s.lien));
 const externe = (lien?: string) => !!lien && /^https?:\/\//.test(lien);
+
+// Boutons « Menu » et « Fermer » de même largeur : le logo ne bouge pas quand le menu mobile s'ouvre.
+// Petits écrans : logo un peu réduit (< 400 px), puis icône seule (< 360 px), pour que l'en-tête tienne sur une ligne.
+const classeBoutonMenu =
+  'inline-flex w-28 shrink-0 cursor-pointer items-center justify-center gap-e2 px-e3 py-e2 font-titre text-s font-medium hover:bg-fond focus-visible:bg-fond max-[359px]:w-auto';
+const classeLogo = 'h-7 w-auto max-[400px]:h-6 sm:h-8';
 ---
 <header class="sticky top-0 z-20 bg-barre print:hidden">
   <div class="navbar min-h-20 gap-e3 px-e3 py-e3 sm:px-e5">
     <div class="navbar-start w-auto shrink-0">
       <a href="/" class="block">
-        {site.logo ? <img src={site.logo} alt={site.nom} class="h-7 w-auto sm:h-8" /> : <span class="font-titre text-l">{site.nom}</span>}
+        {site.logo ? <img src={site.logo} alt={site.nom} class={classeLogo} /> : <span class="font-titre text-l">{site.nom}</span>}
       </a>
     </div>
 
@@ -77,39 +83,74 @@ const externe = (lien?: string) => !!lien && /^https?:\/\//.test(lien);
     </nav>
 
     <div class="navbar-end ml-auto w-auto lg:hidden">
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-neutral btn-sm">
-          <IconeMenu size={18} aria-hidden="true" />
-          {site.texte_menu}
-        </div>
-        <ul tabindex="-1" class="dropdown-content menu z-30 mt-e2 w-72 rounded-none border border-base-300 bg-base-100 p-e2 font-titre">
+      {/* Ouvre le menu plein écran ci-dessous (script data-dialogue de Base.astro). Même style que les liens du menu. */}
+      <button type="button" class={classeBoutonMenu} data-dialogue="menu-mobile" aria-haspopup="dialog">
+        <IconeMenu size={18} aria-hidden="true" />
+        <span class="max-[359px]:sr-only">{site.texte_menu}</span>
+      </button>
+    </div>
+  </div>
+
+  {/* Menu mobile : plein écran, défilant, tous les sous-menus dépliés. Échap ou la croix le ferment. */}
+  <dialog id="menu-mobile" class="menu-mobile m-0 h-dvh max-h-none w-full max-w-none bg-fond p-0 text-noir lg:hidden" aria-label={site.texte_menu}>
+    <div class="flex h-full flex-col">
+      <div class="flex min-h-20 shrink-0 items-center justify-between gap-e3 bg-barre px-e3 py-e3 sm:px-e5">
+        <a href="/" class="block shrink-0">
+          {site.logo ? <img src={site.logo} alt={site.nom} class={classeLogo} /> : <span class="font-titre text-l">{site.nom}</span>}
+        </a>
+        <form method="dialog">
+          <button class={classeBoutonMenu}>
+            <X size={18} aria-hidden="true" />
+            <span class="max-[359px]:sr-only">Fermer</span>
+          </button>
+        </form>
+      </div>
+      <nav class="flex-1 overflow-y-auto overscroll-contain px-e3 py-e3 sm:px-e5">
+        <ul class="menu w-full p-0 font-titre text-m [&_a]:rounded-none [&_a]:py-e2">
           {site.menu.map((l) => {
             const Icone = l.icone ? icones[l.icone] : undefined;
             return l.sous_menu?.length ? (
-              <li>
-                <span class="menu-title flex items-center gap-e2 text-noir">
-                  {Icone && <Icone size={16} aria-hidden="true" />}
+              <li class="mt-e2 first:mt-0">
+                <span class="menu-title flex items-center gap-e2 px-e3 py-e2 text-ml text-noir">
+                  {Icone && <Icone size={18} aria-hidden="true" />}
                   {l.texte}
                 </span>
-                <ul>
+                <ul class="ms-e4">
+                  {l.lien && (
+                    <li><a href={l.lien} class:list={[correspond(l.lien) && 'bg-base-200 font-semibold text-vert-fonce']}>{l.texte}</a></li>
+                  )}
                   {l.sous_menu.map((s) => (
-                    <li><a href={s.lien} class:list={[correspond(s.lien) && 'bg-base-200 font-semibold text-vert-fonce']}>{s.texte}</a></li>
+                    <li>
+                      <a
+                        href={s.lien}
+                        class:list={[correspond(s.lien) && 'bg-base-200 font-semibold text-vert-fonce']}
+                        aria-current={s.lien === chemin ? 'page' : undefined}
+                        target={externe(s.lien) ? '_blank' : undefined}
+                        rel={externe(s.lien) ? 'noopener' : undefined}
+                      >{s.texte}</a>
+                    </li>
                   ))}
                 </ul>
               </li>
             ) : (
-              <li>
-                <a href={l.lien} class:list={[correspond(l.lien) && 'bg-base-200 font-semibold text-vert-fonce']}>
-                  {Icone && <Icone size={16} aria-hidden="true" />}
+              <li class="mt-e2 first:mt-0">
+                <a
+                  href={l.lien}
+                  class:list={['text-ml font-semibold', correspond(l.lien) && 'bg-base-200 text-vert-fonce']}
+                  aria-current={l.lien === chemin ? 'page' : undefined}
+                  target={externe(l.lien) ? '_blank' : undefined}
+                  rel={externe(l.lien) ? 'noopener' : undefined}
+                >
+                  {Icone && <Icone size={18} aria-hidden="true" />}
                   {l.texte}
                 </a>
               </li>
             );
           })}
         </ul>
-      </div>
+      </nav>
     </div>
-  </div>
+  </dialog>
 </header>
 
 <script>
@@ -121,4 +162,9 @@ const externe = (lien?: string) => !!lien && /^https?:\/\//.test(lien);
     new ResizeObserver(mesurer).observe(entete);
     mesurer();
   }
+
+  // Menu mobile ouvert puis fenêtre élargie (rotation de tablette…) : on le ferme, il est masqué en grand écran.
+  const menuMobile = document.getElementById('menu-mobile');
+  if (menuMobile instanceof HTMLDialogElement)
+    matchMedia('(min-width: 64rem)').addEventListener('change', (e) => e.matches && menuMobile.close());
 </script>

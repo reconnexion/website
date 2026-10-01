@@ -26,8 +26,6 @@ menu:
         lien: /societaires
       - texte: Partenaires & Réseaux
         lien: /partenaires
-      - texte: Contact
-        lien: /contact
   - texte: Nos services
     lien: /services
     icone: telephone
@@ -55,5 +53,5 @@ pied_de_page: |-
   n'hésitez pas à nous suivre sur les réseaux sociaux existants ;-)
   **[Mastodon](https://mamot.fr/@reconnexion) | [Bluesky](https://bsky.app/profile/reconnexion.bsky.social) | [LinkedIn](https://www.linkedin.com/company/reconnexion-coop/)**
 
-  Copyright © 2025-2026 Reconnexion. Tous droits réservés. - [Mentions légales](/mentions-legales)
+  Copyright © 2025-2026 Reconnexion. Tous droits réservés. - [Contact](/contact) - [Mentions légales](/mentions-legales)
 texte_chargement: Chargement…

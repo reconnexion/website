@@ -1,0 +1,14 @@
+---
+// Page introuvable : pré-rendue en 404.html, servie par l'adaptateur Node pour toute adresse inconnue.
+import Base from '../layouts/Base.astro';
+import { Bandeau } from '../blocs/Bandeau';
+---
+<Base titre="Page introuvable">
+  <Bandeau
+    surtitre="Erreur 404"
+    titre="Page introuvable"
+    texte="La page que vous cherchez n'existe pas ou a été déplacée. Vous pouvez revenir à l'accueil ou utiliser le menu ci-dessus."
+    bouton_texte="Retour à l'accueil"
+    bouton_lien="/"
+  />
+</Base>

@@ -43,7 +43,7 @@ export function Equipe({ titre, bouton_texte, bouton_lien, bouton_icone, personn
                   <span className="font-titre text-xl">{initiales(p.nom)}</span>
                 </div>
               )}
-              <strong className="mt-e2 block font-semibold text-vert-fonce">{p.nom}</strong>
+              <strong className="mt-e2 block font-semibold">{p.nom}</strong>
               {p.role && <span className="text-s text-gris">{p.role}</span>}
             </>
           );

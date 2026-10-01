@@ -218,8 +218,9 @@ export async function lireOrganisations(doc?: string, table = 'Organisations'): 
 
 /**
  * Rôles de l'équipe opérationnelle :
- *   table Projects : Role (texte), Raison_d_etre (texte), Ordre (nombre), Referent_e (référence vers People)
- *   table People   : Contributeur (nom) et Photo — seuls champs publiés
+ *   table Projects : Role (texte), Raison_d_etre (texte), Ordre (nombre), Referent_e (référence vers People),
+ *                    Redevabilites (texte, une puce « * » ou « - » par ligne), Membres (références vers People)
+ *   table People   : Contributeur (nom) et Photo — seuls champs publiés (référent·e et membres)
  *                    (la photo seulement si la personne est publiée, cf. colonne Public)
  */
 export async function lireRoles(): Promise<Role[]> {
@@ -242,11 +243,19 @@ export async function lireRoles(): Promise<Role[]> {
     .sort((a, b) => ordre(a) - ordre(b))
     .map((r) => {
       const ref = typeof r.fields.Referent_e === 'number' ? r.fields.Referent_e : undefined;
+      // Référence multiple Grist : ['L', id1, id2…].
+      const membres = Array.isArray(r.fields.Membres) ? r.fields.Membres.slice(1).filter((id) => typeof id === 'number') : [];
       return {
         titre: texte(r.fields.Role) ?? '',
         raison_d_etre: texte(r.fields.Raison_d_etre),
         referent: ref ? noms.get(ref) : undefined,
         referent_photo: ref ? photos.get(ref) : undefined,
+        // Puces Markdown « * » → « - », la syntaxe de liste de Paragraphes.
+        redevabilites: texte(r.fields.Redevabilites)?.replace(/^\s*\*\s+/gm, '- '),
+        membres: membres.flatMap((id) => {
+          const nom = noms.get(id);
+          return nom ? [{ nom, photo: photos.get(id) }] : [];
+        }),
       };
     })
     .filter((r) => r.titre);

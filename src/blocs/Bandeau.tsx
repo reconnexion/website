@@ -30,11 +30,15 @@ export function Bandeau({ surtitre, lien_surtitre, titre, texte, image, bouton_t
     return (
       <section
         className="hero hero-plein-ecran relative bg-cover bg-center"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{
+          // Essai : bords teintés du bleu du logo, le halo jaune du centre de la photo reste intact.
+          backgroundImage: `radial-gradient(ellipse at 55% 10%, transparent 35%, color-mix(in srgb, var(--c-bleu) 60%, transparent) 100%), url(${image})`,
+        }}
       >
-        <div className="hero-content conteneur relative flex-col px-0 py-e7 text-center text-fond text-shadow-lg">
+        <div className="hero-content conteneur relative flex-col gap-0 px-0 py-e7 text-center text-fond text-shadow-lg">
           {surtitre && <span className="text-xs font-bold tracking-widest uppercase">{surtitre}</span>}
-          <h1 className="text-xxl">{titre}</h1>
+          {/* Taille calée pour que le titre ait à peu près la largeur du texte (text-xl) en dessous. */}
+          <h1 className="text-[clamp(3.1rem,5.4vw,4rem)] leading-[1.1]">{titre}</h1>
           <Paragraphes texte={texte} className="font-titre text-xl" />
           {bouton}
         </div>

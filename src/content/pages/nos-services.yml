@@ -14,8 +14,8 @@ sections:
     bouton_lien: /contact?sujet=Demande de devis
     bouton_icone: bulle
     fond: degrade
-    nom: Forfait de base
-    prix: 9 000 €
+    nom: Forfait de base, à partir de
+    prix: 9 000 € HT
     sous_titre: Votre application conçue, réalisée et déployée sur les territoires
     titre_liste: Ce que comprend le forfait
     elements:
