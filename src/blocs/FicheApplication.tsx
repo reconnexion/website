@@ -1,5 +1,19 @@
 import { Bloc, Paragraphes, Surtitre } from './_commun';
 import type { Champ } from './types';
+import { STATUTS, type Statut } from '../lib/applications';
+
+/** Couleur de l'étiquette de statut (classes écrites en entier pour Tailwind). */
+const couleursStatut: Record<Statut, string> = {
+  'En ligne': 'border-vert-fonce bg-vert-fonce text-fond',
+  'En test': 'border-bleu-fonce bg-bleu-fonce text-fond',
+  'En développement': 'border-gris bg-gris text-fond',
+};
+
+/** Étiquette du statut d'une application (page de l'application et listes). */
+export function EtiquetteStatut({ statut, className = '' }: { statut?: Statut; className?: string }) {
+  if (!statut || !couleursStatut[statut]) return null;
+  return <span className={`badge rounded-none font-semibold ${couleursStatut[statut]} ${className}`.trim()}>{statut}</span>;
+}
 
 type Bouton = { texte: string; lien: string; style?: 'principal' | 'secondaire' };
 type Capture = { image: string; description?: string };
@@ -9,6 +23,7 @@ export type FicheApplicationProps = {
   /** Page parente, affichée au-dessus du titre comme le surtitre des autres pages. */
   surtitre?: { texte: string; lien?: string };
   titre: string;
+  statut?: Statut;
   logo?: string;
   sous_titre?: string;
   boutons?: Bouton[];
@@ -19,7 +34,10 @@ export type FicheApplicationProps = {
 /** Colonnes de la galerie de captures selon leur nombre (classes écrites en entier pour Tailwind). */
 const colonnesCaptures: Record<number, string> = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4' };
 
-export function FicheApplication({ surtitre, titre, logo, sous_titre, boutons = [], captures = [], infos = [] }: FicheApplicationProps) {
+export function FicheApplication({ surtitre, titre, statut, logo, sous_titre, boutons = [], captures = [], infos: infosFiche = [] }: FicheApplicationProps) {
+  // Le statut s'affiche en étiquette sur la ligne « Statut » des informations (ajoutée en tête si la fiche n'en a pas).
+  const estStatut = (info: Info) => info.libelle.trim().toLowerCase() === 'statut';
+  const infos = statut && !infosFiche.some(estStatut) ? [{ libelle: 'Statut' }, ...infosFiche] : infosFiche;
   return (
     // Même en-tête que les autres pages (cf. Bandeau) : surtitre, h1.
     <Bloc>
@@ -38,7 +56,7 @@ export function FicheApplication({ surtitre, titre, logo, sous_titre, boutons = 
               <a
                 key={i}
                 href={b.lien}
-                className={`btn btn-lg uppercase ${b.style === 'secondaire' ? 'border-gris bg-gris text-fond hover:bg-noir' : 'btn-primary'}`}
+                className={`btn btn-lg uppercase ${b.style === 'secondaire' ? 'border-barre bg-barre text-noir hover:border-trait hover:bg-trait' : 'btn-primary'}`}
               >
                 {b.texte}
               </a>
@@ -71,7 +89,14 @@ export function FicheApplication({ surtitre, titre, logo, sous_titre, boutons = 
             <div key={i} className="contents">
               <dt className="font-titre font-semibold">{info.libelle}</dt>
               <dd className="max-w-texte">
-                <Paragraphes texte={info.valeur} />
+                {estStatut(info) && statut ? (
+                  <div className="flex flex-col items-start gap-e2">
+                    <EtiquetteStatut statut={statut} className="badge-lg" />
+                    <Paragraphes texte={info.valeur} />
+                  </div>
+                ) : (
+                  <Paragraphes texte={info.valeur} />
+                )}
               </dd>
             </div>
           ))}
@@ -95,6 +120,14 @@ export const champsApplication: Champ[] = [
     pattern: ['^[a-z0-9-]+$', 'Minuscules, chiffres et tirets uniquement'],
   },
   { name: 'ordre', label: "Ordre d'affichage", widget: 'number', value_type: 'int', required: false },
+  {
+    name: 'statut',
+    label: 'Statut',
+    widget: 'select',
+    options: [...STATUTS],
+    required: false,
+    hint: 'Affiché en étiquette dans les listes d’applications et sur la ligne « Statut » des informations (le texte de cette ligne s’affiche dessous).',
+  },
   { name: 'logo', label: 'Logo', widget: 'image', required: false, hint: 'Image carrée, affichée à gauche du nom.' },
   { name: 'accroche', label: 'Accroche', widget: 'string', required: false, hint: 'Sous le nom, sur la page de l’application.' },
   { name: 'resume', label: 'Résumé', widget: 'text', required: false, hint: 'Affiché dans les listes d’applications (accueil, page Applications).' },
@@ -128,7 +161,7 @@ export const champsApplication: Champ[] = [
     widget: 'list',
     required: false,
     summary: '{{libelle}}',
-    hint: 'Ex. Utilisateurs, Statut, Description. Une page est créée pour l’application dès qu’il y a des captures ou des informations.',
+    hint: 'Ex. Utilisateurs, Statut (précisions sous l’étiquette de statut), Description. Une page est créée pour l’application dès qu’il y a des captures ou des informations.',
     fields: [
       { name: 'libelle', label: 'Libellé', widget: 'string' },
       { name: 'valeur', label: 'Valeur', widget: 'text', required: false },

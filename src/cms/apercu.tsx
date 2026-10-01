@@ -79,6 +79,7 @@ const ApercuPage = coquille((d) => <Apercu sections={d.sections ?? []} />);
 const ApercuApplication = coquille((d) => (
   <FicheApplication
     titre={d.nom ?? ''}
+    statut={d.statut || undefined}
     logo={d.logo || undefined}
     sous_titre={d.accroche || undefined}
     boutons={d.boutons}

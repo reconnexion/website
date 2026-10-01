@@ -1,8 +1,9 @@
 import { Bloc, TitreBloc, champFond, type Fond } from './_commun';
+import { EtiquetteStatut } from './FicheApplication';
 import type { DefinitionBloc } from './types';
-import { carteApplication, selectionnerApplications, type Application as FicheApplication } from '../lib/applications';
+import { carteApplication, selectionnerApplications, type Application as FicheApplication, type Statut } from '../lib/applications';
 
-type Application = { nom: string; description?: string; lien?: string; image?: string };
+type Application = { nom: string; statut?: Statut; description?: string; lien?: string; image?: string };
 
 export type ApplicationsProps = {
   fond?: Fond;
@@ -40,7 +41,10 @@ export function Applications({ fond = 'blanc', titre, texte_lien, une_par_ligne,
             >
               {image && (app.lien ? <a href={app.lien} className="block w-full transition-opacity hover:opacity-90">{image}</a> : image)}
               <div className={une_par_ligne ? 'flex flex-col items-start gap-e3' : 'contents'}>
-                <h3 className="text-l">{app.lien ? <a href={app.lien} className="link-hover">{app.nom}</a> : app.nom}</h3>
+                <div className={`flex flex-wrap items-center gap-x-e3 gap-y-e1${une_par_ligne ? '' : ' justify-center'}`}>
+                  <h3 className="text-l">{app.lien ? <a href={app.lien} className="link-hover">{app.nom}</a> : app.nom}</h3>
+                  <EtiquetteStatut statut={app.statut} />
+                </div>
                 {app.description && <p>{app.description}</p>}
                 {app.lien && texte_lien && (
                   <a className="link mt-auto font-semibold text-vert-fonce" href={app.lien}>

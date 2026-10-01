@@ -1,6 +1,7 @@
 nom: PorteJunes
 slug: portejunes
 ordre: 3
+statut: En test
 logo: /images/portejunes/logo.png
 accroche: Un porte-monnaie en monnaie libre pour le Réseau Social Universel
 resume: Un porte-monnaie en monnaie libre qui s'active en un clic et permet d'échanger des Junes entre membres du Réseau Social Universel.

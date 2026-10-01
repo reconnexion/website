@@ -5,12 +5,16 @@
  * Ce module ne lit pas les fichiers (voir contenu.ts) : il sert aussi à l'aperçu du CMS.
  */
 
+export const STATUTS = ['En ligne', 'En test', 'En développement'] as const;
+export type Statut = (typeof STATUTS)[number];
+
 export type BoutonApplication = { texte: string; lien: string; style?: 'principal' | 'secondaire' };
 
 export type Application = {
   slug: string;
   nom: string;
   ordre?: number;
+  statut?: Statut;
   logo?: string;
   accroche?: string;
   /** Description courte, affichée dans les listes d'applications. */
@@ -40,6 +44,7 @@ export function selectionnerApplications(apps: Application[], selection?: unknow
 /** Données affichées pour une application dans une liste (bloc Applications). */
 export const carteApplication = (a: Application) => ({
   nom: a.nom,
+  statut: a.statut,
   description: a.resume,
   image: a.vignette,
   lien: lienApplication(a),
