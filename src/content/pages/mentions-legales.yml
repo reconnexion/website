@@ -3,9 +3,13 @@ slug: mentions-legales
 description: Mentions légales du site de la SCIC Reconnexion.
 sections:
   - type: bandeau
+    surtitre: ''
     titre: Mentions légales
+    texte: ''
+    image: ''
+    bouton_texte: ''
+    bouton_lien: ''
   - type: texte
-    fond: blanc
     titre: Éditeur du site
     texte: |-
       Ce site Internet est édité par la société coopérative d’intérêt collectif (SCIC) Reconnexion.
@@ -20,9 +24,14 @@ sections:
       **Numéro de TVA intracommunautaire** : FR52990452625
       **Directeur de la publication** : Sébastien Rosset
 
-      Pour contacter Reconnexion : [formulaire de contact](/contact) ou [contact@reconnexion.coop](mailto:contact@reconnexion.coop)
-  - type: texte
+      Pour contacter Reconnexion : [cliquer ici](/contact)
+    image: ''
     fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
+  - type: texte
     titre: Hébergement
     texte: |-
       **OVH Hosting, Inc.** (OVHcloud)
@@ -33,3 +42,9 @@ sections:
       Le site est hébergé dans le centre de données OVHcloud de Beauharnois (Québec, Canada).
 
       Pour contacter l’hébergeur : [www.ovhcloud.com](https://www.ovhcloud.com/fr-ca/)
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
