@@ -36,7 +36,7 @@
 - Idem pour les réseaux (`src/content/reseaux/*.yml`, « Réseaux » dans le CMS, bloc Réseaux).
 - Même principe pour toute donnée affichée à plusieurs endroits : une collection, et des blocs qui la référencent.
 - Images Grist (photos, logos) : jamais d'URL Grist dans le HTML (la clé d'API est requise) ; elles passent par
-  `/api/grist/image/<doc>/<table>/<Photo|Logo>/<id>`, qui ne sert que les pièces jointes des lignes publiées
+  `/api/grist/image/<doc>/<table>/<Photo|Logo|Image>/<id>`, qui ne sert que les pièces jointes des lignes publiées
   des documents utilisés par le site.
 
 ## Ajouter un bloc

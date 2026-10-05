@@ -1,4 +1,4 @@
-import { Building2, User } from "lucide-react";
+import { Building2, Globe, User } from "lucide-react";
 import { Bloc, TitreBloc } from "./_commun";
 import type { DefinitionBloc } from "./types";
 import type { Societaire } from "../lib/types";
@@ -69,35 +69,63 @@ export function Societaires({
                   .join(" ")}
                 className="flex items-start gap-e3 bg-base-200 p-e3"
               >
-                {/* En attendant les photos : silhouette (personne) ou bâtiment (organisation). */}
-                <div
-                  className="grid size-12 shrink-0 place-items-center bg-base-300 text-gris"
-                  aria-hidden="true"
-                >
-                  {s.organisation ? (
-                    <Building2 size={24} />
-                  ) : (
-                    <User size={24} />
-                  )}
-                </div>
-                <div className="min-w-0">
-                  <strong className="block font-semibold">
-                    {s.lien ? (
-                      <a
-                        href={s.lien}
-                        className="link-hover"
-                        target="_blank"
-                        rel="noopener"
-                      >
-                        {s.nom}
-                      </a>
+                {/* Photo (personne) ou logo (organisation) ; à défaut, silhouette ou bâtiment. */}
+                {s.photo ? (
+                  <img
+                    src={s.photo}
+                    alt=""
+                    loading="lazy"
+                    className={`size-12 shrink-0 ${s.organisation ? "bg-fond object-contain p-e1" : "object-cover"}`}
+                  />
+                ) : (
+                  <div
+                    className="grid size-12 shrink-0 place-items-center bg-base-300 text-gris"
+                    aria-hidden="true"
+                  >
+                    {s.organisation ? (
+                      <Building2 size={24} />
                     ) : (
-                      s.nom
+                      <User size={24} />
                     )}
-                  </strong>
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <strong className="block font-semibold">{s.nom}</strong>
                   {s.colleges.length > 0 && (
                     <span className="text-s text-gris">
                       {s.colleges.join(", ")}
+                    </span>
+                  )}
+                  {(s.lien || s.linkedin) && (
+                    <span className="mt-e2 flex items-center gap-e3">
+                      {s.lien && (
+                        <a
+                          href={s.lien}
+                          className="text-vert-fonce hover:opacity-80"
+                          target="_blank"
+                          rel="noopener"
+                          aria-label="Site web"
+                          title="Site web"
+                        >
+                          <Globe size={20} aria-hidden="true" />
+                        </a>
+                      )}
+                      {s.linkedin && (
+                        <a
+                          href={s.linkedin}
+                          className="hover:opacity-80"
+                          target="_blank"
+                          rel="noopener"
+                          title="LinkedIn"
+                        >
+                          {/* Logo officiel (fichier SVG : ses couleurs ne sont pas celles du site). */}
+                          <img
+                            src="/images/icones/linkedin.svg"
+                            alt="LinkedIn"
+                            className="size-5"
+                          />
+                        </a>
+                      )}
                     </span>
                   )}
                 </div>
@@ -130,7 +158,7 @@ export const societaires: DefinitionBloc<SocietairesProps> = {
       label: "Table Grist",
       widget: "string",
       default: "Contacts",
-      hint: "Personnes. Seules les lignes avec la case « Sociétaire » cochée sont publiées (prénom, nom et collège uniquement).",
+      hint: "Personnes. Seules les lignes avec la case « Sociétaire » cochée sont publiées (prénom, nom, collège, site web, LinkedIn et photo — colonne « Image » — uniquement).",
     },
     {
       name: "table_organisations",
@@ -138,7 +166,7 @@ export const societaires: DefinitionBloc<SocietairesProps> = {
       widget: "string",
       required: false,
       default: "Organisations",
-      hint: "Organisations sociétaires (nom, collège et site web), dans le même document. Vide : pas d’organisations.",
+      hint: "Organisations sociétaires (nom, collège, site web et logo), dans le même document. Vide : pas d’organisations.",
     },
     {
       name: "texte_tous",

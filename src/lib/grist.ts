@@ -76,6 +76,12 @@ async function lireChoix(table: string, colonne: string, doc?: string): Promise<
   }
 }
 
+/** Adresse web saisie dans Grist, avec ou sans « https:// ». */
+const adresseWeb = (v: unknown) => {
+  const t = texte(v);
+  return t && (/^https?:\/\//i.test(t) ? t : `https://${t}`);
+};
+
 /** Valeurs d'une cellule « Choice » (texte) ou « Choice List » (`['L', 'a', 'b']`). */
 const choix = (v: unknown): string[] =>
   Array.isArray(v) && v[0] === 'L'
@@ -87,7 +93,8 @@ const choix = (v: unknown): string[] =>
 /**
  * Sociétaires : lignes de la table des personnes (Contacts) et de la table des organisations
  * (Organisations) dont la case « Societaire » est cochée.
- * Seuls Prénom, Nom, Collège (et le site web des organisations) sont publiés
+ * Seuls Prénom, Nom, Collège, Site web, LinkedIn (colonne Linked_in) et Image (photo) des personnes,
+ * et Nom, Collège, Site web et Logo des organisations sont publiés
  * (colonne College facultative : Choice ou Choice List).
  * Renvoie aussi la liste des collèges, dans l'ordre des choix de la colonne, pour le filtre.
  */
@@ -105,20 +112,30 @@ export async function lireSocietaires(
   // Personnes (Prénom, Nom) et organisations (Nom, Site web) sociétaires, triées ensemble par nom.
   const personnes = lignes
     .filter((r) => r.fields.Societaire === true)
-    .map((r) => ({
-      cle: texte(r.fields.Nom) ?? texte(r.fields.Prenom) ?? '',
-      nom: `${texte(r.fields.Prenom) ?? ''} ${texte(r.fields.Nom) ?? ''}`.trim(),
-      colleges: choix(r.fields.College),
-    }));
+    .map((r) => {
+      const [photo] = piecesJointes(r.fields.Image);
+      return {
+        cle: texte(r.fields.Nom) ?? texte(r.fields.Prenom) ?? '',
+        nom: `${texte(r.fields.Prenom) ?? ''} ${texte(r.fields.Nom) ?? ''}`.trim(),
+        colleges: choix(r.fields.College),
+        lien: adresseWeb(r.fields.Site_web),
+        linkedin: adresseWeb(r.fields.Linked_in),
+        photo: photo ? urlImage(doc, table, 'Image', photo) : undefined,
+      };
+    });
   const orgs = organisations
     .filter((r) => r.fields.Societaire === true)
-    .map((r) => ({
-      cle: texte(r.fields.Nom) ?? '',
-      nom: texte(r.fields.Nom) ?? '',
-      colleges: choix(r.fields.College),
-      lien: texte(r.fields.Site_web),
-      organisation: true,
-    }));
+    .map((r) => {
+      const [logo] = piecesJointes(r.fields.Logo);
+      return {
+        cle: texte(r.fields.Nom) ?? '',
+        nom: texte(r.fields.Nom) ?? '',
+        colleges: choix(r.fields.College),
+        lien: adresseWeb(r.fields.Site_web),
+        photo: logo ? urlImage(doc, tableOrganisations, 'Logo', logo) : undefined,
+        organisation: true,
+      };
+    });
   const societaires = [...personnes, ...orgs]
     .filter((s) => s.nom)
     .sort((a, b) => a.cle.localeCompare(b.cle, 'fr', { sensitivity: 'base' }) || a.nom.localeCompare(b.nom, 'fr'))
@@ -137,8 +154,16 @@ const piecesJointes = (v: unknown): number[] =>
 const lignesPubliees = async (table: string, doc?: string) =>
   (await lireTable(table, doc)).filter((r) => r.fields.Public !== false);
 
-/** Colonnes de pièces jointes dont les images peuvent être servies publiquement. */
-export const COLONNES_IMAGES = ['Photo', 'Logo'];
+/**
+ * Colonnes de pièces jointes dont les images peuvent être servies publiquement, et lignes concernées.
+ * Image : photo des sociétaires (table Contacts, sans colonne Public) — uniquement les lignes « Sociétaire ».
+ */
+const lignesAvecImagesPubliques: Record<string, (r: LigneGrist) => boolean> = {
+  Photo: (r) => r.fields.Public !== false,
+  Logo: (r) => r.fields.Public !== false,
+  Image: (r) => r.fields.Societaire === true && r.fields.Public !== false,
+};
+export const COLONNES_IMAGES = Object.keys(lignesAvecImagesPubliques);
 
 /** URL publique d'une image Grist (servie par src/pages/api/grist/image/…). */
 const urlImage = (doc: string | undefined, table: string, colonne: string, id: number) =>
@@ -179,7 +204,9 @@ export async function lireImage(
   id: number,
 ): Promise<{ type: string; donnees: ArrayBuffer } | undefined> {
   if (!gristConfigure() || !COLONNES_IMAGES.includes(colonne)) return undefined;
-  const autorisees = new Set((await lignesPubliees(table, doc)).flatMap((r) => piecesJointes(r.fields[colonne])));
+  const autorisees = new Set(
+    (await lireTable(table, doc)).filter(lignesAvecImagesPubliques[colonne]).flatMap((r) => piecesJointes(r.fields[colonne])),
+  );
   if (!autorisees.has(id)) return undefined;
 
   const cle = `${doc}/${table}/${colonne}/${id}`;

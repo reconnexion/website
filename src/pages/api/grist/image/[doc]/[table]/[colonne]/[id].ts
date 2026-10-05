@@ -4,7 +4,7 @@ import { documentsGrist } from '../../../../../../../lib/contenu';
 
 // Images (photos, logos) stockées en pièces jointes Grist : la clé d'API reste sur le serveur.
 // Seuls les documents utilisés par le site (celui par défaut et ceux cités dans les pages)
-// et les colonnes Photo / Logo sont autorisés.
+// et les colonnes Photo / Logo / Image sont autorisés (cf. COLONNES_IMAGES).
 export const prerender = false;
 
 export const GET: APIRoute = async ({ params }) => {

@@ -19,8 +19,11 @@ export type Societaire = {
   colleges: string[];
   /** Organisation sociétaire (plutôt qu'une personne). */
   organisation?: boolean;
-  /** Site web (organisations). */
+  /** Site web. */
   lien?: string;
+  linkedin?: string;
+  /** Photo (personnes) ou logo (organisations), servi par /api/grist/image/…. */
+  photo?: string;
 };
 
 export type Role = {
