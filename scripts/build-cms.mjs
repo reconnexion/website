@@ -29,6 +29,8 @@ await build({
   format: 'esm',
   outfile: tmp,
   jsx: 'automatic',
+  // Images : pas de variantes optimisées hors du site construit (cf. src/blocs/_image.tsx).
+  define: { 'import.meta.env.PROD': 'false' },
   logLevel: 'error',
 });
 const { config } = await import(pathToFileURL(tmp).href + `?t=${Date.now()}`);
@@ -48,7 +50,7 @@ await build({
   jsx: 'automatic',
   minify: true,
   // Fiches d'applications et de réseaux, pour que leurs blocs montrent les vraies données dans l'aperçu.
-  define: { 'process.env.NODE_ENV': '"production"', __APPLICATIONS__: JSON.stringify(await lireCollection('applications')),
+  define: { 'process.env.NODE_ENV': '"production"', 'import.meta.env.PROD': 'false', __APPLICATIONS__: JSON.stringify(await lireCollection('applications')),
     __RESEAUX__: JSON.stringify(await lireCollection('reseaux')),
     __EVENEMENTS__: JSON.stringify(await lireCollection('evenements')),
     __CARTES__: JSON.stringify({

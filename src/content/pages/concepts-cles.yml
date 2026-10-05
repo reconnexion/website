@@ -77,6 +77,28 @@ sections:
     image_alt: ''
     inverse: true
     image_large: false
+  - type: piliers
+    fond: degrade
+    surtitre: Les 3 libertés fondamentales garanties par
+    titre: Le Réseau Social Universel
+    piliers:
+      - icone: cadenas
+        titre: Je garde le contrôle sur mes données
+        texte: Toutes mes données sont stockées de manière sécurisée, chez un hébergeur de confiance.
+      - icone: globe
+        titre: Je communique avec qui je veux
+        texte: Je peux échanger avec mes amis quels que soient les applis ou les hébergeurs qu'ils utilisent.
+      - icone: marche_arret
+        titre: Je peux changer d'appli à tout moment
+        texte: Si une appli ne me plaît plus, je peux en utiliser une autre en conservant toutes mes données.
+  - type: section_couleur
+    fond: gris
+    alignement: gauche
+    illustration: loupe_question
+    titre: Comment ça marche ?
+    texte: "De même que le web du début a été rendu possible grâce à des **protocoles reconnus internationalement**, le Réseau Social Universel est aujourd'hui réalisable grâce à deux protocoles : **ActivityPub** et **Solid**."
+    bouton_texte: Découvrir l'aspect technique
+    bouton_lien: /coin-technique
   - type: section_couleur
     titre: Rejoignez Reconnexion
     texte: Participez à la construction de ce nouvel espace de rencontre, d'entraide et de coopération.

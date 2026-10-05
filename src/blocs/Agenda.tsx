@@ -1,5 +1,6 @@
 import { CalendarPlus, MapPin, Repeat, Video } from 'lucide-react';
 import { Bloc, Paragraphes, TitreBloc } from './_commun';
+import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 import { Calendrier } from './_calendrier';
 import { FUSEAU, lienCarte, lienVisio, prochainesOccurrences, quand, type FicheEvenement, type Occurrence } from '../lib/evenements';
@@ -70,7 +71,7 @@ export function InfosOccurrence({ o }: { o: Occurrence }) {
 export function DetailOccurrence({ o }: { o: Occurrence }) {
   return (
     <>
-      {o.image && <img src={o.image} alt="" className="mb-e4 aspect-video w-full object-cover" />}
+      {o.image && <Image src={o.image} sizes="min(100vw, 72rem)" alt="" className="mb-e4 aspect-video w-full object-cover" />}
       <h2 className="pr-e5 text-xl">{o.titre}</h2>
       <div className="mt-e3">
         <InfosOccurrence o={o} />

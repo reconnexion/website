@@ -1,4 +1,5 @@
 import { Bloc, Boutons, TitreBloc, champBoutons, champFond, type Fond } from './_commun';
+import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 import type { Article } from '../lib/types';
 import { articlesDemo } from '../lib/demo';
@@ -44,7 +45,7 @@ export function Actualites({ fond = 'blanc', titre, texte_lien, texte_vide, bout
               <li key={a.slug} className="flex flex-col bg-base-200 text-noir">
                 {a.image && (
                   <a href={lien} className="block transition-opacity hover:opacity-90" tabIndex={-1}>
-                    <img src={a.image} alt="" loading="lazy" className="aspect-video w-full object-cover" />
+                    <Image src={a.image} sizes="(min-width: 1024px) 24rem, (min-width: 768px) 50vw, 100vw" alt="" loading="lazy" className="aspect-video w-full object-cover" />
                   </a>
                 )}
                 <div className="flex grow flex-col items-start gap-e2 p-e4">

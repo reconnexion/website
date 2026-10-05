@@ -1,5 +1,6 @@
 import { X } from 'lucide-react';
 import { Bloc, Paragraphes, TitreBloc } from './_commun';
+import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 import type { Role } from '../lib/types';
 import { rolesDemo } from '../lib/demo';
@@ -24,7 +25,7 @@ function initiales(nom: string) {
 /** Photo carrée, sans arrondi, comme dans le trombinoscope ; initiales si pas de photo. */
 function Avatar({ nom, photo }: { nom: string; photo?: string }) {
   return photo ? (
-    <img src={photo} alt="" loading="lazy" className="size-12 shrink-0 object-cover" />
+    <Image src={photo} sizes="3rem" alt="" loading="lazy" className="size-12 shrink-0 object-cover" />
   ) : (
     <div className="grid size-12 shrink-0 place-items-center bg-secondary text-secondary-content" aria-hidden="true">
       <span className="font-titre text-xs">{initiales(nom)}</span>

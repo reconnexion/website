@@ -20,7 +20,7 @@
 - Titre de section : `<TitreBloc>` (h2, `text-xl`, marge e4). Titre de carte : h3 `text-l`. h1 : uniquement dans
   le bandeau d'en-tête de page ou la fiche d'application.
 - Texte courant : `<Paragraphes>` (taille `m`, paragraphes espacés de e3 via l'utilitaire `texte`, listes « - »).
-  Seuls les chapeaux (bandeau) et le texte des sections colorées sont en `text-l` / `text-xl` ; le texte des annonces est en `text-ml`.
+  Seuls les chapeaux (bandeau) et le texte des sections colorées centrées sont en `text-l` / `text-xl` (alignées à gauche : texte courant) ; le texte des annonces est en `text-ml`.
 - Boutons : `<BoutonAction>` / `<Boutons>` (vert sur fond clair, blanc sur fond vert ou bleu).
 - Une page commence par un bandeau (surtitre = rubrique du menu, titre = nom de la page), sauf les fiches d'application.
 
@@ -35,6 +35,9 @@
   générées par `src/pages/cartes/`. Nouveau type de carte = une fiche dans « Types de cartes », rien à coder.
 - Idem pour les réseaux (`src/content/reseaux/*.yml`, « Réseaux » dans le CMS, bloc Réseaux).
 - Même principe pour toute donnée affichée à plusieurs endroits : une collection, et des blocs qui la référencent.
+- Images déposées via le CMS (`public/images/`) : afficher avec `<Image sizes="…">` (`src/blocs/_image.tsx`),
+  jamais un `<img>` direct. Le build génère des variantes WebP (`scripts/optimiser-images.mjs` → `/_img/<largeur>/…`)
+  et le composant choisit la bonne ; les originaux restent servis à `/images/…` (lien « voir en grand », impression).
 - Images Grist (photos, logos) : jamais d'URL Grist dans le HTML (la clé d'API est requise) ; elles passent par
   `/api/grist/image/<doc>/<table>/<Photo|Logo|Image>/<id>`, qui ne sert que les pièces jointes des lignes publiées
   des documents utilisés par le site.

@@ -1,4 +1,5 @@
 import { Bloc, BoutonAction, TitreBloc } from './_commun';
+import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 import { nomsIcones } from '../lib/icones';
 import type { Personne } from '../lib/types';
@@ -34,7 +35,7 @@ export function Equipe({ titre, bouton_texte, bouton_lien, bouton_icone, personn
           const contenu = (
             <>
               {p.photo ? (
-                <img src={p.photo} alt="" loading="lazy" className="aspect-square w-full object-cover" />
+                <Image src={p.photo} sizes="(min-width: 768px) 15rem, 50vw" alt="" loading="lazy" className="aspect-square w-full object-cover" />
               ) : (
                 <div
                   className="grid aspect-square w-full place-items-center bg-secondary text-secondary-content"

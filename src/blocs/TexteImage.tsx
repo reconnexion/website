@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Bloc, Paragraphes, Surtitre, TitreBloc, champFond, type Fond } from './_commun';
+import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 
 export type TexteImageProps = {
@@ -39,7 +40,8 @@ export function TexteImage({ fond = 'blanc', surtitre, titre, texte, image, imag
         </div>
         {image && (
           <Lien lien={image_lien}>
-            <img
+            <Image
+              sizes={image_logo ? '23rem' : image_large ? '(min-width: 768px) 48rem, 100vw' : '(min-width: 768px) 36rem, 100vw'}
               className={image_logo ? 'mx-auto block max-h-52 w-full max-w-[23rem] object-contain' : 'block w-full'}
               src={image}
               alt={image_alt ?? ''}

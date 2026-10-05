@@ -5,7 +5,7 @@
   "scripts": {
     "cms": "node scripts/build-cms.mjs",
     "dev": "npm run cms && node --env-file-if-exists=.env node_modules/astro/bin/astro.mjs dev",
-    "build": "npm run cms && astro build",
+    "build": "npm run cms && astro build && node scripts/optimiser-images.mjs",
     "start": "node --env-file-if-exists=.env dist/server/entry.mjs"
   },
   "dependencies": {
@@ -20,6 +20,7 @@
     "qrcode": "^1.5.4",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "yaml": "^2.9.1"
   },

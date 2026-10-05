@@ -26,6 +26,7 @@ import { texte } from './Texte';
 import { offre } from './Offre';
 import { grilleCartes } from './GrilleCartes';
 import { encadre } from './Encadre';
+import { piliers } from './Piliers';
 import type { DefinitionBloc } from './types';
 
 export const blocs: DefinitionBloc[] = [
@@ -40,6 +41,7 @@ export const blocs: DefinitionBloc[] = [
   video,
   applications,
   colonnes,
+  piliers,
   equipe,
   roles,
   societaires,

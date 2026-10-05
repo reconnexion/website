@@ -1,4 +1,5 @@
 import type { Logo } from '../lib/types';
+import { Image } from './_image';
 
 /** Grille de logos (partenaires, réseaux) : logo carré sur fond blanc, nom dessous, lien vers le site. */
 export function GrilleLogos({ logos }: { logos: Logo[] }) {
@@ -9,7 +10,7 @@ export function GrilleLogos({ logos }: { logos: Logo[] }) {
           <>
             <div className="grid aspect-square place-items-center border border-base-300 bg-fond p-e4">
               {o.logo ? (
-                <img src={o.logo} alt="" loading="lazy" className="max-h-full max-w-full object-contain" />
+                <Image src={o.logo} sizes="15rem" alt="" loading="lazy" className="max-h-full max-w-full object-contain" />
               ) : (
                 <span className="text-center font-titre text-l">{o.nom}</span>
               )}

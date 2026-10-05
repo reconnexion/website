@@ -1,5 +1,6 @@
 import { Heart, MessageCircle } from 'lucide-react';
 import { Bloc, BoutonAction } from './_commun';
+import { Image } from './_image';
 import { Bandeau } from './Bandeau';
 import { lienArticle } from './Actualites';
 import type { Article, Auteur } from '../lib/types';
@@ -83,7 +84,7 @@ export function FicheArticle({ article, auteur, autres, reglages: r }: Props) {
               <Encart titre={r.titre_auteur}>
                 <div className="flex items-center gap-e3">
                   {photo ? (
-                    <img src={photo} alt="" loading="lazy" className="size-16 shrink-0 rounded-full object-cover" />
+                    <Image src={photo} sizes="4rem" alt="" loading="lazy" className="size-16 shrink-0 rounded-full object-cover" />
                   ) : (
                     <span
                       className="grid size-16 shrink-0 place-items-center rounded-full bg-secondary font-titre text-l text-secondary-content"
@@ -117,7 +118,7 @@ export function FicheArticle({ article, auteur, autres, reglages: r }: Props) {
                   {autres.map((a) => (
                     <li key={a.slug}>
                       <a href={lienArticle(a)} className="group flex items-start gap-e3">
-                        {a.image && <img src={a.image} alt="" loading="lazy" className="aspect-square w-16 shrink-0 object-cover" />}
+                        {a.image && <Image src={a.image} sizes="4rem" alt="" loading="lazy" className="aspect-square w-16 shrink-0 object-cover" />}
                         <span>
                           <span className="block font-semibold leading-snug group-hover:underline">{a.titre}</span>
                           <time dateTime={a.date} className="text-xs text-gris">

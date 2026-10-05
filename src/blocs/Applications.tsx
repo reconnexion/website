@@ -1,4 +1,5 @@
 import { Bloc, TitreBloc, champFond, type Fond } from './_commun';
+import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 import { carteApplication, selectionnerApplications, type Application as FicheApplication } from '../lib/applications';
 
@@ -28,7 +29,7 @@ export function Applications({ fond = 'blanc', titre, texte_lien, une_par_ligne,
       <TitreBloc titre={titre} />
       <div className={une_par_ligne ? 'flex flex-col gap-e5' : 'grid gap-e5 md:grid-cols-2'}>
         {applications.map((app, i) => {
-          const image = app.image && <img src={app.image} alt="" loading="lazy" className="aspect-video w-full object-cover" />;
+          const image = app.image && <Image src={app.image} sizes="(min-width: 768px) 36rem, 100vw" alt="" loading="lazy" className="aspect-video w-full object-cover" />;
           return (
             <article
               key={i}

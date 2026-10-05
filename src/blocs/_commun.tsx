@@ -204,12 +204,23 @@ export function BoutonAction({ texte, lien, icone }: { texte?: string; lien?: st
   );
 }
 
-export function Bloc({ children, className = '', fond = 'blanc' }: { children: ReactNode; className?: string; fond?: Fond }) {
+/** Section de page. `pleineLargeur` : pas de conteneur, le bloc place lui-même ses `conteneur` (bande sur toute la largeur). */
+export function Bloc({
+  children,
+  className = '',
+  fond = 'blanc',
+  pleineLargeur = false,
+}: {
+  children: ReactNode;
+  className?: string;
+  fond?: Fond;
+  pleineLargeur?: boolean;
+}) {
   const classes = classesFond[fond] ?? '';
   return (
     <FondFonce.Provider value={fond === 'vert' || fond === 'bleu' || fond === 'degrade'}>
       <section data-fond={fond} className={`bloc ${classes} ${className}`.trim()}>
-        <div className="conteneur">{children}</div>
+        {pleineLargeur ? children : <div className="conteneur">{children}</div>}
       </section>
     </FondFonce.Provider>
   );

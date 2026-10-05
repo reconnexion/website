@@ -1,4 +1,5 @@
 import { Bloc, Paragraphes, Surtitre } from './_commun';
+import { Image } from './_image';
 import type { Champ } from './types';
 import { STATUTS, type Statut } from '../lib/applications';
 import { ExternalLink, GitBranch } from 'lucide-react';
@@ -46,7 +47,7 @@ export function FicheApplication({ surtitre, titre, statut, logo, sous_titre, bo
         <div>
           <Surtitre texte={surtitre?.texte} lien={surtitre?.lien} />
           <div className="mb-e3 flex items-center gap-e4">
-            {logo && <img src={logo} alt="" className="size-12 shrink-0 sm:size-16" />}
+            {logo && <Image src={logo} sizes="4rem" alt="" className="size-12 shrink-0 sm:size-16" />}
             <h1 className="text-xxl">{titre}</h1>
           </div>
           {sous_titre && <p className="text-l text-gris italic">{sous_titre}</p>}
@@ -74,7 +75,7 @@ export function FicheApplication({ surtitre, titre, statut, logo, sous_titre, bo
       {captures.length === 1 && (
         // Une seule capture (souvent au format paysage) : pleine largeur.
         <a href={captures[0].image} className="mt-e5 block">
-          <img src={captures[0].image} alt={captures[0].description ?? ''} loading="lazy" className="w-full border border-base-300" />
+          <Image src={captures[0].image} sizes="min(100vw, 72rem)" alt={captures[0].description ?? ''} loading="lazy" className="w-full border border-base-300" />
         </a>
       )}
       {captures.length > 1 && (
@@ -82,7 +83,7 @@ export function FicheApplication({ surtitre, titre, statut, logo, sous_titre, bo
           {captures.map((c, i) => (
             <li key={i} className="carousel-item w-3/5 sm:w-2/5 md:w-auto">
               <a href={c.image} className="block w-full">
-                <img src={c.image} alt={c.description ?? ''} loading="lazy" className="w-full border border-base-300" />
+                <Image src={c.image} sizes="(min-width: 768px) 36rem, 100vw" alt={c.description ?? ''} loading="lazy" className="w-full border border-base-300" />
               </a>
             </li>
           ))}

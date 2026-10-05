@@ -1,4 +1,5 @@
 import { Bloc, Boutons, Paragraphes, TitreBloc, champBoutons, champFond, type Fond } from './_commun';
+import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 
 export type TexteProps = {
@@ -15,7 +16,8 @@ export type TexteProps = {
 /** Bloc de texte simple : titre, paragraphes et listes, image (schéma, visuel…) au-dessus ou en dessous, boutons. */
 export function Texte({ fond = 'blanc', titre, texte, image, image_alt, image_avant, image_pleine_largeur, boutons }: TexteProps) {
   const img = image && (
-    <img
+    <Image
+      sizes={image_pleine_largeur ? 'min(100vw, 72rem)' : 'min(100vw, 56rem)'}
       src={image}
       alt={image_alt ?? ''}
       loading="lazy"

@@ -1,4 +1,5 @@
 import { Paragraphes, Surtitre } from './_commun';
+import { urlImage } from './_image';
 import type { DefinitionBloc } from './types';
 
 export type BandeauProps = {
@@ -32,7 +33,7 @@ export function Bandeau({ surtitre, lien_surtitre, titre, texte, image, bouton_t
         className="hero hero-plein-ecran relative bg-cover bg-center"
         style={{
           // Essai : bords teintés du bleu du logo, le halo jaune du centre de la photo reste intact.
-          backgroundImage: `radial-gradient(ellipse at 55% 10%, transparent 35%, color-mix(in srgb, var(--c-bleu) 60%, transparent) 100%), url(${image})`,
+          backgroundImage: `radial-gradient(ellipse at 55% 10%, transparent 35%, color-mix(in srgb, var(--c-bleu) 60%, transparent) 100%), url(${urlImage(image, 2400)})`,
         }}
       >
         <div className="hero-content conteneur relative flex-col gap-0 px-0 py-e7 text-center text-fond text-shadow-lg">

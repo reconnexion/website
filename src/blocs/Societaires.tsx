@@ -45,7 +45,9 @@ export function Societaires({
                 type="radio"
                 name="college"
                 value=""
-                aria-label={texte_tous ?? "×"}
+                aria-label={
+                  texte_tous ? `${texte_tous} (${societaires.length})` : "×"
+                }
                 defaultChecked
               />
               {colleges.map((c, i) => (
