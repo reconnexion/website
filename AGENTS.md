@@ -1,14 +1,6 @@
 # Consignes pour les agents IA (et les humains)
 
-## Règle n° 1 : aucun texte de contenu dans le code
-Tout texte visible par les visiteurs vient :
-- des fichiers de contenu `src/content/**/*.yml`, édités dans Sveltia CMS ;
-- ou des données Grist / CalDAV.
-
-Si un composant a besoin d'un libellé (bouton, mention, texte vide…), ajoutez un **champ** au bloc
-plutôt qu'une chaîne en dur. Seules exceptions : formats de date (Intl) et attributs techniques.
-
-## Règle n° 2 : uniquement le design system
+## Règle n° 1 : uniquement le design system
 - Couleurs, polices, espacements, rayons : **uniquement** les variables de `src/styles/tokens.css`.
 - Pas de nouvelle couleur, police ou ombre inventée. Pas de dégradé violet, pas d'emoji décoratif.
 - Les composants sont stylés avec **Tailwind CSS v4 + daisyUI 5**, configurés dans `src/styles/theme.css`
@@ -22,7 +14,7 @@ plutôt qu'une chaîne en dur. Seules exceptions : formats de date (Intl) et att
 - Pas de valeurs arbitraires (`text-[#…]`, `p-[13px]`) pour les couleurs, polices ou espacements.
 - Pas de fichier CSS par composant : si un style manque, ajouter un token ou un `@utility` dans `theme.css`.
 
-## Règle n° 3 : même typographie et mêmes espacements sur toutes les pages
+## Règle n° 2 : même typographie et mêmes espacements sur toutes les pages
 - Chaque section est un `<Bloc>` (`src/blocs/_commun.tsx`) : marge verticale `bloc` (e6), fond via le champ `fond`.
   Pas de `py-*` propre à un bloc (seule exception : le bandeau d'annonce, volontairement compact).
 - Titre de section : `<TitreBloc>` (h2, `text-xl`, marge e4). Titre de carte : h3 `text-l`. h1 : uniquement dans

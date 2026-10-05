@@ -24,6 +24,8 @@ export type Application = {
   boutons?: BoutonApplication[];
   captures?: { image: string; description?: string }[];
   infos?: { libelle: string; valeur?: string }[];
+  /** Adresse de la catégorie du forum : ses derniers sujets s'affichent sous la page de l'application. */
+  categorie_forum?: string;
 };
 
 /** Une application a sa propre page dès que sa fiche a des captures ou des informations. */
@@ -44,7 +46,6 @@ export function selectionnerApplications(apps: Application[], selection?: unknow
 /** Données affichées pour une application dans une liste (bloc Applications). */
 export const carteApplication = (a: Application) => ({
   nom: a.nom,
-  statut: a.statut,
   description: a.resume,
   image: a.vignette,
   lien: lienApplication(a),

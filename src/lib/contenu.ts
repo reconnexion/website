@@ -147,3 +147,16 @@ const fichierReglagesActualites = import.meta.glob('../content/reglages-actualit
 }) as Record<string, string>;
 
 export const reglagesActualites = (): ReglagesActualites => lire<ReglagesActualites>(fichierReglagesActualites)[0] ?? {};
+
+/** Réglages des pages d'applications : sections ajoutées en bas de chaque page (ex. bandeau newsletter). */
+export type ReglagesApplications = {
+  sections_bas?: DonneesBloc[];
+};
+
+const fichierReglagesApplications = import.meta.glob('../content/reglages-applications.yml', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>;
+
+export const reglagesApplications = (): ReglagesApplications => lire<ReglagesApplications>(fichierReglagesApplications)[0] ?? {};

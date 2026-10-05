@@ -71,3 +71,14 @@ export type Auteur = {
   roles?: string[];
   lien_forum?: string;
 };
+
+/** Sujet de discussion du forum (catégorie d'une application). */
+export type Sujet = {
+  titre: string;
+  lien: string;
+  /** Dernière activité (ISO 8601). */
+  date: string;
+  nb_reponses: number;
+  auteur?: string;
+  avatar?: string;
+};

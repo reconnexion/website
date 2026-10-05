@@ -1,6 +1,7 @@
 import { Bloc, Paragraphes, Surtitre } from './_commun';
 import type { Champ } from './types';
 import { STATUTS, type Statut } from '../lib/applications';
+import { ExternalLink, GitBranch } from 'lucide-react';
 
 /** Couleur de l'étiquette de statut (classes écrites en entier pour Tailwind). */
 const couleursStatut: Record<Statut, string> = {
@@ -9,8 +10,8 @@ const couleursStatut: Record<Statut, string> = {
   'En développement': 'border-gris bg-gris text-fond',
 };
 
-/** Étiquette du statut d'une application (page de l'application et listes). */
-export function EtiquetteStatut({ statut, className = '' }: { statut?: Statut; className?: string }) {
+/** Étiquette du statut d'une application (sur sa page). */
+function EtiquetteStatut({ statut, className = '' }: { statut?: Statut; className?: string }) {
   if (!statut || !couleursStatut[statut]) return null;
   return <span className={`badge rounded-none font-semibold ${couleursStatut[statut]} ${className}`.trim()}>{statut}</span>;
 }
@@ -52,15 +53,20 @@ export function FicheApplication({ surtitre, titre, statut, logo, sous_titre, bo
         </div>
         {boutons.length > 0 && (
           <div className="flex flex-wrap gap-e3 md:w-60 md:flex-col md:pt-e5">
-            {boutons.map((b, i) => (
-              <a
-                key={i}
-                href={b.lien}
-                className={`btn btn-lg uppercase ${b.style === 'secondaire' ? 'border-barre bg-barre text-noir hover:border-trait hover:bg-trait' : 'btn-primary'}`}
-              >
-                {b.texte}
-              </a>
-            ))}
+            {boutons.map((b, i) => {
+              // Bouton principal : ouvrir l'application ; secondaire : son code source.
+              const Icone = b.style === 'secondaire' ? GitBranch : ExternalLink;
+              return (
+                <a
+                  key={i}
+                  href={b.lien}
+                  className={`btn ${b.style === 'secondaire' ? 'border-barre bg-barre text-noir hover:border-trait hover:bg-trait' : 'btn-primary'}`}
+                >
+                  <Icone size={18} aria-hidden="true" />
+                  {b.texte}
+                </a>
+              );
+            })}
           </div>
         )}
       </div>
@@ -126,7 +132,7 @@ export const champsApplication: Champ[] = [
     widget: 'select',
     options: [...STATUTS],
     required: false,
-    hint: 'Affiché en étiquette dans les listes d’applications et sur la ligne « Statut » des informations (le texte de cette ligne s’affiche dessous).',
+    hint: 'Affiché en étiquette sur la ligne « Statut » des informations de la page de l’application (le texte de cette ligne s’affiche dessous).',
   },
   { name: 'logo', label: 'Logo', widget: 'image', required: false, hint: 'Image carrée, affichée à gauche du nom.' },
   { name: 'accroche', label: 'Accroche', widget: 'string', required: false, hint: 'Sous le nom, sur la page de l’application.' },
@@ -166,5 +172,13 @@ export const champsApplication: Champ[] = [
       { name: 'libelle', label: 'Libellé', widget: 'string' },
       { name: 'valeur', label: 'Valeur', widget: 'text', required: false },
     ],
+  },
+  {
+    name: 'categorie_forum',
+    label: 'Catégorie du forum',
+    widget: 'string',
+    required: false,
+    hint: 'Adresse de la catégorie, copiée depuis le forum (ex. https://forum.reconnexion.coop/c/applications-disponibles/lentraide/7). Ses derniers sujets s’affichent sous la page de l’application, avec un bouton pour lancer une conversation.',
+    pattern: ['^https?://[^/]+/c/.*\\d+/?$', 'Adresse d’une catégorie du forum : …/c/<catégorie>/<numéro>'],
   },
 ];

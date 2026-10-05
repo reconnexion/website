@@ -1,0 +1,91 @@
+titre: Politique IA
+slug: politique-ia
+description: Politique générale de la coopérative Reconnexion vis-à-vis de l'IA générative.
+sections:
+  - type: bandeau
+    surtitre: ''
+    titre: Politique IA
+    texte: ''
+    image: ''
+    bouton_texte: ''
+    bouton_lien: ''
+  - type: texte
+    titre: Préambule
+    texte: |-
+      La coopérative Reconnexion est consciente que l'émergence de l'IA générative est une révolution similaire à celle qui a vu apparaitre l'ère industrielle, avec tous les dangers que cela signifie, mais aussi avec un certain sens de l'inéluctabilité.
+
+      Le cœur de Reconnexion étant, depuis le début, de mettre la technologie au service de l'humain (et non l'inverse, comme on le constate un peu partout dans le monde d'aujourd'hui), nous sommes bien attentifs que l'IA soit, elle aussi, au service de ce que nous souhaitons construire, et que ses effets négatifs soient les plus faibles possibles.
+
+      Le document qui suit est la politique générale vis-à-vis de l'IA adoptée le 06/10/2026 par Reconnexion. Elle devra évoluer en fonction des évolutions technologiques et de l'impact qu'elle occasionne sur la société.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
+  - type: texte
+    titre: Communication
+    texte: Pour la communication vers l'extérieur, nous faisons le choix à partir de maintenant de n'utiliser aucune IA, que ce soit pour générer du texte, des images, des diapositives ou des vidéos. Nous le faisons par respect pour les personnes vers lesquelles nous communiquons, mais aussi car nous pensons qu'il est préférable d'avoir une communication limitée/maladroite mais authentique, plutôt qu'une communication abondante mais qui apporte de la confusion et dilue la singularité de notre projet.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
+  - type: texte
+    titre: Prises de notes
+    texte: Dans le but de libérer de l'énergie pour l'essentiel, nos réunions peuvent être retranscrites par IA, et il peut arriver que le compte-rendu soit généré lui-aussi par IA. Dans ce cas, cela sera clairement indiqué comme tel. La personne désignée comme secrétaire s'engage à relire et corriger cette synthèse avant de la diffuser (ou s'il n'en a exceptionnellement pas le temps, à l'indiquer clairement).
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
+  - type: texte
+    titre: Maquettage d'applications
+    texte: |-
+      Pour rendre visible des idées d'applications, nous pouvons être amenés à utiliser des outils IA afin de générer des maquettes. Nous sommes conscients que cela peut avoir des impacts négatifs importants, notamment en uniformisant les interfaces et en diluant les idées originales.
+
+      C'est pourquoi nous insistons, notamment lors des hackathons que nous proposons, sur l'importance de clarifier ce que l'on veut avant de soumettre l'idée à l'IA, et aussi de remettre en question ce qui est généré, afin que le produit final corresponde vraiment à ce que l'on souhaite. Lors de ces hackathons, nous essayons aussi, dans la mesure du possible, de proposer des alternatives sans IA pour les participants qui le souhaiteraient.
+
+      Nous encourageons également à ce que cette phase de conception soit faite en concertation avec un maximum d'acteurs, afin que les applications imaginées deviennent de véritables communs répondant à de larges besoins. Ceci permet de lutter contre une certaine tendance, amplifiée par l'IA, à la multiplication de projets conçus par une seule personne, sans concertation.
+
+      Pour l'application finale, nous encourageons de garder un budget pour un vrai graphiste, afin que l'application ait une véritable identité.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
+  - type: texte
+    titre: Développement (code)
+    texte: |-
+      Les outils IA étant tellement à l'aise et habitués à concevoir des interfaces, que ce soit pour des sites web ou des applications, nous ne voyons pas de problème à les laisser entièrement coder ces interfaces. L'intérêt étant de pouvoir rapidement déployer des applications, et à moindre frais.
+
+      Même si nous faisons du vibe-coding (sans regarder le code final), nous encourageons l'usage de framework connus, afin que le code soit plus facilement lisible ou corrigible par des développeurs qui souhaiteraient se pencher dessus.
+
+      En revanche pour les couches plus sensibles, comme les contributions à ActivityPods ou NextGraph, il est essentiel que les développeurs aient une compréhension claire de ce qui est produit, car il s'agit de l'infrastructure sur laquelle va reposer tout le Réseau Social Universel. Des IA peuvent être utilisées comme assistants, notamment pour le débogage ou la compréhension de l'architecture, mais tout le code doit avoir été entièrement relu et compris par le développeur avant d'être soumis.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
+  - type: texte
+    titre: Recherche
+    texte: Pour mener des recherches sur un sujet, nous pouvons être amenés à utiliser des outils IA. Mais les résultats de la recherche seront toujours présentés par un être humain.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []
+  - type: texte
+    titre: Autres domaines
+    texte: Il y a d'autres domaines où l'IA peut être utilisée, et ces domaines devraient continuer à augmenter dans le futur. Nous nous engageons à être attentifs à ces nouveaux usages, à ce qu'ils génèrent, et à mettre à jour cette politique IA dès que nous avons suffisamment de retours d'expérience.
+    image: ''
+    fond: blanc
+    image_alt: ''
+    image_avant: false
+    image_pleine_largeur: false
+    boutons: []

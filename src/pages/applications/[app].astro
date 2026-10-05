@@ -1,8 +1,11 @@
 ---
 // Page de chaque application, générée depuis la collection « Applications » (une fiche = une page).
 import Base from '../../layouts/Base.astro';
+import DiscussionsIle from '../../components/DiscussionsIle.astro';
+import Chargement from '../../components/Chargement.astro';
+import RenduBlocs from '../../components/RenduBlocs.astro';
 import { FicheApplication } from '../../blocs/FicheApplication';
-import { toutesLesApplications, toutesLesPages } from '../../lib/contenu';
+import { reglagesApplications, reglagesSite, toutesLesApplications, toutesLesPages } from '../../lib/contenu';
 import { aUnePage } from '../../lib/applications';
 
 export function getStaticPaths() {
@@ -15,6 +18,7 @@ export function getStaticPaths() {
 }
 
 const { application: a, surtitre } = Astro.props;
+const site = reglagesSite();
 ---
 <Base titre={a.nom} description={a.resume ?? a.accroche}>
   <FicheApplication
@@ -27,4 +31,10 @@ const { application: a, surtitre } = Astro.props;
     captures={a.captures}
     infos={a.infos}
   />
+  {a.categorie_forum && (
+    <DiscussionsIle server:defer categorie={a.categorie_forum}>
+      <Chargement slot="fallback" texte={site.texte_chargement} />
+    </DiscussionsIle>
+  )}
+  <RenduBlocs sections={reglagesApplications().sections_bas ?? []} texteChargement={site.texte_chargement} />
 </Base>

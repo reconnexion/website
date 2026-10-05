@@ -173,6 +173,22 @@ export const config = {
             { name: 'texte_chargement', label: 'Texte pendant le chargement des données', widget: 'string', required: false },
           ],
         },
+        {
+          name: 'applications',
+          label: 'Pages d’applications',
+          file: 'src/content/reglages-applications.yml',
+          fields: [
+            {
+              name: 'sections_bas',
+              label: 'Sections en bas de chaque page d’application',
+              label_singular: 'Section',
+              widget: 'list',
+              required: false,
+              types: typesDeBlocs,
+              hint: 'Affichées sous la fiche et les discussions du forum de chaque application (ex. bandeau newsletter).',
+            },
+          ],
+        },
         fichierReglagesCartes,
         fichierReglagesActualites,
       ],

@@ -12,8 +12,8 @@ sections:
   - type: offre
     bouton_texte: Demander un devis
     bouton_lien: /contact?sujet=Demande de devis
-    bouton_icone: bulle
     fond: degrade
+    bouton_icone: bulle
     nom: Forfait de base, à partir de
     prix: 9 000 € HT
     sous_titre: Votre application conçue, réalisée et déployée sur les territoires
@@ -30,28 +30,32 @@ sections:
     surtitre: ''
     titre: La réunion d'évaluation
     texte: |-
-      L'entretien préliminaire permet…
+      L'entretien préliminaire permet d'évaluer la faisabilité technique de votre projet et d'estimer s'il entre dans le forfait de 9 000 € ou s'il nécessite un budget plus important.
 
       Après cet entretien, nous évaluons les possibilités de synergie avec d'autres acteurs de notre réseau, et nous vous faisons des propositions de partenariats qui peuvent à la fois réduire le coût pour vous, mais aussi vous assurer que votre application touchera sa cible, en prenant en compte un plus large éventail de besoins. S'associer avec d'autres acteurs, c'est aussi démultiplier ses canaux de communication.
     image: /images/services/cycle.svg
     fond: blanc
     image_alt: "Le cycle de réalisation d'une application : idées et besoins, conception, réalisation, déploiement"
+    image_lien: ''
     inverse: true
     image_large: false
     image_logo: true
     texte_grand: true
   - type: texte_image
+    surtitre: ''
     titre: La place de l'IA dans Reconnexion
     texte: |-
       Les outils IA aujourd'hui permettent de réaliser en quelques jours ce qui aurait normalement pris plusieurs mois. Pour des conceptions d'interfaces, l'IA ne fait pas d'erreur, car elle peut s'appuyer sur le code de milliers d'applications existantes.
 
       Grâce au temps gagné, nous pouvons mettre plus d'énergie sur la conception et pour faire des aller-retours entre la production et vous. Et cela permet de réduire les couts pour vous, d'au moins 10x.
 
-      Nous vous invitons à consulter notre politique IA pour connaitre, en toute transparence, là où nous utilisons l'IA et là où nous refusons de l'utiliser.
+      Nous vous invitons à consulter [notre politique IA](/politique-ia) pour connaitre, en toute transparence, là où nous utilisons l'IA et là où nous refusons de l'utiliser.
     image: /images/services/puce-ia.svg
-    image_alt: ''
     fond: blanc
+    image_alt: ''
+    image_lien: ''
     inverse: false
+    image_large: false
     image_logo: true
     texte_grand: true
   - type: texte_image
@@ -61,6 +65,7 @@ sections:
     image: /images/services/nextgraph.svg
     fond: blanc
     image_alt: NextGraph
+    image_lien: ''
     inverse: true
     image_large: false
     image_logo: true
@@ -72,6 +77,7 @@ sections:
     boutons:
       - texte: En savoir plus
         lien: /concepts-cles
+    texte_grand: true
     colonnes: '2'
     cartes:
       - icone: personnes
@@ -86,12 +92,12 @@ sections:
       - icone: poignee_de_main
         titre: Coopération facilitée
         texte: Les données et utilisateurs pouvant circuler librement d'une application à une autre, il est plus facile d'envisager des coopérations avec d'autres acteurs car il n'y a pas de question de propriété (les données sont uniquement la propriété de l'utilisateur).
-    texte_grand: true
   - type: grille_cartes
     titre: Services proposés
     texte: ''
     fond: blanc
     boutons: []
+    texte_grand: false
     colonnes: '3'
     cartes:
       - icone: reseau
@@ -120,7 +126,7 @@ sections:
     texte: Parlons-en lors d'une réunion d'évaluation, gratuite et sans engagement.
     bouton_texte: Demander un devis
     bouton_lien: /contact?sujet=Demande de devis
-    bouton_icone: bulle
     icone: ''
     fond: degrade
     alignement: centre
+    bouton_icone: bulle

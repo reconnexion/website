@@ -17,7 +17,7 @@ export type BandeauProps = {
 export function Bandeau({ surtitre, lien_surtitre, titre, texte, image, bouton_texte, bouton_lien, enchaine }: BandeauProps) {
   const bouton = bouton_texte && bouton_lien && (
     <div className={`mt-e4 flex flex-wrap gap-e3${image ? ' justify-center' : ''}`}>
-      <a className="btn btn-primary btn-lg" href={bouton_lien}>
+      <a className="btn btn-primary" href={bouton_lien}>
         {bouton_texte}
       </a>
     </div>

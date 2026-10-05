@@ -1,0 +1,17 @@
+---
+// Server island : derniers sujets de la catégorie du forum d'une application, lus à chaque requête
+// (avec un cache de quelques minutes) ; la page de l'application reste statique.
+import { Discussions } from '../blocs/_discussions';
+import { derniersSujets, lireCategorie, lienNouveauSujet } from '../lib/discourse';
+
+interface Props {
+  categorie: string;
+}
+const { categorie } = Astro.props;
+const sujets = await derniersSujets(categorie, 5);
+---
+<Discussions
+  sujets={sujets}
+  lien_categorie={lireCategorie(categorie)?.lien}
+  lien_nouveau_sujet={lienNouveauSujet(categorie)}
+/>

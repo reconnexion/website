@@ -1,12 +1,15 @@
 /**
- * Actualités : sujets du forum Discourse portant une étiquette donnée (ex. « blog ») — côté serveur uniquement.
+ * Forum Discourse, côté serveur uniquement :
+ * - actualités : sujets portant une étiquette donnée (ex. « blog ») ;
+ * - discussions : derniers sujets de la catégorie d'une application (sous sa page).
  *
- * Forum et étiquette sont réglés dans le CMS (Réglages → Actualités). Le forum est public :
- * pas de clé d'API, on lit les mêmes JSON que l'interface de Discourse.
+ * Forum et étiquette sont réglés dans le CMS (Réglages → Actualités), la catégorie dans la fiche de l'application.
+ * Le forum est public : pas de clé d'API, on lit les mêmes JSON que l'interface de Discourse.
  *   /tag/<etiquette>.json  liste des sujets (paginée)
  *   /t/<id>.json           sujet, dont le premier message en HTML (« cooked »)
+ *   /c/<id>.json           derniers sujets d'une catégorie ; /c/<id>/show.json, la catégorie
  */
-import type { Article } from './types';
+import type { Article, Sujet } from './types';
 import { reglagesActualites } from './contenu';
 
 const CACHE_LISTE_MS = 5 * 60_000;
@@ -160,4 +163,71 @@ export const lienProfil = (pseudo: string) => `${reglages().forum}/u/${encodeURI
 export async function articleParSlug(slug: string): Promise<Article | undefined> {
   const sujet = (await sujetsEtiquetes()).find((s) => s.slug === slug);
   return sujet && lireArticle(sujet);
+}
+
+/**
+ * Catégorie du forum à partir de son adresse (ex. https://forum.reconnexion.coop/c/applications-disponibles/lentraide/7) :
+ * forum, identifiant (dernier nombre) et chemin des slugs (pour le lien « nouveau sujet »).
+ */
+export function lireCategorie(adresse: string): { forum: string; id: number; chemin: string; lien: string } | undefined {
+  try {
+    const url = new URL(adresse);
+    const segments = url.pathname.replace(/^\/c\//, '').split('/').filter(Boolean);
+    const i = segments.findLastIndex((s) => /^\d+$/.test(s));
+    if (!url.pathname.startsWith('/c/') || i < 0) return undefined;
+    const chemin = segments.slice(0, i).join('/');
+    return { forum: url.origin, id: Number(segments[i]), chemin, lien: `${url.origin}/c/${chemin ? `${chemin}/` : ''}${segments[i]}` };
+  } catch {
+    return undefined;
+  }
+}
+
+/** Lien qui ouvre l'éditeur de nouveau sujet du forum, dans la catégorie. */
+export function lienNouveauSujet(adresse: string): string | undefined {
+  const c = lireCategorie(adresse);
+  if (!c) return undefined;
+  return `${c.forum}/new-topic${c.chemin ? `?category=${c.chemin.split('/').map(encodeURIComponent).join('/')}` : ''}`;
+}
+
+const cacheCategories = new Map<string, { t: number; sujets: Sujet[] }>();
+
+/** Sujets d'une catégorie du forum, du plus récemment actif au plus ancien (hors sujet « À propos de la catégorie »). */
+export async function derniersSujets(adresse: string, nombre: number): Promise<Sujet[]> {
+  const c = lireCategorie(adresse);
+  if (!c) return [];
+  const cle = `${c.forum}/${c.id}`;
+  const enCache = cacheCategories.get(cle);
+  if (enCache && Date.now() - enCache.t < CACHE_LISTE_MS) return enCache.sujets.slice(0, nombre);
+  try {
+    type SujetCategorie = SujetListe & { bumped_at: string; posts_count: number; posters?: { user_id: number; description?: string }[] };
+    type Liste = { users?: { id: number; username: string; name?: string; avatar_template?: string }[]; topic_list: { topics: SujetCategorie[] } };
+    type Categorie = { category: { topic_id?: number | null; topic_url?: string | null } };
+    const [liste, categorie] = await Promise.all([
+      lireJson<Liste>(`${c.forum}/c/${c.id}.json`),
+      lireJson<Categorie>(`${c.forum}/c/${c.id}/show.json`),
+    ]);
+    const personnes = new Map((liste.users ?? []).map((u) => [u.id, u]));
+    // Sujet de présentation de la catégorie : topic_id est souvent vide, son numéro termine topic_url.
+    const presentation = categorie.category.topic_id ?? Number(categorie.category.topic_url?.match(/\/(\d+)$/)?.[1]);
+    const sujets = liste.topic_list.topics
+      .filter((s) => s.visible && s.archetype === 'regular' && s.id !== presentation)
+      .sort((a, b) => b.bumped_at.localeCompare(a.bumped_at))
+      .map((s): Sujet => {
+        // Le premier « poster » est l'auteur·ice du sujet.
+        const auteur = s.posters?.[0] && personnes.get(s.posters[0].user_id);
+        return {
+          titre: s.title,
+          lien: `${c.forum}/t/${s.slug}/${s.id}`,
+          date: s.bumped_at,
+          nb_reponses: s.posts_count - 1,
+          auteur: auteur ? auteur.name || auteur.username : undefined,
+          avatar: auteur?.avatar_template && new URL(auteur.avatar_template.replace('{size}', '96'), c.forum).href,
+        };
+      });
+    cacheCategories.set(cle, { t: Date.now(), sujets });
+    return sujets.slice(0, nombre);
+  } catch (err) {
+    console.error('[discourse]', err);
+    return enCache?.sujets.slice(0, nombre) ?? [];
+  }
 }
