@@ -30,13 +30,13 @@ function Apercu({ sections }: { sections: DonneesBloc[] }) {
         const def = blocsParNom[type];
         if (!def) return null;
         const Composant = def.Component;
-        // Les blocs alimentés par Grist / CalDAV affichent des données d'exemple.
+        // Les blocs alimentés par Grist / le forum affichent des données d'exemple.
         const extra = def.donneesExemple?.(donnees) ?? {};
         return (
           <div key={i} className={def.source ? 'apercu-donnees-exemple' : undefined}>
             {def.source && (
               <span className="badge badge-secondary absolute top-e3 right-e3 z-1 font-bold">
-                Aperçu avec des données d’exemple — les vraies données viennent de Grist / CalDAV
+                Aperçu avec des données d’exemple — les vraies données viennent de Grist / du forum
               </span>
             )}
             <Composant {...donnees} {...extra} />

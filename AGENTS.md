@@ -42,11 +42,13 @@
 ## Ajouter un bloc
 1. Créer `src/blocs/MonBloc.tsx` : le composant React **et** sa définition (`name`, `label`, `fields`).
 2. L'ajouter à `src/blocs/registre.ts`.
-3. Si le bloc affiche des données Grist/CalDAV : `source: 'grist' | 'caldav'`, un composant
+3. Si le bloc affiche des données Grist ou du forum : `source: 'grist' | 'discourse'`, un composant
    server island dans `src/components/`, et un cas dans `RenduBlocs.astro`.
 4. `npm run cms` régénère la config Sveltia et l'aperçu. Ne jamais modifier `public/admin/config.yml` à la main.
 
 ## Données externes
-- Grist et CalDAV sont lus **côté serveur uniquement** (`src/lib/grist.ts`, `src/lib/caldav.ts`).
-- Ne jamais appeler Grist/CalDAV depuis le navigateur ; passer par un endpoint `src/pages/api/*`.
+- Grist est lu **côté serveur uniquement** (`src/lib/grist.ts`).
+- Ne jamais appeler Grist depuis le navigateur ; passer par un endpoint `src/pages/api/*`.
+- L'agenda vient de la collection « Événements » (`src/content/evenements/`) ; récurrences dans
+  `src/lib/evenements.ts` (partagé serveur / navigateur / aperçu), flux `/agenda.ics` dans `src/lib/ics.ts`.
 - Ne renvoyer que les champs publics.

@@ -1,13 +1,18 @@
 ---
-// Server island : rendu sur le serveur à chaque requête (`server:defer`),
-// la page qui l'inclut reste statique.
-import { Agenda } from '../blocs/Agenda';
-import AgendaLive from './AgendaLive';
-import { prochainsEvenements } from '../lib/caldav';
+// Server island : l'agenda est calculé à chaque requête (« aujourd'hui », prochaines occurrences des
+// événements récurrents), la page qui l'inclut reste statique. Les événements viennent de la
+// collection « Événements » (lus au build).
+import { Agenda, type AgendaProps } from '../blocs/Agenda';
+import { Calendrier } from '../blocs/_calendrier';
+import { tousLesEvenements } from '../lib/contenu';
 
-const props = Astro.props;
-const evenements = await prochainsEvenements(props.nombre ?? 4);
+const props = Astro.props as AgendaProps;
+const donnees = {
+  fiches: tousLesEvenements(),
+  maintenant: new Date().toISOString(),
+  lien_ics: new URL('/agenda.ics', Astro.site).href,
+};
 ---
-{props.live
-  ? <AgendaLive client:load {...props} evenements={evenements} />
-  : <Agenda {...props} evenements={evenements} />}
+{props.affichage === 'calendrier'
+  ? <Calendrier client:load titre={props.titre} texte_vide={props.texte_vide} {...donnees} />
+  : <Agenda {...props} {...donnees} />}

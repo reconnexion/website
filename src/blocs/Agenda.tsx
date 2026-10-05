@@ -1,97 +1,188 @@
-import { Bloc, TitreBloc } from './_commun';
+import { CalendarPlus, MapPin, Repeat, Video } from 'lucide-react';
+import { Bloc, Paragraphes, TitreBloc } from './_commun';
 import type { DefinitionBloc } from './types';
-import type { Evenement } from '../lib/types';
-import { evenementsDemo } from '../lib/demo';
+import { Calendrier } from './_calendrier';
+import { FUSEAU, lienCarte, lienVisio, prochainesOccurrences, quand, type FicheEvenement, type Occurrence } from '../lib/evenements';
 
 export type AgendaProps = {
   titre?: string;
+  affichage?: 'prochains' | 'calendrier';
   nombre?: number;
-  live?: boolean;
   texte_vide?: string;
-  texte_live?: string;
-  texte_lien_visio?: string;
-  /** Injecté au rendu depuis CalDAV — pas édité dans le CMS. */
-  evenements?: Evenement[];
+  /** Injectés au rendu (server island) depuis la collection « Événements » — pas édités dans le bloc. */
+  fiches?: FicheEvenement[];
+  /** Instant du rendu : « aujourd'hui » du calendrier (le même côté serveur et navigateur). */
+  maintenant?: string;
+  /** Adresse publique du flux iCalendar (/agenda.ics). */
+  lien_ics?: string;
 };
 
-const fmtJour = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', timeZone: 'Europe/Paris' });
-const fmtMois = new Intl.DateTimeFormat('fr-FR', { month: 'short', timeZone: 'Europe/Paris' });
-const fmtHeure = new Intl.DateTimeFormat('fr-FR', { weekday: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Paris' });
+const fmtJour = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', timeZone: FUSEAU });
+const fmtMois = new Intl.DateTimeFormat('fr-FR', { month: 'short', timeZone: FUSEAU });
 
-export function Agenda({ titre, live, texte_vide, texte_live, texte_lien_visio, evenements }: AgendaProps) {
+/** Pastille de date (jour et mois). */
+export function PastilleDate({ iso }: { iso: string }) {
+  const d = new Date(iso);
+  return (
+    <div className="w-18 shrink-0 rounded-box bg-primary p-e2 text-center font-titre leading-tight text-primary-content">
+      <b className="block text-l">{fmtJour.format(d)}</b>
+      <small className="text-xs uppercase">{fmtMois.format(d)}</small>
+    </div>
+  );
+}
+
+/** Lieu d'une occurrence : lien de visio, ou adresse avec un lien vers la carte. */
+export function Lieu({ o }: { o: Occurrence }) {
+  const visio = lienVisio(o);
+  if (visio)
+    return (
+      <a href={visio} className="link flex items-center gap-e1 font-semibold text-vert-fonce" target="_blank" rel="noopener">
+        <Video size={16} aria-hidden="true" />
+        Rejoindre la visio
+      </a>
+    );
+  if (!o.adresse) return null;
+  return (
+    <a href={lienCarte(o.adresse)} className="link flex items-center gap-e1 font-semibold text-vert-fonce" target="_blank" rel="noopener">
+      <MapPin size={16} aria-hidden="true" />
+      {o.adresse}
+    </a>
+  );
+}
+
+/** Date, récurrence et lieu d'une occurrence. */
+export function InfosOccurrence({ o }: { o: Occurrence }) {
+  return (
+    <div className="flex flex-col gap-e1 text-s">
+      <p className="text-gris">{quand(o)}</p>
+      {o.rythme && (
+        <p className="flex items-center gap-e1 text-gris">
+          <Repeat size={16} aria-hidden="true" />
+          {o.rythme}
+        </p>
+      )}
+      <Lieu o={o} />
+    </div>
+  );
+}
+
+/** Détail complet d'une occurrence (modale du calendrier). */
+export function DetailOccurrence({ o }: { o: Occurrence }) {
+  return (
+    <>
+      {o.image && <img src={o.image} alt="" className="mb-e4 aspect-video w-full object-cover" />}
+      <h2 className="pr-e5 text-xl">{o.titre}</h2>
+      <div className="mt-e3">
+        <InfosOccurrence o={o} />
+      </div>
+      {o.description && <Paragraphes texte={o.description} className="mt-e4" />}
+    </>
+  );
+}
+
+/**
+ * S'abonner à l'agenda depuis un autre agenda (flux iCalendar, mis à jour automatiquement) :
+ * Google Agenda, ou lien webcal:// pour Apple Calendrier, Outlook, Thunderbird…
+ */
+export function Abonnement({ lien_ics }: { lien_ics?: string }) {
+  if (!lien_ics) return null;
+  const webcal = lien_ics.replace(/^https?:/, 'webcal:');
+  return (
+    <details className="dropdown dropdown-end ml-auto">
+      <summary className="btn btn-sm">
+        <CalendarPlus size={16} aria-hidden="true" />
+        S’abonner
+      </summary>
+      <div className="dropdown-content z-10 mt-e2 flex w-80 flex-col gap-e3 rounded-box border border-base-300 bg-base-100 p-e4 text-s">
+        <p>Ajoutez cet agenda au vôtre : les événements s’y mettront à jour automatiquement.</p>
+        <a className="btn btn-sm btn-primary" href={`https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`} target="_blank" rel="noopener">
+          Google Agenda
+        </a>
+        <a className="btn btn-sm" href={webcal}>
+          Apple, Outlook, Thunderbird…
+        </a>
+        <label className="flex flex-col gap-e1">
+          <span className="text-gris">Ou copiez l’adresse de l’agenda :</span>
+          <input className="input input-sm w-full" readOnly value={lien_ics} onFocus={(e) => e.currentTarget.select()} />
+        </label>
+      </div>
+    </details>
+  );
+}
+
+/** Liste d'occurrences (prochains événements, et calendrier sur mobile). */
+export function ListeOccurrences({ occurrences, onOuvrir }: { occurrences: Occurrence[]; onOuvrir?: (o: Occurrence) => void }) {
+  return (
+    <ul className="list gap-e3">
+      {occurrences.map((o) => (
+        <li className="list-row items-start gap-e3 rounded-box bg-base-200 p-e3 after:hidden" key={o.id}>
+          <PastilleDate iso={o.debut} />
+          <div className="list-col-grow flex flex-col gap-e1">
+            <h3 className="font-texte text-m">
+              {onOuvrir ? (
+                <button type="button" className="link-hover cursor-pointer text-left font-semibold" onClick={() => onOuvrir(o)}>
+                  {o.titre}
+                </button>
+              ) : (
+                o.titre
+              )}
+            </h3>
+            <InfosOccurrence o={o} />
+            {!onOuvrir && o.description && <Paragraphes texte={o.description} className="text-s text-gris" />}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/**
+ * Agenda des événements de la collection « Événements ».
+ * - « prochains » : les N prochains événements, en liste ;
+ * - « calendrier » : calendrier mensuel (liste à défilement infini sur mobile), voir _calendrier.tsx.
+ */
+export function Agenda({ titre, affichage = 'prochains', nombre = 4, texte_vide, fiches = [], maintenant, lien_ics }: AgendaProps) {
+  if (affichage === 'calendrier') return <Calendrier titre={titre} texte_vide={texte_vide} fiches={fiches} maintenant={maintenant} lien_ics={lien_ics} />;
+  const occurrences = prochainesOccurrences(fiches, nombre, maintenant ? new Date(maintenant) : undefined);
   return (
     <Bloc>
-      <TitreBloc titre={titre} />
-      {live && texte_live && (
-        <div className="mb-e3 flex items-center gap-e2 text-xs font-bold text-vert-fonce">
-          <span className="status status-success animate-pulse" aria-hidden="true" />
-          {texte_live}
-        </div>
-      )}
-      {evenements === undefined ? null : evenements.length === 0 ? (
-        texte_vide && <p>{texte_vide}</p>
-      ) : (
-        <ul className="list gap-e3">
-          {evenements.map((e, i) => {
-            const d = new Date(e.debut);
-            return (
-              <li className="list-row items-start gap-e3 rounded-box bg-base-200 p-e3 after:hidden" key={i}>
-                <div className="w-18 rounded-box bg-primary p-e2 text-center font-titre leading-tight text-primary-content">
-                  <b className="block text-l">{fmtJour.format(d)}</b>
-                  <small className="text-xs uppercase">{fmtMois.format(d)}</small>
-                </div>
-                <div className="list-col-grow">
-                  <h3 className="font-texte text-m">{e.titre}</h3>
-                  <p className="text-s text-gris">
-                    {fmtHeure.format(d)}
-                    {/* Lieu = lien de visio : lien cliquable plutôt que l'adresse brute. */}
-                    {e.lieu &&
-                      (/^https?:\/\//.test(e.lieu) ? (
-                        <>
-                          {' · '}
-                          <a href={e.lieu} className="link font-semibold text-vert-fonce" target="_blank" rel="noopener">
-                            {texte_lien_visio || e.lieu}
-                          </a>
-                        </>
-                      ) : (
-                        ` · ${e.lieu}`
-                      ))}
-                  </p>
-                  {e.description && <p className="text-s text-gris">{e.description}</p>}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <div className="mb-e4 flex flex-wrap items-center justify-between gap-x-e4 gap-y-e3">
+        <TitreBloc titre={titre} className="mb-0!" />
+        <Abonnement lien_ics={lien_ics} />
+      </div>
+      {occurrences.length === 0 ? texte_vide && <p>{texte_vide}</p> : <ListeOccurrences occurrences={occurrences} />}
     </Bloc>
   );
 }
 
+/** Fiches injectées dans l'aperçu du CMS par scripts/build-cms.mjs. */
+declare const __EVENEMENTS__: FicheEvenement[] | undefined;
+
 export const agenda: DefinitionBloc<AgendaProps> = {
   name: 'agenda',
-  label: 'Agenda (depuis CalDAV)',
+  label: 'Agenda',
   Component: Agenda,
-  source: 'caldav',
-  donneesExemple: (d) => ({ evenements: evenementsDemo().slice(0, Number(d.nombre) || 4) }),
+  donneesExemple: () => ({ fiches: typeof __EVENEMENTS__ !== 'undefined' ? __EVENEMENTS__ : [] }),
   fields: [
     { name: 'titre', label: 'Titre', widget: 'string', required: false },
-    { name: 'nombre', label: "Nombre d'événements affichés", widget: 'number', value_type: 'int', min: 1, max: 20, default: 4 },
     {
-      name: 'live',
-      label: 'Rafraîchir en direct dans le navigateur',
-      widget: 'boolean',
-      default: false,
-      hint: "Désactivé : l'agenda est à jour à chaque chargement de page. Activé : il se met aussi à jour sans recharger.",
+      name: 'affichage',
+      label: 'Affichage',
+      widget: 'select',
+      options: ['prochains', 'calendrier'],
+      default: 'prochains',
+      hint: '« prochains » : liste des prochains événements. « calendrier » : calendrier du mois (liste sur mobile). Les événements se gèrent dans la collection « Événements ».',
     },
-    { name: 'texte_vide', label: "Texte si aucun événement", widget: 'string', required: false },
-    { name: 'texte_live', label: 'Mention « en direct »', widget: 'string', required: false },
     {
-      name: 'texte_lien_visio',
-      label: 'Texte du lien de visio',
-      widget: 'string',
+      name: 'nombre',
+      label: "Nombre d'événements (affichage « prochains »)",
+      widget: 'number',
+      value_type: 'int',
+      min: 1,
+      max: 20,
+      default: 4,
       required: false,
-      hint: 'Quand le lieu d’un événement est une adresse web (Meet, Jitsi…), elle est affichée sous forme de lien avec ce texte.',
     },
+    { name: 'texte_vide', label: 'Texte si aucun événement', widget: 'string', required: false },
   ],
 };

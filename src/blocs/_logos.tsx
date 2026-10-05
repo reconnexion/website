@@ -14,7 +14,7 @@ export function GrilleLogos({ logos }: { logos: Logo[] }) {
                 <span className="text-center font-titre text-l">{o.nom}</span>
               )}
             </div>
-            <strong className="mt-e2 block text-center font-semibold text-vert-fonce">{o.nom}</strong>
+            <strong className="mt-e2 block text-center font-semibold text-noir">{o.nom}</strong>
           </>
         );
         return (

@@ -36,7 +36,7 @@ menu:
     sous_menu:
       - texte: Hackathon novembre 2026
         lien: /hackathon
-      - texte: Agenda des visios
+      - texte: Agenda
         lien: /agenda
       - texte: Rencontres passées
         lien: /rencontres-passees

@@ -50,6 +50,7 @@ await build({
   // Fiches d'applications et de réseaux, pour que leurs blocs montrent les vraies données dans l'aperçu.
   define: { 'process.env.NODE_ENV': '"production"', __APPLICATIONS__: JSON.stringify(await lireCollection('applications')),
     __RESEAUX__: JSON.stringify(await lireCollection('reseaux')),
+    __EVENEMENTS__: JSON.stringify(await lireCollection('evenements')),
     __CARTES__: JSON.stringify({
       cartes: await lireCollection('cartes'),
       types: await lireCollection('types-de-cartes'),

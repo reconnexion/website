@@ -15,7 +15,6 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "daisyui": "^5.7.46",
-    "ical.js": "^2.2.1",
     "lucide-react": "^1.48.0",
     "marked": "^18.0.14",
     "qrcode": "^1.5.4",

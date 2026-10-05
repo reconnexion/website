@@ -7,6 +7,7 @@ import type { DonneesBloc } from '../blocs/registre';
 import { trierApplications, type Application } from './applications';
 import { trierReseaux, type Reseau } from './reseaux';
 import { trierCartes, trierTypes, type Carte, type ReglagesCartes, type TypeCarte } from './cartes';
+import type { FicheEvenement } from './evenements';
 
 export type Page = {
   titre: string;
@@ -160,3 +161,11 @@ const fichierReglagesApplications = import.meta.glob('../content/reglages-applic
 }) as Record<string, string>;
 
 export const reglagesApplications = (): ReglagesApplications => lire<ReglagesApplications>(fichierReglagesApplications)[0] ?? {};
+
+const fichiersEvenements = import.meta.glob('../content/evenements/*.yml', { query: '?raw', import: 'default', eager: true }) as Record<
+  string,
+  string
+>;
+
+/** Événements de l'agenda (collection « Événements »). Les occurrences sont calculées par lib/evenements.ts. */
+export const tousLesEvenements = (): FicheEvenement[] => lire<FicheEvenement>(fichiersEvenements).filter((e) => e.titre && e.debut);

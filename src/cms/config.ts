@@ -7,6 +7,7 @@ import { blocs } from '../blocs/registre';
 import { nomsIcones } from '../lib/icones';
 import { champsApplication } from '../blocs/FicheApplication';
 import { collectionsCartes, fichierReglagesCartes } from './cartes';
+import { collectionEvenements } from './evenements';
 
 /** Réglages → « Actualités » : forum lu par le bloc Actualités et libellés des pages d'articles. */
 const fichierReglagesActualites = {
@@ -122,6 +123,7 @@ export const config = {
         { name: 'site', label: 'Site web', widget: 'string', required: false },
       ],
     },
+    collectionEvenements,
     ...collectionsCartes,
     {
       name: 'reglages',

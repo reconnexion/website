@@ -1,4 +1,4 @@
-/** Données venant de sources externes (Grist, CalDAV). */
+/** Données venant de sources externes (Grist, forum Discourse). */
 
 export type Personne = {
   nom: string;
@@ -36,13 +36,6 @@ export type Role = {
   membres?: { nom: string; photo?: string }[];
 };
 
-export type Evenement = {
-  titre: string;
-  debut: string; // ISO 8601
-  fin?: string;
-  lieu?: string;
-  description?: string;
-};
 
 /** Article d'actualité (sujet du forum Discourse). */
 export type Article = {

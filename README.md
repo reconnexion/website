@@ -1,4 +1,4 @@
-# Démo — site Reconnexion (Astro + Sveltia CMS + Grist + CalDAV)
+# Démo — site Reconnexion (Astro + Sveltia CMS + Grist)
 
 Petit prototype pour évaluer l'architecture. Le design est un **placeholder** à remplacer par votre design system.
 
@@ -9,7 +9,7 @@ npm install
 npm run dev          # http://localhost:4321
 ```
 
-Sans configuration, Grist et CalDAV sont remplacés par des **données d'exemple**.
+Sans configuration, Grist est remplacé par des **données d'exemple**.
 
 - Site : http://localhost:4321
 - Administration : http://localhost:4321/admin/index.html
@@ -27,18 +27,19 @@ Sans configuration, Grist et CalDAV sont remplacés par des **données d'exemple
 | `src/content/` | Le contenu (YAML), édité via Sveltia |
 | `scripts/build-cms.mjs` | Génère `public/admin/config.yml` + l'aperçu du CMS depuis le registre |
 | `src/cms/apercu.tsx` | L'aperçu Sveltia rendu avec les vrais composants |
-| `src/components/*Ile.astro` | Server islands (Grist, CalDAV) : rendues à chaque requête |
-| `src/components/AgendaLive.tsx` | Client island : agenda rafraîchi sans recharger la page |
-| `src/pages/api/agenda.json.ts` | Endpoint proxy vers CalDAV pour le navigateur |
+| `src/components/*Ile.astro` | Server islands (Grist, forum, agenda) : rendues à chaque requête |
+| `src/lib/evenements.ts` | Agenda : récurrences des événements (collection « Événements ») |
+| `src/pages/agenda.ics.ts` | Flux iCalendar de l'agenda (abonnement Google Agenda, Apple…) |
 | `AGENTS.md` | Règles pour la génération de code par IA |
 
 ## Trois modes de rendu, dans la même page
 
 - **Texte éditorial** (bandeau, cartes, appel…) : HTML statique généré au build, zéro JS.
-- **Équipe (Grist)** et **agenda (CalDAV)** : server islands (`server:defer`). La page reste statique ;
+- **Équipe (Grist)** : server islands (`server:defer`). La page reste statique ;
   le bloc est rendu côté serveur à chaque visite (cache d'une minute). Aucun rebuild nécessaire.
-- **Agenda « live »** (case cochée dans le CMS) : en plus, le navigateur le rafraîchit chaque minute
-  via `/api/agenda.json`.
+- **Agenda** : événements de la collection « Événements » (CMS), avec récurrences. Server island pour
+  « aujourd'hui » ; l'affichage « calendrier » est hydraté (navigation de mois en mois, liste
+  à défilement infini sur mobile). Flux d'abonnement : `/agenda.ics`.
 
 ## Brancher les vraies données
 
