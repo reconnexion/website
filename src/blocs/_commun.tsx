@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
+import { Fragment, createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
 import { courrielLisible, devoilerCourriels, encoderCourriel } from '../lib/courriel';
 import type { Champ } from './types';
-import { icones } from '../lib/icones';
+import { icones, nomsIcones } from '../lib/icones';
 
 /** Couleur de fond d'une section, choisie dans le CMS. */
 export type Fond = 'blanc' | 'gris' | 'vert' | 'bleu' | 'degrade';
@@ -22,6 +22,11 @@ export const useFondFonce = () => useContext(FondFonce);
 /** Zone claire (ex. carte blanche) dans une section colorée : liens et boutons retrouvent leurs couleurs normales. */
 export const SurFondClair = ({ children }: { children: ReactNode }) => (
   <FondFonce.Provider value={false}>{children}</FondFonce.Provider>
+);
+
+/** Zone foncée hors d'un `Bloc` (ex. bandeau dégradé) : surtitres, liens et boutons passent en blanc. */
+export const SurFondFonce = ({ children }: { children: ReactNode }) => (
+  <FondFonce.Provider value={true}>{children}</FondFonce.Provider>
 );
 
 export const champFond: Champ = {
@@ -147,20 +152,45 @@ export function Surtitre({ texte, lien }: { texte?: string; lien?: string }) {
   );
 }
 
-/** Titre de section (h2) : même taille et même marge dans tous les blocs. */
-export function TitreBloc({ titre, className = '' }: { titre?: string; className?: string }) {
-  if (!titre) return null;
-  // Pas de marge sous le titre s'il est seul (ex. bande de titre) : marges haut et bas égales.
-  return <h2 className={`mb-e4 text-xl last:mb-0 ${className}`.trim()}>{titre}</h2>;
+/**
+ * Texte d'un titre : suffixes des nombres ordinaux en exposant (« 1er », « 2e », « 3ème »…)
+ * et retours à la ligne voulus (saisis dans le CMS) conservés.
+ */
+export function Ordinaux({ texte }: { texte: string }) {
+  return texte.split('\n').map((ligne, n) => (
+    <Fragment key={n}>
+      {n > 0 && <br />}
+      {ligne.split(/(?<=\b\d+)(er|re|e|ème|nde?)\b/).map((morceau, i) => (i % 2 ? <sup key={i} className="exposant">{morceau}</sup> : morceau))}
+    </Fragment>
+  ));
 }
 
+/** Titre de section (h2) : même taille et même marge dans tous les blocs. Icône facultative, de la hauteur du titre. */
+export function TitreBloc({ titre, icone, className = '' }: { titre?: string; icone?: string; className?: string }) {
+  const fonce = useFondFonce();
+  if (!titre) return null;
+  const Icone = icone ? icones[icone] : undefined;
+  // Pas de marge sous le titre s'il est seul (ex. bande de titre) : marges haut et bas égales.
+  return (
+    <h2 className={`mb-e4 text-xl last:mb-0 ${Icone ? 'flex items-center gap-e2 ' : ''}${className}`.trim()}>
+      {Icone && <Icone size="0.9em" aria-hidden="true" className={`shrink-0${fonce ? '' : ' text-vert-fonce'}`} />}
+      <span>
+        <Ordinaux texte={titre} />
+      </span>
+    </h2>
+  );
+}
+
+/** Champ « icône du titre » des blocs qui ont un titre de section. */
+export const champIconeTitre: Champ = { name: 'icone', label: 'Icône du titre', widget: 'select', options: nomsIcones, required: false };
+
 /** Rangée de boutons d'action. */
-export function Boutons({ boutons = [], className = '' }: { boutons?: { texte: string; lien: string }[]; className?: string }) {
+export function Boutons({ boutons = [], className = '' }: { boutons?: { texte: string; lien: string; icone?: string }[]; className?: string }) {
   if (!boutons.length) return null;
   return (
     <div className={`mt-e4 flex flex-wrap gap-e3 ${className}`.trim()}>
       {boutons.map((b, i) => (
-        <BoutonAction key={i} texte={b.texte} lien={b.lien} />
+        <BoutonAction key={i} texte={b.texte} lien={b.lien} icone={b.icone} />
       ))}
     </div>
   );
@@ -175,6 +205,7 @@ export const champBoutons: Champ = {
   fields: [
     { name: 'texte', label: 'Texte', widget: 'string' },
     { name: 'lien', label: 'Lien', widget: 'string' },
+    { name: 'icone', label: 'Icône', widget: 'select', options: nomsIcones, required: false },
   ],
 };
 

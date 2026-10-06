@@ -14,8 +14,11 @@ sections:
     texte: ''
     bouton_texte: ''
     bouton_lien: ''
+    icone: ''
     fond: gris
     alignement: gauche
+    illustration: ''
+    bouton_icone: ''
   - type: texte_image
     surtitre: ''
     titre: Les réseaux sociaux sont devenus anti-sociaux
@@ -23,17 +26,11 @@ sections:
     image: /images/tour-1.png
     fond: blanc
     image_alt: ''
+    image_lien: ''
     inverse: true
     image_large: false
-  - type: texte_image
-    surtitre: ''
-    titre: L'architecture actuelle du web favorise la compétition
-    texte: Le premier acteur rafle la mise. C'est pourquoi les startups du numérique ont attiré tant d'investisseurs. Mais cette architecture hyper-compétitive est une tragédie pour celles et ceux qui veulent créer des communs au service de la société.
-    image: /images/forteresse-facebook.png
-    fond: blanc
-    image_alt: ''
-    inverse: false
-    image_large: false
+    image_logo: false
+    texte_grand: false
   - type: texte_image
     surtitre: ''
     titre: Les alternatives vertueuses n'arrivent pas à émerger
@@ -41,33 +38,57 @@ sections:
     image: /images/chateau-casse.png
     fond: blanc
     image_alt: ''
+    image_lien: ''
+    inverse: false
+    image_large: false
+    image_logo: false
+    texte_grand: false
+  - type: texte_image
+    surtitre: ''
+    titre: L'architecture actuelle du web favorise la compétition
+    texte: Le premier acteur sur le terrain rafle la mise. C'est pourquoi les startups du numérique ont attiré tant d'investisseurs. Mais cette architecture hyper-compétitive est une tragédie pour celles et ceux qui veulent créer des communs au service de la société.
+    image: /images/forteresse-facebook.png
+    fond: blanc
+    image_alt: ''
+    image_lien: ''
     inverse: true
     image_large: false
+    image_logo: false
+    texte_grand: false
   - type: section_couleur
     titre: 'Acte 2: La solution'
     texte: ''
     bouton_texte: ''
     bouton_lien: ''
+    icone: ''
     fond: gris
     alignement: gauche
+    illustration: ''
+    bouton_icone: ''
   - type: texte_image
     surtitre: ''
-    titre: Nous souhaitons faire émerger le Réseau Social Universel
-    texte: Il s'agit d'un réseau social ouvert, qui n'est pas lié à une application en particulier, mais sur lequel peut se brancher n'importe quelle application. Il est "universel" comme l'est la déclaration des droits de l'Homme.
+    titre: Le Réseau Social Universel
+    texte: 'Il s''agit d''un réseau social ouvert, qui n''est pas lié à une application en particulier, mais sur lequel peut se brancher n''importe quelle application. Il est "universel" comme l''est la déclaration des droits de l''Homme. Il s''appuie sur des protocoles reconnus: tant qu''on respecte ces protocoles, on peut construire des applications dessus.'
     image: /images/RX_2026T1_VISUELS_01242.png
     fond: blanc
     image_alt: ''
+    image_lien: ''
     inverse: true
     image_large: false
+    image_logo: false
+    texte_grand: false
   - type: texte_image
     surtitre: ''
-    titre: Cela est rendu possible grâce au porte-données
+    titre: Cela est possible grâce au porte-données
     texte: Les applications enregistre les données des utilisateurs dans leur "sac à dos", qu'ils peuvent emmener avec eux lorsqu'ils se connectent sur d'autres applications. Les données sont enregistrées dans un format ouvert pour faciliter le partage des données entre applications.
     image: /images/RX_2026T1_VISUELS_01244(1).png
     fond: blanc
     image_alt: ''
+    image_lien: ''
     inverse: false
     image_large: false
+    image_logo: false
+    texte_grand: false
   - type: texte_image
     surtitre: ''
     titre: Les applications mutualisent utilisateurs et données
@@ -75,34 +96,48 @@ sections:
     image: /images/RX_2026T1_VISUELS_01235(2).png
     fond: blanc
     image_alt: ''
+    image_lien: ''
     inverse: true
     image_large: false
+    image_logo: false
+    texte_grand: false
   - type: piliers
-    fond: degrade
     surtitre: Les 3 libertés fondamentales garanties par
     titre: Le Réseau Social Universel
+    fond: degrade
     piliers:
       - icone: cadenas
         titre: Je garde le contrôle sur mes données
-        texte: Toutes mes données sont stockées de manière sécurisée, chez un hébergeur de confiance.
+        texte: Toutes mes données sont stockées dans mon porte-donnée, chez un hébergeur de confiance.
       - icone: globe
         titre: Je communique avec qui je veux
-        texte: Je peux échanger avec mes amis quels que soient les applis ou les hébergeurs qu'ils utilisent.
+        texte: Je peux échanger avec mes contacts, quels que soient les applications ou les hébergeurs qu'ils utilisent.
       - icone: marche_arret
         titre: Je peux changer d'appli à tout moment
-        texte: Si une appli ne me plaît plus, je peux en utiliser une autre en conservant toutes mes données.
+        texte: Si une application ne me plaît plus, je peux en utiliser une autre en conservant toutes mes données.
+  - type: video
+    titre: Webinaire de présentation du Réseau Social Universel
+    fond: blanc
+    url: https://videos-libr.es/w/4LSPGAteyYj9P5uv4Cy33i?start=4
+    pleine_largeur: true
+    legende: ''
   - type: section_couleur
-    fond: gris
-    alignement: gauche
-    illustration: loupe_question
     titre: Comment ça marche ?
     texte: "De même que le web du début a été rendu possible grâce à des **protocoles reconnus internationalement**, le Réseau Social Universel est aujourd'hui réalisable grâce à deux protocoles : **ActivityPub** et **Solid**."
     bouton_texte: Découvrir l'aspect technique
     bouton_lien: /coin-technique
+    icone: ''
+    fond: gris
+    alignement: gauche
+    illustration: loupe_question
+    bouton_icone: ''
   - type: section_couleur
     titre: Rejoignez Reconnexion
     texte: Participez à la construction de ce nouvel espace de rencontre, d'entraide et de coopération.
     bouton_texte: Contribuer au projet
     bouton_lien: /contribuer
+    icone: ''
     fond: degrade
     alignement: centre
+    illustration: ''
+    bouton_icone: ''

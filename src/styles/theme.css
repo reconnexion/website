@@ -81,6 +81,7 @@
   --text-l: var(--t-l);
   --text-xl: var(--t-xl);
   --text-xxl: var(--t-xxl);
+  --text-xxxl: var(--t-xxxl);
 
   --spacing-e1: var(--e-1);
   --spacing-e2: var(--e-2);
@@ -169,6 +170,21 @@
 .bloc[data-fond='vert'] + .bloc[data-fond='vert'],
 .bloc[data-fond='bleu'] + .bloc[data-fond='bleu'] {
   padding-top: 0;
+}
+
+/* Bloc qui prolonge le précédent (ex. alerte sous un texte) : s'il a le même fond, il s'en rapproche
+   (espacement e4 au lieu de e6). */
+.bloc[data-fond='blanc'] + .bloc-rapproche[data-fond='blanc'],
+.bloc[data-fond='gris'] + .bloc-rapproche[data-fond='gris'],
+.bloc[data-fond='vert'] + .bloc-rapproche[data-fond='vert'],
+.bloc[data-fond='bleu'] + .bloc-rapproche[data-fond='bleu'] {
+  margin-top: calc(var(--e-4) - var(--e-6));
+}
+
+/* Suffixe d'ordinal en exposant dans les titres (« 1er ») : plus petit que l'exposant par défaut (75 %). */
+@utility exposant {
+  font-size: 0.5em;
+  top: -0.9em;
 }
 
 /* Texte courant (paragraphes, listes) : même espacement vertical dans tous les blocs. */

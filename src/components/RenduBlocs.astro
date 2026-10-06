@@ -20,7 +20,7 @@ const fond = (s?: DonneesBloc) =>
 // Bandeau d'en-tête (sans image) suivi d'une section blanche : on supprime sa marge du bas,
 // sinon elle s'ajoute à celle de la section suivante (trop d'espace entre titre et texte).
 const avecEnchainement = sections.map((s, i) =>
-  s.type === 'bandeau' && !s.image && fond(sections[i + 1]) === 'blanc' ? { ...s, enchaine: true } : s,
+  s.type === 'bandeau' && !s.image && !s.degrade && fond(sections[i + 1]) === 'blanc' ? { ...s, enchaine: true } : s,
 );
 ---
 {premierEcran > 0 && (

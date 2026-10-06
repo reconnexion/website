@@ -27,6 +27,8 @@ import { offre } from './Offre';
 import { grilleCartes } from './GrilleCartes';
 import { encadre } from './Encadre';
 import { piliers } from './Piliers';
+import { alerte } from './Alerte';
+import { programme } from './Programme';
 import type { DefinitionBloc } from './types';
 
 export const blocs: DefinitionBloc[] = [
@@ -38,6 +40,8 @@ export const blocs: DefinitionBloc[] = [
   offre,
   grilleCartes,
   encadre,
+  alerte,
+  programme,
   video,
   applications,
   colonnes,

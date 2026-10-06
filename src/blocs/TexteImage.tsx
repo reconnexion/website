@@ -6,7 +6,7 @@ import type { DefinitionBloc } from './types';
 export type TexteImageProps = {
   fond?: Fond;
   surtitre?: string;
-  titre: string;
+  titre?: string;
   texte?: string;
   image?: string;
   image_alt?: string;
@@ -72,7 +72,7 @@ export const texteImage: DefinitionBloc<TexteImageProps> = {
   fields: [
     champFond,
     { name: 'surtitre', label: 'Surtitre', widget: 'string', required: false },
-    { name: 'titre', label: 'Titre', widget: 'string' },
+    { name: 'titre', label: 'Titre', widget: 'string', required: false },
     { name: 'texte', label: 'Texte', widget: 'text', required: false, hint: 'Laissez une ligne vide pour changer de paragraphe.' },
     { name: 'image', label: 'Image', widget: 'image', required: false },
     { name: 'image_alt', label: "Description de l'image", widget: 'string', required: false },

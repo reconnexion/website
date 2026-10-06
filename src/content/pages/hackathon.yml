@@ -3,19 +3,134 @@ slug: hackathon
 description: Le 1er Hackathon des Applications Citoyennes de Reconnexion, les 26 et 27 novembre 2026 à La Filature (Villeurbanne).
 sections:
   - type: bandeau
-    surtitre: Nous rencontrer
-    titre: Hackathon novembre 2026
+    titre: |-
+      1er Hackathon
+      des applications citoyennes
+    sous_titre: 26-27 novembre 2026 à Villeurbanne (Lyon)
+    texte: Vous êtes membre d'une organisation de l'ESS, expert métier ou simple citoyen ? Vous avez des idées d'application ou vous avez identifié des besoins numériques qui ne sont pas remplis actuellement ? Nous vous invitons à venir vivre, pendant deux jours, une expérience de coopération lors de laquelle vous imaginerez le futur Réseau Social Universel et concevrez, en équipe, 6 applications citoyennes avec un impact social fort.
+    centre: true
+    degrade: true
+    bouton_texte: S'inscrire maintenant
+    bouton_lien: '#inscription'
+    bouton_icone: fusee
   - type: texte
     fond: blanc
-    image: /images/hackathon/visuel.webp
-    image_alt: "1er Hackathon des Applications Citoyennes : deux jours pour co-construire le futur Réseau Social Universel. 26-27 novembre 2026, La Filature / Villeurbanne."
-    image_avant: true
-    image_pleine_largeur: true
+    titre: Le Réseau Social Universel, c'est quoi ?
+    image: /images/RX_2026T1_VISUELS_01235(2).png
+    image_a_droite: true
+    image_alt: Un village où des personnes construisent ensemble une nouvelle maison à côté de maisons existantes.
     texte: |-
-      A vos agendas ! Le prochain hackathon de Reconnexion aura lieu les jeudi 26 et vendredi 27 novembre prochains dans le tiers-lieu [La Filature](https://lafilature-villeurbanne.fr/) à Villeurbanne.
+      La société actuelle est submergée par le numérique, mais il manque pourtant des outils simples et conviviaux qui aident les citoyens à se rencontrer, s'entraider et coopérer. Les projets qui vont dans ce sens se heurtent tous à la difficulté de réunir une masse critique d'utilisateurs. C'est comme si chaque application était obligée de recréer un réseau social de zéro, tout en étant en compétition avec toutes les autres !
 
-      Pendant deux jours, une quarantaine de personnes se retrouveront pour imaginer le futur Réseau Social Universel et concevoir ensemble 6 applications citoyennes avec un impact social fort. Après le hackathon, ces applications seront réalisées par des développeurs pour pouvoir être testées sur différents territoires (pas besoin d'être développeur pour participer au hackathon !)
+      Le Réseau Social Universel est un projet porté par la [coopérative Reconnexion](/) qui vise à mutualiser les utilisateurs et leurs données au sein d'un réseau social ouvert et neutre. Chaque application créée sur le Réseau Social Universel vient enrichir le réseau et ouvre de nouvelles possibilités d'échanges et de partages entre les citoyens.
 
-      Si vous n'êtes pas disponibles sur deux journées complètes, notez que nous proposerons également deux soirées conviviales les mercredi 25 et jeudi 26 novembre.
+      Quatre applications sont [déjà en ligne](/applications), mais ce n'est que le début. Le hackathon sera l'occasion d'imaginer 6 nouvelles applications, que des développeurs brancheront ensuite sur le Réseau Social Universel, afin qu'elles puissent être testées en vrai par une multitude d'utilisateurs.
 
-      Nous sommes en train de finaliser la page de présentation et le formulaire d'inscription, mais nous vous invitons à réserver dès maintenant ces dates.
+      Si vous souhaitez participer à une expérience de coopération unique tout en apportant vos idées et compétences à un projet à fort impact, inscrivez-vous dès maintenant ! (Le nombre de places est limité.)
+  - type: alerte
+    fond: blanc
+    icone: attention
+    couleur: bleu
+    texte: "**Il n'est pas nécessaire d'être développeur pour participer à ce hackathon.** Le but est de produire des maquettes, avec ou sans IA. Dans chaque équipe, un développeur sera présent pour s'assurer que le résultat final soit techniquement réalisable. Car dans la semaine qui suit, ce développeur aura pour mission de transformer la maquette en une vraie application compatible avec le Réseau Social Universel (et donc possiblement avec les applications existantes)."
+  - type: texte
+    fond: blanc
+    titre: Le lieu
+    icone: lieu
+    texte: "Nous avons la chance d'être accueillis pour ce premier hackathon à [La Filature](https://lafilature-villeurbanne.fr/), à Villeurbanne (région de Lyon). Il s'agit d'un tiers-lieu qui est actuellement co-géré par [Code Communs](https://codecommun.tibillet.coop/), une coopérative numérique (mais pas que…) avec laquelle nous partageons beaucoup de valeurs et qui est notamment derrière l'outil de billetterie open-source TiBillet."
+    image: /images/hackathon/la-filature.webp
+    image_alt: La cour de La Filature, avec des tables où des personnes discutent au soleil.
+    image_2: /images/hackathon/plan-la-filature.png
+    image_2_alt: Plan de La Filature, avec les bâtiments, la cantine, le pavillon, les toilettes et la terrasse.
+    image_pleine_largeur: true
+    texte_apres: "À la Filature, il y aura tout l'espace dont nous aurons besoin, avec 2 grandes salles et une plus petite, ce qui permettra un travail serein en petites équipes. Nous aurons aussi la chance de pouvoir manger et boire sur place, grâce à la cantine du lieu. Et si le temps le permet, nous aurons également accès à l'espace extérieur."
+  - type: programme
+    fond: gris
+    titre: Programme
+    icone: calendrier
+    etapes:
+      - jour: Mercredi 25
+        moment: Soir
+        titre: Soirée d'interconnaissance
+        etiquette: Ouvert à tous
+        icone: coeur
+        texte: Pour celles et ceux qui peuvent arriver la veille, nous proposerons un moment convivial d'interconnaissance.
+      - jour: Jeudi 26
+        moment: Matin
+        titre: Rêve
+        icone: soleil
+        texte: Ce sera l'occasion de découvrir le Réseau Social Universel et ce qu'il permet, à travers un jeu de cartes. Ensuite, toujours avec des cartes, vous pourrez brainstormer en groupe sur les types d'applications imaginables à partir des données qui se trouvent sur le porte-données.
+      - jour: Jeudi 26
+        moment: Après-midi
+        titre: Plan
+        icone: crayon
+        texte: Après une pause de 2h pour se restaurer, on entrera dans le vif du sujet avec la formation des 6 équipes autour d'idées d'applications choisies en commun. Le travail de brainstorming et de concertation sera soumis en fin de journée à une IA, qui générera une première maquette. L'apéro qui s'ouvrira à ce moment sera l'occasion d'avoir des retours de personnes d'autres équipes.
+      - jour: Jeudi 26
+        moment: Soir
+        titre: Soirée festive
+        etiquette: Ouvert à tous
+        icone: fete
+      - jour: Vendredi 27
+        moment: Matin
+        titre: Action
+        icone: outils
+        texte: Il s'agira d'itérer sur la première maquette. Qu'est-ce qui pourrait être amélioré ? Quelles autres fonctionnalités pourrait-on imaginer ?
+      - jour: Vendredi 27
+        moment: Midi
+        titre: Démonstration
+        icone: presentation
+        texte: Toutes les équipes présentent une démo de leur application.
+      - jour: Vendredi 27
+        moment: Après-midi
+        titre: Célébration et suite
+        icone: fusee
+  - type: grille_cartes
+    fond: blanc
+    titre: Tarifs et inscription
+    icone: billet
+    texte: Nous proposons un tarif différencié afin de permettre à toutes les personnes de venir. Nous ne devrions pas être bénéficiaires sur l'évènement, donc si vous avez la possibilité de donner un peu plus que le montant indiqué, ce serait grandement apprécié ! Nous ne proposons pas d'inscription pour une seule journée, car il est nécessaire de participer aux deux jours.
+    colonnes: '3'
+    cartes:
+      - icone: coeur
+        titre: Tarif solidaire
+        texte: |-
+          **À partir de 30 € / 2 jours**
+
+          Pour les personnes avec des moyens limités. Nous proposons 8 places à ce tarif.
+      - icone: personnes
+        titre: Tarif normal
+        texte: |-
+          **À partir de 80 € / 2 jours**
+
+          Si vous venez en tant qu'individu ou en tant que membre d'une association.
+      - icone: poignee_de_main
+        titre: Tarif salarié
+        texte: |-
+          **À partir de 120 € / 2 jours**
+
+          Si votre inscription est payée par l'organisation à laquelle vous appartenez.
+    texte_apres: Il ne sera malheureusement pas possible de venir en cours de route, ou seulement sur une partie du hackathon. En revanche, il est possible de venir aux soirées du mercredi et du jeudi, qui sont ouvertes à tous (sans inscription).
+    boutons:
+      - texte: S'inscrire maintenant
+        lien: '#inscription'
+        icone: fusee
+    boutons_centres: true
+  - type: grille_cartes
+    fond: blanc
+    rapproche: true
+    colonnes: '1'
+    sans_cadre: true
+    cartes:
+      - icone: repas
+        titre: Repas
+        texte: Nous proposerons des repas végétariens, cuisinés sur place, pour 15 €. Ils seront disponibles le mercredi soir, le jeudi midi, le jeudi soir et le vendredi midi. Sur le formulaire d'inscription, vous pourrez indiquer à quels repas vous participerez et si vous avez un régime particulier.
+      - icone: lit
+        titre: Hébergement
+        texte: Le lieu n'offre malheureusement pas d'hébergement, mais nous allons mettre en place un système d'hébergement solidaire, afin que les Lyonnais qui le peuvent puissent accueillir les personnes venant de loin. Indiquez-le dans le formulaire et nous ferons notre possible !
+      - icone: train
+        titre: Transports
+        texte: La Filature se trouve à 10 min de l'arrêt de métro X. Depuis la gare X, il est donc possible d'arriver sur le lieu en moins de 20 minutes. Si vous souhaitez faire du covoiturage, nous avons mis en place un évènement sur Carroster.
+    boutons:
+      - texte: S'inscrire maintenant
+        lien: '#inscription'
+        icone: fusee
+    boutons_centres: true
