@@ -26,50 +26,29 @@ sections:
       - texte: Promotion de l'application sur Reconnexion
       - texte: Déploiement de l'application sur 3 territoires via des ambassadeurs
     mention: ''
-  - type: texte_image
-    surtitre: ''
-    titre: La réunion d'évaluation
-    texte: |-
-      L'entretien préliminaire permet d'évaluer la faisabilité technique de votre projet et d'estimer s'il entre dans le forfait de 9 000 € ou s'il nécessite un budget plus important.
-
-      Après cet entretien, nous évaluons les possibilités de synergie avec d'autres acteurs de notre réseau, et nous vous faisons des propositions de partenariats qui peuvent à la fois réduire le coût pour vous, mais aussi vous assurer que votre application touchera sa cible, en prenant en compte un plus large éventail de besoins. S'associer avec d'autres acteurs, c'est aussi démultiplier ses canaux de communication.
+  - type: texte
+    fond: blanc
     image: /images/services/cycle.svg
-    fond: blanc
     image_alt: "Le cycle de réalisation d'une application : idées et besoins, conception, réalisation, déploiement"
-    image_lien: ''
-    inverse: true
-    image_large: false
-    image_logo: true
-    texte_grand: true
-  - type: texte_image
-    surtitre: ''
-    titre: La place de l'IA dans Reconnexion
-    texte: |-
-      Les outils IA aujourd'hui permettent de réaliser en quelques jours ce qui aurait normalement pris plusieurs mois. Pour des conceptions d'interfaces, l'IA ne fait pas d'erreur, car elle peut s'appuyer sur le code de milliers d'applications existantes.
-
-      Grâce au temps gagné, nous pouvons mettre plus d'énergie sur la conception et pour faire des aller-retours entre la production et vous. Et cela permet de réduire les couts pour vous, d'au moins 10x.
-
-      Nous vous invitons à consulter [notre politique IA](/politique-ia) pour connaitre, en toute transparence, là où nous utilisons l'IA et là où nous refusons de l'utiliser.
-    image: /images/services/puce-ia.svg
+  - type: questions
     fond: blanc
-    image_alt: ''
-    image_lien: ''
-    inverse: false
-    image_large: false
-    image_logo: true
-    texte_grand: true
-  - type: texte_image
-    surtitre: ''
-    titre: La mise à jour vers NextGraph
-    texte: Au printemps 2027, nous prévoyons de passer tout le Réseau Social Universel (utilisateurs, données et applications) sur le logiciel NextGraph. **Cette mise à jour sera faite gratuitement pour nos clients.** Avec NextGraph, toutes les données sont chiffrées, ce qui renforce considérablement la sécurité. Nous vous invitons à regarder le [webinaire que nous avons donné à ce sujet en mai 2026](/coin-technique).
-    image: /images/services/nextgraph.svg
-    fond: blanc
-    image_alt: NextGraph
-    image_lien: ''
-    inverse: true
-    image_large: false
-    image_logo: true
-    texte_grand: true
+    titre: Questions fréquentes
+    questions:
+      - question: Qu'est-ce que l'entretien préliminaire ?
+        reponse: |-
+          L'entretien préliminaire permet d'évaluer la faisabilité technique de votre projet et d'estimer s'il entre dans le forfait de 9 000 € ou s'il nécessite un budget plus important.
+
+          Après cet entretien, nous évaluons les possibilités de synergie avec d'autres acteurs de notre réseau, et nous vous faisons des propositions de partenariats qui peuvent à la fois réduire le coût pour vous, mais aussi vous assurer que votre application touchera sa cible, en prenant en compte un plus large éventail de besoins. S'associer avec d'autres acteurs, c'est aussi démultiplier ses canaux de communication.
+      - question: Quel est votre usage de l'IA ?
+        reponse: |-
+          Les outils IA aujourd'hui permettent de réaliser en quelques jours ce qui aurait normalement pris plusieurs mois. Pour des conceptions d'interfaces, l'IA ne fait pas d'erreur, car elle peut s'appuyer sur le code de milliers d'applications existantes.
+
+          Grâce au temps gagné, nous pouvons mettre plus d'énergie sur la conception et pour faire des aller-retours entre la production et vous. Et cela permet de réduire les couts pour vous, d'au moins 10x.
+
+          Nous vous invitons à consulter [notre politique IA](/politique-ia) pour connaitre, en toute transparence, là où nous utilisons l'IA et là où nous refusons de l'utiliser.
+      - question: Qu'en est-il du passage à NextGraph ?
+        reponse: |-
+          Au printemps 2027, nous prévoyons de passer tout le Réseau Social Universel (utilisateurs, données et applications) sur le logiciel NextGraph. **Cette mise à jour sera faite gratuitement pour nos clients.** Avec NextGraph, toutes les données sont chiffrées, ce qui renforce considérablement la sécurité. Nous vous invitons à regarder le [webinaire que nous avons donné à ce sujet en mai 2026](/coin-technique).
   - type: grille_cartes
     titre: Les avantages du Réseau Social Universel
     texte: ''

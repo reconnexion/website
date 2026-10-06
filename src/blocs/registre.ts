@@ -29,6 +29,7 @@ import { encadre } from './Encadre';
 import { piliers } from './Piliers';
 import { alerte } from './Alerte';
 import { programme } from './Programme';
+import { questions } from './Questions';
 import type { DefinitionBloc } from './types';
 
 export const blocs: DefinitionBloc[] = [
@@ -42,6 +43,7 @@ export const blocs: DefinitionBloc[] = [
   encadre,
   alerte,
   programme,
+  questions,
   video,
   applications,
   colonnes,
