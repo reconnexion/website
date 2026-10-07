@@ -48,14 +48,14 @@ sections:
           Nous vous invitons à consulter [notre politique IA](/politique-ia) pour connaitre, en toute transparence, là où nous utilisons l'IA et là où nous refusons de l'utiliser.
       - question: Qu'en est-il du passage à NextGraph ?
         reponse: |-
-          Au printemps 2027, nous prévoyons de passer tout le Réseau Social Universel (utilisateurs, données et applications) sur le logiciel NextGraph. **Cette mise à jour sera faite gratuitement pour nos clients.** Avec NextGraph, toutes les données sont chiffrées, ce qui renforce considérablement la sécurité. Nous vous invitons à regarder le [webinaire que nous avons donné à ce sujet en mai 2026](/coin-technique).
+          Au printemps 2027, nous prévoyons de passer tout le Réseau Social Universel (utilisateurs, données et applications) sur le logiciel NextGraph. **Cette mise à jour sera faite gratuitement pour nos clients.** Avec NextGraph, toutes les données sont chiffrées, ce qui renforce considérablement la sécurité. Nous vous invitons à regarder le [webinaire que nous avons donné à ce sujet en mai 2026](/le-reseau-social-universel/coin-technique).
   - type: grille_cartes
     titre: Les avantages du Réseau Social Universel
     texte: ''
     fond: gris
     boutons:
       - texte: En savoir plus
-        lien: /concepts-cles
+        lien: /le-reseau-social-universel/concepts-cles
     texte_grand: true
     colonnes: '2'
     cartes:

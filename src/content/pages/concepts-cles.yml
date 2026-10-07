@@ -1,5 +1,5 @@
 titre: Concepts-clés
-slug: concepts-cles
+slug: le-reseau-social-universel/concepts-cles
 description: Pourquoi les réseaux sociaux sont devenus anti-sociaux, et comment le Réseau Social Universel et le porte-données permettent aux applications de coopérer.
 sections:
   - type: bandeau
@@ -125,7 +125,7 @@ sections:
     titre: Comment ça marche ?
     texte: "De même que le web du début a été rendu possible grâce à des **protocoles reconnus internationalement**, le Réseau Social Universel est aujourd'hui réalisable grâce à deux protocoles : **ActivityPub** et **Solid**."
     bouton_texte: Découvrir l'aspect technique
-    bouton_lien: /coin-technique
+    bouton_lien: /le-reseau-social-universel/coin-technique
     icone: ''
     fond: gris
     alignement: gauche

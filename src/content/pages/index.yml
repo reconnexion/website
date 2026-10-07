@@ -13,7 +13,7 @@ sections:
     titre: Hackathon des Applications Citoyennes
     texte: Découvrez le projet et rencontrez les personnes qui le portent en participant au hackathon.
     bouton_texte: Plus d'informations
-    bouton_lien: /hackathon
+    bouton_lien: /nous-rencontrer/hackathon-nov-2026
     icone: ''
     etiquette: 26-27 novembre · Lyon
   - type: video
@@ -36,7 +36,7 @@ sections:
   - type: equipe
     titre: Notre équipe opérationnelle
     bouton_texte: Tous les sociétaires
-    bouton_lien: /societaires
+    bouton_lien: /la-cooperative/societaires
     bouton_icone: coeur
     table: People
   - type: annonce
@@ -78,21 +78,12 @@ sections:
       - titre: Je veux rencontrer des gens
         texte: Des rencontres sont organisées tous les 3 mois à différents endroits en France, c'est un excellent moyen de découvrir le projet et de rencontrer les gens qui le portent.
         bouton_texte: Rencontres
-        bouton_lien: /hackathon
+        bouton_lien: /nous-rencontrer/hackathon-nov-2026
       - titre: Je veux comprendre le côté technique
         texte: Les applications que nous proposons sont toutes open source et fonctionnent de manière décentralisée. Les personnes plus techniques sont invitées à le découvrir.
         bouton_texte: Le coin technique
-        bouton_lien: /coin-technique
+        bouton_lien: /le-reseau-social-universel/coin-technique
       - titre: Je souhaite contribuer
         texte: Il y a différentes moyens de contribuer au projet Reconnexion, en fonction de ses envies, besoins, compétences et bien sûr de ses disponibilités. N'hésitez pas !
         bouton_texte: Contribuer
         bouton_lien: /contribuer
-  - type: actualites
-    titre: Actualités
-    fond: blanc
-    boutons:
-      - texte: Toutes les actualités
-        lien: /actualites
-    texte_lien: Lire l'article
-    texte_vide: ''
-    nombre: 3

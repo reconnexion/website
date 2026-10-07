@@ -7,25 +7,23 @@ menu:
     icone: personnes
     sous_menu:
       - texte: Concepts-clés
-        lien: /concepts-cles
+        lien: /le-reseau-social-universel/concepts-cles
       - texte: Applications
         lien: /applications
-      - texte: Ambassadeurs
-        lien: /ambassadeurs
-      - texte: Le Coin Technique
-        lien: /coin-technique
+      - texte: Le coin technique
+        lien: /le-reseau-social-universel/coin-technique
   - texte: La coopérative
     lien: ''
     icone: maison
     sous_menu:
       - texte: Organisation
-        lien: /organisation
+        lien: /la-cooperative/organisation
       - texte: Équipe opérationnelle
-        lien: /equipe
+        lien: /la-cooperative/equipe
       - texte: Sociétaires
-        lien: /societaires
+        lien: /la-cooperative/societaires
       - texte: Partenaires & Réseaux
-        lien: /partenaires
+        lien: /la-cooperative/partenaires
   - texte: Nos services
     lien: /services
     icone: telephone
@@ -35,11 +33,9 @@ menu:
     icone: poignee_de_main
     sous_menu:
       - texte: Hackathon novembre 2026
-        lien: /hackathon
+        lien: /nous-rencontrer/hackathon-nov-2026
       - texte: Agenda
-        lien: /agenda
-      - texte: Rencontres passées
-        lien: /rencontres-passees
+        lien: /nous-rencontrer/agenda
   - texte: Contribuer
     lien: /contribuer
     icone: main
