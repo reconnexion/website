@@ -33,7 +33,7 @@ sections:
     couleur: bleu
     texte: "**Il n'est pas nécessaire d'être développeur pour participer à ce hackathon.** Le but est de produire des maquettes, avec ou sans IA. Dans chaque équipe, un développeur sera présent pour s'assurer que le résultat final soit techniquement réalisable. Car dans la semaine qui suit, ce développeur aura pour mission de transformer la maquette en une vraie application compatible avec le Réseau Social Universel (et donc possiblement avec les applications existantes)."
   - type: chiffres
-    fond: blanc
+    fond: gris
     chiffres:
       - nombre: '40'
         libelle: participants
