@@ -16,7 +16,7 @@ function ListeChiffres({ chiffres }: { chiffres: Chiffre[] }) {
     <dl className="grid grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] gap-e5 text-center">
       {chiffres.map((c, i) => (
         // Le nombre avant son libellé à l'écran, mais <dt> (libellé) d'abord pour les lecteurs d'écran.
-        <div key={i} className="flex flex-col-reverse">
+        <div key={i} className="flex flex-col-reverse justify-end">
           <dt className="text-l text-balance">{c.libelle}</dt>
           <dd className={`mb-e2 font-titre text-xxxl leading-none font-semibold${fonce ? '' : ' text-vert-fonce'}`}>{c.nombre}</dd>
         </div>
