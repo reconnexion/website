@@ -30,6 +30,7 @@ import { piliers } from './Piliers';
 import { alerte } from './Alerte';
 import { programme } from './Programme';
 import { questions } from './Questions';
+import { chiffres } from './Chiffres';
 import type { DefinitionBloc } from './types';
 
 export const blocs: DefinitionBloc[] = [
@@ -42,6 +43,7 @@ export const blocs: DefinitionBloc[] = [
   grilleCartes,
   encadre,
   alerte,
+  chiffres,
   programme,
   questions,
   video,
