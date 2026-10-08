@@ -5,20 +5,26 @@ sections:
   - type: bandeau
     surtitre: Le Réseau Social Universel
     titre: Concepts-clés
+    sous_titre: ''
     texte: Comprendre le Réseau Social Universel en quelques phrases
     image: ''
+    illustration: ''
+    illustration_alt: ''
     bouton_texte: ''
     bouton_lien: ''
+    bouton_icone: ''
+    centre: false
+    degrade: false
   - type: section_couleur
     titre: 'Acte 1: La tragédie'
     texte: ''
+    illustration: ''
     bouton_texte: ''
     bouton_lien: ''
+    bouton_icone: ''
     icone: ''
     fond: gris
     alignement: gauche
-    illustration: ''
-    bouton_icone: ''
   - type: texte_image
     surtitre: ''
     titre: Les réseaux sociaux sont devenus anti-sociaux
@@ -58,13 +64,13 @@ sections:
   - type: section_couleur
     titre: 'Acte 2: La solution'
     texte: ''
+    illustration: ''
     bouton_texte: ''
     bouton_lien: ''
+    bouton_icone: ''
     icone: ''
     fond: gris
     alignement: gauche
-    illustration: ''
-    bouton_icone: ''
   - type: texte_image
     surtitre: ''
     titre: Le Réseau Social Universel
@@ -80,7 +86,7 @@ sections:
   - type: texte_image
     surtitre: ''
     titre: Cela est possible grâce au porte-données
-    texte: Les applications enregistre les données des utilisateurs dans leur "sac à dos", qu'ils peuvent emmener avec eux lorsqu'ils se connectent sur d'autres applications. Les données sont enregistrées dans un format ouvert pour faciliter le partage des données entre applications.
+    texte: Les applications enregistrent les données des utilisateurs dans leur "sac à dos", qu'ils peuvent emmener avec eux lorsqu'ils se connectent sur d'autres applications. Les données sont enregistrées dans un format ouvert pour faciliter le partage des données entre applications.
     image: /images/RX_2026T1_VISUELS_01244(1).png
     fond: blanc
     image_alt: ''
@@ -92,7 +98,7 @@ sections:
   - type: texte_image
     surtitre: ''
     titre: Les applications mutualisent utilisateurs et données
-    texte: Cela permet aux applications de mutualiser les utilisateurs et les données, dans une boucle vertueuse. Plus il y a d'utilisateurs, plus il y a de données, plus les nouvelles applications ont des chances de réussir. Comme il n'y a plus de murs, cela facilite la coopération.
+    texte: Cela permet aux applications de mutualiser les utilisateurs et les données, dans une boucle vertueuse. Plus il y a d'utilisateurs, plus il y a de données, plus les nouvelles applications ont des chances de réussir. Comme il n'y a plus de mur, cela facilite la coopération.
     image: /images/RX_2026T1_VISUELS_01235(2).png
     fond: blanc
     image_alt: ''
@@ -124,20 +130,20 @@ sections:
   - type: section_couleur
     titre: Comment ça marche ?
     texte: "De même que le web du début a été rendu possible grâce à des **protocoles reconnus internationalement**, le Réseau Social Universel est aujourd'hui réalisable grâce à deux protocoles : **ActivityPub** et **Solid**."
+    illustration: loupe_question
     bouton_texte: Découvrir l'aspect technique
     bouton_lien: /le-reseau-social-universel/coin-technique
+    bouton_icone: ''
     icone: ''
     fond: gris
     alignement: gauche
-    illustration: loupe_question
-    bouton_icone: ''
   - type: section_couleur
     titre: Rejoignez Reconnexion
     texte: Participez à la construction de ce nouvel espace de rencontre, d'entraide et de coopération.
+    illustration: ''
     bouton_texte: Contribuer au projet
     bouton_lien: /contribuer
+    bouton_icone: ''
     icone: ''
     fond: degrade
     alignement: centre
-    illustration: ''
-    bouton_icone: ''
