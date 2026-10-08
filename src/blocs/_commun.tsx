@@ -222,10 +222,14 @@ export function BoutonAction({ texte, lien, icone }: { texte?: string; lien?: st
   });
   if (!texte || !lien) return null;
   const Icone = icone ? icones[icone] : undefined;
+  // Liens externes dans un nouvel onglet, comme dans les textes.
+  const externe = /^https?:\/\//.test(lien);
   return (
     <a
       ref={ref}
       href={courriel ? '#' : lien}
+      target={externe ? '_blank' : undefined}
+      rel={externe ? 'noopener' : undefined}
       data-courriel={courriel ? encoderCourriel(courriel) : undefined}
       className={fonce ? 'btn border-fond bg-fond text-noir hover:border-fond-2 hover:bg-fond-2' : 'btn btn-primary'}
     >

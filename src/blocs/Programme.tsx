@@ -1,5 +1,6 @@
-import { Bloc, Paragraphes, TitreBloc, champFond, champIconeTitre, useFondFonce, type Fond } from './_commun';
+import { Bloc, Boutons, Paragraphes, TitreBloc, champBoutons, champFond, champIconeTitre, useFondFonce, type Fond } from './_commun';
 import type { DefinitionBloc } from './types';
+import { Image } from './_image';
 import { icones, nomsIcones } from '../lib/icones';
 
 type Etape = { jour?: string; moment?: string; titre: string; texte?: string; icone?: string; etiquette?: string };
@@ -10,6 +11,11 @@ export type ProgrammeProps = {
   icone?: string;
   texte?: string;
   etapes?: Etape[];
+  image?: string;
+  image_alt?: string;
+  image_lien?: string;
+  /** Boutons centrés sous le programme (ex. « S'inscrire »). */
+  boutons?: { texte: string; lien: string; icone?: string }[];
 };
 
 /** Regroupe les étapes consécutives d'un même jour. */
@@ -27,12 +33,31 @@ function parJour(etapes: Etape[]) {
  * Programme d'un événement, compact : une ligne par jour (le jour à gauche, ses étapes côte à côte sur
  * grand écran ; tout s'empile sur mobile).
  */
-export function Programme({ fond = 'blanc', titre, icone, texte, etapes = [] }: ProgrammeProps) {
+export function Programme({ fond = 'blanc', titre, icone, texte, etapes = [], image, image_alt, image_lien, boutons = [] }: ProgrammeProps) {
+  // Image en haut à droite : flottante à côté du titre sur mobile ; sur grand écran, posée dans le coin
+  // (au-dessus de la place libre du premier jour) pour ne pas rétrécir la grille du programme.
+  const img = image && <Image src={image} alt={image_alt ?? ''} sizes="(min-width: 1024px) 16rem, (min-width: 768px) 12rem, 7rem" className="w-full" />;
   return (
     <Bloc fond={fond}>
-      <TitreBloc titre={titre} icone={icone} />
-      <Paragraphes texte={texte} className="mb-e4" />
-      <Jours etapes={etapes} />
+      <div className="relative">
+        {img && (
+          <div className="float-right ml-e3 w-28 md:absolute md:top-0 md:right-0 md:float-none md:w-48 lg:w-64">
+            {image_lien ? (
+              <a href={image_lien} target={/^https?:\/\//.test(image_lien) ? '_blank' : undefined} rel="noopener">
+                {img}
+              </a>
+            ) : (
+              img
+            )}
+          </div>
+        )}
+        <TitreBloc titre={titre} icone={icone} />
+        <Paragraphes texte={texte} className="mb-e4" />
+        <div className="clear-both">
+          <Jours etapes={etapes} />
+        </div>
+      </div>
+      <Boutons boutons={boutons} className="mt-e5 justify-center" />
     </Bloc>
   );
 }
@@ -58,7 +83,7 @@ function Jours({ etapes }: { etapes: Etape[] }) {
                     {e.titre}
                   </h4>
                   {e.etiquette && <span className={`badge mt-e2 badge-outline${fonce ? '' : ' badge-primary'}`}>{e.etiquette}</span>}
-                  <Paragraphes texte={e.texte} className="mt-e2 text-s" />
+                  <Paragraphes texte={e.texte} className="mt-e2" />
                 </li>
               );
             })}
@@ -79,6 +104,15 @@ export const programme: DefinitionBloc<ProgrammeProps> = {
     champIconeTitre,
     { name: 'texte', label: 'Introduction', widget: 'text', required: false },
     {
+      name: 'image',
+      label: 'Image (en haut à droite)',
+      widget: 'image',
+      required: false,
+      hint: 'Sur ordinateur, posée dans le coin au-dessus du premier jour : celui-ci doit avoir peu d’étapes.',
+    },
+    { name: 'image_alt', label: "Description de l'image", widget: 'string', required: false },
+    { name: 'image_lien', label: "Lien de l'image", widget: 'string', required: false, hint: 'Ex. https://dragon-dreaming.fr' },
+    {
       name: 'etapes',
       label: 'Étapes',
       widget: 'list',
@@ -98,5 +132,6 @@ export const programme: DefinitionBloc<ProgrammeProps> = {
         { name: 'texte', label: 'Texte', widget: 'text', required: false },
       ],
     },
+    champBoutons,
   ],
 };

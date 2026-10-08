@@ -8,13 +8,15 @@ export type QuestionsProps = {
   titre?: string;
   icone?: string;
   questions?: Question[];
+  /** Texte centré sous les questions (ex. invitation à nous contacter). */
+  texte_apres?: string;
 };
 
 /**
  * Questions fréquentes : liste dépliable (`<details>` + collapse daisyUI, sans JavaScript).
  * Toutes les questions sont repliées au chargement ; plusieurs peuvent être ouvertes à la fois.
  */
-export function Questions({ fond = 'blanc', titre, icone, questions = [] }: QuestionsProps) {
+export function Questions({ fond = 'blanc', titre, icone, questions = [], texte_apres }: QuestionsProps) {
   return (
     <Bloc fond={fond}>
       <TitreBloc titre={titre} icone={icone} />
@@ -30,6 +32,7 @@ export function Questions({ fond = 'blanc', titre, icone, questions = [] }: Ques
           ))}
         </div>
       </SurFondClair>
+      <Paragraphes texte={texte_apres} className="mt-e4 text-center" />
     </Bloc>
   );
 }
@@ -58,5 +61,6 @@ export const questions: DefinitionBloc<QuestionsProps> = {
         },
       ],
     },
+    { name: 'texte_apres', label: 'Texte sous les questions', widget: 'text', required: false, hint: 'Centré. [texte du lien](/contact).' },
   ],
 };

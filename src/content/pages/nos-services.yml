@@ -47,6 +47,7 @@ sections:
       - question: Qu'en est-il du passage à NextGraph ?
         reponse: |-
           Au printemps 2027, nous prévoyons de passer tout le Réseau Social Universel (utilisateurs, données et applications) sur le logiciel NextGraph. **Cette mise à jour sera faite gratuitement pour nos clients.** Avec NextGraph, toutes les données sont chiffrées, ce qui renforce considérablement la sécurité. Nous vous invitons à regarder le [webinaire que nous avons donné à ce sujet en mai 2026](/le-reseau-social-universel/coin-technique).
+    texte_apres: Si vous avez d'autres questions, n'hésitez pas à [nous contacter](/contact) !
   - type: grille_cartes
     titre: Les avantages du Réseau Social Universel
     texte: ''

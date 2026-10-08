@@ -11,7 +11,7 @@ sections:
     texte: Vous êtes membre d'une organisation de l'ESS, expert métier ou simple citoyen ? Vous avez des idées d'application ou vous avez identifié des besoins numériques qui ne sont pas remplis actuellement ? Nous vous invitons à venir vivre, pendant deux jours, une expérience de coopération lors de laquelle 40 personnes imaginerons le futur Réseau Social Universel et concevrons, en équipe, 6 applications citoyennes avec un impact social fort.
     image: ''
     bouton_texte: S'inscrire maintenant
-    bouton_lien: '#inscription'
+    bouton_lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
     bouton_icone: fusee
     centre: true
     degrade: true
@@ -41,6 +41,10 @@ sections:
     icone: attention
     fond: blanc
     couleur: bleu
+    boutons:
+      - texte: S'inscrire maintenant
+        lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
+        icone: fusee
   - type: chiffres
     titre: ''
     icone: ''
@@ -73,49 +77,53 @@ sections:
     texte: ''
     icone: calendrier
     fond: gris
+    image: /images/hackathon/dragon-dreaming.png
+    image_alt: Programme inspiré de la méthode Dragon Dreaming
+    image_lien: https://dragon-dreaming.fr
     etapes:
       - jour: Mercredi 25
-        moment: Soir (dès 19h)
+        moment: Soir (dès 18h30)
         titre: Soirée d'interconnaissance
         etiquette: Ouvert à tous
         icone: coeur
-        texte: Pour celles et ceux qui peuvent arriver la veille, nous proposerons un moment convivial d'interconnaissance.
+        texte: Pour celles et ceux qui peuvent arriver la veille, nous proposerons un temps convivial d'interconnaissance.
       - jour: Jeudi 26
         moment: Matin (9h30-13h)
-        titre: Rêve
+        titre: Ouverture et rêve
         etiquette: ''
         icone: soleil
-        texte: Ce sera l'occasion de découvrir le Réseau Social Universel et ce qu'il permet, à travers un jeu de cartes. Ensuite, toujours avec des cartes, vous pourrez brainstormer en groupe sur les types d'applications imaginables à partir des données qui se trouvent sur le porte-données.
+        texte: La journée commencera par une découverte du Réseau Social Universel et des problèmes qu'il résout, à travers un jeu de cartes. Ensuite, toujours avec des cartes, on imaginera des applications innovantes à partir des données partagées qui se trouvent potentiellement sur le porte-données.
       - jour: Jeudi 26
         moment: Après-midi (15h-18h)
-        titre: Plan
+        titre: Planification
         etiquette: ''
         icone: crayon
-        texte: Après une pause de 2h pour se restaurer, on entrera dans le vif du sujet avec la formation des 6 équipes autour d'idées d'applications choisies en commun. Le travail de brainstorming et de concertation sera soumis en fin de journée à une IA, qui générera une première maquette.
+        texte: Après une pause de 2h pour se restaurer, on entrera dans le vif du sujet avec la formation des 6 équipes autour d'idées d'applications choisies en commun. Le travail de brainstorming, puis de convergence sera soumis en fin de journée à une IA, qui génèrera une première maquette (les équipes qui veulent travailler sans IA pourront le réaliser sur papier).
       - jour: Jeudi 26
-        moment: Soir (dès 19h)
+        moment: Soir (dès 18h30)
         titre: Soirée festive
         etiquette: Ouvert à tous
         icone: fete
-        texte: L'apéro de début de soirée sera l'occasion d'avoir des premiers retours des maquettes de la part des autres équipes. Ensuite la soirée se poursuivra avec musique, danses (programme en cours d'élaboration)
+        texte: L'apéro de début de soirée sera l'occasion d'avoir des premiers retours des maquettes de la part des autres équipes ou des visiteurs. Ensuite la soirée se poursuivra avec repas, musique et peut-être danse (programme en cours d'élaboration).
       - jour: Vendredi 27
-        moment: Matin (9h30-13h)
+        moment: Matin (9h30-12h)
         titre: Action
         etiquette: ''
         icone: outils
-        texte: Il s'agira d'itérer sur la première maquette. Qu'est-ce qui pourrait être amélioré ? Quelles autres fonctionnalités pourrait-on imaginer ?
+        texte: Il s'agira d'itérer sur la première maquette. Qu'est-ce qui pourrait être amélioré ? Quelles autres fonctionnalités pourrait-on imaginer ? Pendant ce temps, les développeurs de chaque équipe pourront, s'ils le souhaitent, essayer d'implémenter la maquette sur le Réseau Social Universel avec de l'IA.
       - jour: Vendredi 27
-        moment: Midi
+        moment: Midi (12h-13h)
         titre: Démonstration
         etiquette: ''
         icone: presentation
-        texte: Toutes les équipes présentent une démo de leur application.
+        texte: Toutes les équipes présentent une démo de leur application et récoltent des feedbacks des autres équipes.
       - jour: Vendredi 27
         moment: Après-midi (15h-17h)
         titre: Célébration et clôture
         etiquette: ''
         icone: fusee
-        texte: Après le repas, on réfléchit aux suites à donner aux différents projets, puis on finit par la clôture.
+        texte: Après le repas, chaque équipe se retrouvera pour réfléchir aux prochains petits pas imaginables pour leur projet, puis on finira par une clôture.
+    boutons: []
   - type: grille_cartes
     titre: Tarifs et inscription
     texte: |-
@@ -123,10 +131,7 @@ sections:
     icone: billet
     fond: blanc
     texte_apres: Il ne sera malheureusement pas possible de venir en cours de route, ou seulement sur une partie du hackathon. En revanche, il est possible de venir aux soirées du mercredi et du jeudi, qui sont ouvertes à tous (sans inscription).
-    boutons:
-      - texte: S'inscrire maintenant
-        lien: '#inscription'
-        icone: fusee
+    boutons: []
     texte_grand: false
     colonnes: '3'
     cartes:
@@ -143,7 +148,7 @@ sections:
 
           Si votre inscription est payée par l'organisation à laquelle vous appartenez.
       - icone: coeur
-        titre: Tarif solidaire
+        titre: Tarif solidaire/étudiant
         texte: |-
           **Dès 30 € / 2 jours**
 
@@ -157,10 +162,7 @@ sections:
     icone: ''
     fond: blanc
     texte_apres: ''
-    boutons:
-      - texte: S'inscrire maintenant
-        lien: '#inscription'
-        icone: fusee
+    boutons: []
     texte_grand: false
     colonnes: '1'
     cartes:
@@ -176,3 +178,22 @@ sections:
     sans_cadre: true
     rapproche: true
     boutons_centres: true
+  - type: section_couleur
+    fond: degrade
+    alignement: centre
+    titre: ''
+    texte: Participez à une expérience collective qui aura un impact durable sur l'avenir du web… et peut-être de la société !
+    bouton_texte: S'inscrire maintenant
+    bouton_lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
+    bouton_icone: fusee
+  - type: questions
+    fond: blanc
+    titre: Questions fréquentes
+    questions:
+      - question: À qui s'adresse le tarif solidaire ?
+        reponse: Toute personne qui a des moyens limités, étudiante ou non, et pour qui 80 € (ajoutés aux autres frais) serait trop important. Pour ne pas trop mettre à mal notre modèle économique (nous sommes déjà déficitaires…), nous limitons ce tarif à 8 places. Donc faites le choix en conscience !
+      - question: Est-ce que les équipes peuvent se passer d'IA ?
+        reponse: Nous comprenons et partageons les doutes qu'il y a sur l'IA. Si vous préférez réaliser les maquettes sans Claude Design, vous pouvez le signaler en commentaire lors de l'inscription et nous essaierons de rassembler au moins une équipe qui n'utilisera pas l'IA pour la génération de la maquette.
+      - question: Je suis développeur·se, est-ce que je pourrai coder ?
+        reponse: Si vous êtes développeur·se et souhaitez coder, nous vous invitons à l'indiquer à l'inscription. Nous aimerions si possible avoir un développeur par équipe, qui pourra dès le vendredi matin (ou le jeudi soir s'il ou elle est vraiment motivé·e !) commencer à implémenter la maquette sur le Réseau Social Universel.
+    texte_apres: Si vous avez d'autres questions, n'hésitez pas à [nous contacter](/contact) !

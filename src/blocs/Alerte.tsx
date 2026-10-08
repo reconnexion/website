@@ -1,4 +1,4 @@
-import { Bloc, Paragraphes, SurFondClair, champFond, type Fond } from './_commun';
+import { Bloc, Boutons, Paragraphes, SurFondClair, champBoutons, champFond, type Fond } from './_commun';
 import type { DefinitionBloc } from './types';
 import { icones, nomsIcones } from '../lib/icones';
 
@@ -17,13 +17,15 @@ export type AlerteProps = {
   icone?: string;
   couleur?: Couleur;
   texte?: string;
+  /** Boutons centrés sous l'encadré (ex. « S'inscrire »). */
+  boutons?: { texte: string; lien: string; icone?: string }[];
 };
 
 /**
  * Message mis en évidence dans le fil de la page (information pratique, avertissement…) : icône et teinte
  * claire, sur toute la largeur du contenu. Collé au bloc précédent s'il a le même fond (`bloc-rapproche`, theme.css).
  */
-export function Alerte({ fond = 'blanc', icone, couleur = 'vert', texte }: AlerteProps) {
+export function Alerte({ fond = 'blanc', icone, couleur = 'vert', texte, boutons = [] }: AlerteProps) {
   const Icone = icone ? icones[icone] : undefined;
   const c = classesCouleur[couleur] ?? classesCouleur.vert;
   return (
@@ -36,6 +38,7 @@ export function Alerte({ fond = 'blanc', icone, couleur = 'vert', texte }: Alert
           </div>
         </div>
       </SurFondClair>
+      <Boutons boutons={boutons} className="mt-e5 justify-center" />
     </Bloc>
   );
 }
@@ -54,5 +57,6 @@ export const alerte: DefinitionBloc<AlerteProps> = {
       widget: 'text',
       hint: 'Commencez par une phrase en **gras** pour l’essentiel. Ligne vide = nouveau paragraphe.',
     },
+    champBoutons,
   ],
 };
