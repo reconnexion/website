@@ -7,6 +7,8 @@ sections:
     titre: Nos services
     texte: Vous avez un projet d'application ou une application existante que vous souhaiteriez porter sur le Réseau Social Universel ? Reconnexion peut vous accompagner sur tous les aspects, de la conception au développement jusqu'au déploiement sur les territoires.
     image: ''
+    illustration: /images/services/cycle.svg
+    illustration_alt: "Le cycle de réalisation d'une application : idées et besoins, conception, réalisation, déploiement"
     bouton_texte: ''
     bouton_lien: ''
   - type: offre
@@ -26,10 +28,6 @@ sections:
       - texte: Promotion de l'application sur Reconnexion
       - texte: Déploiement de l'application sur 3 territoires via des ambassadeurs
     mention: ''
-  - type: texte
-    fond: blanc
-    image: /images/services/cycle.svg
-    image_alt: "Le cycle de réalisation d'une application : idées et besoins, conception, réalisation, déploiement"
   - type: questions
     fond: blanc
     titre: Questions fréquentes
@@ -77,29 +75,32 @@ sections:
     fond: blanc
     boutons: []
     texte_grand: false
-    colonnes: '3'
+    colonnes: '2'
     cartes:
-      - icone: reseau
-        titre: Mise en synergie avec d'autres acteurs
-        texte: ''
-      - icone: crayon
-        titre: Conception d'application
-        texte: ''
       - icone: code
-        titre: Réalisation d'application
-        texte: ''
-      - icone: globe
-        titre: Mise en ligne
-        texte: ''
+        titre: "Réalisation d'applications"
+        texte: "Quel que soit votre projet d'application, notre équipe de designers et développeurs peut vous aider à la réaliser, de la conception des maquettes à la réalisation concrète."
+      - icone: donnees
+        titre: "Migration d'applications existantes"
+        texte: "Nous pouvons vous aider à porter votre application sur le Réseau Social Universel. Avec l'IA, la migration de donnée est heureusement facilitée."
       - icone: outils
-        titre: Maintenance
-        texte: ''
+        titre: "Hébergement & maintenance"
+        texte: "Nous pouvons mettre en ligne votre application sur nos serveurs, et assurer une surveillance régulière afin qu'elle reste opérationnelle."
+      - icone: presentation
+        titre: "Expertise & Formation"
+        texte: "Si vous avez une équipe de développeurs, nous pouvons les assister dans la réalisation d'applications compatibles avec le Réseau Social Universel."
+      - icone: bulle
+        titre: "Support"
+        texte: "Nous pouvons assurer un support, par email ou par téléphone, auprès des utilisateurs de votre équipe ou de votre équipe."
+      - icone: reseau
+        titre: "Mise en synergie avec d'autres acteurs"
+        texte: "Nous pouvons vous mettre en relation avec des acteurs qui ont des projets ou besoins similaires aux vôtres, et vous aider à définir un cahier des charges commun."
       - icone: lieu
-        titre: Déploiement sur les territoires
-        texte: ''
+        titre: "Déploiement sur les territoires"
+        texte: "Grâce à nos ambassadeurs, nous pouvons vous aider à tester votre application dans des réseaux existants, afin d'avoir rapidement des retours d'utilisateurs."
       - icone: megaphone
-        titre: Communication / Crowdfunding
-        texte: ''
+        titre: "Communication"
+        texte: "Avec des graphistes, nous pouvons vous aider à établir la marque de votre application et ensuite à communiquer sur les réseaux sociaux."
   - type: section_couleur
     titre: Un projet d'application ?
     texte: Parlons-en lors d'une réunion d'évaluation, gratuite et sans engagement.

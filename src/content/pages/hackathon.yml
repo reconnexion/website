@@ -75,44 +75,51 @@ sections:
     fond: gris
     etapes:
       - jour: Mercredi 25
-        moment: Soir
+        moment: Soir (dès 19h)
         titre: Soirée d'interconnaissance
         etiquette: Ouvert à tous
         icone: coeur
         texte: Pour celles et ceux qui peuvent arriver la veille, nous proposerons un moment convivial d'interconnaissance.
       - jour: Jeudi 26
-        moment: Matin
+        moment: Matin (9h30-13h)
         titre: Rêve
         etiquette: ''
         icone: soleil
         texte: Ce sera l'occasion de découvrir le Réseau Social Universel et ce qu'il permet, à travers un jeu de cartes. Ensuite, toujours avec des cartes, vous pourrez brainstormer en groupe sur les types d'applications imaginables à partir des données qui se trouvent sur le porte-données.
       - jour: Jeudi 26
-        moment: Après-midi
+        moment: Après-midi (15h-18h)
         titre: Plan
         etiquette: ''
         icone: crayon
         texte: Après une pause de 2h pour se restaurer, on entrera dans le vif du sujet avec la formation des 6 équipes autour d'idées d'applications choisies en commun. Le travail de brainstorming et de concertation sera soumis en fin de journée à une IA, qui générera une première maquette.
       - jour: Jeudi 26
-        moment: Soir
+        moment: Soir (dès 19h)
         titre: Soirée festive
         etiquette: Ouvert à tous
         icone: fete
         texte: L'apéro de début de soirée sera l'occasion d'avoir des premiers retours des maquettes de la part des autres équipes. Ensuite la soirée se poursuivra avec musique, danses (programme en cours d'élaboration)
       - jour: Vendredi 27
-        moment: Matin
+        moment: Matin (9h30-13h)
         titre: Action
         etiquette: ''
         icone: outils
         texte: Il s'agira d'itérer sur la première maquette. Qu'est-ce qui pourrait être amélioré ? Quelles autres fonctionnalités pourrait-on imaginer ?
       - jour: Vendredi 27
-        moment: Après-midi
+        moment: Midi
+        titre: Démonstration
+        etiquette: ''
+        icone: presentation
+        texte: Toutes les équipes présentent une démo de leur application.
+      - jour: Vendredi 27
+        moment: Après-midi (15h-17h)
         titre: Célébration et clôture
         etiquette: ''
         icone: fusee
-        texte: A midi, toutes les équipes présentent une démo de leur application. Puis après le repas on réfléchit aux suites à donner aux différents projets, puis on finit par la clôture.
+        texte: Après le repas, on réfléchit aux suites à donner aux différents projets, puis on finit par la clôture.
   - type: grille_cartes
     titre: Tarifs et inscription
-    texte: Nous proposons un tarif différencié afin de permettre à toutes les personnes de venir. Nous ne devrions pas être bénéficiaires sur l'évènement, donc si vous avez la possibilité de donner un peu plus que le montant indiqué, ce serait grandement apprécié ! Nous ne proposons pas d'inscription pour une seule journée, car il est nécessaire de participer aux deux jours.
+    texte: |-
+      Nous proposons un tarif différencié afin de permettre à toutes les personnes de venir. **Nous ne devrions pas être bénéficiaires sur l'évènement**, donc si vous avez la possibilité de donner un peu plus que le montant indiqué, ce serait grandement apprécié !
     icone: billet
     fond: blanc
     texte_apres: Il ne sera malheureusement pas possible de venir en cours de route, ou seulement sur une partie du hackathon. En revanche, il est possible de venir aux soirées du mercredi et du jeudi, qui sont ouvertes à tous (sans inscription).
@@ -123,24 +130,24 @@ sections:
     texte_grand: false
     colonnes: '3'
     cartes:
-      - icone: coeur
-        titre: Tarif solidaire
-        texte: |-
-          **À partir de 30 € / 2 jours**
-
-          Pour les personnes avec des moyens limités. Nous proposons 8 places à ce tarif.
       - icone: personnes
         titre: Tarif normal
         texte: |-
-          **À partir de 80 € / 2 jours**
+          **Dès 80 € / 2 jours**
 
-          Si vous venez en tant qu'individu ou en tant que membre d'une association.
+          Si vous venez en tant qu'individu ou en tant que membre d'une association sans salariés.
       - icone: poignee_de_main
         titre: Tarif salarié
         texte: |-
-          **À partir de 120 € / 2 jours**
+          **Dès 120 € / 2 jours**
 
           Si votre inscription est payée par l'organisation à laquelle vous appartenez.
+      - icone: coeur
+        titre: Tarif solidaire
+        texte: |-
+          **Dès 30 € / 2 jours**
+
+          Pour les personnes avec des moyens limités. Nous proposons 8 places à ce tarif.
     sans_cadre: false
     rapproche: false
     boutons_centres: true

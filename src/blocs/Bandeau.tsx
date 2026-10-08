@@ -1,5 +1,5 @@
 import { BoutonAction, Ordinaux, Paragraphes, SurFondFonce, Surtitre } from './_commun';
-import { urlImage } from './_image';
+import { Image, urlImage } from './_image';
 import type { DefinitionBloc } from './types';
 import { nomsIcones } from '../lib/icones';
 
@@ -12,6 +12,9 @@ export type BandeauProps = {
   sous_titre?: string;
   texte?: string;
   image?: string;
+  /** Sans image de fond : illustration flottant à droite du titre et du texte. */
+  illustration?: string;
+  illustration_alt?: string;
   bouton_texte?: string;
   bouton_lien?: string;
   bouton_icone?: string;
@@ -23,7 +26,7 @@ export type BandeauProps = {
   enchaine?: boolean;
 };
 
-export function Bandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, image, bouton_texte, bouton_lien, bouton_icone, centre, degrade, enchaine }: BandeauProps) {
+export function Bandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, image, illustration, illustration_alt, bouton_texte, bouton_lien, bouton_icone, centre, degrade, enchaine }: BandeauProps) {
   const bouton = bouton_texte && bouton_lien && (
     <div className={`mt-e4 flex flex-wrap gap-e3${image || centre ? ' justify-center' : ''}`}>
       {/* Vert sur fond clair, blanc sur le dégradé. */}
@@ -60,7 +63,15 @@ export function Bandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, ima
   const premiereLigne = lignes.length > 1 ? lignes[0] : undefined;
   const suite = lignes.length > 1 ? lignes.slice(1).join('\n') : titre;
   const contenu = (
-    <div className={`hero-content conteneur block p-0${centre ? ' text-center' : ''}`}>
+    <div className={`hero-content conteneur flow-root p-0${centre ? ' text-center' : ''}`}>
+      {illustration && (
+        <Image
+          src={illustration}
+          alt={illustration_alt ?? ''}
+          sizes="(min-width: 768px) 22rem, 30vw"
+          className="float-right mb-e3 ml-e5 w-[30%]"
+        />
+      )}
       <Surtitre texte={surtitre} lien={lien_surtitre} />
       <h1 className="mb-e3 text-xxl last:mb-0">
         {/* Titre sur plusieurs lignes : la première, en plus grand, fait office d'accroche. */}
@@ -107,6 +118,14 @@ export const bandeau: DefinitionBloc<BandeauProps> = {
       required: false,
       hint: 'Avec une image, le texte est centré et affiché en blanc.',
     },
+    {
+      name: 'illustration',
+      label: 'Illustration (sans image de fond)',
+      widget: 'image',
+      required: false,
+      hint: 'Affichée à droite du titre et du texte, sur 30 % de la largeur.',
+    },
+    { name: 'illustration_alt', label: "Texte alternatif de l'illustration", widget: 'string', required: false },
     { name: 'bouton_texte', label: 'Texte du bouton', widget: 'string', required: false },
     { name: 'bouton_lien', label: 'Lien du bouton', widget: 'string', required: false },
     { name: 'bouton_icone', label: 'Icône du bouton', widget: 'select', options: nomsIcones, required: false },
