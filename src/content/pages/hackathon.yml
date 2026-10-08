@@ -10,6 +10,8 @@ sections:
     sous_titre: 26-27 novembre 2026 à Villeurbanne (Lyon)
     texte: Vous êtes membre d'une organisation de l'ESS, expert métier ou simple citoyen ? Vous avez des idées d'application ou vous avez identifié des besoins numériques qui ne sont pas remplis actuellement ? Nous vous invitons à venir vivre, pendant deux jours, une expérience de coopération lors de laquelle 40 personnes imaginerons le futur Réseau Social Universel et concevrons, en équipe, 6 applications citoyennes avec un impact social fort.
     image: ''
+    illustration: ''
+    illustration_alt: ''
     bouton_texte: S'inscrire maintenant
     bouton_lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
     bouton_icone: fusee
@@ -126,8 +128,7 @@ sections:
     boutons: []
   - type: grille_cartes
     titre: Tarifs et inscription
-    texte: |-
-      Nous proposons un tarif différencié afin de permettre à toutes les personnes de venir. **Nous ne devrions pas être bénéficiaires sur l'évènement**, donc si vous avez la possibilité de donner un peu plus que le montant indiqué, ce serait grandement apprécié !
+    texte: Nous proposons un tarif différencié afin de permettre à toutes les personnes de venir. **Nous ne devrions pas être bénéficiaires sur l'évènement**, donc si vous avez la possibilité de donner un peu plus que le montant indiqué, ce serait grandement apprécié !
     icone: billet
     fond: blanc
     texte_apres: Il ne sera malheureusement pas possible de venir en cours de route, ou seulement sur une partie du hackathon. En revanche, il est possible de venir aux soirées du mercredi et du jeudi, qui sont ouvertes à tous (sans inscription).
@@ -168,7 +169,7 @@ sections:
     cartes:
       - icone: repas
         titre: Repas
-        texte: Nous proposerons des repas végétariens, cuisinés sur place, pour 15 €. Ils seront disponibles le mercredi soir, le jeudi midi, le jeudi soir et le vendredi midi. Sur le formulaire d'inscription, vous pourrez indiquer à quels repas vous participerez et si vous avez un régime particulier.
+        texte: Nous proposerons des repas végétariens, cuisinés sur place, pour 10 €. Ils seront disponibles le mercredi soir, le jeudi midi, le jeudi soir et le vendredi midi. Sur le formulaire d'inscription, vous pourrez indiquer à quels repas vous participerez et si vous avez un régime particulier.
       - icone: lit
         titre: Hébergement
         texte: Le lieu n'offre malheureusement pas d'hébergement, mais nous allons mettre en place un système d'hébergement solidaire, afin que les Lyonnais qui le peuvent puissent accueillir les personnes venant de loin. Indiquez-le dans le formulaire et nous ferons notre possible !
