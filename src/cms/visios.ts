@@ -9,9 +9,10 @@ export const collectionVisios = {
   extension: 'yml',
   format: 'yml',
   create: true,
-  slug: '{{slug}}',
+  // {{slug}} serait le nom mis en forme d'adresse : on veut le champ « Identifiant ».
+  slug: '{{fields.slug}}',
   identifier_field: 'nom',
-  summary: '{{nom}} — /visio/{{slug}}',
+  summary: '{{nom}} — /visio/{{fields.slug}}',
   sortable_fields: ['nom', 'slug'],
   fields: [
     { name: 'nom', label: 'Nom', widget: 'string', hint: 'Pour s’y retrouver dans le CMS (non affiché sur le site).' },
