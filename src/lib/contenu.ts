@@ -8,6 +8,7 @@ import { trierApplications, type Application } from './applications';
 import { trierReseaux, type Reseau } from './reseaux';
 import { trierCartes, trierTypes, type Carte, type ReglagesCartes, type TypeCarte } from './cartes';
 import type { FicheEvenement } from './evenements';
+import { lienVisioValide, type LienVisio } from './visios';
 
 export type Page = {
   titre: string;
@@ -169,3 +170,11 @@ const fichiersEvenements = import.meta.glob('../content/evenements/*.yml', { que
 
 /** Événements de l'agenda (collection « Événements »). Les occurrences sont calculées par lib/evenements.ts. */
 export const tousLesEvenements = (): FicheEvenement[] => lire<FicheEvenement>(fichiersEvenements).filter((e) => e.titre && e.debut);
+
+const fichiersVisios = import.meta.glob('../content/visios/*.yml', { query: '?raw', import: 'default', eager: true }) as Record<
+  string,
+  string
+>;
+
+/** Liens de visio courts (collection « Liens de visio »), sans ceux qui ne pointent pas vers meet.reconnexion.coop. */
+export const tousLesLiensVisio = (): LienVisio[] => lire<Partial<LienVisio>>(fichiersVisios).filter(lienVisioValide);

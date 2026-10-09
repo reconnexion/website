@@ -34,6 +34,8 @@
   Liste = bloc « Cartes QR » ; fiches `/cartes/<slug>` (cible du QR code) et `/cartes/impression`
   générées par `src/pages/cartes/`. Nouveau type de carte = une fiche dans « Types de cartes », rien à coder.
 - Idem pour les réseaux (`src/content/reseaux/*.yml`, « Réseaux » dans le CMS, bloc Réseaux).
+- Liens de visio courts : collection `visios` (« Liens de visio », `src/cms/visios.ts`) ; `/visio/<slug>` renvoie une
+  redirection 302 vers la salle (`src/pages/visio/[...slug].ts`), `/visio` seul vers la salle par défaut. Seuls les liens `https://meet.reconnexion.coop/<id>` sont suivis.
 - Même principe pour toute donnée affichée à plusieurs endroits : une collection, et des blocs qui la référencent.
 - Images déposées via le CMS (`public/images/`) : afficher avec `<Image sizes="…">` (`src/blocs/_image.tsx`),
   jamais un `<img>` direct. Le build génère des variantes WebP (`scripts/optimiser-images.mjs` → `/_img/<largeur>/…`)
