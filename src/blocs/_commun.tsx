@@ -209,6 +209,16 @@ export const champBoutons: Champ = {
   ],
 };
 
+/** Champ des blocs qui peuvent prolonger le précédent (classe `bloc-rapproche`, theme.css). */
+export const champRapproche: Champ = {
+  name: 'rapproche',
+  label: 'Rapprocher du bloc précédent',
+  widget: 'boolean',
+  required: false,
+  default: false,
+  hint: 'Réduit l’espace avec le bloc au-dessus, s’il a le même fond (suite de la même section).',
+};
+
 /**
  * Bouton d'action : vert sur fond clair, blanc sur fond foncé. Icône facultative devant le texte.
  * Lien mailto: masqué aux robots comme dans les textes (cf. src/lib/courriel.ts).

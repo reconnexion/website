@@ -17,12 +17,14 @@ import { roles } from './Roles';
 import { societaires } from './Societaires';
 import { partenaires } from './Partenaires';
 import { reseaux } from './Reseaux';
+import { logos } from './Logos';
 import { cartes } from './Cartes';
 import { sectionCouleur } from './SectionCouleur';
 import { annonce } from './Annonce';
 import { video } from './Video';
 import { colonnes } from './Colonnes';
 import { texte } from './Texte';
+import { bouton } from './Bouton';
 import { offre } from './Offre';
 import { grilleCartes } from './GrilleCartes';
 import { encadre } from './Encadre';
@@ -38,6 +40,7 @@ export const blocs: DefinitionBloc[] = [
   annonce,
   sectionCouleur,
   texte,
+  bouton,
   texteImage,
   offre,
   grilleCartes,
@@ -55,6 +58,7 @@ export const blocs: DefinitionBloc[] = [
   societaires,
   partenaires,
   reseaux,
+  logos,
   cartes,
   agenda,
   actualites,

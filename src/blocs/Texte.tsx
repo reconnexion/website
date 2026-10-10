@@ -1,4 +1,4 @@
-import { Bloc, Boutons, Paragraphes, TitreBloc, champBoutons, champFond, champIconeTitre, type Fond } from './_commun';
+import { Bloc, Boutons, Paragraphes, TitreBloc, champBoutons, champFond, champRapproche, champIconeTitre, type Fond } from './_commun';
 import { Image } from './_image';
 import type { DefinitionBloc } from './types';
 
@@ -19,13 +19,15 @@ export type TexteProps = {
   /** Texte affiché sous l'image (l'image s'insère alors entre les deux textes). */
   texte_apres?: string;
   boutons?: { texte: string; lien: string }[];
+  /** Réduit l'espace avec le bloc précédent s'il a le même fond (suite de la même section). */
+  rapproche?: boolean;
 };
 
 /**
  * Bloc de texte simple : titre, paragraphes et listes, image (schéma, visuel…) au-dessus, en dessous, entre deux textes
  * ou à droite (habillée par le texte), boutons.
  */
-export function Texte({ fond = 'blanc', titre, icone, texte, image, image_alt, image_2, image_2_alt, image_avant, image_pleine_largeur, image_a_droite, texte_apres, boutons }: TexteProps) {
+export function Texte({ fond = 'blanc', titre, icone, texte, image, image_alt, image_2, image_2_alt, image_avant, image_pleine_largeur, image_a_droite, texte_apres, boutons, rapproche }: TexteProps) {
   const marge = image_avant ? 'mb-e4' : 'mt-e4';
   const img =
     image &&
@@ -50,7 +52,7 @@ export function Texte({ fond = 'blanc', titre, icone, texte, image, image_alt, i
     ));
   if (image && image_a_droite)
     return (
-      <Bloc fond={fond}>
+      <Bloc fond={fond} className={rapproche ? 'bloc-rapproche' : ''}>
         <div className="flow-root">
           <Image
             sizes="(min-width: 768px) 36rem, 100vw"
@@ -67,7 +69,7 @@ export function Texte({ fond = 'blanc', titre, icone, texte, image, image_alt, i
       </Bloc>
     );
   return (
-    <Bloc fond={fond}>
+    <Bloc fond={fond} className={rapproche ? 'bloc-rapproche' : ''}>
       <TitreBloc titre={titre} icone={icone} />
       {image_avant && img}
       <Paragraphes texte={texte} />
@@ -102,5 +104,6 @@ export const texte: DefinitionBloc<TexteProps> = {
     { name: 'image_a_droite', label: 'Image à droite, habillée par le texte', widget: 'boolean', required: false, default: false },
     { name: 'image_pleine_largeur', label: 'Image sur toute la largeur de la page', widget: 'boolean', required: false, default: false },
     champBoutons,
+    champRapproche,
   ],
 };

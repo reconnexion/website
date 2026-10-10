@@ -18,6 +18,8 @@ export type BandeauProps = {
   bouton_texte?: string;
   bouton_lien?: string;
   bouton_icone?: string;
+  /** Petite mention sous le bouton (ex. « Nombre de places limité »). */
+  bouton_note?: string;
   /** Sans image : titre et texte centrés. */
   centre?: boolean;
   /** Sans image : fond en dégradé (celui du X du logo, comme le fond « degrade » des sections), texte blanc. */
@@ -26,11 +28,14 @@ export type BandeauProps = {
   enchaine?: boolean;
 };
 
-export function Bandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, image, illustration, illustration_alt, bouton_texte, bouton_lien, bouton_icone, centre, degrade, enchaine }: BandeauProps) {
+export function Bandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, image, illustration, illustration_alt, bouton_texte, bouton_lien, bouton_icone, bouton_note, centre, degrade, enchaine }: BandeauProps) {
   const bouton = bouton_texte && bouton_lien && (
-    <div className={`mt-e4 flex flex-wrap gap-e3${image || centre ? ' justify-center' : ''}`}>
-      {/* Vert sur fond clair, blanc sur le dégradé. */}
-      <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} />
+    <div className="mt-e5">
+      <div className={`flex flex-wrap gap-e3${image || centre ? ' justify-center' : ''}`}>
+        {/* Vert sur fond clair, blanc sur le dégradé. */}
+        <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} />
+      </div>
+      {bouton_note && <p className="mt-e2 text-m">{bouton_note}</p>}
     </div>
   );
 
@@ -129,6 +134,7 @@ export const bandeau: DefinitionBloc<BandeauProps> = {
     { name: 'bouton_texte', label: 'Texte du bouton', widget: 'string', required: false },
     { name: 'bouton_lien', label: 'Lien du bouton', widget: 'string', required: false },
     { name: 'bouton_icone', label: 'Icône du bouton', widget: 'select', options: nomsIcones, required: false },
+    { name: 'bouton_note', label: 'Mention sous le bouton', widget: 'string', required: false, hint: 'Affichée en petit, ex. « Nombre de places limité ».' },
     { name: 'centre', label: 'Centré (sans image de fond)', widget: 'boolean', required: false, default: false },
     { name: 'degrade', label: 'Fond en dégradé (sans image de fond)', widget: 'boolean', required: false, default: false },
   ],

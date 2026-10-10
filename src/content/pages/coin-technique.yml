@@ -22,30 +22,24 @@ sections:
       Les applications que nous proposons sont toutes **open source** et fonctionnent de manière **décentralisée**. Cela permet de garantir les 3 libertés fondamentales décrites ci-dessous.
 
       Si vous avez un penchant technique et que vous souhaitez en apprendre plus sur l'architecture particulière que nous avons développée (depuis 2021), nous vous invitons à consulter le site [ActivityPods.org](https://activitypods.org) (en anglais).
-
-      Si vous ne parlez pas anglais, vous trouverez dans cette page des informations traduites en français.
     image: /images/coin-technique/activitypods.webp
     image_alt: "Page d'accueil du site ActivityPods : « Creating decentralized social apps has never been easier »"
     inverse: false
     image_large: true
-  - type: colonnes
-    fond: vert
-    colonnes:
-      - titre: Libre de choisir où mes données sont enregistrées
-        texte: |-
-          Lorsque vous utilisez des applications habituelles, vous ne savez pas où ni comment vos données sont stockées.
-
-          Avec le **Réseau Social Universel**, toutes vos données sont stockées dans votre Pod. Vous pouvez choisir un fournisseur de Pods en qui vous avez confiance ou l'héberger vous-même.
-      - titre: Libre de partager mes données avec qui je veux
-        texte: |-
-          Lorsque vous utilisez des applications habituelles, vous ne pouvez partager vos données qu'avec les utilisateurs de la même application.
-
-          Avec le **Réseau Social Universel**, vous pouvez partager vos données avec n'importe qui sur Internet, grâce à des protocoles ouverts.
-      - titre: Libre de choisir quelles applications j'utilise
-        texte: |-
-          Lorsque vous utilisez des applications habituelles, les données ne sont comprises que par les applications qui les ont créées.
-
-          Avec le **Réseau Social Universel**, les données sont stockées en utilisant des vocabulaires partagés. Elles peuvent être ainsi utilisées par de nombreuses applications.
+  - type: piliers
+    surtitre: Les 3 libertés fondamentales garanties par
+    titre: Le Réseau Social Universel
+    fond: degrade
+    piliers:
+      - icone: cadenas
+        titre: Je garde le contrôle sur mes données
+        texte: Toutes mes données sont stockées dans mon porte-donnée, chez un hébergeur de confiance.
+      - icone: globe
+        titre: Je communique avec qui je veux
+        texte: Je peux échanger avec mes contacts, quels que soient les applications ou les hébergeurs qu'ils utilisent.
+      - icone: marche_arret
+        titre: Je peux changer d'appli à tout moment
+        texte: Si une application ne me plaît plus, je peux en utiliser une autre en conservant toutes mes données.
   - type: texte
     fond: blanc
     titre: Code source

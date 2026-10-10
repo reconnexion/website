@@ -1,4 +1,4 @@
-import { Bloc, Boutons, Paragraphes, TitreBloc, champBoutons, champFond, champIconeTitre, type Fond } from './_commun';
+import { Bloc, Boutons, Paragraphes, TitreBloc, champBoutons, champFond, champRapproche, champIconeTitre, type Fond } from './_commun';
 import type { DefinitionBloc } from './types';
 import { icones, nomsIcones } from '../lib/icones';
 
@@ -104,14 +104,7 @@ export const grilleCartes: DefinitionBloc<GrilleCartesProps> = {
     { name: 'texte_apres', label: 'Texte sous les cartes', widget: 'text', required: false },
     { name: 'texte_grand', label: 'Texte des cartes plus grand', widget: 'boolean', required: false, default: false },
     champBoutons,
-    {
-      name: 'rapproche',
-      label: 'Rapprocher du bloc précédent',
-      widget: 'boolean',
-      required: false,
-      default: false,
-      hint: 'Réduit l’espace avec le bloc au-dessus, s’il a le même fond (suite de la même section).',
-    },
+    champRapproche,
     { name: 'boutons_centres', label: 'Boutons centrés sous les cartes', widget: 'boolean', required: false, default: false },
   ],
 };
