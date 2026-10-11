@@ -67,11 +67,11 @@ sections:
       - nombre: '40'
         libelle: participants
       - nombre: '2'
-        libelle: jours
+        libelle: journées
+      - nombre: '2'
+        libelle: soirées ouvertes
       - nombre: '6'
         libelle: applications développées
-      - nombre: '0'
-        libelle: ligne de code
   - type: texte
     titre: Le lieu
     texte: Nous avons la chance d'être accueillis pour ce premier hackathon à [La Filature](https://lafilature-villeurbanne.fr/), à Villeurbanne (agglomération lyonnaise). Il s'agit d'un tiers-lieu qui est actuellement co-géré par [Code Communs](https://codecommun.tibillet.coop/), une coopérative numérique (mais pas que…) avec laquelle nous partageons beaucoup de valeurs et qui est notamment derrière l'outil de billetterie open-source TiBillet.
@@ -187,7 +187,7 @@ sections:
         texte: Le lieu n'offre malheureusement pas d'hébergement, mais nous allons mettre en place un système d'hébergement solidaire, afin que les Lyonnais qui le peuvent puissent accueillir les personnes venant de loin. Indiquez-le dans le formulaire si vous avez des besoins de ce côté et nous ferons notre possible !
       - icone: train
         titre: Transports
-        texte: 'La Filature se trouve à 10 min de l''arrêt "République - Villeurbanne" du métro A. Depuis la gare de Lyon Perrache, il est donc possible d''arriver sur le lieu en moins de 30 minutes. Si vous souhaitez faire du covoiturage, nous avons mis en place un évènement sur [CoviEvent](https://covievent.org/covoiturage/1er-hackathon-des-applications-citoyennes/b9d160e6e6667b8f78aeee4cbd819786#dates-covoiturage).'
+        texte: 'La Filature se trouve à 10 min à pied de l''arrêt "République - Villeurbanne" du métro A. Depuis la gare de Lyon Perrache, il est donc possible d''arriver sur le lieu en moins de 30 minutes. Si vous souhaitez faire du covoiturage, nous avons mis en place un évènement sur [CoviEvent](https://covievent.org/covoiturage/1er-hackathon-des-applications-citoyennes/b9d160e6e6667b8f78aeee4cbd819786#dates-covoiturage).'
     sans_cadre: true
     rapproche: true
     boutons_centres: true

@@ -34,14 +34,14 @@ function parJour(etapes: Etape[]) {
  * grand écran ; tout s'empile sur mobile).
  */
 export function Programme({ fond = 'blanc', titre, icone, texte, etapes = [], image, image_alt, image_lien, boutons = [] }: ProgrammeProps) {
-  // Image en haut à droite : flottante à côté du titre sur mobile ; sur grand écran, posée dans le coin
-  // (au-dessus de la place libre du premier jour) pour ne pas rétrécir la grille du programme.
-  const img = image && <Image src={image} alt={image_alt ?? ''} sizes="(min-width: 1024px) 16rem, (min-width: 768px) 12rem, 7rem" className="w-full" />;
+  // Image en haut à droite, masquée sur mobile ; sur grand écran, posée dans le coin (au-dessus de la
+  // place libre du premier jour) pour ne pas rétrécir la grille du programme.
+  const img = image && <Image src={image} alt={image_alt ?? ''} sizes="(min-width: 1024px) 16rem, 12rem" className="w-full" />;
   return (
     <Bloc fond={fond}>
       <div className="relative">
         {img && (
-          <div className="float-right ml-e3 w-28 md:absolute md:top-0 md:right-0 md:float-none md:w-48 lg:w-64">
+          <div className="hidden md:absolute md:top-0 md:right-0 md:block md:w-48 lg:w-64">
             {image_lien ? (
               <a href={image_lien} target={/^https?:\/\//.test(image_lien) ? '_blank' : undefined} rel="noopener">
                 {img}
