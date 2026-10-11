@@ -3,12 +3,12 @@ import { Image } from './_image';
 import type { Champ } from './types';
 import { STATUTS, type Statut } from '../lib/applications';
 import { ExternalLink, GitBranch } from 'lucide-react';
+import type { ReactNode } from 'react';
 
 /** Couleur de l'étiquette de statut (classes écrites en entier pour Tailwind). */
 const couleursStatut: Record<Statut, string> = {
   'En ligne': 'border-vert-fonce bg-vert-fonce text-fond',
-  'En test': 'border-bleu-fonce bg-bleu-fonce text-fond',
-  'En développement': 'border-gris bg-gris text-fond',
+  'En bêta': 'border-bleu-fonce bg-bleu-fonce text-fond',
 };
 
 /** Étiquette du statut d'une application (sur sa page). */
@@ -17,9 +17,26 @@ function EtiquetteStatut({ statut, className = '' }: { statut?: Statut; classNam
   return <span className={`badge rounded-none font-semibold ${couleursStatut[statut]} ${className}`.trim()}>{statut}</span>;
 }
 
+const fmtDate = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+/** Date AAAA-MM-JJ (ou date complète) → « 1 novembre 2021 ». */
+function dateLisible(date: string) {
+  const d = new Date(date.slice(0, 10));
+  return Number.isNaN(d.getTime()) ? date : fmtDate.format(d);
+}
+
+/** Une ligne des informations sous les captures (libellé à gauche, valeur à droite). */
+export function LigneInfo({ libelle, children }: { libelle: string; children: ReactNode }) {
+  return (
+    <div className="contents">
+      <dt className="font-titre font-semibold">{libelle}</dt>
+      <dd className="max-w-texte">{children}</dd>
+    </div>
+  );
+}
+
 type Bouton = { texte: string; lien: string; style?: 'principal' | 'secondaire' };
 type Capture = { image: string; description?: string };
-type Info = { libelle: string; valeur?: string };
 
 export type FicheApplicationProps = {
   /** Page parente, affichée au-dessus du titre comme le surtitre des autres pages. */
@@ -30,19 +47,30 @@ export type FicheApplicationProps = {
   sous_titre?: string;
   boutons?: Bouton[];
   captures?: Capture[];
-  infos?: Info[];
+  /** Ligne « Utilisateurs », lue sur l'application (server island sur le site, exemple dans l'aperçu du CMS). */
+  utilisateurs?: ReactNode;
+  date_lancement?: string;
+  description?: string;
 };
 
 /** Colonnes de la galerie de captures selon leur nombre (classes écrites en entier pour Tailwind). */
 const colonnesCaptures: Record<number, string> = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4' };
 
-export function FicheApplication({ surtitre, titre, statut, logo, sous_titre, boutons = [], captures = [], infos: infosFiche = [] }: FicheApplicationProps) {
-  // Le statut s'affiche en étiquette sur la ligne « Statut » des informations (ajoutée en tête si la fiche n'en a pas).
-  const estStatut = (info: Info) => info.libelle.trim().toLowerCase() === 'statut';
-  const infos = statut && !infosFiche.some(estStatut) ? [{ libelle: 'Statut' }, ...infosFiche] : infosFiche;
+export function FicheApplication({
+  surtitre,
+  titre,
+  statut,
+  logo,
+  sous_titre,
+  boutons = [],
+  captures = [],
+  utilisateurs,
+  date_lancement,
+  description,
+}: FicheApplicationProps) {
   return (
-    // Même en-tête que les autres pages (cf. Bandeau) : surtitre, h1.
-    <Bloc>
+    // Même en-tête que les autres pages (cf. Bandeau) : surtitre, h1, moins d'espace sous le menu sur mobile.
+    <Bloc className="pt-e4 md:pt-e6">
       <div className="grid items-start gap-e4 md:grid-cols-[1fr_auto]">
         <div>
           <Surtitre texte={surtitre?.texte} lien={surtitre?.lien} />
@@ -90,23 +118,20 @@ export function FicheApplication({ surtitre, titre, statut, logo, sous_titre, bo
         </ul>
       )}
 
-      {infos.length > 0 && (
+      {(statut || utilisateurs || date_lancement || description) && (
         <dl className="mt-e5 grid gap-x-e5 gap-y-e4 md:grid-cols-[12rem_1fr]">
-          {infos.map((info, i) => (
-            <div key={i} className="contents">
-              <dt className="font-titre font-semibold">{info.libelle}</dt>
-              <dd className="max-w-texte">
-                {estStatut(info) && statut ? (
-                  <div className="flex flex-col items-start gap-e2">
-                    <EtiquetteStatut statut={statut} className="badge-lg" />
-                    <Paragraphes texte={info.valeur} />
-                  </div>
-                ) : (
-                  <Paragraphes texte={info.valeur} />
-                )}
-              </dd>
-            </div>
-          ))}
+          {statut && (
+            <LigneInfo libelle="Statut">
+              <EtiquetteStatut statut={statut} className="badge-lg" />
+            </LigneInfo>
+          )}
+          {utilisateurs}
+          {date_lancement && <LigneInfo libelle="Date de lancement">{dateLisible(date_lancement)}</LigneInfo>}
+          {description && (
+            <LigneInfo libelle="Description">
+              <Paragraphes texte={description} />
+            </LigneInfo>
+          )}
         </dl>
       )}
     </Bloc>
@@ -133,7 +158,7 @@ export const champsApplication: Champ[] = [
     widget: 'select',
     options: [...STATUTS],
     required: false,
-    hint: 'Affiché en étiquette sur la ligne « Statut » des informations de la page de l’application (le texte de cette ligne s’affiche dessous).',
+    hint: 'Affiché en étiquette sous les captures, sur la page de l’application.',
   },
   { name: 'logo', label: 'Logo', widget: 'image', required: false, hint: 'Image carrée, affichée à gauche du nom.' },
   { name: 'accroche', label: 'Accroche', widget: 'string', required: false, hint: 'Sous le nom, sur la page de l’application.' },
@@ -145,6 +170,7 @@ export const champsApplication: Champ[] = [
     widget: 'list',
     required: false,
     summary: '{{texte}}',
+    hint: 'Le nombre d’utilisateurs affiché sur la page est lu sur l’adresse du bouton principal (/.well-known/nodeinfo).',
     fields: [
       { name: 'texte', label: 'Texte', widget: 'string' },
       { name: 'lien', label: 'Lien', widget: 'string' },
@@ -163,16 +189,19 @@ export const champsApplication: Champ[] = [
     ],
   },
   {
-    name: 'infos',
-    label: 'Informations',
-    widget: 'list',
+    name: 'date_lancement',
+    label: 'Date de lancement',
+    widget: 'datetime',
+    format: 'YYYY-MM-DD',
+    time_format: false,
     required: false,
-    summary: '{{libelle}}',
-    hint: 'Ex. Utilisateurs, Statut (précisions sous l’étiquette de statut), Description. Une page est créée pour l’application dès qu’il y a des captures ou des informations.',
-    fields: [
-      { name: 'libelle', label: 'Libellé', widget: 'string' },
-      { name: 'valeur', label: 'Valeur', widget: 'text', required: false },
-    ],
+  },
+  {
+    name: 'description',
+    label: 'Description',
+    widget: 'text',
+    required: false,
+    hint: 'Sous les captures, sur la page de l’application. Paragraphes séparés par une ligne vide, liens [texte](adresse). La page est créée dès qu’il y a des captures ou une description.',
   },
   {
     name: 'categorie_forum',

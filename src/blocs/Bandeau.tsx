@@ -96,14 +96,15 @@ export function Bandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, ima
   if (degrade)
     return (
       <SurFondFonce>
-        <section className="hero bg-linear-to-br from-degrade-debut to-degrade-fin py-e6 text-fond">{contenu}</section>
+        <section className="hero bg-linear-to-br from-degrade-debut to-degrade-fin pt-e4 pb-e6 text-fond md:pt-e6">{contenu}</section>
       </SurFondFonce>
     );
 
   return (
     // Suivi d'une section blanche : on remonte la section suivante pour ne laisser qu'un petit écart
     // (e4 sous un titre seul, e5 sous un sous-titre, qui a besoin de plus d'air).
-    <section className={`hero pt-e6 ${enchaine ? (texte ? '-mb-e4 pb-0' : '-mb-e5 pb-0') : 'pb-e6'}`}>{contenu}</section>
+    // En-tête de page : moins d'espace sous le menu sur mobile.
+    <section className={`hero pt-e4 md:pt-e6 ${enchaine ? (texte ? '-mb-e4 pb-0' : '-mb-e5 pb-0') : 'pb-e6'}`}>{contenu}</section>
   );
 }
 

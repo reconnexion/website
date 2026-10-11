@@ -9,7 +9,7 @@
 import type { ReactNode } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { blocsParNom, type DonneesBloc } from '../blocs/registre';
-import { FicheApplication } from '../blocs/FicheApplication';
+import { FicheApplication, LigneInfo } from '../blocs/FicheApplication';
 import { FicheCarte } from '../blocs/_fiche-carte';
 import type { Carte, ReglagesCartes, TypeCarte } from '../lib/cartes';
 
@@ -84,7 +84,10 @@ const ApercuApplication = coquille((d) => (
     sous_titre={d.accroche || undefined}
     boutons={d.boutons}
     captures={d.captures}
-    infos={d.infos}
+    date_lancement={d.date_lancement || undefined}
+    description={d.description || undefined}
+    // Le vrai nombre est lu sur l'application, à l'affichage de la page.
+    utilisateurs={<LigneInfo libelle="Utilisateurs"><span className="text-gris italic">lu sur l’application</span></LigneInfo>}
   />
 ));
 

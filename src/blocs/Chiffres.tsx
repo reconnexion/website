@@ -13,7 +13,8 @@ export type ChiffresProps = {
 function ListeChiffres({ chiffres }: { chiffres: Chiffre[] }) {
   const fonce = useFondFonce();
   return (
-    <dl className="grid grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] gap-e5 text-center">
+    // Deux par ligne sur mobile, puis autant que la largeur le permet.
+    <dl className="grid grid-cols-2 gap-x-e4 gap-y-e5 text-center sm:grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:gap-e5">
       {chiffres.map((c, i) => (
         // Le nombre avant son libellé à l'écran, mais <dt> (libellé) d'abord pour les lecteurs d'écran.
         <div key={i} className="flex flex-col-reverse justify-end">

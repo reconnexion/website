@@ -4,7 +4,7 @@ import type { ComponentType } from 'react';
 export type Champ = {
   name: string;
   label: string;
-  widget: 'string' | 'text' | 'image' | 'boolean' | 'number' | 'list' | 'select' | 'relation';
+  widget: 'string' | 'text' | 'image' | 'boolean' | 'number' | 'list' | 'select' | 'relation' | 'datetime';
   required?: boolean;
   default?: unknown;
   hint?: string;
@@ -15,6 +15,9 @@ export type Champ = {
   min?: number;
   max?: number;
   pattern?: [string, string];
+  /** Widget « datetime » : format enregistré, et `time_format: false` pour une date seule. */
+  format?: string;
+  time_format?: false;
   /** Widget « relation » : entrées d'une autre collection. */
   collection?: string;
   value_field?: string;

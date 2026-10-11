@@ -1,0 +1,12 @@
+---
+// Server island : ligne « Utilisateurs » d'une page d'application, lue sur le NodeInfo de l'application
+// (cache d'une heure, cf. lib/nodeinfo.ts) ; rien n'est affiché si le nombre est inconnu.
+import { LigneInfo } from '../blocs/FicheApplication';
+import { nombreUtilisateurs } from '../lib/nodeinfo';
+
+interface Props {
+  adresse: string;
+}
+const total = await nombreUtilisateurs(Astro.props.adresse);
+---
+{total !== undefined && <LigneInfo libelle="Utilisateurs">{total.toLocaleString('fr-FR')}</LigneInfo>}

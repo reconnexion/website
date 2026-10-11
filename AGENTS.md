@@ -27,7 +27,7 @@
 ## Données partagées : ne pas recopier
 - Les applications ont leur propre collection (`src/content/applications/*.yml`, « Applications » dans le CMS).
   Leur page `/applications/<slug>` est générée par `src/pages/applications/[app].astro` (dès qu'une fiche a
-  des captures ou des informations), et le bloc Applications ne stocke que la sélection (`selection`) :
+  des captures ou une description), et le bloc Applications ne stocke que la sélection (`selection`) :
   nom, résumé et vignette sont injectés au rendu par `Section.astro`.
 - Cartes QR (reprise des QrCards Bazar) : collections `cartes` et `types-de-cartes`
   (`src/cms/cartes.ts`, modèle dans `src/lib/cartes.ts`), libellés dans `src/content/reglages-cartes.yml`.
@@ -54,6 +54,7 @@
 ## Données externes
 - Grist est lu **côté serveur uniquement** (`src/lib/grist.ts`).
 - Ne jamais appeler Grist depuis le navigateur ; passer par un endpoint `src/pages/api/*`.
+- Nombre d’utilisateurs des applications : NodeInfo de l’adresse du bouton principal (`src/lib/nodeinfo.ts`, cache d’une heure), affiché par un server island.
 - L'agenda vient de la collection « Événements » (`src/content/evenements/`) ; récurrences dans
   `src/lib/evenements.ts` (partagé serveur / navigateur / aperçu), flux `/agenda.ics` dans `src/lib/ics.ts`.
 - Ne renvoyer que les champs publics.

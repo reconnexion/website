@@ -2,11 +2,12 @@
 // Page de chaque application, générée depuis la collection « Applications » (une fiche = une page).
 import Base from '../../layouts/Base.astro';
 import DiscussionsIle from '../../components/DiscussionsIle.astro';
+import UtilisateursIle from '../../components/UtilisateursIle.astro';
 import Chargement from '../../components/Chargement.astro';
 import RenduBlocs from '../../components/RenduBlocs.astro';
 import { FicheApplication } from '../../blocs/FicheApplication';
 import { reglagesApplications, reglagesSite, toutesLesApplications, toutesLesPages } from '../../lib/contenu';
-import { aUnePage } from '../../lib/applications';
+import { aUnePage, adresseApplication } from '../../lib/applications';
 
 export function getStaticPaths() {
   // Surtitre : la page qui liste les applications, si elle existe (son titre sert de libellé).
@@ -19,6 +20,7 @@ export function getStaticPaths() {
 
 const { application: a, surtitre } = Astro.props;
 const site = reglagesSite();
+const adresse = adresseApplication(a);
 ---
 <Base titre={a.nom} description={a.resume ?? a.accroche}>
   <FicheApplication
@@ -29,8 +31,11 @@ const site = reglagesSite();
     sous_titre={a.accroche}
     boutons={a.boutons}
     captures={a.captures}
-    infos={a.infos}
-  />
+    date_lancement={a.date_lancement}
+    description={a.description}
+  >
+    {adresse && <UtilisateursIle server:defer slot="utilisateurs" adresse={adresse} />}
+  </FicheApplication>
   {a.categorie_forum && (
     <DiscussionsIle server:defer categorie={a.categorie_forum}>
       <Chargement slot="fallback" texte={site.texte_chargement} />

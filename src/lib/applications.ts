@@ -5,7 +5,7 @@
  * Ce module ne lit pas les fichiers (voir contenu.ts) : il sert aussi à l'aperçu du CMS.
  */
 
-export const STATUTS = ['En ligne', 'En test', 'En développement'] as const;
+export const STATUTS = ['En ligne', 'En bêta'] as const;
 export type Statut = (typeof STATUTS)[number];
 
 export type BoutonApplication = { texte: string; lien: string; style?: 'principal' | 'secondaire' };
@@ -23,13 +23,20 @@ export type Application = {
   vignette?: string;
   boutons?: BoutonApplication[];
   captures?: { image: string; description?: string }[];
-  infos?: { libelle: string; valeur?: string }[];
+  /** Date de lancement (AAAA-MM-JJ). */
+  date_lancement?: string;
+  /** Description longue, sur la page de l'application. */
+  description?: string;
   /** Adresse de la catégorie du forum : ses derniers sujets s'affichent sous la page de l'application. */
   categorie_forum?: string;
 };
 
-/** Une application a sa propre page dès que sa fiche a des captures ou des informations. */
-export const aUnePage = (a: Application) => !!(a.captures?.length || a.infos?.length);
+/** Une application a sa propre page dès que sa fiche a des captures ou une description. */
+export const aUnePage = (a: Application) => !!(a.captures?.length || a.description);
+
+/** Adresse de l'application (lien du bouton principal) : son NodeInfo donne le nombre d'utilisateurs. */
+export const adresseApplication = (a: Pick<Application, 'boutons'>) =>
+  (a.boutons?.find((b) => (b.style ?? 'principal') === 'principal') ?? a.boutons?.[0])?.lien;
 
 export const lienApplication = (a: Application) => (aUnePage(a) ? `/applications/${a.slug}` : undefined);
 
