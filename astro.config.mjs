@@ -9,7 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 // et aux endpoints marqués `prerender = false` (données Grist, forum, agenda).
 export default defineConfig({
   // Adresse publique (QR codes des cartes, liens absolus).
-  site: process.env.SITE_URL || 'https://new.reconnexion.coop',
+  site: process.env.SITE_URL || 'https://reconnexion.coop',
   adapter: node({ mode: 'standalone' }),
   integrations: [react()],
   vite: { plugins: [tailwindcss()] },

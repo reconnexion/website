@@ -5,7 +5,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 # SITE_URL : adresse publique, utilisée pour la connexion GitHub du CMS (cf. src/cms/config.ts).
-ARG SITE_URL=https://new.reconnexion.coop
+ARG SITE_URL=https://reconnexion.coop
 ENV SITE_URL=$SITE_URL
 RUN npm run build
 
