@@ -18,6 +18,7 @@
   --c-bleu: #2d8bba;         /* secondary-color-1 */
   --c-bleu-fonce: #23739b;   /* secondary-color-1 assombri : fonds sous texte blanc */
   --c-ardoise: #506e9a;      /* secondary-color-2 */
+  --c-rouge: #b3261e;        /* agenda : réunions sur invitation (lisible sous du texte blanc) */
   --c-degrade-debut: #06b098; /* dégradé du X du logo : vert-bleu… */
   --c-degrade-fin: #80c54b;   /* …vers vert clair */
 

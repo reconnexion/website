@@ -1,4 +1,4 @@
-import { CalendarPlus, MapPin, Repeat, Video } from 'lucide-react';
+import { CalendarPlus, Lock, MapPin, Repeat, SlidersHorizontal, UsersRound, Video } from 'lucide-react';
 import { Bloc, Paragraphes, TitreBloc } from './_commun';
 import { Image } from './_image';
 import type { DefinitionBloc } from './types';
@@ -21,11 +21,13 @@ export type AgendaProps = {
 const fmtJour = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', timeZone: FUSEAU });
 const fmtMois = new Intl.DateTimeFormat('fr-FR', { month: 'short', timeZone: FUSEAU });
 
-/** Pastille de date (jour et mois). */
-export function PastilleDate({ iso }: { iso: string }) {
+/** Pastille de date (jour et mois) ; rouge pour une réunion sur invitation. */
+export function PastilleDate({ iso, invitation }: { iso: string; invitation?: boolean }) {
   const d = new Date(iso);
   return (
-    <div className="w-18 shrink-0 rounded-box bg-primary p-e2 text-center font-titre leading-tight text-primary-content">
+    <div
+      className={`w-18 shrink-0 rounded-box p-e2 text-center font-titre leading-tight ${invitation ? 'bg-rouge text-fond' : 'bg-primary text-primary-content'}`}
+    >
       <b className="block text-l">{fmtJour.format(d)}</b>
       <small className="text-xs uppercase">{fmtMois.format(d)}</small>
     </div>
@@ -62,6 +64,10 @@ export function InfosOccurrence({ o }: { o: Occurrence }) {
           {o.rythme}
         </p>
       )}
+      <p className="flex items-center gap-e1 font-semibold">
+        {o.ouvert_a_tous ? <UsersRound size={16} aria-hidden="true" /> : <Lock size={16} aria-hidden="true" />}
+        {o.ouvert_a_tous ? 'Ouvert à tous' : 'Sur invitation'}
+      </p>
       <Lieu o={o} />
     </div>
   );
@@ -111,13 +117,37 @@ export function Abonnement({ lien_ics }: { lien_ics?: string }) {
   );
 }
 
+export type FiltreAgenda = { label: string; coche: boolean; onChange: (coche: boolean) => void };
+
+/** Bouton « Filtres » de l'agenda : liste de cases à cocher (nombre de filtres actifs sur le bouton). */
+export function Filtres({ filtres }: { filtres: FiltreAgenda[] }) {
+  const actifs = filtres.filter((f) => f.coche).length;
+  return (
+    <details className="dropdown dropdown-end">
+      <summary className="btn btn-sm">
+        <SlidersHorizontal size={16} aria-hidden="true" />
+        Filtres
+        {actifs > 0 && <span className="badge badge-sm badge-primary">{actifs}</span>}
+      </summary>
+      <div className="dropdown-content z-10 mt-e2 flex w-60 flex-col gap-e3 rounded-box border border-base-300 bg-base-100 p-e4 text-s">
+        {filtres.map(({ label, coche, onChange }) => (
+          <label key={label} className="flex cursor-pointer items-center gap-e2">
+            <input type="checkbox" className="checkbox checkbox-sm checkbox-primary" checked={coche} onChange={(e) => onChange(e.currentTarget.checked)} />
+            {label}
+          </label>
+        ))}
+      </div>
+    </details>
+  );
+}
+
 /** Liste d'occurrences (prochains événements, et calendrier sur mobile). */
 export function ListeOccurrences({ occurrences, onOuvrir }: { occurrences: Occurrence[]; onOuvrir?: (o: Occurrence) => void }) {
   return (
     <ul className="list gap-e3">
       {occurrences.map((o) => (
         <li className="list-row items-start gap-e3 rounded-box bg-base-200 p-e3 after:hidden" key={o.id}>
-          <PastilleDate iso={o.debut} />
+          <PastilleDate iso={o.debut} invitation={!o.ouvert_a_tous} />
           <div className="list-col-grow flex flex-col gap-e1">
             <h3 className="font-texte text-m">
               {onOuvrir ? (

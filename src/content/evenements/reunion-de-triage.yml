@@ -6,6 +6,7 @@ debut: 2026-01-06T10:00
 fin: 2026-01-06T11:30
 journee_entiere: false
 format: en_ligne
+ouvert_a_tous: false
 lien_visio: https://meet.reconnexion.coop/zww-ygql-jes
 adresse: ''
 recurrence: hebdomadaire

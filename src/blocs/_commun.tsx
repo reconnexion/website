@@ -97,7 +97,8 @@ function TexteEnrichi({ texte }: { texte: string }) {
   const fonce = useFondFonce();
   return texte.split('\n').map((ligne, n) => (
     <span key={n}>
-      {n > 0 && <br />}
+      {/* Espace avant le saut : les mots restent séparés là où le saut est masqué (ex. sur mobile). */}
+      {n > 0 && <> <br /></>}
       {enrichir(ligne, fonce)}
     </span>
   ));

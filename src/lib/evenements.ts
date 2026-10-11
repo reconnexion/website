@@ -32,6 +32,8 @@ export type FicheEvenement = {
   fin?: string;
   journee_entiere?: boolean;
   format?: Format;
+  /** Événement ouvert à tous (sinon « Sur invitation ») : filtre et mention dans l'agenda. */
+  ouvert_a_tous?: boolean;
   lien_visio?: string;
   adresse?: string;
   recurrence?: Recurrence;

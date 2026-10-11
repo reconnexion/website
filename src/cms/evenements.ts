@@ -35,6 +35,14 @@ export const collectionEvenements = {
     { name: 'journee_entiere', label: 'Journée(s) entière(s)', widget: 'boolean', default: false, required: false, hint: 'Les heures ne sont pas affichées.' },
     { name: 'format', label: 'Format', widget: 'select', options: options(FORMATS), default: 'en_ligne' },
     {
+      name: 'ouvert_a_tous',
+      label: 'Ouvert à tous',
+      widget: 'boolean',
+      default: false,
+      required: false,
+      hint: 'Coché : « Ouvert à tous », et l’événement apparaît avec le filtre « Ouverts à tous » de l’agenda (actif par défaut). Décoché : « Sur invitation ».',
+    },
+    {
       name: 'lien_visio',
       label: 'Lien de visio',
       widget: 'string',

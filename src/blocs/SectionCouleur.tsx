@@ -42,7 +42,7 @@ export function SectionCouleur({ fond = 'vert', alignement = 'centre', icone, il
             <TitreBloc titre={titre} />
           )}
           {/* Centré : texte d'accroche, en grand. Aligné à gauche : texte courant, comme les blocs voisins. */}
-          <Paragraphes texte={texte} className={alignement === 'gauche' ? '' : 'text-l leading-snug'} />
+          <Paragraphes texte={texte} className={alignement === 'gauche' ? '' : 'text-l leading-snug max-sm:[&_br]:hidden'} />
           {bouton_texte && bouton_lien && (
             <div className="mt-e4">
               <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} />

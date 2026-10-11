@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { Bloc, TitreBloc } from './_commun';
-import { Abonnement, DetailOccurrence, ListeOccurrences } from './Agenda';
+import { Abonnement, DetailOccurrence, Filtres, ListeOccurrences } from './Agenda';
 import { formatHeure, jourDe, occurrences, texteJour, versInstant, type FicheEvenement, type Occurrence } from '../lib/evenements';
 
 type Props = {
@@ -35,7 +35,22 @@ const debutDuJour = (jour: number) => versInstant({ jour, minutes: 0 });
  * détail d'un événement dans une modale. Sur mobile, liste des événements à venir qui s'allonge
  * en faisant défiler la page (les réunions récurrentes n'ont pas de fin).
  */
-export function Calendrier({ titre, texte_vide, fiches, maintenant, lien_ics }: Props) {
+export function Calendrier({ titre, texte_vide, fiches: toutesLesFiches, maintenant, lien_ics }: Props) {
+  // Filtres : événements ouverts à tous (par défaut), en présentiel.
+  const [ouverts, setOuverts] = useState(true);
+  const [presentiel, setPresentiel] = useState(false);
+  const fiches = useMemo(
+    () => toutesLesFiches.filter((f) => (!ouverts || f.ouvert_a_tous) && (!presentiel || f.format === 'presentiel')),
+    [toutesLesFiches, ouverts, presentiel],
+  );
+  const filtres = (
+    <Filtres
+      filtres={[
+        { label: 'Ouverts à tous', coche: ouverts, onChange: setOuverts },
+        { label: 'En présentiel', coche: presentiel, onChange: setPresentiel },
+      ]}
+    />
+  );
   const aujourdhui = jourDe(maintenant ? new Date(maintenant) : new Date());
   const [mois, setMois] = useState(() => debutMois(aujourdhui));
   // Événement choisi, ou tous les événements d'un jour trop chargé (« + n »).
@@ -101,13 +116,14 @@ export function Calendrier({ titre, texte_vide, fiches, maintenant, lien_ics }: 
           <h3 className="ml-e2 text-l first-letter:uppercase" aria-live="polite">
             {fmtMois.format(new Date(mois * JOUR_MS))}
           </h3>
-          {/* Bouton d'abonnement à la hauteur du mois. */}
-          <div className="ml-auto flex items-center gap-e2">
+          {/* Filtres et bouton d'abonnement à la hauteur du mois. */}
+          <div className="ml-auto flex flex-wrap items-center justify-end gap-e2">
             {mois !== debutMois(aujourdhui) && (
               <button type="button" className="btn btn-sm" onClick={() => setMois(debutMois(aujourdhui))}>
                 Aujourd’hui
               </button>
             )}
+            {filtres}
             <Abonnement lien_ics={lien_ics} />
           </div>
         </div>
@@ -136,7 +152,11 @@ export function Calendrier({ titre, texte_vide, fiches, maintenant, lien_ics }: 
                     onClick={() => setSelection(o)}
                     title={o.titre}
                     className={`cursor-pointer truncate rounded-box px-e1 text-left text-xs hover:opacity-85 ${
-                      o.format === 'presentiel' ? 'bg-secondary text-secondary-content' : 'bg-primary text-primary-content'
+                      !o.ouvert_a_tous
+                        ? 'bg-rouge text-fond'
+                        : o.format === 'presentiel'
+                          ? 'bg-secondary text-secondary-content'
+                          : 'bg-primary text-primary-content'
                     }`}
                   >
                     {!o.journee_entiere && o.jours[0] === texteJour(j) && <b className="font-semibold">{formatHeure(o.debut)} </b>}
@@ -156,20 +176,17 @@ export function Calendrier({ titre, texte_vide, fiches, maintenant, lien_ics }: 
 
       {/* Mobile : liste des événements à venir, groupés par mois. */}
       <div className="md:hidden">
-        {groupes.length === 0 && (
-          <div className="mb-e4 flex justify-end">
+        <div className="mb-e4 flex justify-end">
+          <div className="flex items-center gap-e2">
+            {filtres}
             <Abonnement lien_ics={lien_ics} />
           </div>
-        )}
+        </div>
         {groupes.length === 0 && nbMois >= MOIS_MAX
           ? texte_vide && <p>{texte_vide}</p>
-          : groupes.map(([m, occs], i) => (
+          : groupes.map(([m, occs]) => (
               <section key={m} className="mb-e4">
-                {/* Bouton d'abonnement à la hauteur du premier mois. */}
-                <div className="mb-e3 flex items-center justify-between gap-e3">
-                  <h3 className="text-l first-letter:uppercase">{fmtMois.format(new Date(m * JOUR_MS))}</h3>
-                  {i === 0 && <Abonnement lien_ics={lien_ics} />}
-                </div>
+                <h3 className="mb-e3 text-l first-letter:uppercase">{fmtMois.format(new Date(m * JOUR_MS))}</h3>
                 <ListeOccurrences occurrences={occs} onOuvrir={setSelection} />
               </section>
             ))}
