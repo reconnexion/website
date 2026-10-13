@@ -31,7 +31,7 @@
   nom, résumé et vignette sont injectés au rendu par `Section.astro`.
 - Cartes QR (reprise des QrCards Bazar) : collections `cartes` et `types-de-cartes`
   (`src/cms/cartes.ts`, modèle dans `src/lib/cartes.ts`), libellés dans `src/content/reglages-cartes.yml`.
-  Liste = bloc « Cartes QR » ; fiches `/cartes/<slug>` (cible du QR code) et `/cartes/impression`
+  Liste = bloc « Cartes QR » ; fiches `/cartes/<slug>` (cible du QR code), liste filtrée `/cartes/<slug du type>` et `/cartes/impression`
   générées par `src/pages/cartes/`. Nouveau type de carte = une fiche dans « Types de cartes », rien à coder.
 - Idem pour les réseaux (`src/content/reseaux/*.yml`, « Réseaux » dans le CMS, bloc Réseaux).
 - Liens de visio courts : collection `visios` (« Liens de visio », `src/cms/visios.ts`) ; `/visio/<slug>` renvoie une

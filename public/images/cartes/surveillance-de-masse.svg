@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Pyramide à l'œil (visuel de la carte « Surveillance de masse ») -->
+  <path d="M940 330L1194 820L686 820Z"/>
+  <path d="M835 690Q940 580 1045 690Q940 800 835 690Z"/>
+  <circle cx="940" cy="690" r="36" fill="#000" stroke="none"/>
+  <path d="M649 890L1231 890L1501 1400L379 1400Z"/>
+  <g stroke-linecap="butt">
+    <path d="M559 1060L1321 1060M469 1230L1411 1230"/>
+    <path d="M860 890L860 1060M1020 890L1020 1060M780 1060L780 1230M940 1060L940 1230M1100 1060L1100 1230M680 1230L680 1400M860 1230L860 1400M1020 1230L1020 1400M1200 1230L1200 1400"/>
+  </g>
+</svg>

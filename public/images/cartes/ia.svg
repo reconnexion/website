@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Tête de robot (visuel de la carte « IA ») -->
+  <rect x="540" y="640" width="800" height="700" rx="90"/>
+  <path d="M940 640L940 500"/>
+  <circle cx="940" cy="445" r="55"/>
+  <path d="M540 900L460 900L460 1080L540 1080M1340 900L1420 900L1420 1080L1340 1080"/>
+  <circle cx="770" cy="900" r="75"/>
+  <circle cx="1110" cy="900" r="75"/>
+  <rect x="740" y="1110" width="400" height="110" rx="30"/>
+  <path d="M840 1110L840 1220M940 1110L940 1220M1040 1110L1040 1220"/>
+</svg>

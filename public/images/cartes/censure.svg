@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bouche barrée (visuel de la carte « Censure ») -->
+  <path d="M470 865C590 720 750 630 860 670C900 685 920 700 940 715C960 700 980 685 1020 670C1130 630 1290 720 1410 865C1280 1060 1110 1120 940 1120C770 1120 600 1060 470 865Z"/>
+  <path d="M560 868Q750 910 940 900Q1130 910 1320 868"/>
+  <rect x="380" y="815" width="1120" height="100" rx="20" fill="#fff" transform="rotate(-35 940 865)"/>
+</svg>

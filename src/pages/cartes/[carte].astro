@@ -1,21 +1,41 @@
 ---
-// Fiche de chaque carte QR, générée depuis la collection « Cartes » (une carte = une page, cible du QR code).
+// Fiche de chaque carte QR, générée depuis la collection « Cartes » (une carte = une page, cible du QR code),
+// et liste filtrée par type : /cartes/<slug du type> (la page des cartes, avec ce type présélectionné).
 import Base from '../../layouts/Base.astro';
+import RenduBlocs from '../../components/RenduBlocs.astro';
 import { FicheCarte } from '../../blocs/_fiche-carte';
-import { toutesLesCartes, tousLesTypesDeCartes, reglagesCartes } from '../../lib/contenu';
+import { toutesLesCartes, tousLesTypesDeCartes, reglagesCartes, toutesLesPages, reglagesSite } from '../../lib/contenu';
 
 export function getStaticPaths() {
-  return toutesLesCartes().map((carte) => ({ params: { carte: carte.slug }, props: { carte } }));
+  const cartes = toutesLesCartes();
+  const pageListe = toutesLesPages().find((p) => p.sections.some((s) => s.type === 'cartes'));
+  // Une carte et un type ne peuvent pas partager un slug : la carte l'emporte.
+  const types = tousLesTypesDeCartes().filter(
+    (t) => cartes.some((c) => c.type === t.slug) && !cartes.some((c) => c.slug === t.slug),
+  );
+  return [
+    ...cartes.map((carte) => ({ params: { carte: carte.slug }, props: { carte } })),
+    ...(pageListe ? types.map((type) => ({ params: { carte: type.slug }, props: { type, page: pageListe } })) : []),
+  ];
 }
 
-const { carte } = Astro.props;
+const { carte, type, page } = Astro.props;
 ---
-<Base titre={carte.titre} description={carte.accroche}>
-  <FicheCarte
-    carte={carte}
-    types={tousLesTypesDeCartes()}
-    cartes={toutesLesCartes()}
-    reglages={reglagesCartes()}
-    site={Astro.site!.href}
-  />
-</Base>
+{carte ? (
+  <Base titre={carte.titre} description={carte.accroche}>
+    <FicheCarte
+      carte={carte}
+      types={tousLesTypesDeCartes()}
+      cartes={toutesLesCartes()}
+      reglages={reglagesCartes()}
+      site={Astro.site!.href}
+    />
+  </Base>
+) : (
+  <Base titre={`${type.nom} · ${page.titre}`} description={page.description}>
+    <RenduBlocs
+      sections={page.sections.map((s) => (s.type === 'cartes' ? { ...s, type_actif: type.slug } : s))}
+      texteChargement={reglagesSite().texte_chargement}
+    />
+  </Base>
+)}

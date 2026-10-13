@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Document illustré (visuel de la carte « Document / média ») -->
+  <path d="M560 410A50 50 0 0 1 610 360L1120 360L1320 560L1320 1370A50 50 0 0 1 1270 1420L610 1420A50 50 0 0 1 560 1370Z"/>
+  <path d="M1120 360L1120 560L1320 560"/>
+  <path d="M660 470L1000 470"/>
+  <rect x="660" y="640" width="560" height="380" rx="30"/>
+  <path d="M684 990L850 820L960 930L1040 860L1196 990"/>
+  <circle cx="1100" cy="730" r="60" fill="#000" stroke="none"/>
+  <path d="M660 1150L1220 1150M660 1280L1060 1280"/>
+</svg>

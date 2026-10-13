@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Cotillon (visuel de la carte « Événement ») -->
+  <path d="M440 1400L620 760L1080 1220Z"/>
+  <path d="M512 1144L696 1328M566 952L888 1268"/>
+  <path d="M800 820C860 700 740 600 840 440M1120 1140C1260 1080 1360 1200 1460 1060M980 900L1260 620"/>
+  <path d="M1080 480L1080 480M1400 820L1400 820M1260 980L1260 980M1000 640L1000 640M1420 480L1420 480" stroke-width="80"/>
+</svg>

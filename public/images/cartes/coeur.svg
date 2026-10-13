@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Cœur (visuel de la carte « Recommandation ») -->
+  <path d="M940 1360C700 1170 450 970 450 710C450 545 575 420 735 420C835 420 905 480 940 560C975 480 1045 420 1145 420C1305 420 1430 545 1430 710C1430 970 1180 1170 940 1360Z"/>
+  <path d="M640 600C590 630 565 680 565 740"/>
+</svg>

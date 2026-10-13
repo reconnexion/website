@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Clé (visuel de la carte « Chiffrement de bout en bout ») -->
+  <circle cx="700" cy="640" r="230"/>
+  <circle cx="640" cy="580" r="60"/>
+  <path d="M863 803L1400 1340M1170 1110L1270 1010M1290 1230L1390 1130"/>
+</svg>

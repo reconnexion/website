@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Case cochée (visuel de la carte « Tâche ») -->
+  <rect x="460" y="385" width="960" height="960" rx="90"/>
+  <path d="M640 880L850 1090L1260 640"/>
+</svg>

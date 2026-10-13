@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Sac à dos (visuel de la carte « Porte-donnée ») -->
+  <path d="M840 548L840 480A100 100 0 0 1 1040 480L1040 548"/>
+  <path d="M620 1400A60 60 0 0 1 560 1340L560 790C560 620 720 545 940 545C1160 545 1320 620 1320 790L1320 1340A60 60 0 0 1 1260 1400Z"/>
+  <path d="M560 1060L480 1060L480 1340L560 1340M1320 1060L1400 1060L1400 1340L1320 1340"/>
+  <rect x="680" y="1010" width="520" height="290" rx="50"/>
+  <path d="M680 1120L1200 1120M880 1180L1000 1180"/>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Repère de géolocalisation (visuel de la carte « Position GPS ») -->
+  <path d="M940 1410C820 1240 560 1000 560 720A380 380 0 0 1 1320 720C1320 1000 1060 1240 940 1410Z"/>
+  <circle cx="940" cy="720" r="140"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Agenda (visuel de la carte « Agenda ») -->
+  <rect x="400" y="420" width="1080" height="980" rx="70"/>
+  <path d="M400 640L1480 640M680 320L680 520M1200 320L1200 520"/>
+  <path d="M610 800L610 800M830 800L830 800M1050 800L1050 800M1270 800L1270 800M610 1010L610 1010M830 1010L830 1010M1270 1010L1270 1010M610 1220L610 1220M830 1220L830 1220M1050 1220L1050 1220" stroke-width="80"/>
+  <circle cx="1050" cy="1010" r="95"/>
+</svg>

@@ -2,7 +2,7 @@ import { Paragraphes } from './_commun';
 import { COMPLEXITES, couleurCarte, lienCarte, nomType, urlQr, type Carte, type TypeCarte } from '../lib/cartes';
 import { qrcodeSvg } from '../lib/qrcode';
 
-/** Logo par défaut (visuel manquant, pied de carte) et logo de licence, repris des QrCards de YesWiki. */
+/** Logo du pied de carte et logo de licence, repris des QrCards de YesWiki. */
 const LOGO = '/images/cartes/logo-qr-cartes.svg';
 const LOGO_CC_BY_SA = '/images/cartes/cc-by-sa.svg';
 
@@ -26,9 +26,7 @@ export function Recto({ carte, types }: Omit<Props, 'site'>) {
     <div className="carte-qr recto" style={{ backgroundColor: couleurCarte(carte, types) }}>
       <Entete carte={carte} types={types} />
       <h2 className={`carte-qr-titre ${classeTitre(carte.titre)}`}>{carte.titre}</h2>
-      <div className="carte-qr-visuel">
-        <img src={carte.visuel || LOGO} alt="" loading="lazy" />
-      </div>
+      <div className="carte-qr-visuel">{carte.visuel && <img src={carte.visuel} alt="" loading="lazy" />}</div>
       <div className="carte-qr-accroche">{carte.accroche}</div>
       <div className="carte-qr-pied">
         <img className="carte-qr-logo" src={LOGO} alt="" />

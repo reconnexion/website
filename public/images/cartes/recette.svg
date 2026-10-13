@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Liste de cases à cocher (visuel de la carte « Recette ») -->
+  <rect x="440" y="440" width="230" height="230" rx="35"/>
+  <rect x="440" y="760" width="230" height="230" rx="35"/>
+  <rect x="440" y="1080" width="230" height="230" rx="35"/>
+  <path d="M502 560L545 603L612 520M502 880L545 923L612 840"/>
+  <path d="M780 555L1440 555M780 875L1440 875M780 1195L1290 1195"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Pile de cartes de visite (visuel de la carte « Carnet de contacts ») -->
+  <path d="M520 550L520 510A50 50 0 0 1 570 460L1430 460A50 50 0 0 1 1480 510L1480 1050A50 50 0 0 1 1430 1100L1420 1100"/>
+  <path d="M460 640L460 600A50 50 0 0 1 510 550L1370 550A50 50 0 0 1 1420 600L1420 1140A50 50 0 0 1 1370 1190L1360 1190"/>
+  <rect x="400" y="640" width="960" height="640" rx="50"/>
+  <circle cx="610" cy="880" r="85"/>
+  <path d="M480 1160C480 1060 535 1015 610 1015C685 1015 740 1060 740 1160"/>
+  <path d="M840 850L1240 850M840 970L1240 970M840 1090L1100 1090"/>
+</svg>

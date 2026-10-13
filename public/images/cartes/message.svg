@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Lettre (visuel de la carte « Message ») -->
+  <rect x="400" y="500" width="1080" height="730" rx="60"/>
+  <path d="M420 540L940 950L1460 540M420 1200L800 840M1460 1200L1080 840"/>
+</svg>

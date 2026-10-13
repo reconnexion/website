@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Mégaphone (visuel de la carte « Voix ») -->
+  <g transform="rotate(-12 940 865) translate(-40 0)">
+    <rect x="480" y="760" width="120" height="200" rx="30"/>
+    <path d="M600 760L1240 520M600 960L1240 1200"/>
+    <ellipse cx="1240" cy="860" rx="80" ry="340"/>
+    <path d="M770 1024L730 1230L850 1230L870 1061"/>
+    <path d="M1400 700L1460 650M1420 860L1500 860M1400 1020L1460 1070"/>
+  </g>
+</svg>

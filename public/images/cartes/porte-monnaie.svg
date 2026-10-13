@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="340 260 1200 1210" fill="none" stroke="#000" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Porte-monnaie (visuel de la carte « Porte-monnaie ») -->
+  <path d="M560 560L1150 400L1200 560"/>
+  <rect x="420" y="560" width="1020" height="760" rx="70"/>
+  <path d="M1440 820L1230 820A50 50 0 0 0 1180 870L1180 1010A50 50 0 0 0 1230 1060L1440 1060"/>
+  <path d="M1280 940L1280 940" stroke-width="70"/>
+</svg>
