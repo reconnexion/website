@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Projecteur braqué sur une personne (visuel de la carte « Fin de l'anonymat sur Internet »), dans le style des icônes Lucide (lucide.dev) -->
+  <path d="M12 1v1.5"/>
+  <path d="M9.5 2.5h5l1.5 4.5H8z"/>
+  <path d="M8 7 3 20.5M16 7l5 13.5"/>
+  <ellipse cx="12" cy="20.5" rx="9" ry="2"/>
+  <circle cx="12" cy="13" r="2"/>
+  <path fill="#fff" stroke="none" d="M8.5 20.5v-.5a3.5 3.5 0 0 1 7 0v.5z"/>
+  <path d="M8.5 20.5v-.5a3.5 3.5 0 0 1 7 0v.5"/>
+</svg>

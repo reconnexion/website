@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Boule de neige qui grossit en dévalant une pente (visuel de la carte « Graphe social partagé »), dans le style des icônes Lucide (lucide.dev) -->
+  <path d="M1 8 23 20"/>
+  <circle cx="4.35" cy="8.12" r="1.5"/>
+  <circle cx="10.09" cy="10.12" r="2.5"/>
+  <circle cx="18.27" cy="12.87" r="4"/>
+  <path d="M16.5 11a2.5 2.5 0 0 1 2.5-1.2"/>
+</svg>

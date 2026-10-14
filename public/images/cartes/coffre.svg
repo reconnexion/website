@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Coffre au trésor qui s'ouvre (visuel de la carte « Format ouvert »), dans le style des icônes Lucide (lucide.dev) -->
+  <path d="M4 13h16v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/>
+  <path d="M8 13v8M16 13v8"/>
+  <path d="M11 13h2v2.5h-2z"/>
+  <g transform="rotate(-30 4 13)">
+    <path d="M4 13V10a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3z"/>
+    <path d="M8 7.2V13M16 7.2V13"/>
+  </g>
+  <path d="M15 11.5l1.5-2M18 12.5l2.5-1.5M19.5 15H22"/>
+</svg>

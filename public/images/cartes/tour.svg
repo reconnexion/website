@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Tour médiévale (visuel de la carte « Compétition forcée »), dans le style des icônes Lucide (lucide.dev) -->
+  <path d="M6 22V8h12v14"/>
+  <path d="M5 8V3h2.5v2.5h2.25V3h2.5v2.5h2.25V3h2.5v2.5H19V3v5"/>
+  <path d="M4.5 8h15"/>
+  <path d="M3 22h18"/>
+  <path d="M10 22v-3a2 2 0 0 1 4 0v3"/>
+  <path d="M12 11.5v2.5"/>
+</svg>

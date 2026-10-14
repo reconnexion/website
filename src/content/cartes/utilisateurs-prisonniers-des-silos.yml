@@ -2,5 +2,6 @@ titre: Utilisateurs prisonniers des silos
 slug: utilisateurs-prisonniers-des-silos
 type: fleaux
 couleur: '#f00020'
+visuel: /images/cartes/enclos.svg
 accroche: Ne pas pouvoir communiquer avec des utilisateurs sur une autre application
 licence: CC-BY-SA

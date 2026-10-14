@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="#000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Serveurs de tailles différentes reliés entre eux (visuel de la carte « Fédération des serveurs »), dans le style des icônes Lucide (lucide.dev) -->
+  <path d="M12 12L1 7M12 12L7 1M37 8.5L47 2M37 8.5L47 15M37.5 31.5L47 41M37.5 31.5L43 47M11.5 38L1 43M11.5 38L5 47M12 12L1 22"/>
+  <path d="M12 12L37 8.5M37 8.5L37.5 31.5M37.5 31.5L11.5 38M11.5 38L12 12M12 12L24 24.5M24 24.5L37.5 31.5M37 8.5L24 24.5"/>
+  <rect x="5.5" y="5.5" width="13" height="13" rx="2.34" fill="#fff"/>
+  <path stroke-width="1.4" d="M9.40 12.00h.01M12.26 12.00h2.60"/>
+  <rect x="32.5" y="4" width="9" height="9" rx="1.62" fill="#fff"/>
+  <path stroke-width="1.4" d="M35.20 8.50h.01M37.18 8.50h1.80"/>
+  <rect x="30" y="24" width="15" height="15" rx="2.70" fill="#fff"/>
+  <path stroke-width="1.4" d="M34.50 31.50h.01M37.80 31.50h3.00"/>
+  <rect x="6.5" y="33" width="10" height="10" rx="1.80" fill="#fff"/>
+  <path stroke-width="1.4" d="M9.50 38.00h.01M11.70 38.00h2.00"/>
+  <rect x="20" y="20.5" width="8" height="8" rx="1.44" fill="#fff"/>
+  <path stroke-width="1.4" d="M22.40 24.50h.01M24.16 24.50h1.60"/>
+</svg>
