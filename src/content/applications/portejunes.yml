@@ -15,14 +15,14 @@ boutons:
     style: secondaire
 date_lancement: '2026-10-12'
 captures:
+  - image: /images/portejunes/payer-ordinateur.png
+    description: 'PorteJunes sur ordinateur : solde du porte-monnaie et envoi de Ğ1 à un contact'
   - image: /images/portejunes/payer.png
     description: 'Écran « Envoyer des Ğ1 » : scanner un QR code ou choisir un contact'
   - image: /images/portejunes/recevoir.png
     description: 'Écran « Recevoir des Ğ1 » : QR code du porte-monnaie'
   - image: /images/portejunes/operations.png
     description: Historique des opérations envoyées et reçues
-  - image: /images/portejunes/contacts.png
-    description: Liste des contacts
 description: |-
   PorteJunes permet d'envoyer et de recevoir des Ğ1, la monnaie libre, entre membres du Réseau Social Universel.
 
