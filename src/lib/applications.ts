@@ -19,8 +19,6 @@ export type Application = {
   accroche?: string;
   /** Description courte, affichée dans les listes d'applications. */
   resume?: string;
-  /** Image au format paysage (16:9), affichée dans les listes. */
-  vignette?: string;
   boutons?: BoutonApplication[];
   captures?: { image: string; description?: string }[];
   /** Date de lancement (AAAA-MM-JJ). */
@@ -50,10 +48,22 @@ export function selectionnerApplications(apps: Application[], selection?: unknow
   return slugs.map((s) => apps.find((a) => a.slug === s)).filter((a): a is Application => !!a);
 }
 
+/** Nom de domaine de l'application (ex. « portejunes.com »), tiré de son adresse. */
+function domaineApplication(a: Application) {
+  const adresse = adresseApplication(a);
+  try {
+    return adresse ? new URL(adresse).hostname.replace(/^www\./, '') : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 /** Données affichées pour une application dans une liste (bloc Applications). */
 export const carteApplication = (a: Application) => ({
   nom: a.nom,
+  logo: a.logo,
+  statut: a.statut,
   description: a.resume,
-  image: a.vignette,
+  domaine: domaineApplication(a),
   lien: lienApplication(a),
 });

@@ -12,8 +12,8 @@ const couleursStatut: Record<Statut, string> = {
   'En bêta': 'border-bleu-fonce bg-bleu-fonce text-fond',
 };
 
-/** Étiquette du statut d'une application (sur sa page). */
-function EtiquetteStatut({ statut, className = '' }: { statut?: Statut; className?: string }) {
+/** Étiquette du statut d'une application (sur sa page et dans les listes). */
+export function EtiquetteStatut({ statut, className = '' }: { statut?: Statut; className?: string }) {
   if (!statut || !couleursStatut[statut]) return null;
   return <span className={`badge rounded-none font-semibold ${couleursStatut[statut]} ${className}`.trim()}>{statut}</span>;
 }
@@ -279,10 +279,9 @@ export const champsApplication: Champ[] = [
     required: false,
     hint: 'Affiché en étiquette sous les captures, sur la page de l’application.',
   },
-  { name: 'logo', label: 'Logo', widget: 'image', required: false, hint: 'Image carrée, affichée à gauche du nom.' },
+  { name: 'logo', label: 'Logo', widget: 'image', required: false, hint: 'Image carrée, affichée à gauche du nom (page de l’application et listes).' },
   { name: 'accroche', label: 'Accroche', widget: 'string', required: false, hint: 'Sous le nom, sur la page de l’application.' },
   { name: 'resume', label: 'Résumé', widget: 'text', required: false, hint: 'Affiché dans les listes d’applications (accueil, page Applications).' },
-  { name: 'vignette', label: 'Vignette (format paysage 16:9)', widget: 'image', required: false, hint: 'Affichée dans les listes d’applications.' },
   {
     name: 'boutons',
     label: 'Boutons',

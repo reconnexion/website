@@ -5,7 +5,6 @@ statut: En bêta
 logo: /images/la-carte-des-savoirs/logo.svg
 accroche: Un annuaire de compétences au sein de votre réseau de confiance
 resume: 'Un annuaire de compétences : chacun déclare ses savoirs, que les personnes de son réseau peuvent recommander.'
-vignette: /images/la-carte-des-savoirs/vignette.webp
 boutons:
   - texte: Ouvrir
     lien: https://la-carte-des-savoirs.com

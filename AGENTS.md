@@ -28,7 +28,7 @@
 - Les applications ont leur propre collection (`src/content/applications/*.yml`, « Applications » dans le CMS).
   Leur page `/applications/<slug>` est générée par `src/pages/applications/[app].astro` (dès qu'une fiche a
   des captures ou une description), et le bloc Applications ne stocke que la sélection (`selection`) :
-  nom, résumé et vignette sont injectés au rendu par `Section.astro`.
+  nom, logo, statut, résumé et nom de domaine sont injectés au rendu par `Section.astro`.
 - Cartes QR (reprise des QrCards Bazar) : collections `cartes` et `types-de-cartes`
   (`src/cms/cartes.ts`, modèle dans `src/lib/cartes.ts`), libellés dans `src/content/reglages-cartes.yml`.
   Liste = bloc « Cartes QR » ; fiches `/cartes/<slug>` (cible du QR code), liste filtrée `/cartes/<slug du type>` et `/cartes/impression`

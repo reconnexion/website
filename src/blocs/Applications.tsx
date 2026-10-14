@@ -1,9 +1,10 @@
 import { Bloc, TitreBloc, champFond, type Fond } from './_commun';
 import { Image } from './_image';
+import { EtiquetteStatut } from './FicheApplication';
 import type { DefinitionBloc } from './types';
-import { carteApplication, selectionnerApplications, type Application as FicheApplication } from '../lib/applications';
+import { carteApplication, selectionnerApplications, type Application as FicheApplication, type Statut } from '../lib/applications';
 
-type Application = { nom: string; description?: string; lien?: string; image?: string };
+type Application = { nom: string; logo?: string; statut?: Statut; description?: string; domaine?: string; lien?: string };
 
 export type ApplicationsProps = {
   fond?: Fond;
@@ -20,38 +21,40 @@ export type ApplicationsProps = {
 declare const __APPLICATIONS__: FicheApplication[] | undefined;
 
 /**
- * Comme sur reconnexion.coop : capture de l'application, nom et description centrés, deux par ligne.
- * Option « une par ligne » : capture à gauche, texte à droite (page qui liste les applications).
+ * Une carte par application, comme sur le frontend du Pod provider : logo à gauche, nom et statut,
+ * résumé. Toute la carte mène à la page de l'application. Deux par ligne, ou une par ligne (option).
  */
 export function Applications({ fond = 'blanc', titre, texte_lien, une_par_ligne, applications = [] }: ApplicationsProps) {
   return (
     <Bloc fond={fond}>
       <TitreBloc titre={titre} />
-      <div className={une_par_ligne ? 'flex flex-col gap-e5' : 'grid gap-e5 md:grid-cols-2'}>
-        {applications.map((app, i) => {
-          const image = app.image && <Image src={app.image} sizes="(min-width: 768px) 36rem, 100vw" alt="" loading="lazy" className="aspect-video w-full object-cover" />;
-          return (
-            <article
-              key={i}
-              className={
-                une_par_ligne
-                  ? 'grid items-center gap-e4 md:grid-cols-[2fr_3fr] md:gap-e5'
-                  : 'flex flex-col items-center gap-e3 text-center'
-              }
-            >
-              {image && (app.lien ? <a href={app.lien} className="block w-full transition-opacity hover:opacity-90">{image}</a> : image)}
-              <div className={une_par_ligne ? 'flex flex-col items-start gap-e3' : 'contents'}>
-                <h3 className="text-l">{app.lien ? <a href={app.lien} className="link-hover">{app.nom}</a> : app.nom}</h3>
-                {app.description && <p>{app.description}</p>}
-                {app.lien && texte_lien && (
-                  <a className="link mt-auto font-semibold text-vert-fonce" href={app.lien}>
-                    {texte_lien}
-                  </a>
-                )}
+      <div className={une_par_ligne ? 'flex flex-col gap-e4' : 'grid gap-e4 md:grid-cols-2'}>
+        {applications.map((app, i) => (
+          <article
+            key={i}
+            className={`relative flex items-start gap-e4 border border-base-300 bg-base-100 p-e4 text-noir ${app.lien ? 'transition-colors hover:border-vert-fonce' : ''}`}
+          >
+            {app.logo && <Image src={app.logo} sizes="4rem" alt="" loading="lazy" className="size-12 shrink-0 sm:size-16" />}
+            <div className="flex min-w-0 flex-1 flex-col items-start gap-e2">
+              <div className="flex w-full flex-wrap items-center justify-between gap-e2">
+                <h3 className="text-l">
+                  {/* Le lien recouvre toute la carte. */}
+                  {app.lien ? (
+                    <a href={app.lien} className="after:absolute after:inset-0 focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-vert-fonce">
+                      {app.nom}
+                    </a>
+                  ) : (
+                    app.nom
+                  )}
+                </h3>
+                <EtiquetteStatut statut={app.statut} />
               </div>
-            </article>
-          );
-        })}
+              {app.description && <p>{app.description}</p>}
+              {app.domaine && <p className="text-s text-gris italic">{app.domaine}</p>}
+              {app.lien && texte_lien && <span className="mt-auto font-semibold text-vert-fonce">{texte_lien}</span>}
+            </div>
+          </article>
+        ))}
       </div>
     </Bloc>
   );
@@ -69,7 +72,7 @@ export const applications: DefinitionBloc<ApplicationsProps> = {
   fields: [
     champFond,
     { name: 'titre', label: 'Titre', widget: 'string', required: false },
-    { name: 'texte_lien', label: 'Texte du lien sous chaque application', widget: 'string', required: false, hint: 'Facultatif : l’image et le nom mènent déjà à la page de l’application.' },
+    { name: 'texte_lien', label: 'Texte du lien sous chaque application', widget: 'string', required: false, hint: 'Facultatif : toute la carte mène déjà à la page de l’application.' },
     { name: 'une_par_ligne', label: 'Une application par ligne', widget: 'boolean', required: false, default: false },
     {
       name: 'selection',
@@ -81,7 +84,7 @@ export const applications: DefinitionBloc<ApplicationsProps> = {
       display_fields: ['{{nom}}'],
       multiple: true,
       required: false,
-      hint: 'Laissez vide pour afficher toutes les applications. Nom, résumé et image viennent de la collection « Applications ».',
+      hint: 'Laissez vide pour afficher toutes les applications. Nom, logo, statut, résumé et nom de domaine (adresse du bouton principal) viennent de la collection « Applications ».',
     },
   ],
 };

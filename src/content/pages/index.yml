@@ -33,19 +33,6 @@ sections:
     fond: degrade
     alignement: centre
     bouton_icone: ''
-  - type: equipe
-    titre: Notre équipe opérationnelle
-    bouton_texte: Tous les sociétaires
-    bouton_lien: /la-cooperative/societaires
-    bouton_icone: coeur
-    table: People
-  - type: annonce
-    titre: Newsletter
-    texte: Suivez l'actualité et recevez les invitations aux temps forts.
-    bouton_texte: M'abonner à la Newsletter
-    bouton_lien: https://b144bca4.sibforms.com/serve/MUIFAMvMggADvfUsaaPvIeGfL_OR2_ub7mDxgo197al-8br9KKpRQ6fsnnyxEXSFJS-CTI0iB6G3Skf1tAsOCzHbQ_0ei08gm_a0nWTOAfq5lXCV1UWNXytGDdli7g09YW8kcnXqZeL5uROxSnsO1XSLzKTeplhqZJECpxmKaJ_Nslpf6GColxZWrAiwwJO1wbUnfGCoQFkTvi93
-    icone: ''
-    etiquette: ''
   - type: applications
     titre: Applications disponibles
     fond: blanc
@@ -56,6 +43,19 @@ sections:
       - lentraide
       - portejunes
       - la-carte-des-savoirs
+  - type: annonce
+    titre: Newsletter
+    texte: Suivez l'actualité et recevez les invitations aux temps forts.
+    bouton_texte: M'abonner à la Newsletter
+    bouton_lien: https://b144bca4.sibforms.com/serve/MUIFAMvMggADvfUsaaPvIeGfL_OR2_ub7mDxgo197al-8br9KKpRQ6fsnnyxEXSFJS-CTI0iB6G3Skf1tAsOCzHbQ_0ei08gm_a0nWTOAfq5lXCV1UWNXytGDdli7g09YW8kcnXqZeL5uROxSnsO1XSLzKTeplhqZJECpxmKaJ_Nslpf6GColxZWrAiwwJO1wbUnfGCoQFkTvi93
+    icone: ''
+    etiquette: ''
+  - type: equipe
+    titre: Notre équipe opérationnelle
+    bouton_texte: Tous les sociétaires
+    bouton_lien: /la-cooperative/societaires
+    bouton_icone: coeur
+    table: People
   - type: texte_image
     surtitre: ''
     titre: Forum de discussion
