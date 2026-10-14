@@ -11,6 +11,7 @@ type Props = {
   /** Instant du rendu serveur ; à défaut, l'heure du navigateur. */
   maintenant?: string;
   lien_ics?: string;
+  lien_ics_ouverts?: string;
 };
 
 const JOUR_MS = 24 * 3600 * 1000;
@@ -35,7 +36,7 @@ const debutDuJour = (jour: number) => versInstant({ jour, minutes: 0 });
  * détail d'un événement dans une modale. Sur mobile, liste des événements à venir qui s'allonge
  * en faisant défiler la page (les réunions récurrentes n'ont pas de fin).
  */
-export function Calendrier({ titre, texte_vide, fiches: toutesLesFiches, maintenant, lien_ics }: Props) {
+export function Calendrier({ titre, texte_vide, fiches: toutesLesFiches, maintenant, lien_ics, lien_ics_ouverts }: Props) {
   // Filtres : événements ouverts à tous (par défaut), en présentiel.
   const [ouverts, setOuverts] = useState(true);
   const [presentiel, setPresentiel] = useState(false);
@@ -43,6 +44,8 @@ export function Calendrier({ titre, texte_vide, fiches: toutesLesFiches, mainten
     () => toutesLesFiches.filter((f) => (!ouverts || f.ouvert_a_tous) && (!presentiel || f.format === 'presentiel')),
     [toutesLesFiches, ouverts, presentiel],
   );
+  // Le menu d'abonnement propose d'abord l'agenda correspondant au filtre « Ouverts à tous » (key : réinitialisé quand il change).
+  const abonnement = <Abonnement key={String(ouverts)} lien_ics={lien_ics} lien_ics_ouverts={lien_ics_ouverts} ouverts={ouverts} />;
   const filtres = (
     <Filtres
       filtres={[
@@ -124,7 +127,7 @@ export function Calendrier({ titre, texte_vide, fiches: toutesLesFiches, mainten
               </button>
             )}
             {filtres}
-            <Abonnement lien_ics={lien_ics} />
+            {abonnement}
           </div>
         </div>
         <div className="grid grid-cols-7 border-t border-l border-base-300" role="grid">
@@ -179,7 +182,7 @@ export function Calendrier({ titre, texte_vide, fiches: toutesLesFiches, mainten
         <div className="mb-e4 flex justify-end">
           <div className="flex items-center gap-e2">
             {filtres}
-            <Abonnement lien_ics={lien_ics} />
+            {abonnement}
           </div>
         </div>
         {groupes.length === 0 && nbMois >= MOIS_MAX

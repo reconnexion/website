@@ -49,6 +49,17 @@ const chemin = Astro.url.pathname.replace(/\/$/, '') || '/';
         const dialogue = bouton && document.getElementById(bouton.dataset.dialogue!);
         if (dialogue instanceof HTMLDialogElement) dialogue.showModal();
       });
+
+      // Menus déroulants <details class="dropdown"> (ex. filtres et abonnement de l'agenda) : le navigateur
+      // ne les referme pas seul. Fermés par un clic en dehors (dont l'ouverture d'un autre menu) ou Échap.
+      const fermerMenus = (sauf?: Node) =>
+        document.querySelectorAll('details.dropdown[open]').forEach((menu) => {
+          if (!sauf || !menu.contains(sauf)) menu.removeAttribute('open');
+        });
+      document.addEventListener('click', (e) => fermerMenus(e.target as Node));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') fermerMenus();
+      });
     </script>
   </body>
 </html>

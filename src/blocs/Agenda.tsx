@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { CalendarPlus, Lock, MapPin, Repeat, SlidersHorizontal, UsersRound, Video } from 'lucide-react';
 import { Bloc, Paragraphes, TitreBloc } from './_commun';
 import { Image } from './_image';
@@ -14,8 +15,9 @@ export type AgendaProps = {
   fiches?: FicheEvenement[];
   /** Instant du rendu : « aujourd'hui » du calendrier (le même côté serveur et navigateur). */
   maintenant?: string;
-  /** Adresse publique du flux iCalendar (/agenda.ics). */
+  /** Adresses publiques des flux iCalendar : tous les événements (/agenda.ics), ceux ouverts à tous. */
   lien_ics?: string;
+  lien_ics_ouverts?: string;
 };
 
 const fmtJour = new Intl.DateTimeFormat('fr-FR', { day: 'numeric', timeZone: FUSEAU });
@@ -87,31 +89,60 @@ export function DetailOccurrence({ o }: { o: Occurrence }) {
   );
 }
 
+/** Liens d'abonnement à un flux iCalendar : Google Agenda, webcal:// et adresse à copier. */
+function LiensAbonnement({ lien_ics, className }: { lien_ics: string; className?: string }) {
+  const webcal = lien_ics.replace(/^https?:/, 'webcal:');
+  return (
+    <div className={`flex-col gap-e3 ${className ?? 'flex'}`}>
+      <a className="btn btn-sm btn-primary" href={`https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`} target="_blank" rel="noopener">
+        Google Agenda
+      </a>
+      <a className="btn btn-sm" href={webcal}>
+        Apple, Outlook, Thunderbird…
+      </a>
+      <label className="flex flex-col gap-e1">
+        <span className="text-gris">Ou copiez l’adresse de l’agenda :</span>
+        <input className="input input-sm w-full" readOnly value={lien_ics} onFocus={(e) => e.currentTarget.select()} />
+      </label>
+    </div>
+  );
+}
+
 /**
  * S'abonner à l'agenda depuis un autre agenda (flux iCalendar, mis à jour automatiquement) :
  * Google Agenda, ou lien webcal:// pour Apple Calendrier, Outlook, Thunderbird…
+ * Deux agendas au choix : les réunions ouvertes à tous, ou toutes (`ouverts` : choix initial).
+ * Le choix se fait en CSS (:has) pour fonctionner aussi dans l'affichage « prochains », non hydraté.
  */
-export function Abonnement({ lien_ics }: { lien_ics?: string }) {
+export function Abonnement({ lien_ics, lien_ics_ouverts, ouverts = false }: { lien_ics?: string; lien_ics_ouverts?: string; ouverts?: boolean }) {
+  const nom = useId();
   if (!lien_ics) return null;
-  const webcal = lien_ics.replace(/^https?:/, 'webcal:');
   return (
     <details className="dropdown dropdown-end ml-auto">
       <summary className="btn btn-sm">
         <CalendarPlus size={16} aria-hidden="true" />
         S’abonner
       </summary>
-      <div className="dropdown-content z-10 mt-e2 flex w-80 flex-col gap-e3 rounded-box border border-base-300 bg-base-100 p-e4 text-s">
+      <div className="group dropdown-content z-10 mt-e2 flex w-80 flex-col gap-e3 rounded-box border border-base-300 bg-base-100 p-e4 text-s">
         <p>Ajoutez cet agenda au vôtre : les événements s’y mettront à jour automatiquement.</p>
-        <a className="btn btn-sm btn-primary" href={`https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`} target="_blank" rel="noopener">
-          Google Agenda
-        </a>
-        <a className="btn btn-sm" href={webcal}>
-          Apple, Outlook, Thunderbird…
-        </a>
-        <label className="flex flex-col gap-e1">
-          <span className="text-gris">Ou copiez l’adresse de l’agenda :</span>
-          <input className="input input-sm w-full" readOnly value={lien_ics} onFocus={(e) => e.currentTarget.select()} />
-        </label>
+        {lien_ics_ouverts ? (
+          <>
+            <div className="join w-full" role="radiogroup" aria-label="Réunions à inclure">
+              <input
+                type="radio"
+                name={nom}
+                className="choix-ouverts btn join-item btn-sm flex-1"
+                aria-label="Ouvertes à tous"
+                defaultChecked={ouverts}
+              />
+              <input type="radio" name={nom} className="btn join-item btn-sm flex-1" aria-label="Toutes" defaultChecked={!ouverts} />
+            </div>
+            <LiensAbonnement lien_ics={lien_ics_ouverts} className="hidden group-has-[.choix-ouverts:checked]:flex" />
+            <LiensAbonnement lien_ics={lien_ics} className="flex group-has-[.choix-ouverts:checked]:hidden" />
+          </>
+        ) : (
+          <LiensAbonnement lien_ics={lien_ics} />
+        )}
       </div>
     </details>
   );
@@ -172,14 +203,15 @@ export function ListeOccurrences({ occurrences, onOuvrir }: { occurrences: Occur
  * - « prochains » : les N prochains événements, en liste ;
  * - « calendrier » : calendrier mensuel (liste à défilement infini sur mobile), voir _calendrier.tsx.
  */
-export function Agenda({ titre, affichage = 'prochains', nombre = 4, texte_vide, fiches = [], maintenant, lien_ics }: AgendaProps) {
-  if (affichage === 'calendrier') return <Calendrier titre={titre} texte_vide={texte_vide} fiches={fiches} maintenant={maintenant} lien_ics={lien_ics} />;
+export function Agenda({ titre, affichage = 'prochains', nombre = 4, texte_vide, fiches = [], maintenant, lien_ics, lien_ics_ouverts }: AgendaProps) {
+  if (affichage === 'calendrier')
+    return <Calendrier titre={titre} texte_vide={texte_vide} fiches={fiches} maintenant={maintenant} lien_ics={lien_ics} lien_ics_ouverts={lien_ics_ouverts} />;
   const occurrences = prochainesOccurrences(fiches, nombre, maintenant ? new Date(maintenant) : undefined);
   return (
     <Bloc>
       <div className="mb-e4 flex flex-wrap items-center justify-between gap-x-e4 gap-y-e3">
         <TitreBloc titre={titre} className="mb-0!" />
-        <Abonnement lien_ics={lien_ics} />
+        <Abonnement lien_ics={lien_ics} lien_ics_ouverts={lien_ics_ouverts} />
       </div>
       {occurrences.length === 0 ? texte_vide && <p>{texte_vide}</p> : <ListeOccurrences occurrences={occurrences} />}
     </Bloc>

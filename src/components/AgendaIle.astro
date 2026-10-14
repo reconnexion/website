@@ -11,6 +11,7 @@ const donnees = {
   fiches: tousLesEvenements(),
   maintenant: new Date().toISOString(),
   lien_ics: new URL('/agenda.ics', Astro.site).href,
+  lien_ics_ouverts: new URL('/agenda-ouvert-a-tous.ics', Astro.site).href,
 };
 ---
 {props.affichage === 'calendrier'
