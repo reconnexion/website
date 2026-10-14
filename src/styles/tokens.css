@@ -49,4 +49,5 @@
   --r-bouton: 0;             /* boutons à angles droits */
   --largeur: 72rem;
   --largeur-texte: 40rem;
+  --hauteur-captures: 40rem; /* hauteur maximale des captures d'écran d'une application */
 }

@@ -15,8 +15,14 @@ boutons:
     style: secondaire
 date_lancement: '2022-01-01'
 captures:
-  - image: /images/bienvenue-chez-moi/capture.webp
+  - image: /images/bienvenue-chez-moi/accueil.png
     description: "Page d'accueil de Bienvenue chez moi : « Ouvrez votre maison pour des rencontres simples et enrichissantes »"
+  - image: /images/bienvenue-chez-moi/rencontre.png
+    description: "Une rencontre sur mobile : organisateur, date, durée et inscription"
+  - image: /images/bienvenue-chez-moi/partage.png
+    description: "Partager une rencontre avec ses contacts, en leur donnant ou non le droit de s'inscrire"
+  - image: /images/bienvenue-chez-moi/participants.png
+    description: "Participants et lieu d'une rencontre"
 description: |-
   L'application Bienvenue chez moi est en fonctionnement depuis fin 2021 et, jusqu’à maintenant, elle a surtout été utilisée dans la région de Compiègne avec une communauté de 500 utilisateurs.
 

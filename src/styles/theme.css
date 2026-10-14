@@ -188,6 +188,20 @@
   top: -0.9em;
 }
 
+/* Ligne de captures d'écran (fiche d'application) : ses captures ont la même hauteur, chacune prenant
+   une largeur proportionnelle à son format (largeur / hauteur) : --part = son format / --somme-formats de la ligne.
+   Une ligne peu remplie (ex. une seule capture mobile) ne dépasse pas --hauteur-captures. */
+@utility ligne-captures {
+  display: flex;
+  gap: var(--e-4);
+  width: 100%;
+  max-width: calc(var(--somme-formats) * var(--hauteur-captures) + (var(--nb-captures) - 1) * var(--e-4));
+}
+
+@utility capture-dans-ligne {
+  flex: var(--part) 0 0%;
+}
+
 /* Texte courant (paragraphes, listes) : même espacement vertical dans tous les blocs. */
 @utility texte {
   & > * + * {

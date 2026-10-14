@@ -8,6 +8,7 @@ import RenduBlocs from '../../components/RenduBlocs.astro';
 import { FicheApplication } from '../../blocs/FicheApplication';
 import { reglagesApplications, reglagesSite, toutesLesApplications, toutesLesPages } from '../../lib/contenu';
 import { aUnePage, adresseApplication } from '../../lib/applications';
+import sharp from 'sharp';
 
 export function getStaticPaths() {
   // Surtitre : la page qui liste les applications, si elle existe (son titre sert de libellé).
@@ -21,6 +22,18 @@ export function getStaticPaths() {
 const { application: a, surtitre } = Astro.props;
 const site = reglagesSite();
 const adresse = adresseApplication(a);
+// Dimensions des captures (déposées dans public/images/) : la galerie en déduit leur format (ordinateur ou mobile).
+const captures = await Promise.all(
+  (a.captures ?? []).map(async (c) => {
+    if (!c.image.startsWith('/images/')) return c;
+    try {
+      const { autoOrient } = await sharp(`public${decodeURI(c.image)}`).metadata();
+      return { ...c, largeur: autoOrient.width, hauteur: autoOrient.height };
+    } catch {
+      return c;
+    }
+  }),
+);
 ---
 <Base titre={a.nom} description={a.resume ?? a.accroche}>
   <FicheApplication
@@ -30,7 +43,7 @@ const adresse = adresseApplication(a);
     logo={a.logo}
     sous_titre={a.accroche}
     boutons={a.boutons}
-    captures={a.captures}
+    captures={captures}
     date_lancement={a.date_lancement}
     description={a.description}
   >
@@ -43,3 +56,8 @@ const adresse = adresseApplication(a);
   )}
   <RenduBlocs sections={reglagesApplications().sections_bas ?? []} texteChargement={site.texte_chargement} />
 </Base>
+<script>
+  // Visionneuse des captures d'écran (clic sur une capture, flèches, Échap).
+  import { installerVisionneuse } from '../../lib/visionneuse';
+  installerVisionneuse();
+</script>

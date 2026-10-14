@@ -15,8 +15,14 @@ boutons:
     style: secondaire
 date_lancement: '2022-03-01'
 captures:
-  - image: /images/lentraide/capture.webp
-    description: "Une petite annonce dans L'Entraide : description, photo, commentaires et profil de l'annonceur"
+  - image: /images/lentraide/annonces.png
+    description: "Les petites annonces partagées avec vous, classées en offres, demandes et annonces"
+  - image: /images/lentraide/menu.png
+    description: "Le menu sur mobile : offres et demandes de matériel ou de compétences"
+  - image: /images/lentraide/commentaires.png
+    description: "Une annonce et ses commentaires, présentés comme une messagerie"
+  - image: /images/lentraide/partage.png
+    description: "Partager une petite annonce avec ses contacts, en leur permettant ou non de la partager à leur tour"
 description: |-
   L’Entraide est une application de petites annonces qui ne sont visibles que des personnes qui font partie de votre réseau de confiance. Contrairement à la plupart des sites de ce genre très orientés "commerce", l’intention principale de ce site est l’entraide.
 
