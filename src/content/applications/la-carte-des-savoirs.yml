@@ -14,8 +14,14 @@ boutons:
     style: secondaire
 date_lancement: '2026-10-12'
 captures:
-  - image: /images/la-carte-des-savoirs/capture.webp
-    description: 'La carte des savoirs : les compétences des contacts sur une carte, classées par catégorie, avec leurs recommandations'
+  - image: /images/la-carte-des-savoirs/carte.png
+    description: 'Les savoirs de vos contacts sur une carte, classés par catégorie, et le profil d’un contact : ses savoirs, leur niveau et leurs recommandations'
+  - image: /images/la-carte-des-savoirs/carte-mobile.png
+    description: La carte des savoirs sur mobile
+  - image: /images/la-carte-des-savoirs/filtres.png
+    description: Filtrer les savoirs par catégorie et sous-catégorie
+  - image: /images/la-carte-des-savoirs/recommander.png
+    description: Recommander le savoir d’un contact
 description: |-
   Cette application est un annuaire de compétences. Chacun peut déclarer ses savoirs, et aussi son niveau de connaissance (débutant, intermédiaire, avancé, expert). Ensuite d’autres personnes du réseau peuvent recommander cette compétence, p.ex. si elle ont pu en bénéficier.
 
