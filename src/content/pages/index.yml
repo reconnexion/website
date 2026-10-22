@@ -10,7 +10,7 @@ sections:
     bouton_texte: ''
     bouton_lien: ''
   - type: annonce
-    titre: Hackathon des Applications Citoyennes
+    titre: Hackathon des Applications Sociales
     texte: Découvrez le projet et rencontrez les personnes qui le portent en participant au hackathon.
     bouton_texte: Plus d'informations
     bouton_lien: /nous-rencontrer/hackathon-nov-2026
