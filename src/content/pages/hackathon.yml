@@ -204,7 +204,7 @@ sections:
     titre: Questions fréquentes
     questions:
       - question: À qui s'adresse le tarif solidaire ?
-        reponse: Toute personne qui a des moyens limités, étudiante ou non, et pour qui 80 € (ajoutés aux autres frais) serait trop important. Pour ne pas trop mettre à mal notre modèle économique (nous ne sommes déjà bénéficiaires sur l'événement), nous limitons ce tarif à 8 places. Donc faites le choix en conscience !
+        reponse: Toute personne qui a des moyens limités, étudiante ou non, et pour qui 80 € (ajoutés aux autres frais) serait trop important. Pour ne pas trop mettre à mal notre modèle économique (nous ne sommes déjà pas bénéficiaires sur l'événement), nous limitons ce tarif à 8 places. Donc faites le choix en conscience !
       - question: À quoi sert l'argent récolté par les billets d'entrée ?
         reponse: Principalement à payer les déplacements de notre équipe, qui est assez nombreuse et qui vient des 4 coins de la France. La Filature nous fait des conditions très avantageuses pour la location du lieu. Malgré cela, Reconnexion va payer au minimum 1000 € pour organiser ce hackathon.
       - question: Est-ce que les équipes peuvent se passer d'IA ?
