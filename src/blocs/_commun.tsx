@@ -64,17 +64,19 @@ function Courriel({ adresse, texte, className }: { adresse: string; texte?: stri
 }
 
 /**
- * Texte léger : `**gras**`, `[texte du lien](https://…)`, retour à la ligne simple.
+ * Texte léger : `**gras**`, `~~barré~~`, `[texte du lien](https://…)`, retour à la ligne simple.
  * Les adresses e-mail (liens mailto: ou tapées telles quelles) sont masquées aux robots.
  * Suffisant pour les champs « texte » du CMS sans passer par un éditeur riche.
  */
 function enrichir(texte: string, fonce: boolean): ReactNode[] {
   const classeLien = `link font-semibold${fonce ? '' : ' text-vert-fonce'}`;
   return texte
-    .split(new RegExp(`(\\*\\*.+?\\*\\*|\\[[^\\]]+\\]\\([^)\\s]+\\)|${RE_COURRIEL.source})`, 'g'))
+    .split(new RegExp(`(\\*\\*.+?\\*\\*|~~.+?~~|\\[[^\\]]+\\]\\([^)\\s]+\\)|${RE_COURRIEL.source})`, 'g'))
     .map((morceau, i) => {
       const gras = morceau.match(/^\*\*(.+)\*\*$/);
       if (gras) return <strong key={i}>{enrichir(gras[1], fonce)}</strong>;
+      const barre = morceau.match(/^~~(.+)~~$/);
+      if (barre) return <del key={i}>{enrichir(barre[1], fonce)}</del>;
       const lien = morceau.match(/^\[([^\]]+)\]\(([^)\s]+)\)$/);
       if (lien) {
         const mailto = lien[2].match(/^mailto:(.+)$/);
@@ -167,13 +169,23 @@ export function Ordinaux({ texte }: { texte: string }) {
 }
 
 /** Titre de section (h2) : même taille et même marge dans tous les blocs. Icône facultative, de la hauteur du titre. */
+/** Ancre d'un titre de section, ex. « Tarifs et inscription » → `tarifs-et-inscription`. */
+export function ancre(titre: string) {
+  return titre
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
 export function TitreBloc({ titre, icone, className = '' }: { titre?: string; icone?: string; className?: string }) {
   const fonce = useFondFonce();
   if (!titre) return null;
   const Icone = icone ? icones[icone] : undefined;
   // Pas de marge sous le titre s'il est seul (ex. bande de titre) : marges haut et bas égales.
   return (
-    <h2 className={`mb-e4 text-xl last:mb-0 ${Icone ? 'flex items-center gap-e2 ' : ''}${className}`.trim()}>
+    <h2 id={ancre(titre)} className={`mb-e4 text-xl last:mb-0 ${Icone ? 'flex items-center gap-e2 ' : ''}${className}`.trim()}>
       {Icone && <Icone size="0.9em" aria-hidden="true" className={`shrink-0${fonce ? '' : ' text-vert-fonce'}`} />}
       <span>
         <Ordinaux texte={titre} />

@@ -4,6 +4,7 @@
  */
 import {
   BedDouble,
+  Bird,
   Bot,
   CalendarDays,
   Code,
@@ -82,6 +83,7 @@ export const icones: Record<string, LucideIcon> = {
   lit: BedDouble,
   train: TrainFront,
   billet: Ticket,
+  oiseau: Bird,
   presentation: Presentation,
 };
 

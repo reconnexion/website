@@ -442,6 +442,14 @@ body:has(input[name='noir-et-blanc']:checked) .impression-cartes {
 }
 
 /* Menu mobile plein écran ouvert : la page derrière ne défile plus. */
+/* Liens vers un titre de section (#tarifs-et-inscription) : défilement doux, titre visible sous l'en-tête collant. */
+html {
+  scroll-behavior: smooth;
+}
+h2[id] {
+  scroll-margin-top: calc(5rem + var(--e-4));
+}
+
 html:has(#menu-mobile[open]) {
   overflow: hidden;
 }
