@@ -12,10 +12,10 @@ sections:
     bouton_texte: ''
     bouton_lien: ''
   - type: offre
-    bouton_texte: Demander un devis
-    bouton_lien: /contact?sujet=Demande de devis
+    bouton_texte: Planifier un échange gratuit
+    bouton_lien: https://cal.com/reconnexion/echange-60m
     fond: degrade
-    bouton_icone: bulle
+    bouton_icone: calendrier
     nom: Forfait de base, à partir de
     prix: 9 000 € HT
     sous_titre: Votre application conçue, réalisée et déployée sur les territoires
@@ -27,7 +27,7 @@ sections:
       - texte: Mise en ligne de l'application sur votre nom de domaine
       - texte: Promotion de l'application sur Reconnexion
       - texte: Déploiement de l'application sur 3 territoires via des ambassadeurs
-    mention: ''
+    mention: '[Nous contacter](/contact)'
   - type: questions
     fond: blanc
     titre: Questions fréquentes
@@ -105,9 +105,10 @@ sections:
   - type: section_couleur
     titre: Un projet d'application ?
     texte: Parlons-en lors d'une réunion d'évaluation, gratuite et sans engagement.
-    bouton_texte: Demander un devis
-    bouton_lien: /contact?sujet=Demande de devis
+    bouton_texte: Prendre rendez-vous
+    bouton_lien: https://cal.com/reconnexion/echange-60m
     icone: ''
     fond: degrade
     alignement: centre
-    bouton_icone: bulle
+    bouton_icone: calendrier
+    mention: '[Nous contacter](/contact)'
