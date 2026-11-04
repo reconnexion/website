@@ -241,3 +241,10 @@ sections:
       - nom: R(d')évolution
         logo: /images/hackathon/rdevolution.png
         lien: http://rdevolution.org
+  - type: annonce
+    titre: Newsletter
+    texte: Suivez l'actualité et recevez les invitations aux temps forts.
+    bouton_texte: M'abonner à la Newsletter
+    bouton_lien: https://reconnexion.coop/newsletter
+    icone: ''
+    etiquette: ''
