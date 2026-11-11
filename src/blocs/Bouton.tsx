@@ -7,13 +7,15 @@ export type BoutonProps = {
   alignement?: 'centre' | 'gauche';
   /** Réduit l'espace avec le bloc précédent s'il a le même fond (suite de la même section). */
   rapproche?: boolean;
+  note?: string;
 };
 
 /** Un ou plusieurs boutons seuls, à placer n'importe où dans la page (ex. « S'inscrire » sous un texte). */
-export function Bouton({ fond = 'blanc', boutons = [], alignement = 'centre', rapproche }: BoutonProps) {
+export function Bouton({ fond = 'blanc', boutons = [], alignement = 'centre', rapproche, note }: BoutonProps) {
   return (
     <Bloc fond={fond} className={rapproche ? 'bloc-rapproche' : ''}>
       <Boutons boutons={boutons} className={`mt-0!${alignement === 'gauche' ? '' : ' justify-center'}`} />
+      {note && <p className={`mt-e2 text-m${alignement === 'gauche' ? '' : ' text-center'}`}>{note}</p>}
     </Bloc>
   );
 }
@@ -27,5 +29,6 @@ export const bouton: DefinitionBloc<BoutonProps> = {
     { ...champBoutons, required: true },
     { name: 'alignement', label: 'Alignement', widget: 'select', options: ['centre', 'gauche'], default: 'centre', required: false },
     champRapproche,
+    { name: 'note', label: 'Mention sous les boutons', widget: 'string', required: false },
   ],
 };

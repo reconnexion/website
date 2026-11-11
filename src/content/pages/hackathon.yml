@@ -17,15 +17,9 @@ sections:
     bouton_texte: S'inscrire maintenant
     bouton_lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
     bouton_icone: fusee
-    bouton_note: Nombre de places limité
+    bouton_note: Participation libre et consciente
     centre: true
     degrade: true
-  - type: annonce
-    icone: oiseau
-    titre: Early birds !
-    texte: Jusqu'au 15 novembre, le tarif normal est proposé à 60 € au lieu de 80 €. Tarif solidaire à 30 €.
-    bouton_texte: Voir les tarifs
-    bouton_lien: '#participation-aux-frais'
   - type: texte
     titre: Pourquoi ce hackathon ?
     texte: |-
@@ -65,6 +59,7 @@ sections:
       - texte: S'inscrire maintenant
         lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
         icone: fusee
+    note: Participation libre et consciente
   - type: chiffres
     titre: ''
     icone: ''
@@ -148,43 +143,10 @@ sections:
     titre: Participation aux frais
     icone: billet
     fond: blanc
-    texte: Nous proposons un tarif différencié afin de permettre à toutes les personnes de venir. **Nous ne serons pas bénéficiaires sur l'évènement**, donc si vous avez la possibilité de donner un peu plus que le montant indiqué, ce serait grandement apprécié !
-  - type: alerte
-    fond: blanc
-    icone: idee
-    couleur: vert
-    texte: "**Early birds !** Jusqu'au 15 novembre, le tarif normal est proposé à 60 € au lieu de 80 €. Inscrivez-vous dès maintenant !"
-  - type: grille_cartes
-    titre: ''
-    texte: ''
-    icone: ''
-    fond: blanc
-    texte_apres: Pour des raisons d'organisation, il ne sera malheureusement pas possible de venir en cours de route. L'inscription est pour les deux jours, du jeudi 9h30 au vendredi 17h. En revanche, **il est possible de venir aux soirées du mercredi et du jeudi, qui sont ouvertes à tous** (sans inscription, sauf si vous souhaitez réserver un repas).
-    boutons: []
-    texte_grand: false
-    colonnes: '3'
-    cartes:
-      - icone: coeur
-        titre: Tarif solidaire/étudiant
-        texte: |-
-          **Dès 30 € / 2 jours**
+    texte: |-
+      Nous proposons une **participation libre et consciente** pour le hackathon. Si l'expérience vous a plu, vous aurez la possibilité en fin de hackathon de faire un don à la coopérative Reconnexion (qui engage plusieurs milliers d'euros pour rendre possible cet événement) ou de prendre des parts sociales (à partir de 50€).
 
-          Pour les personnes avec des moyens limités. Aucun justificatif ne sera demandé.
-      - icone: personnes
-        titre: Tarif normal
-        texte: |-
-          **Dès ~~80 €~~ 60 € / 2 jours**
-
-          Si vous venez en tant qu'individu ou en tant que membre d'une association sans salariés.
-      - icone: poignee_de_main
-        titre: Tarif salarié
-        texte: |-
-          **Dès 120 € / 2 jours**
-
-          Si votre inscription est payée par l'organisation à laquelle vous appartenez.
-    sans_cadre: false
-    rapproche: true
-    boutons_centres: true
+      Pour des raisons d'organisation, il ne sera malheureusement pas possible de venir en cours de route. L'engagement minimal est du jeudi 9h30 au vendredi 13h, avec une invitation à poursuivre jusqu'à 17h afin de célébrer et clôturer ce temps collectif. En revanche, **il est possible de venir aux soirées du mercredi et du jeudi, qui sont ouvertes à tous** (sans inscription, sauf si vous souhaitez réserver un repas).
   - type: grille_cartes
     titre: ''
     texte: ''
@@ -215,14 +177,13 @@ sections:
     bouton_texte: S'inscrire maintenant
     bouton_lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
     bouton_icone: fusee
+    mention: Participation libre et consciente
   - type: questions
     fond: blanc
     titre: Questions fréquentes
     questions:
-      - question: À qui s'adresse le tarif solidaire ?
-        reponse: Toute personne qui a des moyens limités, étudiante ou non, et pour qui 80 € (ajoutés aux autres frais) serait trop important. Aucun justificatif ne sera demandé, mais nous ne sommes déjà pas bénéficiaires sur l'événement, donc faites le choix en conscience !
-      - question: À quoi sert l'argent récolté par les billets d'entrée ?
-        reponse: Principalement à payer les déplacements de notre équipe, qui est assez nombreuse et qui vient des 4 coins de la France. La Filature nous fait des conditions très avantageuses pour la location du lieu. Malgré cela, Reconnexion va payer au minimum 1000 € pour organiser ce hackathon.
+      - question: À quoi va servir l'argent récolté en participation libre et consciente ?
+        reponse: Principalement à payer les déplacements de notre équipe, qui est assez nombreuse et qui vient des 4 coins de la France. La Filature nous fait des conditions très avantageuses pour la location du lieu. Malgré cela, Reconnexion va payer plusieurs milliers d'euros pour organiser ce hackathon.
       - question: Est-ce que les équipes peuvent se passer d'IA ?
         reponse: Nous comprenons et partageons les doutes qu'il y a sur le développement et l'usage de l'IA dans la société. Si vous préférez réaliser les maquettes sans Claude Design, vous pouvez le signaler en commentaire lors de l'inscription et nous essaierons de rassembler au moins une équipe qui n'utilisera pas l'IA pour la génération de la maquette.
       - question: Je suis développeur·se, est-ce que je pourrai coder ?
