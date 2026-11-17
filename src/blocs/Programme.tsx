@@ -15,7 +15,7 @@ export type ProgrammeProps = {
   image_alt?: string;
   image_lien?: string;
   /** Boutons centrés sous le programme (ex. « S'inscrire »). */
-  boutons?: { texte: string; lien: string; icone?: string }[];
+  boutons?: { texte: string; lien: string; icone?: string; desactive?: boolean }[];
 };
 
 /** Regroupe les étapes consécutives d'un même jour. */

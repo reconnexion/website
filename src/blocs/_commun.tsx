@@ -198,12 +198,12 @@ export function TitreBloc({ titre, icone, className = '' }: { titre?: string; ic
 export const champIconeTitre: Champ = { name: 'icone', label: 'Icône du titre', widget: 'select', options: nomsIcones, required: false };
 
 /** Rangée de boutons d'action. */
-export function Boutons({ boutons = [], className = '' }: { boutons?: { texte: string; lien: string; icone?: string }[]; className?: string }) {
+export function Boutons({ boutons = [], className = '' }: { boutons?: { texte: string; lien: string; icone?: string; desactive?: boolean }[]; className?: string }) {
   if (!boutons.length) return null;
   return (
     <div className={`mt-e4 flex flex-wrap gap-e3 ${className}`.trim()}>
       {boutons.map((b, i) => (
-        <BoutonAction key={i} texte={b.texte} lien={b.lien} icone={b.icone} />
+        <BoutonAction key={i} texte={b.texte} lien={b.lien} icone={b.icone} desactive={b.desactive} />
       ))}
     </div>
   );
@@ -219,6 +219,7 @@ export const champBoutons: Champ = {
     { name: 'texte', label: 'Texte', widget: 'string' },
     { name: 'lien', label: 'Lien', widget: 'string' },
     { name: 'icone', label: 'Icône', widget: 'select', options: nomsIcones, required: false },
+    { name: 'desactive', label: 'Désactivé (non cliquable)', widget: 'boolean', required: false, default: false },
   ],
 };
 
@@ -236,7 +237,7 @@ export const champRapproche: Champ = {
  * Bouton d'action : vert sur fond clair, blanc sur fond foncé. Icône facultative devant le texte.
  * Lien mailto: masqué aux robots comme dans les textes (cf. src/lib/courriel.ts).
  */
-export function BoutonAction({ texte, lien, icone }: { texte?: string; lien?: string; icone?: string }) {
+export function BoutonAction({ texte, lien, icone, desactive }: { texte?: string; lien?: string; icone?: string; desactive?: boolean }) {
   const fonce = useFondFonce();
   const ref = useRef<HTMLAnchorElement>(null);
   const courriel = lien?.startsWith('mailto:') ? lien.slice('mailto:'.length) : undefined;
@@ -245,6 +246,14 @@ export function BoutonAction({ texte, lien, icone }: { texte?: string; lien?: st
   });
   if (!texte || !lien) return null;
   const Icone = icone ? icones[icone] : undefined;
+  const classes = fonce ? 'btn border-fond bg-fond text-noir hover:border-fond-2 hover:bg-fond-2' : 'btn btn-primary';
+  if (desactive)
+    return (
+      <span aria-disabled="true" className={`${classes} pointer-events-none opacity-50`}>
+        {Icone && <Icone size={18} aria-hidden="true" />}
+        {texte}
+      </span>
+    );
   // Liens externes dans un nouvel onglet, comme dans les textes.
   const externe = /^https?:\/\//.test(lien);
   return (
@@ -254,7 +263,7 @@ export function BoutonAction({ texte, lien, icone }: { texte?: string; lien?: st
       target={externe ? '_blank' : undefined}
       rel={externe ? 'noopener' : undefined}
       data-courriel={courriel ? encoderCourriel(courriel) : undefined}
-      className={fonce ? 'btn border-fond bg-fond text-noir hover:border-fond-2 hover:bg-fond-2' : 'btn btn-primary'}
+      className={classes}
     >
       {Icone && <Icone size={18} aria-hidden="true" />}
       {texte}

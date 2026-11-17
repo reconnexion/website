@@ -18,7 +18,7 @@ export type AlerteProps = {
   couleur?: Couleur;
   texte?: string;
   /** Boutons centrés sous l'encadré (ex. « S'inscrire »). */
-  boutons?: { texte: string; lien: string; icone?: string }[];
+  boutons?: { texte: string; lien: string; icone?: string; desactive?: boolean }[];
 };
 
 /**

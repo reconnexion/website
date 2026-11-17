@@ -4,6 +4,8 @@ import type { DefinitionBloc } from './types';
 import { nomsIcones } from '../lib/icones';
 
 export type BandeauProps = {
+  /** Message urgent affiché dans une bande rouge au-dessus du bandeau (ex. événement annulé). */
+  alerte?: string;
   surtitre?: string;
   /** Injecté au rendu (pages générées, ex. articles) : le surtitre mène à la page parente. */
   lien_surtitre?: string;
@@ -18,6 +20,7 @@ export type BandeauProps = {
   bouton_texte?: string;
   bouton_lien?: string;
   bouton_icone?: string;
+  bouton_desactive?: boolean;
   /** Petite mention sous le bouton (ex. « Nombre de places limité »). */
   bouton_note?: string;
   /** Sans image : titre et texte centrés. */
@@ -28,12 +31,26 @@ export type BandeauProps = {
   enchaine?: boolean;
 };
 
-export function Bandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, image, illustration, illustration_alt, bouton_texte, bouton_lien, bouton_icone, bouton_note, centre, degrade, enchaine }: BandeauProps) {
+export function Bandeau({ alerte, ...props }: BandeauProps) {
+  if (!alerte) return <ContenuBandeau {...props} />;
+  return (
+    <>
+      <SurFondFonce>
+        <div role="alert" className="bg-rouge py-e3 text-fond">
+          <Paragraphes texte={alerte} className="conteneur text-center text-l" />
+        </div>
+      </SurFondFonce>
+      <ContenuBandeau {...props} />
+    </>
+  );
+}
+
+function ContenuBandeau({ surtitre, lien_surtitre, titre, sous_titre, texte, image, illustration, illustration_alt, bouton_texte, bouton_lien, bouton_icone, bouton_desactive, bouton_note, centre, degrade, enchaine }: BandeauProps) {
   const bouton = bouton_texte && bouton_lien && (
     <div className="mt-e5">
       <div className={`flex flex-wrap gap-e3${image || centre ? ' justify-center' : ''}`}>
         {/* Vert sur fond clair, blanc sur le dégradé. */}
-        <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} />
+        <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} desactive={bouton_desactive} />
       </div>
       {bouton_note && <p className="mt-e2 text-m">{bouton_note}</p>}
     </div>
@@ -113,6 +130,13 @@ export const bandeau: DefinitionBloc<BandeauProps> = {
   label: "Bandeau d'accueil",
   Component: Bandeau,
   fields: [
+    {
+      name: 'alerte',
+      label: "Message d'alerte",
+      widget: 'text',
+      required: false,
+      hint: 'Affiché dans une bande rouge au-dessus du bandeau, ex. « **Événement annulé.** ».',
+    },
     { name: 'surtitre', label: 'Surtitre', widget: 'string', required: false },
     { name: 'titre', label: 'Titre', widget: 'text', hint: 'Passez à la ligne pour couper le titre : la première ligne est alors affichée plus grande (sans image de fond).' },
     { name: 'sous_titre', label: 'Sous-titre', widget: 'string', required: false, hint: 'Ligne mise en avant sous le titre, ex. « 26-27 novembre 2026 à Villeurbanne ».' },
@@ -135,6 +159,7 @@ export const bandeau: DefinitionBloc<BandeauProps> = {
     { name: 'bouton_texte', label: 'Texte du bouton', widget: 'string', required: false },
     { name: 'bouton_lien', label: 'Lien du bouton', widget: 'string', required: false },
     { name: 'bouton_icone', label: 'Icône du bouton', widget: 'select', options: nomsIcones, required: false },
+    { name: 'bouton_desactive', label: 'Bouton désactivé (non cliquable)', widget: 'boolean', required: false, default: false },
     { name: 'bouton_note', label: 'Mention sous le bouton', widget: 'string', required: false, hint: 'Affichée en petit, ex. « Nombre de places limité ».' },
     { name: 'centre', label: 'Centré (sans image de fond)', widget: 'boolean', required: false, default: false },
     { name: 'degrade', label: 'Fond en dégradé (sans image de fond)', widget: 'boolean', required: false, default: false },

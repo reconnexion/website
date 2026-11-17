@@ -3,7 +3,7 @@ import type { DefinitionBloc } from './types';
 
 export type BoutonProps = {
   fond?: Fond;
-  boutons?: { texte: string; lien: string; icone?: string }[];
+  boutons?: { texte: string; lien: string; icone?: string; desactive?: boolean }[];
   alignement?: 'centre' | 'gauche';
   /** Réduit l'espace avec le bloc précédent s'il a le même fond (suite de la même section). */
   rapproche?: boolean;

@@ -12,11 +12,12 @@ export type SectionCouleurProps = {
   bouton_texte?: string;
   bouton_lien?: string;
   bouton_icone?: string;
+  bouton_desactive?: boolean;
   mention?: string;
 };
 
 /** Texte centré sur un fond de couleur (annonce, raison d'être, newsletter…). */
-export function SectionCouleur({ fond = 'vert', alignement = 'centre', icone, illustration, titre, texte, bouton_texte, bouton_lien, bouton_icone, mention }: SectionCouleurProps) {
+export function SectionCouleur({ fond = 'vert', alignement = 'centre', icone, illustration, titre, texte, bouton_texte, bouton_lien, bouton_icone, bouton_desactive, mention }: SectionCouleurProps) {
   const Icone = icone ? icones[icone] : undefined;
   const Illustration = illustration ? icones[illustration] : undefined;
   const clair = fond === 'blanc' || fond === 'gris';
@@ -46,7 +47,7 @@ export function SectionCouleur({ fond = 'vert', alignement = 'centre', icone, il
           <Paragraphes texte={texte} className={alignement === 'gauche' ? '' : 'text-l leading-snug max-sm:[&_br]:hidden'} />
           {bouton_texte && bouton_lien && (
             <div className="mt-e4">
-              <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} />
+              <BoutonAction texte={bouton_texte} lien={bouton_lien} icone={bouton_icone} desactive={bouton_desactive} />
             </div>
           )}
           <Paragraphes texte={mention} className="mt-e3 text-s" />
@@ -83,6 +84,7 @@ export const sectionCouleur: DefinitionBloc<SectionCouleurProps> = {
     { name: 'bouton_texte', label: 'Texte du bouton', widget: 'string', required: false },
     { name: 'bouton_lien', label: 'Lien du bouton', widget: 'string', required: false },
     { name: 'bouton_icone', label: 'Icône du bouton', widget: 'select', options: nomsIcones, required: false },
+    { name: 'bouton_desactive', label: 'Bouton désactivé (non cliquable)', widget: 'boolean', required: false, default: false },
     { name: 'mention', label: 'Mention sous le bouton', widget: 'text', required: false },
   ],
 };

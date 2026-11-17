@@ -3,6 +3,7 @@ slug: nous-rencontrer/hackathon-nov-2026
 description: Le 1er Hackathon des Applications Sociales de Reconnexion, les 26 et 27 novembre 2026 à La Filature (Villeurbanne).
 sections:
   - type: bandeau
+    alerte: "**Le hackathon est annulé faute d'inscrits suffisants.** La soirée du mercredi est peut-être maintenue, nous vous tiendrons informé·es prochainement. Merci à celles et ceux qui ont soutenu cette initiative, qui trouvera d'autres manières d'exister."
     surtitre: ''
     titre: |-
       1er Hackathon
@@ -17,6 +18,7 @@ sections:
     bouton_texte: S'inscrire maintenant
     bouton_lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
     bouton_icone: fusee
+    bouton_desactive: true
     bouton_note: Participation libre et consciente
     centre: true
     degrade: true
@@ -59,6 +61,7 @@ sections:
       - texte: S'inscrire maintenant
         lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
         icone: fusee
+        desactive: true
     note: Participation libre et consciente
   - type: chiffres
     titre: ''
@@ -177,6 +180,7 @@ sections:
     bouton_texte: S'inscrire maintenant
     bouton_lien: https://reconnexion-scic.tibillet.coop/event/1er-hackathon-des-applications-citoyennes-261126-0900-e1e0aa86/
     bouton_icone: fusee
+    bouton_desactive: true
     mention: Participation libre et consciente
   - type: questions
     fond: blanc
