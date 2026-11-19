@@ -9,13 +9,6 @@ sections:
     image: /images/foret.webp
     bouton_texte: ''
     bouton_lien: ''
-  - type: annonce
-    titre: Hackathon des Applications Sociales
-    texte: Découvrez le projet et rencontrez les personnes qui le portent en participant au hackathon.
-    bouton_texte: Plus d'informations
-    bouton_lien: /nous-rencontrer/hackathon-nov-2026
-    icone: ''
-    etiquette: 26-27 novembre · Lyon
   - type: video
     titre: Comprendre le Réseau Social Universel
     fond: gris
