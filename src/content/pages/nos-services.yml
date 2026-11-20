@@ -13,7 +13,7 @@ sections:
     bouton_lien: ''
   - type: offre
     bouton_texte: Planifier un échange gratuit
-    bouton_lien: https://cal.com/reconnexion/echange-60m
+    bouton_lien: https://cal.reconnexion.coop/u/sebastien-rosset/appel-de-60-min
     fond: degrade
     bouton_icone: calendrier
     nom: Forfait de base, à partir de
@@ -106,7 +106,7 @@ sections:
     titre: Un projet d'application ?
     texte: Parlons-en lors d'une réunion d'évaluation, gratuite et sans engagement.
     bouton_texte: Prendre rendez-vous
-    bouton_lien: https://cal.com/reconnexion/echange-60m
+    bouton_lien: https://cal.reconnexion.coop/u/sebastien-rosset/appel-de-60-min
     icone: ''
     fond: degrade
     alignement: centre
